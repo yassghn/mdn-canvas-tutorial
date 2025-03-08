@@ -16,20 +16,22 @@ $desert-breeze-theme: (
   "color9": darkgreen
 );
 
-$svg-menu-stroke-hover: map.get($desert-breeze-theme, "color1");
-$menu-slider-hover-bg-color: map.get($desert-breeze-theme, "color2");
-$slider-background-color: map.get($desert-breeze-theme, "color3");
-$svg-menu-stroke: map.get($desert-breeze-theme, "color4");
-$slider-hover-bg-color: map.get($desert-breeze-theme, "color5");
-$menu-header-bg-color: map.get($desert-breeze-theme, "color5");
-$menu-item-bg-color: map.get($desert-breeze-theme, "color3");
-$menu-item-bottom-border-color: map.get($desert-breeze-theme, "color5");
-$menu-item-hover-bg-color: map.get($desert-breeze-theme, "color6");
-$slider-bg-color: map.get($desert-breeze-theme, "color7");
-$slider-box-shadow-inset-color: map.get($desert-breeze-theme, "color4");
-$slider-before-bg-color: map.get($desert-breeze-theme, "color8");
-$slider-before-box-shadow-color: map.get($desert-breeze-theme, "color4");
-$input-checked-slider-bg-color: map.get($desert-breeze-theme, "color9");
+$theme: $desert-breeze-theme;
+
+$svg-menu-stroke-hover: map.get($theme, "color1");
+$menu-slider-hover-bg-color: map.get($theme, "color2");
+$slider-background-color: map.get($theme, "color3");
+$svg-menu-stroke: map.get($theme, "color4");
+$slider-hover-bg-color: map.get($theme, "color5");
+$menu-header-bg-color: map.get($theme, "color5");
+$menu-item-bg-color: map.get($theme, "color3");
+$menu-item-bottom-border-color: map.get($theme, "color5");
+$menu-item-hover-bg-color: map.get($theme, "color6");
+$slider-bg-color: map.get($theme, "color7");
+$slider-box-shadow-inset-color: map.get($theme, "color4");
+$slider-before-bg-color: map.get($theme, "color8");
+$slider-before-box-shadow-color: map.get($theme, "color4");
+$input-checked-slider-bg-color: map.get($theme, "color9");
 
 @mixin svg-stroke {
   svg#menu {
