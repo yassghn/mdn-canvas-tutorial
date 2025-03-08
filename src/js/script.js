@@ -64,16 +64,21 @@ import lessons from './lessons.mjs'
         cvs.ctx.fillRect(0, 0, cvs.width, cvs.height)
     }
 
-    function draw() {
+    function canvasPallete() {
         // clear canvas
         clearCanvas()
         // draw menu enabled lessons
         if (lessons.simpleExample) {
-            drawSimpleExample()
+            lessons.drawSimpleExample(cvs)
         }
         if (lessons.rectangularShape) {
-            drawRectangularShape()
+            lessons.drawRectangularShape(cvs)
         }
+    }
+
+    function draw() {
+        canvasPallete()
+        requestAnimationFrame(draw)
     }
 
     // main
@@ -87,6 +92,8 @@ import lessons from './lessons.mjs'
             log('canvas is supported!')
             // start the lessons
             await initLessons()
+            // start drawing
+            draw()
         } else {
             log('canvas is unsupported.')
         }
