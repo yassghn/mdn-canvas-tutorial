@@ -1,0 +1,42 @@
+{
+  "name": "mdn-canvas-tutorial",
+  "version": "0.0.1",
+  "description": "mdn canvas tutorial with dynamic menu",
+  "homepage": "https://github.com/yassghn/mdn-canvas-tutorial",
+  "bugs": "https://github.com/yassghn/mdn-canvas-tutorial/issues",
+  "author": "yassghn@protonmail.com",
+  "license": "SEE LICENSE IN license",
+  "main": "gulpfile.mjs",
+  "type": "module",
+  "scripts": {
+    "gulp": "gulp",
+    "build": "npm run gulp",
+    "watch": "npm run gulp watch",
+    "clean": "npm run gulp clean",
+    "cleanbuild": "npm run clean && npm run build",
+    "serve": "npm run gulp serve"
+  },
+  "keywords": [
+    "mdn",
+    "js",
+    "html",
+    "css",
+    "scss",
+    "canvas",
+    "tutorial"
+  ],
+  "devDependencies": {
+    "del": "^8.0.0",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^6.0.0",
+    "polka": "^0.5.2",
+    "sass": "^1.85.0",
+    "serve-static": "^1.16.2"
+  },
+  "dependencies": {
+    "animatelo": "^1.0.3"
+  }
+}

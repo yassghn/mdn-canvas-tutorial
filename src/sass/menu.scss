@@ -1,0 +1,151 @@
+/**
+ * menu.scss
+ */
+
+@mixin svg-stroke {
+  svg#menu {
+    stroke: beige;
+  }
+}
+
+#tutorial-menu {
+  width: 10em;
+  height: 0;
+  user-select: none;
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+}
+
+#tutorial-menu:hover {
+  cursor: pointer;
+}
+
+#menu-slider {
+  width: 2em;
+}
+
+#menu-slider:hover {
+  background-color: yellow;
+}
+
+#slider {
+  background-color: bisque;
+}
+
+svg#menu {
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 2em;
+  height: 2em;
+}
+
+#slider:hover {
+  background-color: burlywood;
+  @include svg-stroke();
+}
+
+// flex breaks hidden html attribute, override it
+[hidden] {
+  display: none !important;
+}
+
+#menu-content {
+  display: flex;
+  width: 15em;
+  position: fixed;
+  bottom: 5%;
+}
+
+#menu-header {
+  padding: 0.5em;
+  background-color: burlywood;
+  text-decoration: underline;
+}
+
+#menu-header:hover {
+  @include svg-stroke();
+}
+
+#menu {
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5em;
+  background-color: bisque;
+  border-bottom: 0.1em solid burlywood;
+}
+
+.menu-item span {
+    width: 60%;
+}
+
+.menu-item:hover {
+  background-color: white;
+}
+
+.input-switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  width: 40%
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 1em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: olive;
+  transition: 0.4s;
+  box-shadow: inset 0.2em 0.2em 0.2em black;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1em;
+  width: 1em;
+  left: 0.1em;
+  bottom: 0.09em;
+  background-color: orange;
+  transition: 0.4s;
+  box-shadow: 0 0.1em 0.2em black;
+}
+
+input:checked + .slider {
+  background-color: darkgreen;
+}
+
+input:checked + .slider:before {
+  transform: translateX(1em);
+}
+
+.slider.round {
+  border-radius: 2em;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
