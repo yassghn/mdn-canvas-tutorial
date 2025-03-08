@@ -3,15 +3,12 @@
  */
 import menu from './menu.mjs'
 import { log } from './util.mjs'
+import lessonsSetup from './lessonsSetup.mjs'
+import lessons from './lessons.mjs'
 
 // script.js
 (function () {
     'use strict'
-
-    const lessons = {
-        simpleExample: false,
-        rectangularShape: false
-    }
 
     // canvas object
     const cvs = {
@@ -56,57 +53,10 @@ import { log } from './util.mjs'
         return false
     }
 
-    async function addMenuItem(itemId, itemText, checkboxId, callback) {
-        await menu.adddMenuItem(itemId, itemText, checkboxId, callback)
-    }
-
-    function simpleExampleCallback(enabled) {
-        lessons.simpleExample = enabled
-        draw()
-    }
-
-    function rectangularShapeCallback(enabled) {
-        lessons.rectangularShape = enabled
-        draw()
-    }
-
-    function drawSimpleExample() {
-        // notes:
-        // the grid: normally(?) 1 unit = 1px in canvas grid
-        // top-left corner of canvas is coordinate (0, 0)
-        // drawing moves as x units from left, y units from top
-        cvs.ctx.fillStyle = 'rgb(200 0 0)'
-        // fillRect(x, y, width, height)
-        cvs.ctx.fillRect(10, 10, 50, 50)
-        cvs.ctx.fillStyle = 'rgb(0 0 200 / 50%)'
-        cvs.ctx.fillRect(30, 30, 50, 50)
-    }
-
-    function drawRectangularShape() {
-        cvs.ctx.fillStyle = 'rgb(0 100 100)'
-        // draw filled rectangle
-        cvs.ctx.fillRect(40, 40, 100, 100)
-        // draw rectangular outline
-        cvs.ctx.strokeRect(60, 60, 60, 60)
-        // clear rectangular area (make it fully transparent)
-        // everything behind clear becomes transparent
-        cvs.ctx.clearRect(65, 65, 50, 50)
-    }
-
-    // simple example
-    async function simpleExampleInit() {
-        await addMenuItem("simple-example", "simple example", "simple-example-check", simpleExampleCallback)
-    }
-
-    // rectangular shape
-    async function rectangularShapeInit() {
-        await addMenuItem("rectangular-shape", "rectangular shape", "rectangular-shape-check", rectangularShapeCallback)
-    }
-
     // init lessons
     async function initLessons() {
-        await simpleExampleInit()
-        await rectangularShapeInit()
+        await lessonsSetup.simpleExampleInit()
+        await lessonsSetup.rectangularShapeInit()
     }
 
     function clearCanvas() {
