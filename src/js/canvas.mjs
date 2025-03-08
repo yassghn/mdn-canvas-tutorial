@@ -33,7 +33,7 @@ const canvas = {
 	},
 
 	// check browser for canvas support
-	isCanvasSupported: function () {
+	isCanvasSupported: function() {
 		if (cvs.canvas.getContext) {
 			return true
 		}
@@ -41,7 +41,7 @@ const canvas = {
 	},
 
 	// configure canvas object
-	configCanvas: function () {
+	configCanvas: function() {
 		// get canvas
 		cvs.canvas = document.querySelector('#tutorial-canvas')
 		// set canvas dimentions
@@ -50,7 +50,7 @@ const canvas = {
 		cvs.ctx = cvs.canvas.getContext('2d')
 	},
 
-	canvasPallete: function () {
+	canvasPallete: function() {
 		// clear canvas
 		clearCanvas()
 		// draw menu enabled lessons
