@@ -170,12 +170,12 @@ function initElems() {
 }
 
 const menu = {
-	adddMenuItem: async function(itemId, itemText, checkboxId, callback) {
+	adddMenuItem: async function (itemId, itemText, checkboxId, callback) {
 		// todo: return error on error
 		await appendMenuItem(itemId, itemText, checkboxId, callback)
 	},
 
-	init: async function() {
+	init: async function () {
 		// todo: return error on error
 		await insertMenu()
 		initElems()

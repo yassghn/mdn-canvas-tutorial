@@ -18,12 +18,12 @@ function rectangularShapeCallback(enabled) {
 
 const lessonsSetup = {
 	// simple example
-	simpleExampleInit: async function() {
+	simpleExampleInit: async function () {
 		await addMenuItem("simple-example", "simple example", "simple-example-check", simpleExampleCallback)
 	},
 
 	// rectangular shape
-	rectangularShapeInit: async function() {
+	rectangularShapeInit: async function () {
 		await addMenuItem("rectangular-shape", "rectangular shape", "rectangular-shape-check", rectangularShapeCallback)
 	}
 }

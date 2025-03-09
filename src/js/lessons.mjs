@@ -1,10 +1,9 @@
-
 /**
  * lessons.mjs
  */
 
 const lessons = {
-	drawSimpleExample: function(cvs) {
+	drawSimpleExample: function (cvs) {
 		// notes:
 		// the grid: normally(?) 1 unit = 1px in canvas grid
 		// top-left corner of canvas is coordinate (0, 0)
@@ -15,8 +14,8 @@ const lessons = {
 		cvs.ctx.fillStyle = 'rgb(0 0 200 / 50%)'
 		cvs.ctx.fillRect(30, 30, 50, 50)
 	},
-	
-	drawRectangularShape: function(cvs) {
+
+	drawRectangularShape: function (cvs) {
 		cvs.ctx.fillStyle = 'rgb(0 100 100)'
 		// draw filled rectangle
 		cvs.ctx.fillRect(40, 40, 100, 100)
