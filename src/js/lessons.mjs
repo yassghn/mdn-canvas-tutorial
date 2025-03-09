@@ -50,9 +50,39 @@ const lessons = {
 		cvs.ctx.fill()
 	},
 
+	drawMovingThePen: function (cvs) {
+		/**
+		 * moveTo(x, y) doesn't actually draw anything
+		 * 	- like lifting a pen from one spot to another
+		 *
+		 * can use moveTo to draw unconnect paths
+		 */
+		// draw smiley face
+		cvs.ctx.beginPath()
+		// outer circle
+		cvs.ctx.arc(275, 275, 50, 0, Math.PI * 2, true)
+		// move "pen"
+		cvs.ctx.moveTo(310, 275)
+		// mouth (moving clockwise)
+		cvs.ctx.arc(275, 275, 35, 0, Math.PI, false)
+		// move
+		cvs.ctx.moveTo(265, 265)
+		// left eye
+		cvs.ctx.arc(260, 265, 5, 0, Math.PI * 2, true)
+		// move
+		cvs.ctx.moveTo(295, 265)
+		// right eye
+		cvs.ctx.arc(290, 265, 5, 0, Math.PI * 2, true)
+		// set color
+		cvs.ctx.strokeStyle = 'rgb(255 255 50)'
+		// render
+		cvs.ctx.stroke()
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
-	triangleShapeAndPaths: false
+	triangleShapeAndPaths: false,
+	movingThePen: false
 }
 
 export default lessons

@@ -63,6 +63,9 @@ const canvas = {
 		if (lessons.triangleShapeAndPaths) {
 			lessons.drawTriangleShapesAndPaths(cvs)
 		}
+		if (lessons.movingThePen) {
+			lessons.drawMovingThePen(cvs)
+		}
 	}
 }
 
