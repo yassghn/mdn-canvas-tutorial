@@ -17,6 +17,7 @@ const lessons = {
 
 	drawRectangularShape: function (cvs) {
 		cvs.ctx.fillStyle = 'rgb(0 100 100)'
+		cvs.ctx.strokeStyle = 'rgb(355 100 100)'
 		// draw filled rectangle
 		cvs.ctx.fillRect(40, 40, 100, 100)
 		// draw rectangular outline
