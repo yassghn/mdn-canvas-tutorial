@@ -67,6 +67,7 @@ function addMenuItemClickHandler(item, callback) {
 	const checkbox = item.children[0].querySelectorAll(selectors.toggles)[0]
 	item.children[0].addEventListener('click', (event) => {
 		// prevent two events from being fired
+		// when clicking on checkbox (toggle switch)
 		event.preventDefault()
 		// get checkbox value and send to callback
 		checkbox.checked = checkbox.checked == true ? false : true
