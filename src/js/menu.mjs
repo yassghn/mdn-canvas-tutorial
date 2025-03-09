@@ -61,6 +61,12 @@ function addFocusEvents() {
 			animateMenuFocusOut()
 		}
 	})
+	// still want menu to collapse when window loses focus
+	window.addEventListener('blur', (event) => {
+		if (!elems.menu.getAttribute('hidden')) {
+			animateMenuFocusOut()
+		}
+	})
 }
 
 function addMenuItemClickHandler(item, callback) {
