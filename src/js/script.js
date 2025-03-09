@@ -14,6 +14,7 @@ import canvas from './canvas.mjs'
     async function initLessons() {
         await lessonsSetup.simpleExampleInit()
         await lessonsSetup.rectangularShapeInit()
+        await lessonsSetup.triangleShapeAndPathsInit()
     }
 
     // draw

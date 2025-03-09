@@ -16,6 +16,10 @@ function rectangularShapeCallback(enabled) {
 	lessons.rectangularShape = enabled
 }
 
+function triangleShapeAndPathsCallback(enabled) {
+	lessons.triangleShapeAndPaths = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -25,6 +29,11 @@ const lessonsSetup = {
 	// rectangular shape
 	rectangularShapeInit: async function () {
 		await addMenuItem("rectangular-shape", "rectangular shape", "rectangular-shape-check", rectangularShapeCallback)
+	},
+
+	// drawing a triangle
+	triangleShapeAndPathsInit: async function () {
+		await addMenuItem("triangle-shape-and-paths", "triangle shape and paths", "triangle-shape-and-paths-check", triangleShapeAndPathsCallback)
 	}
 }
 

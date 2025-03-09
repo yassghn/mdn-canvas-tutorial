@@ -26,8 +26,33 @@ const lessons = {
 		cvs.ctx.clearRect(65, 65, 50, 50)
 	},
 
+	drawTriangleShapesAndPaths: function (cvs) {
+		/**
+		 * a path is a list of points
+		 * connected by various line segments/shapes of various properties
+		 *
+		 * paths can be subpaths
+		 *
+		 * making shapes with paths
+		 *
+		 * 1. create path
+		 * 2. draw path
+		 * 3. stroke/fill path to render it
+		 *
+		 * note: (almost) always specify starting position after resetting a path
+		 *    - first path construction command is treated as moveTo(?)
+		 */
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(150, 150)
+		cvs.ctx.lineTo(125, 175)
+		cvs.ctx.lineTo(175, 175)
+		cvs.ctx.fillStyle = 'rgb(100 50 50)'
+		cvs.ctx.fill()
+	},
+
 	simpleExample: false,
-	rectangularShape: false
+	rectangularShape: false,
+	triangleShapeAndPaths: false
 }
 
 export default lessons

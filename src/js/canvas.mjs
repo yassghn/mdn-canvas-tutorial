@@ -60,6 +60,9 @@ const canvas = {
 		if (lessons.rectangularShape) {
 			lessons.drawRectangularShape(cvs)
 		}
+		if (lessons.triangleShapeAndPaths) {
+			lessons.drawTriangleShapesAndPaths(cvs)
+		}
 	}
 }
 
