@@ -54,9 +54,10 @@ function animateSliderHover() {
 
 function addFocusEvents() {
 	elems.menu.addEventListener('focusout', (event) => {
-		// relatedTarget gets set when checkboxes are ticked
-		// do not collapse menu on checkbox focus
-		if (!event.relatedTarget) {
+		// prevent spamming clicks from triggering too many animations
+		// which causes unexpected behavior
+		// events rangeParent and rangeOffset are not set when menu is being animated
+		if (event.rangeParent) {
 			animateMenuFocusOut()
 		}
 	})
