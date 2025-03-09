@@ -31,22 +31,22 @@ function linesCallback(enabled) {
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
-		await addMenuItem("simple-example", "simple example", "simple-example-check", simpleExampleCallback)
+		await addMenuItem('simple-example', 'simple example', 'simple-example-check', simpleExampleCallback)
 	},
 
 	// rectangular shape
 	rectangularShapeInit: async function () {
-		await addMenuItem("rectangular-shape", "rectangular shape", "rectangular-shape-check", rectangularShapeCallback)
+		await addMenuItem('rectangular-shape', 'rectangular shape', 'rectangular-shape-check', rectangularShapeCallback)
 	},
 
 	// drawing a triangle
 	triangleShapeAndPathsInit: async function () {
-		await addMenuItem("triangle-shape-and-paths", "triangle shape and paths", "triangle-shape-and-paths-check", triangleShapeAndPathsCallback)
+		await addMenuItem('triangle-shape-and-paths', 'triangle shape and paths', 'triangle-shape-and-paths-check', triangleShapeAndPathsCallback)
 	},
 
 	// moving the pen
 	movingThePenInit: async function () {
-		await addMenuItem("moving-the-pen", "moving the pen", "moving-the-pen-check", movingThePenCallback)
+		await addMenuItem('moving-the-pen', 'moving the pen', 'moving-the-pen-check', movingThePenCallback)
 	},
 
 	// lines
