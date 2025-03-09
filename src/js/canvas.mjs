@@ -66,6 +66,9 @@ const canvas = {
 		if (lessons.movingThePen) {
 			lessons.drawMovingThePen(cvs)
 		}
+		if (lessons.lines) {
+			lessons.drawLines(cvs)
+		}
 	}
 }
 

@@ -24,6 +24,10 @@ function movingThePenCallback(enabled) {
 	lessons.movingThePen = enabled
 }
 
+function linesCallback(enabled) {
+	lessons.lines = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -43,6 +47,11 @@ const lessonsSetup = {
 	// moving the pen
 	movingThePenInit: async function () {
 		await addMenuItem("moving-the-pen", "moving the pen", "moving-the-pen-check", movingThePenCallback)
+	},
+
+	// lines
+	linesInit: async function () {
+		await addMenuItem('lines', 'lines', 'lines-check', linesCallback)
 	}
 }
 

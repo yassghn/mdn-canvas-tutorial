@@ -79,10 +79,42 @@ const lessons = {
 		cvs.ctx.stroke()
 	},
 
+	drawLines: function (cvs) {
+		/**
+		 * using lineTo(x, y) to draw straight lines
+		 * 	- draw line from current position to x,y point
+		 *
+		 * end of the previous path is starting point, or
+		 * you can use moveTo
+		 */
+		// draw filled triangle
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(400, 400)
+		cvs.ctx.lineTo(480, 400)
+		cvs.ctx.lineTo(400, 480)
+		cvs.ctx.fillStyle = 'rgb(255, 150, 255)'
+		cvs.ctx.fill()
+		// draw stroked triangle
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(500, 500)
+		cvs.ctx.lineTo(500, 420)
+		cvs.ctx.lineTo(420, 500)
+		/**
+		 * closePath attempts to add straight line from the current point
+		 * to the start of the current subpath.
+		 *
+		 * does nothing if shape is already closed or only has one point
+		 */
+		cvs.ctx.closePath()
+		cvs.ctx.strokeStyle = 'rgb(255, 150, 255)'
+		cvs.ctx.stroke()
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
 	triangleShapeAndPaths: false,
-	movingThePen: false
+	movingThePen: false,
+	lines: false
 }
 
 export default lessons
