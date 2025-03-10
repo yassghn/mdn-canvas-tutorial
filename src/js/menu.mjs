@@ -4,7 +4,8 @@
 import { log } from './util.mjs'
 
 const config = {
-	animDuration: { duration: 300 }
+	animDuration: { duration: 300 },
+	isHidden: true
 }
 
 const elems = {
@@ -32,6 +33,7 @@ function toggleHidden(elems) {
 }
 
 function animateMenuFocusOut() {
+	config.isHidden = true
 	const menuAnim = window.animatelo.fadeOutLeft(elems.menu, config.animDuration)
 	menuAnim[0].onfinish = () => {
 		toggleHidden([elems.slider, elems.menu])
@@ -40,6 +42,7 @@ function animateMenuFocusOut() {
 }
 
 function animateSliderClick() {
+	config.isHidden = false
 	const sliderAnim = window.animatelo.fadeOutLeft(elems.slider, config.animDuration)
 	sliderAnim[0].onfinish = () => {
 		toggleHidden([elems.slider, elems.menu])
@@ -57,7 +60,7 @@ function addFocusEvents() {
 		// prevent spamming clicks from triggering too many animations
 		// which causes unexpected behavior
 		// events rangeParent and rangeOffset are not set when menu is being animated
-		if (event.rangeParent) {
+		if (event.rangeParent && !config.isHidden) {
 			animateMenuFocusOut()
 		}
 	})
@@ -82,7 +85,11 @@ function addMenuItemClickHandler(item, callback) {
 }
 
 function addClickHandlers() {
-	elems.slider.addEventListener('click', () => { animateSliderClick() })
+	elems.slider.addEventListener('click', () => {
+		if (config.isHidden) {
+			animateSliderClick()
+		}
+	})
 	elems.menuHeader.addEventListener('click', () => { elems.menu.blur() })
 }
 
