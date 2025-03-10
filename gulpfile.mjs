@@ -5,7 +5,7 @@
  * gulpfile.js
  *
  */
-
+import path from 'path'
 import { deleteAsync } from 'del'
 import gulp from 'gulp'
 import gulpsass from 'gulp-sass'
@@ -13,7 +13,6 @@ import cleancss from 'gulp-clean-css'
 import autoprefixer from 'gulp-autoprefixer'
 import * as sassc from 'sass'
 import polka from 'polka'
-import path from 'path'
 import servestatic from 'serve-static'
 import { fileURLToPath } from 'url';
 
