@@ -28,6 +28,10 @@ function linesCallback(enabled) {
 	lessons.lines = enabled
 }
 
+function arcsCallback(enabled) {
+	lessons.arcs = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -52,6 +56,11 @@ const lessonsSetup = {
 	// lines
 	linesInit: async function () {
 		await addMenuItem('lines', 'lines', 'lines-check', linesCallback)
+	},
+
+	// lines
+	arcsInit: async function () {
+		await addMenuItem('arcs', 'arcs', 'arcs-check', arcsCallback)
 	}
 }
 

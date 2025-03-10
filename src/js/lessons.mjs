@@ -111,11 +111,63 @@ const lessons = {
 		cvs.ctx.stroke()
 	},
 
+	drawArcs(cvs) {
+		/**
+		 * circles and arcs are drawn with arc(...) and arcTo(...)
+		 *
+		 * arc(x, y, radius, startAngle, endAngle, counterclockwise)
+		 * 	- draw an arc centered at (x, y), radius starts at startangle to endangle, direction
+		 *
+		 * arcTo(x1, y1, x2, y2, radius)
+		 * 	- draw an arc with the control points and radius connected to the previous point via straight line
+		 *
+		 * startangle and endangle are measured in radians along the curve of the circle
+		 * 	- measured from x axis
+		 *
+		 * note: angles are measured in radians, not degress
+		 * 	- convert to degrees to radians (Math.PI/180)*degrees
+		 */
+		// draw 6 stroked circles/pieces
+		// 6 filled circles/pieces
+		for (let i = 0; i < 4; i++) {
+			for (let j = 0; j < 3; j++) {
+				cvs.ctx.beginPath()
+				// set x coordinate
+				const x = 525 + j * 50
+				// set y coordinate
+				const y = 225 + i * 50
+				// radius
+				const radius = 20
+				// starting point on circle
+				const startAngle = 0
+				// ending point on circle
+				const endAngle = Math.PI + (Math.PI * j) / 2
+				// use modulous operator, compare result to 0 for a boolean to determine direction
+				const counterclockwise = i % 2 !== 0
+				// draw
+				cvs.ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise)
+				// half the circles will be stroked, half will be filled
+				if (i > 1) {
+					// set fill style
+					cvs.ctx.fillStyle = 'rgb(145, 55, 65)'
+					// render
+					cvs.ctx.fill()
+				} else {
+					// set stroke style
+					cvs.ctx.strokeStyle = 'rgb(45, 155, 65)'
+					// render
+					cvs.ctx.stroke()
+				}
+			}
+		}
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
 	triangleShapeAndPaths: false,
 	movingThePen: false,
-	lines: false
+	lines: false,
+	arcs: false
 }
 
 export default lessons

@@ -69,6 +69,9 @@ const canvas = {
 		if (lessons.lines) {
 			lessons.drawLines(cvs)
 		}
+		if (lessons.arcs) {
+			lessons.drawArcs(cvs)
+		}
 	}
 }
 

@@ -17,6 +17,7 @@ import canvas from './canvas.mjs'
         await lessonsSetup.triangleShapeAndPathsInit()
         await lessonsSetup.movingThePenInit()
         await lessonsSetup.linesInit()
+        await lessonsSetup.arcsInit()
     }
 
     // draw
