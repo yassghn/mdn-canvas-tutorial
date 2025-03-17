@@ -184,6 +184,11 @@ const lessons = {
 		cvs.ctx.quadraticCurveTo(625, 525, 575, 525)
 		cvs.ctx.strokeStyle = 'rgb(155, 155, 155)'
 		cvs.ctx.stroke()
+		// add text to quote bubble
+		cvs.ctx.font = '36px tahoma'
+		cvs.ctx.lineWidth = 1
+		cvs.ctx.fillStyle = 'rgb(155,155,155)'
+		cvs.ctx.fillText('hi!', 550, 575)
 		// draw a heart using cubic bezier curves
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(675, 640)
