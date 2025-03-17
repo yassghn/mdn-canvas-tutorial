@@ -317,12 +317,22 @@ const lessons = {
 		// create a cricular object to render
 		const circle = new Path2D()
 		circle.arc(50, 400, 25, 0, 2 * Math.PI)
+		// create svg path path2d object
+		/**
+		 * start at point (M60, 400) (x, y)
+		 * move 'h 80' to the right
+		 * move 'v 80' down
+		 * move 'h -80' to the left
+		 * move back to start 'Z'
+		 */
+		const svgPathObj = new Path2D('M60 400 h 80 v 80 h -80 Z')
 		// set stroke/fill styles
 		cvs.ctx.strokeStyle = 'rgb(20, 200, 20)'
 		cvs.ctx.fillStyle = 'rgb(20, 200, 20)'
 		// render the path2d objects
 		cvs.ctx.stroke(rectangle)
 		cvs.ctx.fill(circle)
+		cvs.ctx.stroke(svgPathObj)
 	},
 
 	simpleExample: false,
