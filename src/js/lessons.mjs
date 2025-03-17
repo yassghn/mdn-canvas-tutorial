@@ -2,6 +2,8 @@
  * lessons.mjs
  */
 
+import { roundedRect } from './render.mjs'
+
 const lessons = {
 	drawSimpleExample: function (cvs) {
 		// notes:
@@ -202,13 +204,93 @@ const lessons = {
 		cvs.ctx.fill()
 	},
 
+	// combining 2d canvas lessons
+	drawCombinations: function (cvs) {
+		// pacman scene
+
+		// first draw arcade level (walls)
+		cvs.ctx.strokeStyle = 'rgb(100,155,155)'
+		roundedRect(cvs.ctx, 112, 512, 184, 168, 15)
+		cvs.ctx.stroke()
+		roundedRect(cvs.ctx, 119, 519, 170, 154, 9)
+		cvs.ctx.stroke()
+		roundedRect(cvs.ctx, 153, 553, 49, 33, 10)
+		cvs.ctx.stroke()
+		roundedRect(cvs.ctx, 153, 619, 49, 16, 6)
+		cvs.ctx.stroke()
+		roundedRect(cvs.ctx, 235, 553, 49, 33, 10)
+		cvs.ctx.stroke()
+		roundedRect(cvs.ctx, 235, 619, 25, 49, 10)
+		cvs.ctx.stroke()
+
+		// draw pacman
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(137, 537, 13, Math.PI / 7, -Math.PI / 7, false)
+		cvs.ctx.lineTo(131, 537)
+		cvs.ctx.fillStyle = 'rgb(100, 155, 155)'
+		cvs.ctx.fill()
+
+		// draw pacman's food
+		for (let i = 0; i < 8; i++) {
+			cvs.ctx.fillRect(151 + i * 16, 535, 4, 4)
+		}
+
+		for (let i = 0; i < 6; i++) {
+			cvs.ctx.fillRect(215, 551 + i * 16, 4, 4)
+		}
+
+		for (let i = 0; i < 8; i++) {
+			cvs.ctx.fillRect(151 + i * 16, 599, 4, 4)
+		}
+
+		// draw pacman enemy body
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(183, 616)
+		cvs.ctx.lineTo(183, 602)
+		cvs.ctx.bezierCurveTo(183, 594, 189, 588, 197, 588)
+		cvs.ctx.bezierCurveTo(205, 588, 211, 594, 211, 602)
+		cvs.ctx.lineTo(211, 616)
+		cvs.ctx.lineTo(206.333, 611.333)
+		cvs.ctx.lineTo(201.666, 616)
+		cvs.ctx.lineTo(197, 611.333)
+		cvs.ctx.lineTo(192.333, 616)
+		cvs.ctx.lineTo(187.666, 611.333)
+		cvs.ctx.lineTo(183, 616)
+		cvs.ctx.fill()
+
+		// draw pacman enemy eyes
+		cvs.ctx.fillStyle = 'white'
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(191, 596)
+		cvs.ctx.bezierCurveTo(188, 596, 187, 599, 187, 601)
+		cvs.ctx.bezierCurveTo(187, 603, 188, 606, 191, 606)
+		cvs.ctx.bezierCurveTo(194, 606, 195, 603, 195, 601)
+		cvs.ctx.bezierCurveTo(195, 599, 194, 596, 191, 596)
+		cvs.ctx.moveTo(203, 596)
+		cvs.ctx.bezierCurveTo(200, 596, 199, 599, 199, 601)
+		cvs.ctx.bezierCurveTo(199, 603, 200, 606, 203, 606)
+		cvs.ctx.bezierCurveTo(206, 606, 207, 603, 206, 601)
+		cvs.ctx.bezierCurveTo(207, 599, 206, 596, 203, 596)
+		cvs.ctx.fill()
+
+		// draw pacman enemy eyeballs
+		cvs.ctx.fillStyle = 'rgb(100, 155, 155)'
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(201, 602, 2, 0, Math.PI * 2, true)
+		cvs.ctx.fill()
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(189, 602, 2, 0, Math.PI * 2, true)
+		cvs.ctx.fill()
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
 	triangleShapeAndPaths: false,
 	movingThePen: false,
 	lines: false,
 	arcs: false,
-	bezierAndQuadraticCurves: false
+	bezierAndQuadraticCurves: false,
+	combinations: false
 }
 
 export default lessons

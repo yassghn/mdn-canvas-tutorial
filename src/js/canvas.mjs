@@ -75,6 +75,9 @@ const canvas = {
 		if (lessons.bezierAndQuadraticCurves) {
 			lessons.drawBezierAndQuadraticCurves(cvs)
 		}
+		if (lessons.combinations) {
+			lessons.drawCombinations(cvs)
+		}
 	}
 }
 

@@ -19,6 +19,7 @@ import canvas from './canvas.mjs'
         await lessonsSetup.linesInit()
         await lessonsSetup.arcsInit()
         await lessonsSetup.bezierAndQuadraticCurvesInit()
+        await lessonsSetup.combinationsInit()
     }
 
     // draw

@@ -36,6 +36,10 @@ function bezierAndQuadraticCurvesCallback(enabled) {
 	lessons.bezierAndQuadraticCurves = enabled
 }
 
+function combinationsCallback(enabled) {
+	lessons.combinations = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -70,6 +74,11 @@ const lessonsSetup = {
 	// cubic/quadratic bezier curves
 	bezierAndQuadraticCurvesInit: async function () {
 		await addMenuItem('bezier-and-quadratic-curves', 'bezier and quadratic curves', 'bezier-and-quadratic-curves-check', bezierAndQuadraticCurvesCallback)
+	},
+
+	// combining drawing lessons
+	combinationsInit: async function() {
+		await addMenuItem('combinations', 'combinations', 'combinations-check', combinationsCallback)
 	}
 }
 
