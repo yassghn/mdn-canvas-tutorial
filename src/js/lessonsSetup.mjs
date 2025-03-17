@@ -89,8 +89,9 @@ const lessonsSetup = {
 		await addMenuItem('combinations', 'combinations', 'combinations-check', combinationsCallback)
 	},
 
+	// shapes with holes lesson
 	shapesWithHolesInit: async function() {
-		await addMenuItem('shapes-with-holes', 'shapes-with-holes', 'shapes-with-holes-check', shapesWithHolesCallback)
+		await addMenuItem('shapes-with-holes', 'shapes with holes', 'shapes-with-holes-check', shapesWithHolesCallback)
 	},
 
 	// path 2d lesson
