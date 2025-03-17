@@ -162,12 +162,48 @@ const lessons = {
 		}
 	},
 
+	drawBezierAndQuadraticCurves(cvs) {
+		/**
+		 * bezier curves in cubic and quadratic forms. used to draw complex organic shapes.
+		 *
+		 * quadraticCurveTo(cp1x, cp1y, x, y)
+		 * 	- draws curve from current pen position to (x, y) endpoint
+		 *  - using control point (pin/pivot/bend point), specified by (cp1x, cp1y)
+		 *
+		 * bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+		 * 	- same as quadratic curve to, but specifies a second pin/pivot/bend point
+		 */
+		// draw a quote bubble using quadratic bezier curves
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(575, 525)
+		cvs.ctx.quadraticCurveTo(525, 525, 525, 562.5)
+		cvs.ctx.quadraticCurveTo(525, 600, 550, 600)
+		cvs.ctx.quadraticCurveTo(550, 620, 530, 625)
+		cvs.ctx.quadraticCurveTo(560, 620, 565, 600)
+		cvs.ctx.quadraticCurveTo(625, 600, 625, 562.5)
+		cvs.ctx.quadraticCurveTo(625, 525, 575, 525)
+		cvs.ctx.strokeStyle = 'rgb(155, 155, 155)'
+		cvs.ctx.stroke()
+		// draw a heart using cubic bezier curves
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(675, 640)
+		cvs.ctx.bezierCurveTo(675, 637, 670, 625, 650, 625)
+		cvs.ctx.bezierCurveTo(620, 625, 620, 662.5, 620, 662.5)
+		cvs.ctx.bezierCurveTo(620, 680, 640, 702, 675, 720)
+		cvs.ctx.bezierCurveTo(710, 702, 730, 680, 730, 662.5)
+		cvs.ctx.bezierCurveTo(730, 662.5, 730, 625, 700, 625)
+		cvs.ctx.bezierCurveTo(685, 625, 675, 637, 675, 640)
+		cvs.ctx.fillStyle = 'rgb(255, 100, 100)'
+		cvs.ctx.fill()
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
 	triangleShapeAndPaths: false,
 	movingThePen: false,
 	lines: false,
-	arcs: false
+	arcs: false,
+	bezierAndQuadraticCurves: false
 }
 
 export default lessons

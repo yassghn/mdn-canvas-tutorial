@@ -32,6 +32,10 @@ function arcsCallback(enabled) {
 	lessons.arcs = enabled
 }
 
+function bezierAndQuadraticCurvesCallback(enabled) {
+	lessons.bezierAndQuadraticCurves = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -61,6 +65,10 @@ const lessonsSetup = {
 	// lines
 	arcsInit: async function () {
 		await addMenuItem('arcs', 'arcs', 'arcs-check', arcsCallback)
+	},
+
+	bezierAndQuadraticCurvesInit: async function () {
+		await addMenuItem('bezier-and-quadratic-curves', 'bezier and quadratic curves', 'bezier-and-quadratic-curves-check', bezierAndQuadraticCurvesCallback)
 	}
 }
 

@@ -72,6 +72,9 @@ const canvas = {
 		if (lessons.arcs) {
 			lessons.drawArcs(cvs)
 		}
+		if (lessons.bezierAndQuadraticCurves) {
+			lessons.drawBezierAndQuadraticCurves(cvs)
+		}
 	}
 }
 
