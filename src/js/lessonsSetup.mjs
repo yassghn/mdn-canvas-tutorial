@@ -40,6 +40,10 @@ function combinationsCallback(enabled) {
 	lessons.combinations = enabled
 }
 
+function shapesWithHolesCallback(enabled) {
+	lessons.shapesWithHoles = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -79,6 +83,10 @@ const lessonsSetup = {
 	// combining drawing lessons
 	combinationsInit: async function() {
 		await addMenuItem('combinations', 'combinations', 'combinations-check', combinationsCallback)
+	},
+
+	shapesWithHolesInit: async function() {
+		await addMenuItem('shapes-with-holes', 'shapes-with-holes', 'shapes-with-holes-check', shapesWithHolesCallback)
 	}
 }
 

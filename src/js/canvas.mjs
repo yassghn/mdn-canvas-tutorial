@@ -78,6 +78,9 @@ const canvas = {
 		if (lessons.combinations) {
 			lessons.drawCombinations(cvs)
 		}
+		if (lessons.shapesWithHoles) {
+			lessons.drawShapesWithHoles(cvs)
+		}
 	}
 }
 

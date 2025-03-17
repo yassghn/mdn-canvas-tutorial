@@ -283,6 +283,30 @@ const lessons = {
 		cvs.ctx.fill()
 	},
 
+	drawShapesWithHoles(cvs) {
+		/**
+		 * shapes and their holes need to be drawn anti clock direction to one another
+		 * so draw a shape moving clockwise, then draw the hole movinc ounter clockwise, or in reverse
+		 */
+		// draw rectangle behind the triforce
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(250, 25)
+		cvs.ctx.fillStyle = 'rgb(245, 10, 100)'
+		cvs.ctx.fillRect(250, 80, 250, 25)
+		// draw shape (moving clockwise)
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(300, 50)
+		cvs.ctx.lineTo(450, 50)
+		cvs.ctx.lineTo(375, 179.9)
+		// draw shape hole (moving counter clockwise)
+		cvs.ctx.moveTo(375, 70)
+		cvs.ctx.lineTo(350, 110)
+		cvs.ctx.lineTo(400, 110)
+		// set style and render
+		cvs.ctx.fillStyle = 'rgb(145, 145, 145)'
+		cvs.ctx.fill()
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
 	triangleShapeAndPaths: false,
@@ -290,7 +314,8 @@ const lessons = {
 	lines: false,
 	arcs: false,
 	bezierAndQuadraticCurves: false,
-	combinations: false
+	combinations: false,
+	shapesWithHoles: false
 }
 
 export default lessons

@@ -20,6 +20,7 @@ import canvas from './canvas.mjs'
         await lessonsSetup.arcsInit()
         await lessonsSetup.bezierAndQuadraticCurvesInit()
         await lessonsSetup.combinationsInit()
+        await lessonsSetup.shapesWithHolesInit()
     }
 
     // draw
