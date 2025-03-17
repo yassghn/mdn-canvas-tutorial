@@ -67,6 +67,7 @@ const lessonsSetup = {
 		await addMenuItem('arcs', 'arcs', 'arcs-check', arcsCallback)
 	},
 
+	// cubic/quadratic bezier curves
 	bezierAndQuadraticCurvesInit: async function () {
 		await addMenuItem('bezier-and-quadratic-curves', 'bezier and quadratic curves', 'bezier-and-quadratic-curves-check', bezierAndQuadraticCurvesCallback)
 	}
