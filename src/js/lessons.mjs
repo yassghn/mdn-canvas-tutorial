@@ -307,6 +307,24 @@ const lessons = {
 		cvs.ctx.fill()
 	},
 
+	drawPath2d(cvs) {
+		/**
+		 * shapes can be stored as path2d objects
+		 */
+		// create a rectangle object to render
+		const rectangle = new Path2D()
+		rectangle.rect(50, 400, 50, 50)
+		// create a cricular object to render
+		const circle = new Path2D()
+		circle.arc(50, 400, 25, 0, 2 * Math.PI)
+		// set stroke/fill styles
+		cvs.ctx.strokeStyle = 'rgb(20, 200, 20)'
+		cvs.ctx.fillStyle = 'rgb(20, 200, 20)'
+		// render the path2d objects
+		cvs.ctx.stroke(rectangle)
+		cvs.ctx.fill(circle)
+	},
+
 	simpleExample: false,
 	rectangularShape: false,
 	triangleShapeAndPaths: false,
@@ -315,7 +333,8 @@ const lessons = {
 	arcs: false,
 	bezierAndQuadraticCurves: false,
 	combinations: false,
-	shapesWithHoles: false
+	shapesWithHoles: false,
+	path2d: false
 }
 
 export default lessons

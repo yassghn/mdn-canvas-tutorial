@@ -44,6 +44,10 @@ function shapesWithHolesCallback(enabled) {
 	lessons.shapesWithHoles = enabled
 }
 
+function path2dCallback(enabled) {
+	lessons.path2d = enabled
+}
+
 const lessonsSetup = {
 	// simple example
 	simpleExampleInit: async function () {
@@ -87,6 +91,11 @@ const lessonsSetup = {
 
 	shapesWithHolesInit: async function() {
 		await addMenuItem('shapes-with-holes', 'shapes-with-holes', 'shapes-with-holes-check', shapesWithHolesCallback)
+	},
+
+	// path 2d lesson
+	path2dInit: async function() {
+		await addMenuItem('path2d', 'path2d', 'path2d-check', path2dCallback)
 	}
 }
 

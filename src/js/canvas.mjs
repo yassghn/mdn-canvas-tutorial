@@ -81,6 +81,9 @@ const canvas = {
 		if (lessons.shapesWithHoles) {
 			lessons.drawShapesWithHoles(cvs)
 		}
+		if (lessons.path2d) {
+			lessons.drawPath2d(cvs)
+		}
 	}
 }
 

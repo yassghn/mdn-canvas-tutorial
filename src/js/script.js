@@ -21,6 +21,7 @@ import canvas from './canvas.mjs'
         await lessonsSetup.bezierAndQuadraticCurvesInit()
         await lessonsSetup.combinationsInit()
         await lessonsSetup.shapesWithHolesInit()
+        await lessonsSetup.path2dInit()
     }
 
     // draw
