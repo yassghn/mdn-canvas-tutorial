@@ -3,6 +3,7 @@
  */
 
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
+import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -37,8 +38,15 @@ function basicDrawingAndShapesPallete(cvs) {
 	}
 }
 
+function stylesColorsAndTextPallete(cvs) {
+	if (stylesColorsAndText.colors) {
+		stylesColorsAndText.drawColors(cvs)
+	}
+}
+
 function pallete(cvs) {
 	basicDrawingAndShapesPallete(cvs)
+	stylesColorsAndTextPallete(cvs)
 }
 
 export default pallete
