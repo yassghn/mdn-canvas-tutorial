@@ -30,7 +30,7 @@ const stylesColorsAndText = {
 		for (let i = 0; i < 6; i++) {
 			for (let j = 0; j < 6; j++) {
 				cvs.ctx.fillStyle = `rgb(${Math.floor(255 - 50 * i)} ${Math.floor(255 - 30 * j)} ${Math.floor(255 - 20 * (i+j)^2)})`
-				cvs.ctx.fillRect((j * 25)+400, (i * 25)+400, 25, 25)
+				cvs.ctx.fillRect((j * 25)+375, (i * 25)+400, 25, 25)
 			}
 		}
 
@@ -39,7 +39,7 @@ const stylesColorsAndText = {
 			for (let j = 0; j < 6; j++) {
 				cvs.ctx.strokeStyle = `rgb(${Math.floor(255 - 40 * (i+j))} ${Math.floor(255 - 120 * j)} ${Math.floor(255 - 100 * (i+j)^2)})`
 				cvs.ctx.beginPath()
-				cvs.ctx.arc((j*25)+412.5, (i*25)+412.5, 10, 0, 2 * Math.PI, true)
+				cvs.ctx.arc((j*25)+387.5, (i*25)+412.5, 10, 0, 2 * Math.PI, true)
 				cvs.ctx.stroke()
 			}
 		}
