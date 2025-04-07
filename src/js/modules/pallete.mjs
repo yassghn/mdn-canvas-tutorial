@@ -43,7 +43,7 @@ function stylesColorsAndTextPallete(cvs) {
 		stylesColorsAndText.drawColors(cvs)
 	}
 	if (stylesColorsAndText.transparency) {
-		stylesColorsAndText.draw(transparency(cvs))
+		stylesColorsAndText.drawTransparency(cvs)
 	}
 }
 
