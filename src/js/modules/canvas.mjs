@@ -2,7 +2,7 @@
  * canvas.mjs
  */
 
-import lessons from '../lessons/basicDrawingAndShapes.mjs'
+import pallete from './pallete.mjs'
 
 // canvas object
 const cvs = {
@@ -55,36 +55,7 @@ const canvas = {
 		// clear canvas
 		clearCanvas()
 		// draw menu enabled lessons
-		if (lessons.simpleExample) {
-			lessons.drawSimpleExample(cvs)
-		}
-		if (lessons.rectangularShape) {
-			lessons.drawRectangularShape(cvs)
-		}
-		if (lessons.triangleShapeAndPaths) {
-			lessons.drawTriangleShapesAndPaths(cvs)
-		}
-		if (lessons.movingThePen) {
-			lessons.drawMovingThePen(cvs)
-		}
-		if (lessons.lines) {
-			lessons.drawLines(cvs)
-		}
-		if (lessons.arcs) {
-			lessons.drawArcs(cvs)
-		}
-		if (lessons.bezierAndQuadraticCurves) {
-			lessons.drawBezierAndQuadraticCurves(cvs)
-		}
-		if (lessons.combinations) {
-			lessons.drawCombinations(cvs)
-		}
-		if (lessons.shapesWithHoles) {
-			lessons.drawShapesWithHoles(cvs)
-		}
-		if (lessons.path2d) {
-			lessons.drawPath2d(cvs)
-		}
+		pallete(cvs)
 	}
 }
 
