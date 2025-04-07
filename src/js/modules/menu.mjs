@@ -1,29 +1,24 @@
 /**
  * menu.js
  */
+
 import { log } from './util.mjs'
 
 const config = {
-	animDuration: { duration: 300 },
-	isHidden: true
-}
-
-const elems = {
-	slider: undefined,
-	menu: undefined,
-	menuHeader: undefined,
-	menuItems: undefined,
-	toggles: undefined
+	animDuration: { duration: 300 }
 }
 
 const selectors = {
-	slider: 'menu-slider',
+	slider: 'sliding-menu',
 	menuTemplate: 'menu-template',
 	menuParent: 'tutorial-menu-placeholder',
+	tutorialMenu: 'tutorial-menu',
 	menuItemTemplate: 'menu-item-template',
 	menuItemParent: 'menu-items',
-	menu: 'menu-content',
+	menuContent: 'menu-content',
+	menuTemplate: 'menu-template',
 	menuHeader: 'menu-header',
+	menu: 'menu',
 	menuItems: 'menu-item',
 	toggles: 'input[type="checkbox"]'
 }
@@ -32,8 +27,8 @@ function toggleHidden(elems) {
 	elems.forEach(element => { element.toggleAttribute('hidden') });
 }
 
-function animateMenuFocusOut() {
-	config.isHidden = true
+function animateMenuFocusOut(elems, status) {
+	status.isHidden = true
 	const menuAnim = window.animatelo.fadeOutLeft(elems.menu, config.animDuration)
 	menuAnim[0].onfinish = () => {
 		toggleHidden([elems.slider, elems.menu])
@@ -41,8 +36,8 @@ function animateMenuFocusOut() {
 	}
 }
 
-function animateSliderClick() {
-	config.isHidden = false
+function animateSliderClick(elems, status) {
+	status.isHidden = false
 	const sliderAnim = window.animatelo.fadeOutLeft(elems.slider, config.animDuration)
 	sliderAnim[0].onfinish = () => {
 		toggleHidden([elems.slider, elems.menu])
@@ -51,23 +46,23 @@ function animateSliderClick() {
 	}
 }
 
-function animateSliderHover() {
+function animateSliderHover(elems) {
 	window.animatelo.pulse(elems.slider, config.animDuration)
 }
 
-function addFocusEvents() {
+function addFocusEvents(elems, status) {
 	elems.menu.addEventListener('focusout', (event) => {
 		// prevent spamming clicks from triggering too many animations
 		// which causes unexpected behavior
 		// events rangeParent and rangeOffset are not set when menu is being animated
-		if (event.rangeParent && !config.isHidden) {
-			animateMenuFocusOut()
+		if (event.rangeParent && !status.isHidden) {
+			animateMenuFocusOut(elems, status)
 		}
 	})
 	// still want menu to collapse when window loses focus
 	window.addEventListener('blur', (event) => {
 		if (!elems.menu.hasAttribute('hidden')) {
-			animateMenuFocusOut()
+			animateMenuFocusOut(elems, status)
 		}
 	})
 }
@@ -84,23 +79,23 @@ function addMenuItemClickHandler(item, callback) {
 	})
 }
 
-function addClickHandlers() {
+function addClickHandlers(elems, status) {
 	elems.slider.addEventListener('click', () => {
-		if (config.isHidden) {
-			animateSliderClick()
+		if (status.isHidden) {
+			animateSliderClick(elems, status)
 		}
 	})
 	elems.menuHeader.addEventListener('click', () => { elems.menu.blur() })
 }
 
-function addHoverEvents() {
-	elems.slider.addEventListener('mouseenter', () => { animateSliderHover() })
+function addHoverEvents(elems) {
+	elems.slider.addEventListener('mouseenter', () => { animateSliderHover(elems) })
 }
 
-function createMenuEvents() {
-	addClickHandlers()
-	addFocusEvents()
-	addHoverEvents()
+function createMenuEvents(elems, status) {
+	addClickHandlers(elems, status)
+	addFocusEvents(elems, status)
+	addHoverEvents(elems)
 }
 
 function browserSupportsTemplates() {
@@ -110,20 +105,71 @@ function browserSupportsTemplates() {
 	return false
 }
 
-async function insertMenu() {
+function hasMenuTemplate() {
+	if (document.getElementById(selectors.menuTemplate)) {
+		return true
+	}
+	return false
+}
+
+function appendId(id, menuId) {
+	return id + '-' + menuId
+}
+
+function setId(elem, id) {
+	const elemId = elem.getAttribute('class')
+	elem.setAttribute('id', appendId(elemId, id))
+}
+
+function setIds(elems, menuId) {
+	for (const elem of elems) {
+		setId(elem, menuId)
+	}
+}
+
+function setMenuIds(menuId, docFrag) {
+	const menu = docFrag.firstElementChild
+	const divs = menu.getElementsByTagName('div')
+	const svgs = menu.getElementsByTagName('svg')
+	setId(menu, menuId)
+	setIds(divs, menuId)
+	setIds(svgs, menuId)
+}
+
+async function appendMenuTemplate() {
+	// fetch template
+	const menuTemplate = (await(await fetch('/templates/menu.html')).text())
+	// create contextual fragment
+	const range = document.createRange()
+	const menuFrag = range.createContextualFragment(menuTemplate)
+	// append template to shadow dom
+	document.body.appendChild(menuFrag)
+}
+
+function adjustMenuStyle(docFrag) {
+	const menu = docFrag.firstElementChild
+	menu.setAttribute('style', 'bottom: 20%')
+}
+
+async function insertMenu(menuId) {
 	if (browserSupportsTemplates()) {
-		// fetch template
-		const menuTemplate = (await (await fetch('/templates/menu.html')).text())
-		// create contextual fragment
-		const range = document.createRange()
-		const menuFrag = range.createContextualFragment(menuTemplate)
-		// append template to shadow dom
-		document.body.appendChild(menuFrag)
+		let adjustHeight = false
+		if (!hasMenuTemplate()) {
+			await appendMenuTemplate()
+		} else {
+			adjustHeight = true
+		}
 		// get template and template parent
 		const template = document.getElementById(selectors.menuTemplate)
 		const parent = document.getElementById(selectors.menuParent)
 		// clone template
 		const clone = template.content.cloneNode(true)
+		// set menu ids
+		setMenuIds(menuId, clone)
+		if (adjustHeight) {
+			adjustMenuStyle(clone)
+		}
+		// append
 		parent.appendChild(clone)
 	} else {
 		return false
@@ -158,13 +204,13 @@ function populateMenuItem(item, itemId, itemText, checkboxId) {
 	checkbox.setAttribute('name', checkboxId)
 }
 
-async function appendMenuItem(itemId, itemText, checkboxId, callback) {
+async function appendMenuItem(itemId, itemText, checkboxId, callback, menuId) {
 	if (!hasMenuItemTemplate()) {
 		await appendMenuItemTemplate()
 	}
 	// get template and template parent
 	const template = document.getElementById(selectors.menuItemTemplate)
-	const parent = document.getElementById(selectors.menuItemParent)
+	const parent = document.getElementById(appendId(selectors.menuItemParent, menuId))
 	// clone template
 	const clone = template.content.cloneNode(true)
 	// populate menu item
@@ -175,27 +221,40 @@ async function appendMenuItem(itemId, itemText, checkboxId, callback) {
 	parent.appendChild(clone)
 }
 
-function initElems() {
+function initElems(menuId, elems) {
 	// todo: error checking & return
-	elems.slider = document.getElementById(selectors.slider)
-	elems.menu = document.getElementById(selectors.menu)
-	elems.menuHeader = document.getElementById(selectors.menuHeader)
-	//elems.menuItems = document.getElementsByClassName(selectors.menuItems)
-	elems.toggles = document.querySelectorAll(selectors.toggles)
+	elems.slider = document.getElementById(appendId(selectors.slider, menuId))
+	elems.menu = document.getElementById(appendId(selectors.menuContent, menuId))
+	elems.menuHeader = document.getElementById(appendId(selectors.menuHeader, menuId))
 }
 
-const menu = {
-	adddMenuItem: async function (itemId, itemText, checkboxId, callback) {
-		// todo: return error on error
-		await appendMenuItem(itemId, itemText, checkboxId, callback)
-	},
+function menu(menuId) {
+	const menuObj = {
+		id: menuId,
 
-	init: async function () {
-		// todo: return error on error
-		await insertMenu()
-		initElems()
-		createMenuEvents()
+		status: {
+			isHidden: true
+		},
+
+		elems: {
+			slider: undefined,
+			menu: undefined,
+			menuHeader: undefined
+		},
+
+		addMenuItem: async function (itemId, itemText, checkboxId, callback) {
+			// todo: return error on error
+			await appendMenuItem(itemId, itemText, checkboxId, callback, this.id)
+		},
+
+		init: async function () {
+			// todo: return error on error
+			await insertMenu(this.id)
+			initElems(this.id, this.elems)
+			createMenuEvents(this.elems, this.status)
+		}
 	}
+	return menuObj
 }
 
 export default menu

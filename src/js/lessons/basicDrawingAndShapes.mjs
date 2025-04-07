@@ -1,10 +1,10 @@
 /**
- * lessons.mjs
+ * basicDrawingAndShapes.mjs
  */
 
-import { roundedRect } from './render.mjs'
+import { roundedRect } from '../modules/render.mjs'
 
-const lessons = {
+const basicDrawingAndShapes = {
 	drawSimpleExample: function (cvs) {
 		// notes:
 		// the grid: normally(?) 1 unit = 1px in canvas grid
@@ -347,4 +347,4 @@ const lessons = {
 	path2d: false
 }
 
-export default lessons
+export default basicDrawingAndShapes

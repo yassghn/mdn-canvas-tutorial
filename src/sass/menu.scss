@@ -34,12 +34,12 @@ $slider-before-box-shadow-color: map.get($theme, "color4");
 $input-checked-slider-bg-color: map.get($theme, "color9");
 
 @mixin svg-stroke {
-  svg#menu {
+  .menu-icon {
     stroke: $svg-menu-stroke-hover;
   }
 }
 
-#tutorial-menu {
+.tutorial-menu {
   width: 10em;
   height: 0;
   user-select: none;
@@ -48,23 +48,23 @@ $input-checked-slider-bg-color: map.get($theme, "color9");
   display: flex;
 }
 
-#tutorial-menu:hover {
+.tutorial-menu:hover {
   cursor: pointer;
 }
 
-#menu-slider {
+.sliding-menu {
   width: 2em;
 }
 
-#menu-slider:hover {
+.sliding-menu:hover {
   background-color: $menu-slider-hover-bg-color;
 }
 
-#slider {
+.slider-menu {
   background-color: $slider-background-color;
 }
 
-svg#menu {
+.menu-icon {
   stroke: $svg-menu-stroke;
   stroke-width: 2;
   stroke-linecap: round;
@@ -73,7 +73,7 @@ svg#menu {
   height: 2em;
 }
 
-#slider:hover {
+.slider-menu:hover {
   background-color: $slider-hover-bg-color;
   @include svg-stroke();
 }
@@ -83,24 +83,24 @@ svg#menu {
   display: none !important;
 }
 
-#menu-content {
+.menu-content {
   display: flex;
   width: 15em;
   position: fixed;
   bottom: 5%;
 }
 
-#menu-header {
+.menu-header {
   padding: 0.5em;
   background-color: $menu-header-bg-color;
   text-decoration: underline;
 }
 
-#menu-header:hover {
+.menu-header:hover {
   @include svg-stroke();
 }
 
-#menu {
+.menu {
   width: 100%;
 }
 

@@ -1,7 +1,8 @@
 /**
  * canvas.mjs
  */
-import lessons from "./lessons.mjs"
+
+import lessons from '../lessons/basicDrawingAndShapes.mjs'
 
 // canvas object
 const cvs = {
