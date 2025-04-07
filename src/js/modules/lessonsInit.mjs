@@ -2,8 +2,9 @@
  * lessonsInit.mjs
  */
 
-import { addBasicDrawingAndShapesMenu } from './lessonsMenus.mjs'
+import { addBasicDrawingAndShapesMenu, addStylesColorsAndTextMenu } from './lessonsMenus.mjs'
 import basicDrawingAndShapesSetup from '../lessons/basicDrawingAndShapesSetup.mjs'
+import stylesColorsAndTextSetup from '../lessons/stylesColorsAndTextSetup.mjs'
 
 // init lessons
 async function initBasicDrawingAndShapes(menu) {
@@ -19,9 +20,16 @@ async function initBasicDrawingAndShapes(menu) {
 	await basicDrawingAndShapesSetup.path2dInit(menu)
 }
 
+async function initStylesColorsAndText(menu) {
+	await stylesColorsAndTextSetup.colorsInit(menu)
+}
+
 async function initLessons() {
 	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu()
 	initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
+	const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu()
+	initStylesColorsAndText(stylesColorsAndTextMenu)
+
 }
 
 export default initLessons
