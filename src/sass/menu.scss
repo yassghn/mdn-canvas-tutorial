@@ -54,6 +54,7 @@ $input-checked-slider-bg-color: map.get($theme, "color9");
 
 .sliding-menu {
   width: 2em;
+  z-index: 0;
 }
 
 .sliding-menu:hover {
@@ -88,6 +89,7 @@ $input-checked-slider-bg-color: map.get($theme, "color9");
   width: 15em;
   position: fixed;
   bottom: 5%;
+  z-index: 1;
 }
 
 .menu-header {
