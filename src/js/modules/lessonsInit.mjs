@@ -26,9 +26,9 @@ async function initStylesColorsAndText(menu) {
 
 async function initLessons() {
 	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu()
-	initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
+	await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
 	const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu()
-	initStylesColorsAndText(stylesColorsAndTextMenu)
+	await initStylesColorsAndText(stylesColorsAndTextMenu)
 
 }
 
