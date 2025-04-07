@@ -45,7 +45,12 @@ const stylesColorsAndText = {
 		}
 	},
 
-	colors: false
+	drawTransparency: function (cvs) {
+
+	},
+
+	colors: false,
+	transparency: false
 }
 
 export default stylesColorsAndText

@@ -42,6 +42,9 @@ function stylesColorsAndTextPallete(cvs) {
 	if (stylesColorsAndText.colors) {
 		stylesColorsAndText.drawColors(cvs)
 	}
+	if (stylesColorsAndText.transparency) {
+		stylesColorsAndText.draw(transparency(cvs))
+	}
 }
 
 function pallete(cvs) {

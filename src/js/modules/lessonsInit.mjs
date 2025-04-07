@@ -22,6 +22,7 @@ async function initBasicDrawingAndShapes(menu) {
 
 async function initStylesColorsAndText(menu) {
 	await stylesColorsAndTextSetup.colorsInit(menu)
+	await stylesColorsAndTextSetup.transparencyInit(menu)
 }
 
 async function initLessons() {
