@@ -10,6 +10,7 @@ const config = {
 
 const selectors = {
 	slider: 'sliding-menu',
+	sliderMenu: 'slider-menu',
 	menuTemplate: 'menu-template',
 	menuParent: 'tutorial-menu-placeholder',
 	tutorialMenu: 'tutorial-menu',
@@ -146,9 +147,24 @@ async function appendMenuTemplate() {
 	document.body.appendChild(menuFrag)
 }
 
-function adjustMenuStyle(docFrag) {
-	const menu = docFrag.firstElementChild
-	menu.setAttribute('style', 'bottom: 20%')
+function getNumMenus() {
+	const menuParent = document.getElementById(selectors.menuParent)
+	return menuParent.children.length
+}
+
+function calculateNewHeight(heightStr) {
+	const numMenus = getNumMenus()
+	const height = heightStr.split('px')[0]
+	return (height/2)*numMenus
+}
+
+function adjustMenuStyle(menuId) {
+	const menu = document.getElementById(appendId(selectors.tutorialMenu, menuId))
+	const slider = document.getElementById(appendId(selectors.sliderMenu, menuId))
+	const style = getComputedStyle(slider)
+	const heightStr = style.getPropertyValue('height')
+	const height = calculateNewHeight(heightStr)
+	menu.setAttribute('style', `padding-bottom: ${height}px;`)
 }
 
 async function insertMenu(menuId) {
@@ -166,11 +182,12 @@ async function insertMenu(menuId) {
 		const clone = template.content.cloneNode(true)
 		// set menu ids
 		setMenuIds(menuId, clone)
-		if (adjustHeight) {
-			adjustMenuStyle(clone)
-		}
 		// append
 		parent.appendChild(clone)
+		// adjust menu style if necessary
+		if (adjustHeight) {
+			adjustMenuStyle(menuId)
+		}
 	} else {
 		return false
 	}
