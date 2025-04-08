@@ -105,7 +105,118 @@ const stylesColorsAndText = {
 	},
 
 	drawLineStyles: function (cvs) {
+		/**
+		 * lines have several properties which style them
+		 *
+		 * lineWidth
+		 * 	- width of lines
+		 * lineCap
+		 * 	- appearnace of ends of lines
+		 * lineJoin
+		 * 	- appearance of corners where lines connect
+		 * miterLimit
+		 * 	- set limit on miter when two lines join at a sharp angle
+		 * 	  allows to set how thick the junction gets
+		 * getLineDash()
+		 * 	- return line dash pattern array, contains an even number of non-negative numbers
+		 * setLineDash()
+		 * 	- sets a line dash pattern
+		 * lineDashOffset
+		 * 	- specifies where to start a dash array on a line
+		 */
 
+		/**
+		 * lineWidth
+		 *	- defaults to 1.0, must be positive number
+		 *
+		 * NOTES:
+		 * obtaining crisp lines
+		 * 	- odd-integer-width thickness lines get drawn between two unit grid sections.
+		 * 	  half way between. resulting in unclear lines. can adjust lines with decimals.
+		 *  - even-width lines, so don't draw them with decimals.
+		 *  * helps to ensure scalable 2d graphics look correct regardless of scaling or other
+		 *    transforms
+		 */
+		for (let i = 0; i < 10; i++) {
+			cvs.ctx.lineWidth = 1 + i
+			cvs.ctx.strokeStyle = 'rgb(0, 175, 175)'
+			cvs.ctx.beginPath()
+			cvs.ctx.moveTo(5 + i * 14, 200)
+			cvs.ctx.lineTo(5 + i * 14, 335)
+			cvs.ctx.stroke()
+		}
+
+		// reset lineWidth
+		cvs.ctx.lineWidth = 1.0
+
+		/**
+		 * lineCap
+		 * 	- butt, round, square
+		 * 	- default is butt
+		 *
+		 * butt
+		 * 	- ends of lines are squared off at endpoints
+		 * round
+		 * 	- ends of lines are rounded (passed end point)
+		 * square
+		 * 	- ends of lines are squared off passed end point
+		 */
+
+		// draw horizontal guides (shows passed or at end point)
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(700, 200)
+		cvs.ctx.lineTo(830, 200)
+		cvs.ctx.moveTo(700, 330)
+		cvs.ctx.lineTo(830, 330)
+		cvs.ctx.stroke()
+
+		// draw verticle lines
+		const lineCaps = ['butt', 'round', 'square']
+		lineCaps.forEach((lineCap, i) => {
+			cvs.ctx.lineWidth = 15
+			cvs.ctx.lineCap = lineCap
+			cvs.ctx.beginPath()
+			cvs.ctx.moveTo(715 + i * 50, 200)
+			cvs.ctx.lineTo(715 + i * 50, 330)
+			cvs.ctx.stroke()
+		})
+
+		// reset lineWidth and lineCap
+		cvs.ctx.lineWidth = 1.0
+		cvs.ctx.lineCap = 'butt'
+
+		/**
+		 * lineJoin
+		 * 	- round, bevel, miter
+		 *  - default is miter
+		 * 	- sets whether the tips of peaks and valleys of angled joins
+		 *    should be rounded, falattened, or pointed
+		 *
+		 * round
+		 * 	- rounds off "corners"
+		 * bevel
+		 * 	- flattens "corners"
+		 * miter
+		 * 	- pointed "corners"
+		 *
+		 */
+
+		const lineJoins = ['round', 'bevel', 'miter']
+		lineJoins.forEach((lineJoin, i) => {
+			cvs.ctx.lineWidth = 10
+			cvs.ctx.lineJoin = lineJoin
+			cvs.ctx.beginPath()
+			cvs.ctx.moveTo(840, 200 + i * 40)
+			cvs.ctx.lineTo(880, 240 + i * 40)
+			cvs.ctx.lineTo(920, 200 + i * 40)
+			cvs.ctx.lineTo(960, 240 + i * 40)
+			cvs.ctx.lineTo(1000, 200 + i * 40)
+			cvs.ctx.stroke()
+		})
+
+		// reset lineWidth and lineJoin
+		cvs.ctx.lineWidth = 1.0
+		cvs.ctx.lineJoin = 'miter'
 	},
 
 	colors: false,
