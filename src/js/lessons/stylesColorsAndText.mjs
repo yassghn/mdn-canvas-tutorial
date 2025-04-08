@@ -18,13 +18,13 @@ const stylesColorsAndText = {
 		 */
 
 		// valid styles
-		cvs.ctx.fillStyle = "blue"
-		cvs.ctx.fillStyle = "#ff3399"
-		cvs.ctx.fillStyle = "rgb(155 100 0)"
+		cvs.ctx.fillStyle = 'blue'
+		cvs.ctx.fillStyle = '#ff3399'
+		cvs.ctx.fillStyle = 'rgb(155 100 0)'
 		// can add transparency percentage to rgb string
-		cvs.ctx.fillStyle = "rgb(255 165 230 / 100%)"
+		cvs.ctx.fillStyle = 'rgb(255 165 230 / 100%)'
 		// using commas displays the color in vscode source
-		cvs.ctx.fillStyle = "rgb(255, 165, 100)"
+		cvs.ctx.fillStyle = 'rgb(255, 165, 100)'
 
 		// draw a 6x6 square color pallete
 		for (let i = 0; i < 6; i++) {
