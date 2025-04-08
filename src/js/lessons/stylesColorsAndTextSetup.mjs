@@ -16,6 +16,10 @@ function transparencyCallback(enabled) {
 	stylesColorsAndText.transparency = enabled
 }
 
+function lineStylesCallback(enabled) {
+	stylesColorsAndText.lineStyles = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -25,6 +29,11 @@ const stylesColorsAndTextSetup = {
 	// transparency
 	transparencyInit: async function (menu) {
 		await addMenuItem('transparency', 'transparency', 'transparency-check', transparencyCallback, menu)
+	},
+
+	// line styles
+	lineStylesInit: async function (menu) {
+		await addMenuItem('line-styles', 'line styles', 'line-styles-check', lineStylesCallback, menu)
 	}
 }
 

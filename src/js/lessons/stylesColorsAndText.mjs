@@ -104,8 +104,13 @@ const stylesColorsAndText = {
 		}
 	},
 
+	drawLineStyles: function (cvs) {
+		
+	},
+
 	colors: false,
-	transparency: false
+	transparency: false,
+	lineStyles: false
 }
 
 export default stylesColorsAndText
