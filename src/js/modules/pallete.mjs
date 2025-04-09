@@ -38,7 +38,7 @@ function basicDrawingAndShapesPallete(cvs) {
 	}
 }
 
-function stylesColorsAndTextPallete(cvs) {
+function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 	if (stylesColorsAndText.colors) {
 		stylesColorsAndText.drawColors(cvs)
 	}
@@ -46,13 +46,13 @@ function stylesColorsAndTextPallete(cvs) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
 	if (stylesColorsAndText.lineStyles) {
-		stylesColorsAndText.drawLineStyles(cvs)
+		stylesColorsAndText.drawLineStyles(cvs, lineDashOffset)
 	}
 }
 
-function pallete(cvs) {
+function pallete(cvs, lineDashOffset) {
 	basicDrawingAndShapesPallete(cvs)
-	stylesColorsAndTextPallete(cvs)
+	stylesColorsAndTextPallete(cvs, lineDashOffset)
 }
 
 export default pallete
