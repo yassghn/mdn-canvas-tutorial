@@ -3,6 +3,7 @@
  */
 
 import stylesColorsAndText from './stylesColorsAndText.mjs'
+import { miterLimitInput } from '../modules/renderInputComponent.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
@@ -18,6 +19,11 @@ function transparencyCallback(enabled) {
 
 function lineStylesCallback(enabled) {
 	stylesColorsAndText.lineStyles = enabled
+	// hide/unhide miterLimit web components
+	const label = document.getElementById('miterLimitLabel')
+	const input = document.getElementById('miterLimit')
+	label.hidden = enabled ? false : true
+	input.hidden = enabled ? false : true
 }
 
 const stylesColorsAndTextSetup = {
@@ -34,6 +40,8 @@ const stylesColorsAndTextSetup = {
 	// line styles
 	lineStylesInit: async function (menu) {
 		await addMenuItem('line-styles', 'line styles', 'line-styles-check', lineStylesCallback, menu)
+		// create input web component
+		miterLimitInput(1265, 200)
 	}
 }
 
