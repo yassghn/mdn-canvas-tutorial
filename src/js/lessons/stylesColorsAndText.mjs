@@ -217,6 +217,44 @@ const stylesColorsAndText = {
 		// reset lineWidth and lineJoin
 		cvs.ctx.lineWidth = 1.0
 		cvs.ctx.lineJoin = 'miter'
+
+		/**
+		 * miterLimit
+		 * 	- increases and decrases the size of peaks and valleys from
+		 * 	  sharply angled connecting lines. "maximum allowed ratio of the extension length"
+		 *  - max miterLength / lineWidth = 1 / sin ( min θ / 2 )
+		 * 	- default miter limit = 10.0, strip all miters of shar angles below ~11 degrees
+		 * 	- miter limit ~1.4... strips miters for all acute angles, keeping miter joins only for obtuse or right angles
+		 *  - 1.0 miter limit disables all miters
+		 * 	- values below 1.0 are invalid
+		 *
+		 */
+
+		// draw guides
+		cvs.ctx.lineWidth = 2
+		cvs.ctx.strokeRect(1040, 200, 160, 50)
+
+		// get miterlimit value from web component
+		const miterInput = document.getElementById('miterLimit')
+		if (miterInput.checkValidity()) {
+			cvs.ctx.miterLimit = parseFloat(miterInput.value)
+		} else {
+			cvs.ctx.miterLimit = 10
+		}
+
+		// draw lines
+		cvs.ctx.lineWidth = 10
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(1045, 200)
+		for (let i = 0; i < 24; i++) {
+			const dy = i % 2 === 0 ? 25 : -25
+			cvs.ctx.lineTo(1040 + Math.pow(i, 1.5) * 2, 225 + dy)
+		}
+		cvs.ctx.stroke()
+
+		// reset lineWidth and miterLimit
+		cvs.ctx.lineWidth = 1.0
+		cvs.ctx.miterLimit = 10.0
 	},
 
 	colors: false,
