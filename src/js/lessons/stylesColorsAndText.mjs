@@ -104,7 +104,7 @@ const stylesColorsAndText = {
 		}
 	},
 
-	drawLineStyles: function (cvs) {
+	drawLineStyles: function (cvs, lineDashOffset) {
 		/**
 		 * lines have several properties which style them
 		 *
@@ -255,6 +255,27 @@ const stylesColorsAndText = {
 		// reset lineWidth and miterLimit
 		cvs.ctx.lineWidth = 1.0
 		cvs.ctx.miterLimit = 10.0
+
+		/**
+		 * setLineDash/lineDashOffset
+		 * 	- specify dash patterns for lines
+		 *
+		 * setLineDash(...)
+		 * 	- function arguments are a list of numbers that specify distances
+		 * 	  to alternately draw lines
+		 * lineDashOffset
+		 * 	- this property determines where to begin the pattern
+		 */
+
+		// create "marching ants" effect
+		cvs.ctx.clearRect(750, 15, 100, 100)
+		cvs.ctx.setLineDash([4, 2])
+		cvs.ctx.lineDashOffset = -lineDashOffset
+		cvs.ctx.strokeRect(750, 15, 100, 100)
+
+		// reset linedash and offset
+		cvs.ctx.setLineDash([])
+		cvs.ctx.lineDashOffset = 0
 	},
 
 	colors: false,
