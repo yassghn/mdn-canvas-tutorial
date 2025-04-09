@@ -278,9 +278,14 @@ const stylesColorsAndText = {
 		cvs.ctx.lineDashOffset = 0
 	},
 
+	drawGradients: function (cvs) {
+
+	},
+
 	colors: false,
 	transparency: false,
-	lineStyles: false
+	lineStyles: false,
+	gradients: false
 }
 
 export default stylesColorsAndText

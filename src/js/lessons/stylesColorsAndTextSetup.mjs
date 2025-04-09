@@ -26,6 +26,10 @@ function lineStylesCallback(enabled) {
 	input.hidden = enabled ? false : true
 }
 
+function gradientsCallback(enabled) {
+	stylesColorsAndText.gradients = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -42,6 +46,11 @@ const stylesColorsAndTextSetup = {
 		await addMenuItem('line-styles', 'line styles', 'line-styles-check', lineStylesCallback, menu)
 		// create input web component
 		miterLimitInput(1265, 200)
+	},
+
+	// gradients
+	gradientsInit: async function (menu) {
+		await addMenuItem('gradients', 'gradients', 'gradients-check', gradientsCallback, menu)
 	}
 }
 

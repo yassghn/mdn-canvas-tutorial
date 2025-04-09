@@ -48,6 +48,9 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 	if (stylesColorsAndText.lineStyles) {
 		stylesColorsAndText.drawLineStyles(cvs, lineDashOffset)
 	}
+	if (stylesColorsAndText.gradients) {
+		stylesColorsAndText.drawGradients(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {
