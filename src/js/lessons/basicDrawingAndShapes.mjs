@@ -135,9 +135,9 @@ const basicDrawingAndShapes = {
 			for (let j = 0; j < 3; j++) {
 				cvs.ctx.beginPath()
 				// set x coordinate
-				const x = 525 + j * 50
+				const x = 375 + j * 50
 				// set y coordinate
-				const y = 225 + i * 50
+				const y = 200 + i * 50
 				// radius
 				const radius = 20
 				// starting point on circle
