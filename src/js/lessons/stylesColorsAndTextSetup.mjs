@@ -4,6 +4,7 @@
 
 import stylesColorsAndText from './stylesColorsAndText.mjs'
 import { miterLimitInput } from '../modules/renderInputComponent.mjs'
+import { loadPatternImage } from '../modules/loadWebResource.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
@@ -60,6 +61,8 @@ const stylesColorsAndTextSetup = {
 	// patterns
 	patternsInit: async function (menu) {
 		await addMenuItem('patterns', 'patterns', 'patterns-check', patternsCallback, menu)
+		// load patterns image
+		await loadPatternImage()
 	}
 }
 
