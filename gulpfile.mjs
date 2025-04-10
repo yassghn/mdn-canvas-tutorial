@@ -25,12 +25,14 @@ const config = {
         css: './dist/css',
         js: './dist/js',
         lib: './dist/lib',
-        fonts: './dist/fonts'
+        fonts: './dist/fonts',
+        resource: './dist/resource'
     },
     src: {
         sass: './src/sass/**/*.scss',
         html: './src/**/*.html',
         js: ['./src/js/**/*.js', './src/js/**/*.mjs'],
+        resource: './resource/**',
         animatelo: './node_modules/animatelo/dist/animatelo.min.js'
     }
 }
@@ -93,16 +95,22 @@ gulp.task('polka:serve', function () {
 })
 
 // copy scripts
-gulp.task('scripts:copy', function() {
+gulp.task('scripts:copy', function () {
     return gulp.src(config.src.animatelo)
         .pipe(gulp.dest(config.dirs.lib))
+})
+
+// copy resource
+gulp.task('resource:copy', function () {
+    return gulp.src(config.src.resource, { encoding: false })
+        .pipe(gulp.dest(config.dirs.resource))
 })
 
 // serve
 gulp.task('serve', gulp.task('polka:serve'))
 
 // build
-gulp.task('build', gulp.parallel('sass:build', 'js:copy', 'html:copy', 'scripts:copy'))
+gulp.task('build', gulp.parallel('sass:build', 'js:copy', 'html:copy', 'scripts:copy', 'resource:copy'))
 
 // watch
 gulp.task('watch', gulp.parallel('sass:watch', 'js:watch', 'html:watch', 'polka:serve'))
