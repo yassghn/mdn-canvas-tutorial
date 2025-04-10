@@ -30,7 +30,7 @@ const stylesColorsAndText = {
 		for (let i = 0; i < 6; i++) {
 			for (let j = 0; j < 6; j++) {
 				cvs.ctx.fillStyle = `rgb(${Math.floor(255 - 50 * i)} ${Math.floor(255 - 30 * j)} ${Math.floor(255 - 20 * (i+j)^2)})`
-				cvs.ctx.fillRect((j * 25)+375, (i * 25)+400, 25, 25)
+				cvs.ctx.fillRect((j * 25)+175, (i * 25)+350, 25, 25)
 			}
 		}
 
@@ -39,7 +39,7 @@ const stylesColorsAndText = {
 			for (let j = 0; j < 6; j++) {
 				cvs.ctx.strokeStyle = `rgb(${Math.floor(255 - 40 * (i+j))} ${Math.floor(255 - 120 * j)} ${Math.floor(255 - 100 * (i+j)^2)})`
 				cvs.ctx.beginPath()
-				cvs.ctx.arc((j*25)+387.5, (i*25)+412.5, 10, 0, 2 * Math.PI, true)
+				cvs.ctx.arc((j*25)+187.5, (i*25)+362.5, 10, 0, 2 * Math.PI, true)
 				cvs.ctx.stroke()
 			}
 		}
@@ -63,13 +63,13 @@ const stylesColorsAndText = {
 
 		// draw four opaque squares with a set of semi transparent circles over them
 		cvs.ctx.fillStyle = 'rgb(200, 100, 100)'
-		cvs.ctx.fillRect(500, 500, 75, 75)
+		cvs.ctx.fillRect(310, 510, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(100, 200, 200)'
-		cvs.ctx.fillRect(575, 500, 75, 75)
+		cvs.ctx.fillRect(385, 510, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(200, 100, 200)'
-		cvs.ctx.fillRect(500, 575, 75, 75)
+		cvs.ctx.fillRect(310, 585, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(250, 150, 150)'
-		cvs.ctx.fillRect(575, 575, 75, 75)
+		cvs.ctx.fillRect(385, 585, 75, 75)
 
 		// set gransparency property
 		cvs.ctx.globalAlpha = 0.2
@@ -77,7 +77,7 @@ const stylesColorsAndText = {
 		// draw semi cricles
 		for (let i = 0; i < 7; i++) {
 			cvs.ctx.beginPath()
-			cvs.ctx.arc(575, 575, 10 + 10 * i, 0, Math.PI * 2, true)
+			cvs.ctx.arc(385, 585, 10 + 10 * i, 0, Math.PI * 2, true)
 			cvs.ctx.fill()
 		}
 
