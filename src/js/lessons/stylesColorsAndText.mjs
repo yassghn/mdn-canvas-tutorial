@@ -141,8 +141,8 @@ const stylesColorsAndText = {
 			cvs.ctx.lineWidth = 1 + i
 			cvs.ctx.strokeStyle = 'rgb(0, 175, 175)'
 			cvs.ctx.beginPath()
-			cvs.ctx.moveTo(5 + i * 14, 200)
-			cvs.ctx.lineTo(5 + i * 14, 335)
+			cvs.ctx.moveTo(550 + i * 14, 200)
+			cvs.ctx.lineTo(550 + i * 14, 335)
 			cvs.ctx.stroke()
 		}
 
