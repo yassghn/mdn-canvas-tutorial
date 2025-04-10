@@ -279,7 +279,108 @@ const stylesColorsAndText = {
 	},
 
 	drawGradients: function (cvs) {
+		/**
+		 * shapes can be filled/stroked with linear, radial, and conic gradients using canvas gradient objects.
+		 *
+		 * createLinearGradient(x1, y1, x2, y2)
+		 * 	- create linear gradient starting at point (x1, y1) ending at (x2, y2)
+		 * createRadialGradient(x1, y1, r1, x2, y2, r2)
+		 * 	- create radial gradient. parameters represent two circles.
+		 * 	  one circle with a center at (x1, y1) with radius of r1
+		 *    second circle with center at (x2, y2) with radius of r2
+		 * createConicGradient(angle, x, y)
+		 * 	- creates a conic gradient object with a starting angle (in radians) at position (x, y)
+		 *  - conic gradient circles around a single point
+		 *
+		 * these methods create a CanvasGradient object which can be assigned colors using addColorStop(...)
+		 * gradient.addColorStop(position, color)
+		 * 	- creates a new color stop on gradient object. position is a number between 0.0 and 1.0
+		 *    and defines the relative position of the color in the gradient.
+		 *    color argument is a regular css string color.
+		 *  - can add as many color stops to a gradient object as you need
+		 */
 
+		// linear gradient
+		const linearGradient = cvs.ctx.createLinearGradient(150, 700, 150, 840)
+		linearGradient.addColorStop(0, 'rgb(25, 125, 225)')
+		// two colors at the same position make very sharp color transitions
+		linearGradient.addColorStop(0.5, 'rgb(175, 50, 175)')
+		linearGradient.addColorStop(0.5, 'rgb(25, 225, 25)')
+		linearGradient.addColorStop(1, 'rgb(230, 230, 35)')
+
+		const linearGradient2 = cvs.ctx.createLinearGradient(190, 740, 190, 790)
+		linearGradient2.addColorStop(0.5, 'rgb(1, 1, 1)')
+		linearGradient2.addColorStop(1, 'rgb(0 0 0 / 0%)')
+
+		// assign gradients to fill/stroke styles
+		cvs.ctx.fillStyle = linearGradient
+		cvs.ctx.strokeStyle = linearGradient2
+
+		// draw shapes
+		cvs.ctx.fillRect(150, 700, 130, 130)
+		cvs.ctx.strokeRect(190, 740, 50, 50)
+
+		// radial gradients
+		// set x y coords
+		let x = 300
+		let y = 700
+
+		// create radial gradients
+		const radialGradient = cvs.ctx.createRadialGradient(x + 45, y + 45, 10, x + 52, y + 50, 30)
+		radialGradient.addColorStop(0, 'rgb(25, 172, 152)')
+		radialGradient.addColorStop(0.9, 'rgb(138, 64, 207)')
+		radialGradient.addColorStop(1, 'rgb(161 83 142 / 0%)')
+
+		const radialGradient2 = cvs.ctx.createRadialGradient(x + 105, y + 105, 20, x + 112, y + 120, 50)
+		radialGradient2.addColorStop(0, 'rgb(25, 172, 152)')
+		radialGradient2.addColorStop(0.75, 'rgb(138, 64, 207)')
+		radialGradient2.addColorStop(1, 'rgb(161 83 142 / 0%)')
+
+		const radialGradient3 = cvs.ctx.createRadialGradient(x + 95, y + 15, 15, x + 102, y + 20, 40)
+		radialGradient3.addColorStop(0, 'rgb(25, 172, 152)')
+		radialGradient3.addColorStop(0.8, 'rgb(138, 64, 207)')
+		radialGradient3.addColorStop(1, 'rgb(161 83 142 / 0%)')
+
+		const radialGradient4 = cvs.ctx.createRadialGradient(x, y + 150, 50, x, y + 140, 90)
+		radialGradient4.addColorStop(0, 'rgb(25, 172, 152)')
+		radialGradient4.addColorStop(0.8, 'rgb(138, 64, 207)')
+		radialGradient4.addColorStop(1, 'rgb(161 83 142 / 0%)')
+
+		// draw shapes
+		cvs.ctx.fillStyle = radialGradient4
+		cvs.ctx.fillRect(x, y, 150, 150)
+		cvs.ctx.fillStyle = radialGradient3
+		cvs.ctx.fillRect(x, y, 150, 150)
+		cvs.ctx.fillStyle = radialGradient2
+		cvs.ctx.fillRect(x, y, 150, 150)
+		cvs.ctx.fillStyle = radialGradient
+		cvs.ctx.fillRect(x, y, 150, 150)
+
+		// conic gradient
+		// set base x y coords
+		x = 460
+		y = 700
+
+		// create conic gradients
+		const conicGradient = cvs.ctx.createConicGradient(2, x + 62, y + 75)
+		conicGradient.addColorStop(0, 'rgb(243, 148, 38)')
+		conicGradient.addColorStop(1, 'rgb(243, 240, 54)')
+
+		const conicGradient2 = cvs.ctx.createConicGradient(0, x + 187, y + 75)
+		conicGradient2.addColorStop(0, 'rgb(243, 148, 38)')
+		conicGradient2.addColorStop(0.25, 'rgb(243, 240, 54)')
+		conicGradient2.addColorStop(0.25, 'rgb(243, 148, 38)')
+		conicGradient2.addColorStop(0.5, 'rgb(243, 240, 54)')
+		conicGradient2.addColorStop(0.5, 'rgb(243, 148, 38)')
+		conicGradient2.addColorStop(0.75, 'rgb(243, 240, 54)')
+		conicGradient2.addColorStop(0.75, 'rgb(243, 148, 38)')
+		conicGradient2.addColorStop(1, 'rgb(243, 240, 54)')
+
+		// draw shapes
+		cvs.ctx.fillStyle = conicGradient
+		cvs.ctx.fillRect(x + 12, y + 25, 100, 100)
+		cvs.ctx.fillStyle = conicGradient2
+		cvs.ctx.fillRect(x + 137, y + 25, 100, 100)
 	},
 
 	colors: false,
