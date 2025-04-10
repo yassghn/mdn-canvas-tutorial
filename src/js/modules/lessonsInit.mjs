@@ -25,6 +25,7 @@ async function initStylesColorsAndText(menu) {
 	await stylesColorsAndTextSetup.transparencyInit(menu)
 	await stylesColorsAndTextSetup.lineStylesInit(menu)
 	await stylesColorsAndTextSetup.gradientsInit(menu)
+	await stylesColorsAndTextSetup.patternsInit(menu)
 }
 
 async function initLessons() {

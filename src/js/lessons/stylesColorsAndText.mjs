@@ -383,10 +383,15 @@ const stylesColorsAndText = {
 		cvs.ctx.fillRect(x + 137, y + 25, 100, 100)
 	},
 
+	drawPatterns: function (cvs) {
+
+	},
+
 	colors: false,
 	transparency: false,
 	lineStyles: false,
-	gradients: false
+	gradients: false,
+	patterns: false
 }
 
 export default stylesColorsAndText

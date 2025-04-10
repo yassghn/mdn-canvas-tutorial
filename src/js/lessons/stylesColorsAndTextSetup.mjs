@@ -30,6 +30,10 @@ function gradientsCallback(enabled) {
 	stylesColorsAndText.gradients = enabled
 }
 
+function patternsCallback(enabled) {
+	stylesColorsAndText.patterns = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -51,6 +55,11 @@ const stylesColorsAndTextSetup = {
 	// gradients
 	gradientsInit: async function (menu) {
 		await addMenuItem('gradients', 'gradients', 'gradients-check', gradientsCallback, menu)
+	},
+
+	// patterns
+	patternsInit: async function (menu) {
+		await addMenuItem('patterns', 'patterns', 'patterns-check', patternsCallback, menu)
 	}
 }
 
