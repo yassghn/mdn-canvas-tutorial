@@ -29,17 +29,17 @@ const stylesColorsAndText = {
 		// draw a 6x6 square color pallete
 		for (let i = 0; i < 6; i++) {
 			for (let j = 0; j < 6; j++) {
-				cvs.ctx.fillStyle = `rgb(${Math.floor(255 - 50 * i)} ${Math.floor(255 - 30 * j)} ${Math.floor(255 - 20 * (i+j)^2)})`
-				cvs.ctx.fillRect((j * 25)+175, (i * 25)+350, 25, 25)
+				cvs.ctx.fillStyle = `rgb(${Math.floor(255 - 50 * i)} ${Math.floor(255 - 30 * j)} ${Math.floor(255 - 20 * (i + j) ^ 2)})`
+				cvs.ctx.fillRect((j * 25) + 175, (i * 25) + 350, 25, 25)
 			}
 		}
 
 		// draw a 6x6 grid of circles
 		for (let i = 0; i < 6; i++) {
 			for (let j = 0; j < 6; j++) {
-				cvs.ctx.strokeStyle = `rgb(${Math.floor(255 - 40 * (i+j))} ${Math.floor(255 - 120 * j)} ${Math.floor(255 - 100 * (i+j)^2)})`
+				cvs.ctx.strokeStyle = `rgb(${Math.floor(255 - 40 * (i + j))} ${Math.floor(255 - 120 * j)} ${Math.floor(255 - 100 * (i + j) ^ 2)})`
 				cvs.ctx.beginPath()
-				cvs.ctx.arc((j*25)+187.5, (i*25)+362.5, 10, 0, 2 * Math.PI, true)
+				cvs.ctx.arc((j * 25) + 187.5, (i * 25) + 362.5, 10, 0, 2 * Math.PI, true)
 				cvs.ctx.stroke()
 			}
 		}
@@ -384,7 +384,30 @@ const stylesColorsAndText = {
 	},
 
 	drawPatterns: function (cvs) {
+		/**
+		 * createPattern(image, type)
+		 * 	- creates and returns a new canvas pattern object
+		 *
+		 * image
+		 * 	- HTMLImageElement, SVGImageElement, HTMLCanvasElement, OffScreenCanvas
+		 * 	  HTMLVideoElement, VideoFrame, ImageBitmap
+		 * type
+		 * 	- string indicating how to use the image
+		 * 	  repeat: tiles the image vertically and horizonotally
+		 * 	  repeat-x: tiles the image only horizontally
+		 * 	  repeat-y: tiles the image only vertically
+		 *    no-repeat: no tile, image is only used once
+		 *
+		 * NOTES:
+		 * 	must make sure image is loaded before creating the CanvasPattern object
+		 */
 
+		// get image from document body
+		const img = document.getElementById('patterns-image')
+		// create pattern
+		const pattern = cvs.ctx.createPattern(img, 'repeat')
+		cvs.ctx.fillStyle = pattern
+		cvs.ctx.fillRect(15, 189, 150, 150)
 	},
 
 	colors: false,
