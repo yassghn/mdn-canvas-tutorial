@@ -467,7 +467,33 @@ const stylesColorsAndText = {
 	},
 
 	drawDrawingText: function (cvs) {
+		/**
+		 * drawing text
+		 *
+		 * fillText(text, x, y [, maxWidth])
+		 * 	- fills given text at pos (x, y), optional max draw width
+		 * strokeText(text, x, y [, maxWidth])
+		 * 	- stroke given text at pos (x, y), optional max draw width
+		 *
+		 * NOTES:
+		 * 	accessibility concerns
+		 * 	  - canvas element is a bitmap, does not provide information about any draw objects.
+		 * 	  - text can cause legibility issues with users relying on screen magnification
+		 * 	  - pixels within a canvas element do not scale, can become blurry with magnification.
+		 *      letters are not vectors, they are a letter-shaped collection of pixels.
+		 *      when zooming in pixels become bigger
+		 * 	  - canvas is not exposed to accessibility tools. avoid using canvas for accessible websites and apps.
+		 *      use html elements and or svg's instead of canvas
+		 */
 
+		// fill text
+		cvs.ctx.font = '48px verdana'
+		cvs.ctx.fillStyle = 'rgb(247, 163, 37)'
+		cvs.ctx.fillText('DOG 1, DOG2', 550, 450)
+
+		// stroke text
+		cvs.ctx.strokeStyle = 'rgb(247, 163, 37)'
+		cvs.ctx.strokeText('mama mia!', 550, 500)
 	},
 
 	colors: false,
