@@ -411,7 +411,36 @@ const stylesColorsAndText = {
 	},
 
 	drawShadows: function (cvs) {
+		/**
+		 * creating shadows is done with properties
+		 *
+		 * shadowOffsetX = float
+		 * 	- horizontal distance shadow should extend from object.
+		 *    default is 0. not affected by transformation matrix.
+		 * shadowOffsetY = float
+		 * 	- vertical distance shadow should extend from object.
+		 * 	  default is 0. not affected by transformation matrix.
+		 * shadowBlur = float
+		 * 	- size of blurring effect. does not correspond to number of pixels.
+		 * 	  default is 0. not affected by transformation matrix.
+		 * shadowColor = color
+		 * 	- css color string, affects shadow color.
+		 *    default is fully transparent black.
+		 */
 
+		// shadow text
+		cvs.ctx.shadowOffsetX = 7
+		cvs.ctx.shadowOffsetY = 7
+		cvs.ctx.shadowBlur = 3
+		cvs.ctx.shadowColor = 'rgb(50 233 187 / 50%)'
+		cvs.ctx.font = '20px Tahoma'
+		cvs.ctx.fillStyle = 'rgb(255, 255, 255)'
+		cvs.ctx.fillText('MDN Canvas Tutorial', 550, 400)
+
+		// reset shadow properties
+		cvs.ctx.shadowOffsetX = 0
+		cvs.ctx.shadowOffsetY = 0
+		cvs.ctx.shadowBlur = 0
 	},
 
 	colors: false,
