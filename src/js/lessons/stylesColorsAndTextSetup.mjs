@@ -96,6 +96,7 @@ const stylesColorsAndTextSetup = {
 		await addMenuItem('drawing-text', 'drawing text', 'drawing-text-check', drawingTextCallback, menu)
 	},
 
+	// styling text
 	stylingTextInit: async function (menu) {
 		await addMenuItem('styling-text', 'styling text', 'styling-text-check', stylingTextCallback, menu)
 	}
