@@ -466,13 +466,18 @@ const stylesColorsAndText = {
 		cvs.ctx.fill('evenodd')
 	},
 
+	drawDrawingText: function (cvs) {
+
+	},
+
 	colors: false,
 	transparency: false,
 	lineStyles: false,
 	gradients: false,
 	patterns: false,
 	shadows: false,
-	canvasFill: false
+	canvasFill: false,
+	drawingText: false
 }
 
 export default stylesColorsAndText

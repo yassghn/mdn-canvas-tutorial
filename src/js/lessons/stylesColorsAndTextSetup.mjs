@@ -43,6 +43,10 @@ function canvasFillCallback(enabled) {
 	stylesColorsAndText.canvasFill = enabled
 }
 
+function drawingTextCallback(enabled) {
+	stylesColorsAndText.drawingText = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -81,6 +85,11 @@ const stylesColorsAndTextSetup = {
 	// canvas fill rules
 	canvasFillInit: async function (menu) {
 		await addMenuItem('canvas-fille', 'canvas fill', 'canvas-fill-check', canvasFillCallback, menu)
+	},
+
+	// drawing text
+	drawingTextInit: async function (menu) {
+		await addMenuItem('drawing-text', 'drawing text', 'drawing-text-check', drawingTextCallback, menu)
 	}
 }
 
