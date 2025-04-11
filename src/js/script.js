@@ -29,11 +29,11 @@ import canvas from './modules/canvas.mjs'
 
     // main
     async function canvasTutorial() {
-        // configure canvas object
-        canvas.configCanvas()
         // check browser support for canvas
         if (canvas.isCanvasSupported) {
             log('canvas is supported!')
+            // configure canvas object
+            canvas.configCanvas()
             // start the lessons
             await initLessons()
             // start drawing
