@@ -60,7 +60,7 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
-	if (stylesColorsAndText.drawTransparency) {
+	if (stylesColorsAndText.drawingText) {
 		stylesColorsAndText.drawDrawingText(cvs)
 	}
 }
