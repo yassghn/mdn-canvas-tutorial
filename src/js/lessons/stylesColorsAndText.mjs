@@ -497,7 +497,40 @@ const stylesColorsAndText = {
 	},
 
 	drawStylingText: function (cvs) {
+		/**
+		 * these properties adjust the way text gets displayed on the canvas
+		 *
+		 * font = value
+		 * 	- css font property.
+		 *    default is 10px sans-serif
+		 * textAlign = value
+		 * 	- text alignment: start, end, left, right, center
+		 * 	  default value is 'start'
+		 * textBaseline = value
+		 * 	- baseline alignment setting: top, hanging, middle, alphabetic, ideographic, bottom
+		 *    default value is 'alphabetic'
+		 * direction = value
+		 * 	- directionality of text: ltr, rtl, inherit
+		 * 	  default value is 'inherit'
+		 */
 
+		// show example of textbaseline
+		let x = 650
+		let y = 550
+
+		cvs.ctx.font = '48px verdana'
+		cvs.ctx.strokeStyle = 'rgb(62, 119, 243)'
+
+		cvs.ctx.textBaseline = 'hanging'
+		cvs.ctx.strokeText('hanging', x, y)
+
+		cvs.ctx.textBaseline = 'middle'
+		cvs.ctx.strokeText('middle', x + 240, y)
+
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(x + 10, y)
+		cvs.ctx.lineTo(x + 290, y)
+		cvs.ctx.stroke()
 	},
 
 	colors: false,
