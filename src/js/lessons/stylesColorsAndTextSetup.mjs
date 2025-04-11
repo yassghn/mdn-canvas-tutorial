@@ -35,6 +35,10 @@ function patternsCallback(enabled) {
 	stylesColorsAndText.patterns = enabled
 }
 
+function shadowsCallback(enabled) {
+	stylesColorsAndText.shadows = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -63,6 +67,11 @@ const stylesColorsAndTextSetup = {
 		await addMenuItem('patterns', 'patterns', 'patterns-check', patternsCallback, menu)
 		// load patterns image
 		await loadPatternImage()
+	},
+
+	// shadows
+	shadowsInit: async function (menu) {
+		await addMenuItem('shadows', 'shadows', 'shadows-check', shadowsCallback, menu)
 	}
 }
 
