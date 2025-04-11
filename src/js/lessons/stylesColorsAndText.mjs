@@ -496,6 +496,10 @@ const stylesColorsAndText = {
 		cvs.ctx.strokeText('mama mia!', 550, 500)
 	},
 
+	drawStylingText: function (cvs) {
+
+	},
+
 	colors: false,
 	transparency: false,
 	lineStyles: false,
@@ -503,7 +507,8 @@ const stylesColorsAndText = {
 	patterns: false,
 	shadows: false,
 	canvasFill: false,
-	drawingText: false
+	drawingText: false,
+	stylingText: false
 }
 
 export default stylesColorsAndText

@@ -47,6 +47,10 @@ function drawingTextCallback(enabled) {
 	stylesColorsAndText.drawingText = enabled
 }
 
+function stylingTextCallback(enabled) {
+	stylesColorsAndText.stylingText = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -90,6 +94,10 @@ const stylesColorsAndTextSetup = {
 	// drawing text
 	drawingTextInit: async function (menu) {
 		await addMenuItem('drawing-text', 'drawing text', 'drawing-text-check', drawingTextCallback, menu)
+	},
+
+	stylingTextInit: async function (menu) {
+		await addMenuItem('styling-text', 'styling text', 'styling-text-check', stylingTextCallback, menu)
 	}
 }
 

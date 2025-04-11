@@ -29,6 +29,7 @@ async function initStylesColorsAndText(menu) {
 	await stylesColorsAndTextSetup.shadowsInit(menu)
 	await stylesColorsAndTextSetup.canvasFillInit(menu)
 	await stylesColorsAndTextSetup.drawingTextInit(menu)
+	await stylesColorsAndTextSetup.stylingTextInit(menu)
 }
 
 async function initLessons() {
