@@ -57,6 +57,9 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 	if (stylesColorsAndText.shadows) {
 		stylesColorsAndText.drawShadows(cvs)
 	}
+	if (stylesColorsAndText.canvasFill) {
+		stylesColorsAndText.drawCanvasFill(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

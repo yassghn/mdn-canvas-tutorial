@@ -39,6 +39,10 @@ function shadowsCallback(enabled) {
 	stylesColorsAndText.shadows = enabled
 }
 
+function canvasFillCallback(enabled) {
+	stylesColorsAndText.canvasFill = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -72,6 +76,11 @@ const stylesColorsAndTextSetup = {
 	// shadows
 	shadowsInit: async function (menu) {
 		await addMenuItem('shadows', 'shadows', 'shadows-check', shadowsCallback, menu)
+	},
+
+	// canvas fill rules
+	canvasFillInit: async function (menu) {
+		await addMenuItem('canvas-fille', 'canvas fill', 'canvas-fill-check', canvasFillCallback, menu)
 	}
 }
 

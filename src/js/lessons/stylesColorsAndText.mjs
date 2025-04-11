@@ -443,12 +443,17 @@ const stylesColorsAndText = {
 		cvs.ctx.shadowBlur = 0
 	},
 
+	drawCanvasFill: function (cvs) {
+
+	},
+
 	colors: false,
 	transparency: false,
 	lineStyles: false,
 	gradients: false,
 	patterns: false,
-	shadows: false
+	shadows: false,
+	canvasFill: false
 }
 
 export default stylesColorsAndText
