@@ -444,7 +444,26 @@ const stylesColorsAndText = {
 	},
 
 	drawCanvasFill: function (cvs) {
+		/**
+		 * canvas fill rules
+		 *
+		 * fill(...) clip(...) isPointInPath(...)
+		 * 	- these function can be provided optional rules
+		 *  - determines whether a point is inside or outside a path, to be filled in or not
+		 *  - useful for self intersecting paths, and nested paths
+		 *
+		 * 'nonzero'
+		 * 	- default rules. non-zero winding rule algorithm
+		 * 'evenodd'
+		 * 	- even-odd winding rules algorithm
+		 */
 
+		// use fill rule
+		cvs.ctx.beginPath()
+		cvs.ctx.fillStyle = 'rgb(49, 245, 31)'
+		cvs.ctx.arc(250, 150, 30, 0, Math.PI * 2, true)
+		cvs.ctx.arc(250, 150, 15, 0, Math.PI * 2, true)
+		cvs.ctx.fill('evenodd')
 	},
 
 	colors: false,
