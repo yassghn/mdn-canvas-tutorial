@@ -11,3 +11,7 @@ export async function addBasicDrawingAndShapesMenu() {
 export async function addStylesColorsAndTextMenu() {
 	return await menuMgmt.createMenu('colors-and-text')
 }
+
+export async function addImagesAndTransformationsMenu() {
+	return await menuMgmt.createMenu('images-and-transformations')
+}

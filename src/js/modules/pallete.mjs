@@ -4,6 +4,7 @@
 
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
+import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -71,9 +72,14 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 	}
 }
 
+function imagesAndTransformationsPallete(cvs) {
+
+}
+
 function pallete(cvs, lineDashOffset) {
 	basicDrawingAndShapesPallete(cvs)
 	stylesColorsAndTextPallete(cvs, lineDashOffset)
+	imagesAndTransformationsPallete(cvs)
 }
 
 export default pallete

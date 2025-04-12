@@ -2,9 +2,10 @@
  * lessonsInit.mjs
  */
 
-import { addBasicDrawingAndShapesMenu, addStylesColorsAndTextMenu } from './lessonsMenus.mjs'
+import { addBasicDrawingAndShapesMenu, addStylesColorsAndTextMenu, addImagesAndTransformationsMenu } from './lessonsMenus.mjs'
 import basicDrawingAndShapesSetup from '../lessons/basicDrawingAndShapesSetup.mjs'
 import stylesColorsAndTextSetup from '../lessons/stylesColorsAndTextSetup.mjs'
+import imagesAndTransformationsSetup from '../lessons/imagesAndTransformationsSetup.mjs'
 
 // init lessons
 async function initBasicDrawingAndShapes(menu) {
@@ -33,12 +34,17 @@ async function initStylesColorsAndText(menu) {
 	await stylesColorsAndTextSetup.textMeasurementInit(menu)
 }
 
+async function initImagesAndTransformations(menu) {
+
+}
+
 async function initLessons() {
 	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu()
 	await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
 	const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu()
 	await initStylesColorsAndText(stylesColorsAndTextMenu)
-
+	const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu()
+	await initImagesAndTransformations(imagesAndTransformationsMenu)
 }
 
 export default initLessons
