@@ -8,7 +8,7 @@ async function addDefaultEnabledAll(menu) {
 	// create id for menu item
 	const id = `enable-all-${menu.id}`
 	// pass callback as lambda to not lose the context on 'this'
-	await menu.addMenuItem(id, 'enable all', `${id}-check`, (args) => menu.enableAllCallback(args))
+	await menu.addMenuItem(id, 'enable all'.toUpperCase(), `${id}-check`, (args) => menu.enableAllCallback(args))
 }
 
 const menuMgmt = {
