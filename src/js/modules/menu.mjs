@@ -164,7 +164,7 @@ function adjustMenuStyle(menuId) {
 	const style = getComputedStyle(slider)
 	const heightStr = style.getPropertyValue('height')
 	const height = calculateNewHeight(heightStr)
-	menu.setAttribute('style', `padding-bottom: ${height}px;`)
+	menu.setAttribute('style', `margin-bottom: ${height}px;`)
 }
 
 async function insertMenu(menuId) {
