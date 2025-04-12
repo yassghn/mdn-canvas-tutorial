@@ -245,6 +245,26 @@ function initElems(menuId, elems) {
 	elems.menuHeader = document.getElementById(appendId(selectors.menuHeader, menuId))
 }
 
+function enableAll(enabled, menuId) {
+	// get all toggle elements
+	const parent = document.getElementById(`${selectors.menuItemParent}-${menuId}`)
+	const toggles = parent.getElementsByTagName('input')
+	// iterate toggles
+	if (toggles.length > 1) {
+		// skip first toggle (enable all)
+		for (let i = 1; i < toggles.length; i++) {
+			// get toggle element
+			const toggle = toggles[i]
+			// set toggle state
+			toggle.checked = enabled ? false : true
+			// create a click event
+			const event = new Event('click', { bubbles: true, cancelable: false, composed: true })
+			// fire toggle click event
+			toggle.dispatchEvent(event)
+		}
+	}
+}
+
 function menu(menuId) {
 	const menuObj = {
 		id: menuId,
@@ -257,6 +277,10 @@ function menu(menuId) {
 			slider: undefined,
 			menu: undefined,
 			menuHeader: undefined
+		},
+
+		enableAllCallback: function (enabled) {
+			enableAll(enabled, this.id)
 		},
 
 		addMenuItem: async function (itemId, itemText, checkboxId, callback) {
