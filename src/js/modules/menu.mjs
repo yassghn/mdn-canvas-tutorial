@@ -154,8 +154,8 @@ function getNumMenus() {
 
 function calculateNewHeight(heightStr) {
 	const numMenus = getNumMenus()
-	const height = heightStr.split('px')[0]
-	return (height/2)*numMenus
+	const height = parseFloat(heightStr.split('px')[0])
+	return (height * (numMenus-1))
 }
 
 function adjustMenuStyle(menuId) {
