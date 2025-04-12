@@ -534,7 +534,22 @@ const stylesColorsAndText = {
 	},
 
 	drawTextMeasurement: function (cvs) {
+		/**
+		 * can obtain text metrics about any given text
+		 *
+		 * measureText()
+		 * 	- returns a text metrics object containing: width (in pixels)
+		 */
 
+		// measure text
+		cvs.ctx.font = '35px verdana'
+		cvs.ctx.strokeStyle = 'rgb(248, 73, 169)'
+		const text = 'hello, world!'
+		const textMetrics = cvs.ctx.measureText(text)
+		const textWidth = `-> is ~${Math.round(textMetrics.width)}px wide`
+		const buffer = 5
+		cvs.ctx.strokeText(text, 730, 615)
+		cvs.ctx.strokeText(textWidth, 730 + textMetrics.width + buffer, 615)
 	},
 
 	colors: false,
