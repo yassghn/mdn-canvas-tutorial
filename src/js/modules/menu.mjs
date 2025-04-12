@@ -225,7 +225,7 @@ async function appendMenuItem(itemId, itemText, checkboxId, callback, menuId) {
 	if (!hasMenuItemTemplate()) {
 		await appendMenuItemTemplate()
 	}
-	// get template and template parent
+	// get template and menu items parent
 	const template = document.getElementById(selectors.menuItemTemplate)
 	const parent = document.getElementById(appendId(selectors.menuItemParent, menuId))
 	// clone template
