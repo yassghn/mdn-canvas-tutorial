@@ -66,6 +66,9 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 	if (stylesColorsAndText.stylingText) {
 		stylesColorsAndText.drawStylingText(cvs)
 	}
+	if (stylesColorsAndText.textMeasurement) {
+		stylesColorsAndText.drawTextMeasurement(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

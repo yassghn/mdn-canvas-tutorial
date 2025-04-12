@@ -30,6 +30,7 @@ async function initStylesColorsAndText(menu) {
 	await stylesColorsAndTextSetup.canvasFillInit(menu)
 	await stylesColorsAndTextSetup.drawingTextInit(menu)
 	await stylesColorsAndTextSetup.stylingTextInit(menu)
+	await stylesColorsAndTextSetup.textMeasurementInit(menu)
 }
 
 async function initLessons() {

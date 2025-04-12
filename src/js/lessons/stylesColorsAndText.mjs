@@ -533,6 +533,10 @@ const stylesColorsAndText = {
 		cvs.ctx.stroke()
 	},
 
+	drawTextMeasurement: function (cvs) {
+
+	},
+
 	colors: false,
 	transparency: false,
 	lineStyles: false,
@@ -541,7 +545,8 @@ const stylesColorsAndText = {
 	shadows: false,
 	canvasFill: false,
 	drawingText: false,
-	stylingText: false
+	stylingText: false,
+	textMeasurement: false
 }
 
 export default stylesColorsAndText

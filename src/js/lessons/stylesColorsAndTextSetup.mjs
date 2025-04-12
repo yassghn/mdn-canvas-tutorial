@@ -51,6 +51,10 @@ function stylingTextCallback(enabled) {
 	stylesColorsAndText.stylingText = enabled
 }
 
+function textMeasurementCallback(enabled) {
+	stylesColorsAndText.textMeasurement = enabled
+}
+
 const stylesColorsAndTextSetup = {
 	// colors
 	colorsInit: async function (menu) {
@@ -99,6 +103,11 @@ const stylesColorsAndTextSetup = {
 	// styling text
 	stylingTextInit: async function (menu) {
 		await addMenuItem('styling-text', 'styling text', 'styling-text-check', stylingTextCallback, menu)
+	},
+
+	// text measurement
+	textMeasurementInit: async function (menu) {
+		await addMenuItem('text-measurement', 'text measurement', 'text-measurement-check', textMeasurementCallback, menu)
 	}
 }
 
