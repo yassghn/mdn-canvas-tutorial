@@ -15,7 +15,7 @@ function drawingImagesCallback(enabled) {
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function(menu) {
-		addMenuItem('drawing-images', 'drawing images', 'drawing-images-check', drawingImagesCallback, menu)
+		await addMenuItem('drawing-images', 'drawing images', 'drawing-images-check', drawingImagesCallback, menu)
 	}
 }
 
