@@ -73,7 +73,9 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 }
 
 function imagesAndTransformationsPallete(cvs) {
-
+	if (imagesAndTransformations.drawingImages) {
+		imagesAndTransformations.drawDrawingImages(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

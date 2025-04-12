@@ -35,7 +35,7 @@ async function initStylesColorsAndText(menu) {
 }
 
 async function initImagesAndTransformations(menu) {
-
+	await imagesAndTransformationsSetup.drawingImagesInit(menu)
 }
 
 async function initLessons() {
