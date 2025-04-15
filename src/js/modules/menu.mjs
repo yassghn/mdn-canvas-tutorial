@@ -239,7 +239,6 @@ async function appendMenuItem(itemId, itemText, checkboxId, callback, menuId) {
 }
 
 function initElems(menuId, elems) {
-	// todo: error checking & return
 	elems.slider = document.getElementById(appendId(selectors.slider, menuId))
 	elems.menu = document.getElementById(appendId(selectors.menuContent, menuId))
 	elems.menuHeader = document.getElementById(appendId(selectors.menuHeader, menuId))
@@ -284,12 +283,10 @@ function menu(menuId) {
 		},
 
 		addMenuItem: async function (itemId, itemText, checkboxId, callback) {
-			// todo: return error on error
 			await appendMenuItem(itemId, itemText, checkboxId, callback, this.id)
 		},
 
 		init: async function () {
-			// todo: return error on error
 			await insertMenu(this.id)
 			initElems(this.id, this.elems)
 			createMenuEvents(this.elems, this.status)
