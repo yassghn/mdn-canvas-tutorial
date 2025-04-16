@@ -57,7 +57,25 @@ const imagesAndTransformations = {
 	},
 
 	drawScaling: function (cvs) {
+		/**
+		 * scaling
+		 *
+		 * drawImage(image, x, y, width, height)
+		 * 	- second variant of drawImage function
+		 * 	- adds ability to scale image using width/height attributes
+		 */
 
+		// tile a scaled image
+		let x = 850
+		let y = 350
+		// get image
+		const img = document.getElementById('scaling-images-rhino-image')
+		// tile image in a 4x3 grid
+		for (let i = 0; i < 4; i++) {
+			for (let j = 0; j < 3; j++) {
+				cvs.ctx.drawImage(img, x + j * 50, y + i * 38, 50, 38)
+			}
+		}
 	},
 
 	drawingImages: false,
