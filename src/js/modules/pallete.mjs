@@ -82,6 +82,9 @@ function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.slicing) {
 		imagesAndTransformations.drawSlicing(cvs)
 	}
+	if (imagesAndTransformations.artGallery) {
+		imagesAndTransformations.artGallery(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

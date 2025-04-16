@@ -100,9 +100,14 @@ const imagesAndTransformations = {
 		cvs.ctx.drawImage(imgFrame, x, y)
 	},
 
+	drawArtGallery: function (cvs) {
+
+	},
+
 	drawingImages: false,
 	scaling: false,
-	slicing: false
+	slicing: false,
+	artGallery: false
 
 }
 

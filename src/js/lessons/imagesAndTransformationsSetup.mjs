@@ -21,6 +21,10 @@ function slicingCallback(enabled) {
 	imagesAndTransformations.slicing = enabled
 }
 
+function artGalleryCallback(enabled) {
+	imagesAndTransformations.artGallery = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -41,6 +45,11 @@ const imagesAndTransformationsSetup = {
 		await addMenuItem('slicing', 'slicing', 'slicing-check', slicingCallback, menu)
 		// load picture frame image
 		loadSlicingImage()
+	},
+
+	// art gallery
+	artGalleryInit: async function (menu) {
+		await addMenuItem('art-gallery', 'art gallery', 'art-gallery-check', artGalleryCallback, menu)
 	}
 }
 
