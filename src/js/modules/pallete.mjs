@@ -83,7 +83,7 @@ function imagesAndTransformationsPallete(cvs) {
 		imagesAndTransformations.drawSlicing(cvs)
 	}
 	if (imagesAndTransformations.artGallery) {
-		imagesAndTransformations.artGallery(cvs)
+		imagesAndTransformations.drawArtGallery(cvs)
 	}
 }
 
