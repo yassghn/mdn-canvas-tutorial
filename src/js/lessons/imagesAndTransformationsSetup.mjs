@@ -3,7 +3,7 @@
  */
 
 import imagesAndTransformations from './imagesAndTransformations.mjs'
-import { loadBackdropImage, loadScalingImage } from '../modules/loadWebResource.mjs'
+import { loadBackdropImage, loadScalingImage, loadSlicingImage } from '../modules/loadWebResource.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
@@ -39,6 +39,8 @@ const imagesAndTransformationsSetup = {
 	// slicing
 	slicingInit: async function (menu) {
 		await addMenuItem('slicing', 'slicing', 'slicing-check', slicingCallback, menu)
+		// load picture frame image
+		loadSlicingImage()
 	}
 }
 

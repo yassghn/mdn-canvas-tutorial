@@ -25,3 +25,7 @@ export async function loadBackdropImage() {
 export async function loadScalingImage() {
 	await loadImage('/resource/rhino.jpg', 'scaling-images-rhino-image')
 }
+
+export async function loadSlicingImage() {
+	await loadImage('/resource/canvas_picture_frame.png', 'slicing-images-frame-image')
+}
