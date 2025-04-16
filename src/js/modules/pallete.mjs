@@ -76,6 +76,9 @@ function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.drawingImages) {
 		imagesAndTransformations.drawDrawingImages(cvs)
 	}
+	if (imagesAndTransformations.scaling) {
+		imagesAndTransformations.drawScaling(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

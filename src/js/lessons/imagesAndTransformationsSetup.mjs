@@ -13,12 +13,21 @@ function drawingImagesCallback(enabled) {
 	imagesAndTransformations.drawingImages = enabled
 }
 
+function scalingCallback(enabled) {
+	imagesAndTransformations.scaling = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
-	drawingImagesInit: async function(menu) {
+	drawingImagesInit: async function (menu) {
 		await addMenuItem('drawing-images', 'drawing images', 'drawing-images-check', drawingImagesCallback, menu)
 		// load backdrop image
 		loadBackdropImage()
+	},
+
+	// scaling
+	scalingInit: async function (menu) {
+		await addMenuItem('scaling', 'scaling', 'scaling-check', scalingCallback, menu)
 	}
 }
 
