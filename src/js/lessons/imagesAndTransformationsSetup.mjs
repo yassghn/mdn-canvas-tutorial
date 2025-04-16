@@ -17,6 +17,10 @@ function scalingCallback(enabled) {
 	imagesAndTransformations.scaling = enabled
 }
 
+function slicingCallback(enabled) {
+	imagesAndTransformations.slicing = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -30,6 +34,11 @@ const imagesAndTransformationsSetup = {
 		await addMenuItem('scaling', 'scaling', 'scaling-check', scalingCallback, menu)
 		// load rhino image
 		loadScalingImage()
+	},
+
+	// slicing
+	slicingInit: async function (menu) {
+		await addMenuItem('slicing', 'slicing', 'slicing-check', slicingCallback, menu)
 	}
 }
 

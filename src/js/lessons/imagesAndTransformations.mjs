@@ -78,8 +78,13 @@ const imagesAndTransformations = {
 		}
 	},
 
+	drawSlicing: function (cvs) {
+
+	},
+
 	drawingImages: false,
-	scaling: false
+	scaling: false,
+	slicing: false
 
 }
 

@@ -37,6 +37,7 @@ async function initStylesColorsAndText(menu) {
 async function initImagesAndTransformations(menu) {
 	await imagesAndTransformationsSetup.drawingImagesInit(menu)
 	await imagesAndTransformationsSetup.scalingInit(menu)
+	await imagesAndTransformationsSetup.slicingInit(menu)
 }
 
 async function initLessons() {
