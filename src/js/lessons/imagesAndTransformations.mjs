@@ -79,7 +79,25 @@ const imagesAndTransformations = {
 	},
 
 	drawSlicing: function (cvs) {
+		/**
+		 * slicing
+		 *
+		 * drawImage(image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight)
+		 * 	- third variant of drawImage function
+		 * 	- takes a given area of an image, scales, and draws it
+		 *  - source (x, y) coords and width/height -> destination (x, y) coords and width/height
+		 */
 
+		// framing an image (literally into a picture frame)
+		let x = 1000
+		let y = 350
+		// get images
+		const img = document.getElementById('scaling-images-rhino-image')
+		const imgFrame = document.getElementById('slicing-images-frame-image')
+		// frame picture of the rhino
+		cvs.ctx.drawImage(img, 33, 71, 104, 124, x + 21, y + 20, 87, 104)
+		// draw frame
+		cvs.ctx.drawImage(imgFrame, x, y)
 	},
 
 	drawingImages: false,
