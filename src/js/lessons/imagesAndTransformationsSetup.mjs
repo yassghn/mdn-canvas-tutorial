@@ -3,7 +3,7 @@
  */
 
 import imagesAndTransformations from './imagesAndTransformations.mjs'
-import { loadBackdropImage } from '../modules/loadWebResource.mjs'
+import { loadBackdropImage, loadScalingImage } from '../modules/loadWebResource.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
@@ -28,6 +28,8 @@ const imagesAndTransformationsSetup = {
 	// scaling
 	scalingInit: async function (menu) {
 		await addMenuItem('scaling', 'scaling', 'scaling-check', scalingCallback, menu)
+		// load rhino image
+		loadScalingImage()
 	}
 }
 
