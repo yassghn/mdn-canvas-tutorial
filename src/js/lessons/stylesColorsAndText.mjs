@@ -63,13 +63,13 @@ const stylesColorsAndText = {
 
 		// draw four opaque squares with a set of semi transparent circles over them
 		cvs.ctx.fillStyle = 'rgb(200, 100, 100)'
-		cvs.ctx.fillRect(310, 510, 75, 75)
+		cvs.ctx.fillRect(230, 510, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(100, 200, 200)'
-		cvs.ctx.fillRect(385, 510, 75, 75)
+		cvs.ctx.fillRect(305, 510, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(200, 100, 200)'
-		cvs.ctx.fillRect(310, 585, 75, 75)
+		cvs.ctx.fillRect(230, 585, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(250, 150, 150)'
-		cvs.ctx.fillRect(385, 585, 75, 75)
+		cvs.ctx.fillRect(305, 585, 75, 75)
 
 		// set gransparency property
 		cvs.ctx.globalAlpha = 0.2
@@ -77,7 +77,7 @@ const stylesColorsAndText = {
 		// draw semi cricles
 		for (let i = 0; i < 7; i++) {
 			cvs.ctx.beginPath()
-			cvs.ctx.arc(385, 585, 10 + 10 * i, 0, Math.PI * 2, true)
+			cvs.ctx.arc(305, 585, 10 + 10 * i, 0, Math.PI * 2, true)
 			cvs.ctx.fill()
 		}
 
@@ -86,20 +86,20 @@ const stylesColorsAndText = {
 
 		// draw four rectangles with increasing opacity
 		cvs.ctx.fillStyle = 'rgb(200, 100, 100)'
-		cvs.ctx.fillRect(569, 14, 150, 37.5)
+		cvs.ctx.fillRect(539, 14, 150, 37.5)
 		cvs.ctx.fillStyle = 'rgb(100, 200, 200)'
-		cvs.ctx.fillRect(569, 51.5, 150, 37.5)
+		cvs.ctx.fillRect(539, 51.5, 150, 37.5)
 		cvs.ctx.fillStyle = 'rgb(200, 100, 200)'
-		cvs.ctx.fillRect(569, 89, 150, 37.5)
+		cvs.ctx.fillRect(539, 89, 150, 37.5)
 		cvs.ctx.fillStyle = 'rgb(250, 150, 150)'
-		cvs.ctx.fillRect(569, 126.5, 150, 37.5)
+		cvs.ctx.fillRect(539, 126.5, 150, 37.5)
 
 		for (let i = 0; i < 10; i++) {
 			// semi transparent to fully opaque white
 			// using rgb for opacity
 			cvs.ctx.fillStyle = `rgb(255 255 255 / ${(i + 1) / 10})`
 			for (let j = 0; j < 4; j++) {
-				cvs.ctx.fillRect((5 + i * 14) + 569, (5 + j * 37.5) + 14, 14, 27.5)
+				cvs.ctx.fillRect((5 + i * 14) + 539, (5 + j * 37.5) + 14, 14, 27.5)
 			}
 		}
 	},
@@ -317,12 +317,12 @@ const stylesColorsAndText = {
 		cvs.ctx.strokeStyle = linearGradient2
 
 		// draw shapes
-		cvs.ctx.fillRect(150, 700, 130, 130)
-		cvs.ctx.strokeRect(190, 740, 50, 50)
+		cvs.ctx.fillRect(25, 700, 130, 130)
+		cvs.ctx.strokeRect(65, 740, 50, 50)
 
 		// radial gradients
 		// set x y coords
-		let x = 300
+		let x = 175
 		let y = 700
 
 		// create radial gradients
@@ -358,7 +358,7 @@ const stylesColorsAndText = {
 
 		// conic gradient
 		// set base x y coords
-		x = 460
+		x = 325
 		y = 700
 
 		// create conic gradients
@@ -435,7 +435,7 @@ const stylesColorsAndText = {
 		cvs.ctx.shadowColor = 'rgb(50 233 187 / 50%)'
 		cvs.ctx.font = '20px Tahoma'
 		cvs.ctx.fillStyle = 'rgb(255, 255, 255)'
-		cvs.ctx.fillText('MDN Canvas Tutorial', 550, 400)
+		cvs.ctx.fillText('MDN Canvas Tutorial', 475, 400)
 
 		// reset shadow properties
 		cvs.ctx.shadowOffsetX = 0
@@ -489,11 +489,11 @@ const stylesColorsAndText = {
 		// fill text
 		cvs.ctx.font = '48px verdana'
 		cvs.ctx.fillStyle = 'rgb(247, 163, 37)'
-		cvs.ctx.fillText('DOG 1, DOG2', 550, 450)
+		cvs.ctx.fillText('DOG 1, DOG2', 475, 450)
 
 		// stroke text
 		cvs.ctx.strokeStyle = 'rgb(247, 163, 37)'
-		cvs.ctx.strokeText('mama mia!', 550, 500)
+		cvs.ctx.strokeText('mama mia!', 475, 500)
 	},
 
 	drawStylingText: function (cvs) {
@@ -548,8 +548,8 @@ const stylesColorsAndText = {
 		const textMetrics = cvs.ctx.measureText(text)
 		const textWidth = `-> is ~${Math.round(textMetrics.width)}px wide`
 		const buffer = 5
-		cvs.ctx.strokeText(text, 730, 615)
-		cvs.ctx.strokeText(textWidth, 730 + textMetrics.width + buffer, 615)
+		cvs.ctx.strokeText(text, 600, 615)
+		cvs.ctx.strokeText(textWidth, 600 + textMetrics.width + buffer, 615)
 	},
 
 	colors: false,
