@@ -189,7 +189,7 @@ const imagesAndTransformations = {
 		cvs.ctx.restore()
 		cvs.ctx.fillRect(x + 60, y + 60, 30, 30)
 		// restore back to default state
-		restore()
+		cvs.ctx.restore()
 	},
 
 	drawingImages: false,
