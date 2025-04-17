@@ -220,12 +220,17 @@ const imagesAndTransformations = {
 		}
 	},
 
+	drawRotating: function (cvs) {
+
+	},
+
 	drawingImages: false,
 	scaling: false,
 	slicing: false,
 	artGallery: false,
 	saveRestoreState: false,
-	translating: false
+	translating: false,
+	rotating: false
 
 }
 

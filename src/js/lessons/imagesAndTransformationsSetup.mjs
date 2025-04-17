@@ -33,6 +33,10 @@ function translatingCallback(enabled) {
 	imagesAndTransformations.translating = enabled
 }
 
+function rotatingCallback(enabled) {
+	imagesAndTransformations.rotating = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -70,6 +74,11 @@ const imagesAndTransformationsSetup = {
 	// translating
 	translatingInit: async function (menu) {
 		await addMenuItem('translating', 'translating', 'translating-check', translatingCallback, menu)
+	},
+
+	// rotating
+	rotatingInit: async function (menu) {
+		await addMenuItem('rotating', 'rotating', 'rotating-check', rotatingCallback, menu)
 	}
 }
 

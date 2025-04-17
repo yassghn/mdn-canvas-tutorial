@@ -91,6 +91,9 @@ function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.translating) {
 		imagesAndTransformations.drawTranslating(cvs)
 	}
+	if (imagesAndTransformations.rotating) {
+		imagesAndTransformations.drawRotating(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

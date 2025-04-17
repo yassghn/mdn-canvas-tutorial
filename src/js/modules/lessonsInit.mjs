@@ -41,6 +41,7 @@ async function initImagesAndTransformations(menu) {
 	await imagesAndTransformationsSetup.artGalleryInit(menu)
 	await imagesAndTransformationsSetup.saveRestoreStateInit(menu)
 	await imagesAndTransformationsSetup.translatingInit(menu)
+	await imagesAndTransformationsSetup.rotatingInit(menu)
 }
 
 async function initLessons() {
