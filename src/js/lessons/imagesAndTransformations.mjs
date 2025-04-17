@@ -2,6 +2,8 @@
  * imagesAndTransformations.mjs
  */
 
+import { gallerize } from "../modules/render.mjs"
+
 const imagesAndTransformations = {
 
 	drawDrawingImages: function (cvs) {
@@ -133,37 +135,14 @@ const imagesAndTransformations = {
 		// draw art gallery background
 		const pattern = cvs.ctx.createPattern(bgImg, 'repeat-x')
 		cvs.ctx.fillStyle = pattern
-		cvs.ctx.fillRect(x, y, 600, 380)
+		cvs.ctx.fillRect(x, y, 660, 380)
 
-		// add gallery art images and frames
-		const width = galleryImgs[0].width
-		const height = galleryImgs[0].height
-		const buffer = 35
+		// space between edges of rect and gallery art images
+		const buffer = 45
+		// pixel offset for frame size
 		const offset = 20
-		const buffOff = buffer + offset
-		cvs.ctx.drawImage(galleryImgs[0], x + buffOff, y + buffOff)
-		cvs.ctx.drawImage(frameImg, x + buffer, y + buffer)
-
-		cvs.ctx.drawImage(galleryImgs[1], x + offset + (buffer * 2) + width, y + buffOff)
-		cvs.ctx.drawImage(frameImg, x + (buffer * 2) + width, y + buffer)
-
-		cvs.ctx.drawImage(galleryImgs[2], x + offset + (buffer * 3) + (width * 2), y + buffOff)
-		cvs.ctx.drawImage(frameImg, x + (buffer * 3) + (width * 2), y + buffer)
-
-		cvs.ctx.drawImage(galleryImgs[3], x + offset + (buffer * 4) + (width * 3), y + buffOff)
-		cvs.ctx.drawImage(frameImg, x + (buffer * 4) + (width * 3), y + buffer)
-
-		cvs.ctx.drawImage(galleryImgs[4], x + buffOff, y + offset + (buffer * 2) + height)
-		cvs.ctx.drawImage(frameImg, x + buffer, y + (buffer * 2) + height)
-
-		cvs.ctx.drawImage(galleryImgs[5], x + offset + (buffer * 2) + width, y + offset + (buffer * 2) + height)
-		cvs.ctx.drawImage(frameImg, x + (buffer * 2) + width, y + (buffer * 2) + height)
-
-		cvs.ctx.drawImage(galleryImgs[6], x + offset + (buffer * 3) + (width * 2), y + offset + (buffer * 2) + height)
-		cvs.ctx.drawImage(frameImg, x + (buffer * 3) + (width * 2), y + (buffer * 2) + height)
-
-		cvs.ctx.drawImage(galleryImgs[7], x + offset + (buffer * 4) + (width * 3), y + offset + (buffer * 2) + height)
-		cvs.ctx.drawImage(frameImg, x + (buffer * 4) + (width * 3), y + (buffer * 2) + height)
+		// add gallery art images and frames
+		gallerize(cvs, galleryImgs, frameImg, x, y, 2, 4, buffer, offset)
 	},
 
 	drawingImages: false,
