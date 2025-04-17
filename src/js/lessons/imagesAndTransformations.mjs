@@ -224,7 +224,8 @@ const imagesAndTransformations = {
 	scaling: false,
 	slicing: false,
 	artGallery: false,
-	saveRestoreState: false
+	saveRestoreState: false,
+	translating: false
 
 }
 
