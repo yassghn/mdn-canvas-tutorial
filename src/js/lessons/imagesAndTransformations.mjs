@@ -63,6 +63,11 @@ const imagesAndTransformations = {
 		 * drawImage(image, x, y, width, height)
 		 * 	- second variant of drawImage function
 		 * 	- adds ability to scale image using width/height attributes
+		 *
+		 * NOTE:
+		 * 	imageSmoothingEnabled
+		 *	 - canvas context property to control the use of image smoothing algorithms.
+		 *     enabled by default. can affect fuzzy/blocky artifacts due to scaling process.
 		 */
 
 		// tile a scaled image
