@@ -4,6 +4,8 @@
  * render.mjs
  */
 
+import { calculateColumnWidth, calculateRowHeight } from "./math.mjs"
+
 // utility function to draw a rectangle with rounded corners
 export function roundedRect(ctx, x, y, width, height, radius) {
 	ctx.beginPath()
@@ -15,17 +17,11 @@ export function roundedRect(ctx, x, y, width, height, radius) {
 }
 
 function getXpos(xpos, col, maxCols, buffer, width) {
-	// get width multiplier
-	const widthMult = (col - 1) % maxCols
-	// return xpos via column width calculation
-	return xpos + (buffer * col) + (width * widthMult)
+	return calculateColumnWidth(xpos, col, maxCols, buffer, width)
 }
 
 function getYPos(ypos, row, maxRows, buffer, height) {
-	// get height multiplier
-	const heightMult = ((row - 1) % maxRows)
-	// return ypos via row length calculation
-	return ypos + (buffer * row) + (height * heightMult)
+	return calculateRowHeight(ypos, row, maxRows, buffer, height)
 }
 
 // utility function to create rows/columns of framed gallery art images
