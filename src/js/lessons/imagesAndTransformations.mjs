@@ -312,6 +312,10 @@ const imagesAndTransformations = {
 		cvs.ctx.restore()
 	},
 
+	drawTransform: function (cvs) {
+
+	},
+
 	drawingImages: false,
 	scalingImages: false,
 	slicing: false,
@@ -319,7 +323,8 @@ const imagesAndTransformations = {
 	saveRestoreState: false,
 	translating: false,
 	rotating: false,
-	scaling: false
+	scaling: false,
+	transform: false
 
 }
 

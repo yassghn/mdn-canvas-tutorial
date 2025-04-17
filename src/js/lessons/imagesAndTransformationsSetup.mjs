@@ -41,6 +41,10 @@ function scalingCallback(enabled) {
 	imagesAndTransformations.scaling = enabled
 }
 
+function transformCallback(enabled) {
+	imagesAndTransformations.transform = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -88,6 +92,11 @@ const imagesAndTransformationsSetup = {
 	// scaling
 	scalingInit: async function (menu) {
 		await addMenuItem('scaling', 'scaling', 'scaling-check', scalingCallback, menu)
+	},
+
+	// transform
+	transformInit: async function (menu) {
+		await addMenuItem('transform', 'transform', 'transform-check', transformCallback, menu)
 	}
 }
 
