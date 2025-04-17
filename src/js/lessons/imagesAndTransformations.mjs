@@ -40,20 +40,20 @@ const imagesAndTransformations = {
 		 *      draw specified image at coordinates (x, y)
 		 */
 
-		 // use image as a backdrop for a small line graph
-		 let x = 875
-		 let y = 15
-		 cvs.ctx.strokeStyle = 'rgb(0, 0, 0)'
-		 // get image and draw it
-		 const img = document.getElementById('drawing-images-backdrop-image')
-		 cvs.ctx.drawImage(img, x, y)
-		 // draw line graph over the image
-		 cvs.ctx.beginPath()
-		 cvs.ctx.moveTo(x + 30, y + 96)
-		 cvs.ctx.lineTo(x + 70, y + 66)
-		 cvs.ctx.lineTo(x + 103, y + 76)
-		 cvs.ctx.lineTo(x + 170, y + 15)
-		 cvs.ctx.stroke()
+		// use image as a backdrop for a small line graph
+		let x = 875
+		let y = 15
+		cvs.ctx.strokeStyle = 'rgb(0, 0, 0)'
+		// get image and draw it
+		const img = document.getElementById('drawing-images-backdrop-image')
+		cvs.ctx.drawImage(img, x, y)
+		// draw line graph over the image
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(x + 30, y + 96)
+		cvs.ctx.lineTo(x + 70, y + 66)
+		cvs.ctx.lineTo(x + 103, y + 76)
+		cvs.ctx.lineTo(x + 170, y + 15)
+		cvs.ctx.stroke()
 	},
 
 	drawScaling: function (cvs) {
@@ -101,7 +101,64 @@ const imagesAndTransformations = {
 	},
 
 	drawArtGallery: function (cvs) {
+		/**
+		 * art gallery
+		 *
+		 * combining images lessons
+		 */
 
+		// draw art gallery
+		let x = 580
+		let y = 639
+
+		// get gallery background image
+		const bgImg = document.getElementById('gallery-bg-image')
+
+		// get gallery art frame image
+		const frameImg = document.getElementById('slicing-images-frame-image')
+
+		// get gallery art images
+		let galleryImgs = []
+		for (let i = 1; i < 9; i++) {
+			const imgId = `gallery-${i}-image`
+			const img = document.getElementById(imgId)
+			galleryImgs.push(img)
+		}
+
+		// draw art gallery background
+		const pattern = cvs.ctx.createPattern(bgImg, 'repeat-x')
+		cvs.ctx.fillStyle = pattern
+		cvs.ctx.fillRect(x, y, 600, 380)
+
+		// add gallery art images and frames
+		const width = galleryImgs[0].width
+		const height = galleryImgs[0].height
+		const buffer = 35
+		const offset = 20
+		const buffOff = buffer + offset
+		cvs.ctx.drawImage(galleryImgs[0], x + buffOff, y + buffOff)
+		cvs.ctx.drawImage(frameImg, x + buffer, y + buffer)
+
+		cvs.ctx.drawImage(galleryImgs[1], x + offset + (buffer * 2) + width, y + buffOff)
+		cvs.ctx.drawImage(frameImg, x + (buffer * 2) + width, y + buffer)
+
+		cvs.ctx.drawImage(galleryImgs[2], x + offset + (buffer * 3) + (width * 2), y + buffOff)
+		cvs.ctx.drawImage(frameImg, x + (buffer * 3) + (width * 2), y + buffer)
+
+		cvs.ctx.drawImage(galleryImgs[3], x + offset + (buffer * 4) + (width * 3), y + buffOff)
+		cvs.ctx.drawImage(frameImg, x + (buffer * 4) + (width * 3), y + buffer)
+
+		cvs.ctx.drawImage(galleryImgs[4], x + buffOff, y + offset + (buffer * 2) + height)
+		cvs.ctx.drawImage(frameImg, x + buffer, y + (buffer * 2) + height)
+
+		cvs.ctx.drawImage(galleryImgs[5], x + offset + (buffer * 2) + width, y + offset + (buffer * 2) + height)
+		cvs.ctx.drawImage(frameImg, x + (buffer * 2) + width, y + (buffer * 2) + height)
+
+		cvs.ctx.drawImage(galleryImgs[6], x + offset + (buffer * 3) + (width * 2), y + offset + (buffer * 2) + height)
+		cvs.ctx.drawImage(frameImg, x + (buffer * 3) + (width * 2), y + (buffer * 2) + height)
+
+		cvs.ctx.drawImage(galleryImgs[7], x + offset + (buffer * 4) + (width * 3), y + offset + (buffer * 2) + height)
+		cvs.ctx.drawImage(frameImg, x + (buffer * 4) + (width * 3), y + (buffer * 2) + height)
 	},
 
 	drawingImages: false,
