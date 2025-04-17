@@ -2,6 +2,7 @@
  * imagesAndTransformations.mjs
  */
 
+import { calculateRectCenter } from "../modules/math.mjs"
 import { gallerize } from "../modules/render.mjs"
 
 const imagesAndTransformations = {
@@ -221,7 +222,49 @@ const imagesAndTransformations = {
 	},
 
 	drawRotating: function (cvs) {
+		/**
+		 * rotating
+		 *
+		 * rotate(angle)
+		 * 	- transformation method
+		 * 	- rotate canvas around the current origin
+		 *  - rotates the canvas clockwise around the current angle number of radians
+		 *  - rotation center is always canvas origin, use translate to change center
+		 *
+		 * note:
+		 * 	angles are in radians, not degrees.
+		 *  - radians = (Math.PI/180) * degrees
+		 */
 
+		// rotate example
+		let x = 369
+		let y = 869
+		cvs.ctx.save()
+
+		cvs.ctx.translate(x, y)
+		cvs.ctx.fillStyle = 'rgb(252, 133, 163)'
+		cvs.ctx.fillRect(30, 30, 50, 50)
+		// rotate around new canvas origin
+		cvs.ctx.rotate((Math.PI / 180) * 25)
+		cvs.ctx.fillStyle = 'rgb(225, 109, 248)'
+		cvs.ctx.fillRect(30, 30, 50, 50)
+
+		cvs.ctx.restore()
+		cvs.ctx.save()
+
+		cvs.ctx.translate(x, y)
+		cvs.ctx.fillStyle = 'rgb(252, 133, 163)'
+		cvs.ctx.fillRect(100, 30, 50, 50)
+		// translate to rect center, rotate around center, translate back
+		const center = calculateRectCenter(100, 30, 50, 50)
+		cvs.ctx.translate(center.x, center.y)
+		cvs.ctx.rotate((Math.PI / 180) * 25)
+		cvs.ctx.translate(-(center.x), -(center.y))
+		// draw rectangle rotated around center of previous rectangle
+		cvs.ctx.fillStyle = 'rgb(225, 109, 248)'
+		cvs.ctx.fillRect(100, 30, 50, 50)
+
+		cvs.ctx.restore()
 	},
 
 	drawingImages: false,
