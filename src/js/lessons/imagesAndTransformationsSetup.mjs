@@ -14,7 +14,7 @@ function drawingImagesCallback(enabled) {
 }
 
 function scalingImagesCallback(enabled) {
-	imagesAndTransformations.scaling = enabled
+	imagesAndTransformations.scalingImages = enabled
 }
 
 function slicingCallback(enabled) {
