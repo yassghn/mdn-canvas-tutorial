@@ -146,7 +146,50 @@ const imagesAndTransformations = {
 	},
 
 	drawSaveRestoreState: function (cvs) {
+		/**
+		 * save and restore state
+		 *
+		 * save()
+		 * 	- saves entire state of canvas onto a stack.
+		 *  - pushes current drawing state onto the stack
+		 * restore()
+		 * 	- restores entire state of canvas from state stack.
+		 *  - pops last pushed state off the stack
+		 *
+		 * drawing state:
+		 * 	- translations (translate, rotate, scale)
+		 *  - canvas properties/attributes
+		 *  - clipping path
+		 */
 
+		// save restore state example
+		let x = 50
+		let y = 860
+
+		// save default state
+		cvs.ctx.save()
+		// draw green rectangle
+		cvs.ctx.fillStyle = 'rgb(69, 240, 46)'
+		cvs.ctx.fillRect(x, y, 150, 150)
+		// save state (saves fillStyle)
+		cvs.ctx.save()
+		// draw black rectangle
+		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
+		cvs.ctx.fillRect(x + 15, y + 15, 120, 120)
+		cvs.ctx.save()
+		// draw grayish-blue rectangle
+		cvs.ctx.fillStyle = 'rgb(171, 196, 219)'
+		// set globalALpha
+		cvs.ctx.globalAlpha = 0.5
+		cvs.ctx.fillRect(x + 30, y + 30, 89, 89)
+		// restore state (resets globalAlpha to default, goes back to black fillStyle)
+		cvs.ctx.restore()
+		cvs.ctx.fillRect(x + 45, y + 45, 60, 60)
+		// restore state (back to green rectangle)
+		cvs.ctx.restore()
+		cvs.ctx.fillRect(x + 60, y + 60, 30, 30)
+		// restore back to default state
+		restore()
 	},
 
 	drawingImages: false,
