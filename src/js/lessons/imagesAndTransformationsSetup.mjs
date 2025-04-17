@@ -29,6 +29,10 @@ function saveRestoreStateCallback(enabled) {
 	imagesAndTransformations.saveRestoreState = enabled
 }
 
+function translatingCallback(enabled) {
+	imagesAndTransformations.translating = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -61,6 +65,11 @@ const imagesAndTransformationsSetup = {
 	// save restore state
 	saveRestoreStateInit: async function (menu) {
 		await addMenuItem('save-restore-state', 'save restore state', 'save-restore-state-check', saveRestoreStateCallback, menu)
+	},
+
+	// translating
+	translatingInit: async function (menu) {
+		await addMenuItem('translating', 'translating', 'translating-check', translatingCallback, menu)
 	}
 }
 
