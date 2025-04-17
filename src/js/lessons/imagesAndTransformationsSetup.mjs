@@ -13,7 +13,7 @@ function drawingImagesCallback(enabled) {
 	imagesAndTransformations.drawingImages = enabled
 }
 
-function scalingCallback(enabled) {
+function scalingImagesCallback(enabled) {
 	imagesAndTransformations.scaling = enabled
 }
 
@@ -46,8 +46,8 @@ const imagesAndTransformationsSetup = {
 	},
 
 	// scaling
-	scalingInit: async function (menu) {
-		await addMenuItem('scaling', 'scaling', 'scaling-check', scalingCallback, menu)
+	scalingImagesInit: async function (menu) {
+		await addMenuItem('scaling-images', 'scaling images', 'scaling-images-check', scalingImagesCallback, menu)
 		// load rhino image
 		loadScalingImage()
 	},

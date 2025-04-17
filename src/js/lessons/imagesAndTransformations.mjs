@@ -59,7 +59,7 @@ const imagesAndTransformations = {
 		cvs.ctx.stroke()
 	},
 
-	drawScaling: function (cvs) {
+	drawScalingImages: function (cvs) {
 		/**
 		 * scaling
 		 *
@@ -268,7 +268,7 @@ const imagesAndTransformations = {
 	},
 
 	drawingImages: false,
-	scaling: false,
+	scalingImages: false,
 	slicing: false,
 	artGallery: false,
 	saveRestoreState: false,

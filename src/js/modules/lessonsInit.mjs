@@ -36,7 +36,7 @@ async function initStylesColorsAndText(menu) {
 
 async function initImagesAndTransformations(menu) {
 	await imagesAndTransformationsSetup.drawingImagesInit(menu)
-	await imagesAndTransformationsSetup.scalingInit(menu)
+	await imagesAndTransformationsSetup.scalingImagesInit(menu)
 	await imagesAndTransformationsSetup.slicingInit(menu)
 	await imagesAndTransformationsSetup.artGalleryInit(menu)
 	await imagesAndTransformationsSetup.saveRestoreStateInit(menu)

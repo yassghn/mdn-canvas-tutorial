@@ -77,7 +77,7 @@ function imagesAndTransformationsPallete(cvs) {
 		imagesAndTransformations.drawDrawingImages(cvs)
 	}
 	if (imagesAndTransformations.scaling) {
-		imagesAndTransformations.drawScaling(cvs)
+		imagesAndTransformations.drawScalingImages(cvs)
 	}
 	if (imagesAndTransformations.slicing) {
 		imagesAndTransformations.drawSlicing(cvs)
