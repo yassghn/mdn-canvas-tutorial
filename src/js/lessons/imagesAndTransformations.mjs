@@ -192,7 +192,7 @@ const imagesAndTransformations = {
 		cvs.ctx.restore()
 	},
 
-	drawSaveRestoreState: function (cvs) {
+	drawTranslating: function (cvs) {
 
 	},
 
