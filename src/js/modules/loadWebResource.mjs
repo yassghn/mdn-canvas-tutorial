@@ -29,3 +29,15 @@ export async function loadScalingImage() {
 export async function loadSlicingImage() {
 	await loadImage('/resource/canvas_picture_frame.png', 'slicing-images-frame-image')
 }
+
+export async function loadArtGalleryImages() {
+	await loadImage('resource/bg_gallery.png', 'gallery-bg-image')
+	await loadImage('resource/gallery_1.jpg', 'gallery-1-image')
+	await loadImage('resource/gallery_2.jpg', 'gallery-2-image')
+	await loadImage('resource/gallery_3.jpg', 'gallery-3-image')
+	await loadImage('resource/gallery_4.jpg', 'gallery-4-image')
+	await loadImage('resource/gallery_5.jpg', 'gallery-5-image')
+	await loadImage('resource/gallery_6.jpg', 'gallery-6-image')
+	await loadImage('resource/gallery_7.jpg', 'gallery-7-image')
+	await loadImage('resource/gallery_8.jpg', 'gallery-8-image')
+}

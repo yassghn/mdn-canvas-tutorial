@@ -3,7 +3,7 @@
  */
 
 import imagesAndTransformations from './imagesAndTransformations.mjs'
-import { loadBackdropImage, loadScalingImage, loadSlicingImage } from '../modules/loadWebResource.mjs'
+import { loadArtGalleryImages, loadBackdropImage, loadScalingImage, loadSlicingImage } from '../modules/loadWebResource.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
@@ -50,6 +50,8 @@ const imagesAndTransformationsSetup = {
 	// art gallery
 	artGalleryInit: async function (menu) {
 		await addMenuItem('art-gallery', 'art gallery', 'art-gallery-check', artGalleryCallback, menu)
+		// load gallery images
+		loadArtGalleryImages()
 	}
 }
 
