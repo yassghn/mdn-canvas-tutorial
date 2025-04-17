@@ -268,7 +268,48 @@ const imagesAndTransformations = {
 	},
 
 	drawScaling: function (cvs) {
+		/**
+		 * scaling
+		 *
+		 * scale(x, y)
+		 * 	- transformation method
+		 *  - increase or decrease units in canvas grid
+		 *  - used to scale down or enlarge shapes & bitmaps
+		 *  - scales canvas x units horizontally, y units vertically
+		 *  - values below 1.0 reduce unit size, values about 1.0 increase unit size
+		 *  - using negative numbers allows for axis mirroring
+		 *
+		 * i.e. scale(0.5, 0.5) 1 unit = .5 pixels
+		 *      scale(2.0, 2.0) 1 unit = 2 pixels
+		 *
+		 * NOTES:
+		 *  cartesian coordinate system: origin at bottom left corner
+		 *  	translate(0, canvas.height)
+		 *      scale(1, -1)
+		 */
 
+		// scale example
+		let x = 700
+		let y = 320
+		cvs.ctx.save()
+
+		// scale a simple rectangle
+		cvs.ctx.translate(x, y)
+		cvs.ctx.scale(10, 3)
+		cvs.ctx.fillStyle = 'rgb(235, 70, 106)'
+		cvs.ctx.fillRect(1, 10, 10, 10)
+
+		cvs.ctx.restore()
+		cvs.ctx.save()
+
+		// mirror text horizontally
+		cvs.ctx.translate(x, y)
+		cvs.ctx.scale(-1, 1)
+		cvs.ctx.font = '48px tahoma'
+		cvs.ctx.fillStyle = 'rgb(235, 70, 106)'
+		cvs.ctx.fillText('MDN', -110, 95)
+
+		cvs.ctx.restore()
 	},
 
 	drawingImages: false,
