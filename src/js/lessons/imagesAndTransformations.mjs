@@ -193,7 +193,31 @@ const imagesAndTransformations = {
 	},
 
 	drawTranslating: function (cvs) {
+		/**
+		 * translating
+		 *
+		 * translate(x, y)
+		 * 	- transformation method
+		 * 	- moves the canvas and its origin to a different point in the grid
+		 *  - x = horizontal distance, y = vertical distance
+		 *
+		 * note:
+		 * 	easier to save/restore state before/after translation than reversing translations
+		 */
 
+		// translate example
+		let x = 200
+		let y = 860
+		// draw 3x3 grid of squares, moving their position via transalte
+		for (let i = 0; i < 3; i++) {
+			for (let j = 0; j < 3; j++) {
+				cvs.ctx.save()
+				cvs.ctx.fillStyle = `rgb(${51 * i} ${255 - 51 * i} ${255 - 51 * (i+j)})`
+				cvs.ctx.translate(x + 10 + j * 50, y + 10 + i * 50)
+				cvs.ctx.fillRect(0, 0, 25, 25)
+				cvs.ctx.restore()
+			}
+		}
 	},
 
 	drawingImages: false,
