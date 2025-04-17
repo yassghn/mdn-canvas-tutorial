@@ -37,6 +37,10 @@ function rotatingCallback(enabled) {
 	imagesAndTransformations.rotating = enabled
 }
 
+function scalingCallback(enabled) {
+	imagesAndTransformations.scaling = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -79,6 +83,11 @@ const imagesAndTransformationsSetup = {
 	// rotating
 	rotatingInit: async function (menu) {
 		await addMenuItem('rotating', 'rotating', 'rotating-check', rotatingCallback, menu)
+	},
+
+	// scaling
+	scalingInit: async function (menu) {
+		await addMenuItem('scaling', 'scaling', 'scaling-check', scalingCallback, menu)
 	}
 }
 

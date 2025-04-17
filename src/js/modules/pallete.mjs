@@ -94,6 +94,9 @@ function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.rotating) {
 		imagesAndTransformations.drawRotating(cvs)
 	}
+	if (imagesAndTransformations.scaling) {
+		imagesAndTransformations.drawScaling(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

@@ -267,13 +267,18 @@ const imagesAndTransformations = {
 		cvs.ctx.restore()
 	},
 
+	drawScaling: function (cvs) {
+
+	},
+
 	drawingImages: false,
 	scalingImages: false,
 	slicing: false,
 	artGallery: false,
 	saveRestoreState: false,
 	translating: false,
-	rotating: false
+	rotating: false,
+	scaling: false
 
 }
 
