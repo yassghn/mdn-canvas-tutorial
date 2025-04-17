@@ -2,8 +2,8 @@
  * imagesAndTransformations.mjs
  */
 
-import { calculateRectCenter } from "../modules/math.mjs"
-import { gallerize } from "../modules/render.mjs"
+import { calculateRectCenter } from '../modules/math.mjs'
+import { gallerize } from '../modules/render.mjs'
 
 const imagesAndTransformations = {
 
