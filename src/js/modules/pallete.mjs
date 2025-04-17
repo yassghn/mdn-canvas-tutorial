@@ -85,6 +85,9 @@ function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.artGallery) {
 		imagesAndTransformations.drawArtGallery(cvs)
 	}
+	if (imagesAndTransformations.saveRestoreState) {
+		imagesAndTransformations.drawSaveRestoreState(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

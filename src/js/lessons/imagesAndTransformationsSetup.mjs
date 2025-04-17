@@ -25,6 +25,10 @@ function artGalleryCallback(enabled) {
 	imagesAndTransformations.artGallery = enabled
 }
 
+function saveRestoreStateCallback(enabled) {
+	imagesAndTransformations.saveRestoreState = enabled
+}
+
 const imagesAndTransformationsSetup = {
 	// drawing images
 	drawingImagesInit: async function (menu) {
@@ -52,6 +56,11 @@ const imagesAndTransformationsSetup = {
 		await addMenuItem('art-gallery', 'art gallery', 'art-gallery-check', artGalleryCallback, menu)
 		// load gallery images
 		loadArtGalleryImages()
+	},
+
+	// save restore state
+	saveRestoreStateInit: async function (menu) {
+		await addMenuItem('save-restore-state', 'save restore state', 'save-restore-state-check', saveRestoreStateCallback, menu)
 	}
 }
 

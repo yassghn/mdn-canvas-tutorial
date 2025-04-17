@@ -145,10 +145,15 @@ const imagesAndTransformations = {
 		gallerize(cvs, galleryImgs, frameImg, x, y, 2, 4, buffer, offset)
 	},
 
+	drawSaveRestoreState: function (cvs) {
+
+	},
+
 	drawingImages: false,
 	scaling: false,
 	slicing: false,
-	artGallery: false
+	artGallery: false,
+	saveRestoreState: false
 
 }
 
