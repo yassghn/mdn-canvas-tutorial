@@ -428,6 +428,8 @@ const stylesColorsAndText = {
 		 *    default is fully transparent black.
 		 */
 
+		cvs.ctx.save()
+
 		// shadow text
 		cvs.ctx.shadowOffsetX = 7
 		cvs.ctx.shadowOffsetY = 7
@@ -438,9 +440,7 @@ const stylesColorsAndText = {
 		cvs.ctx.fillText('MDN Canvas Tutorial', 475, 400)
 
 		// reset shadow properties
-		cvs.ctx.shadowOffsetX = 0
-		cvs.ctx.shadowOffsetY = 0
-		cvs.ctx.shadowBlur = 0
+		cvs.ctx.restore()
 	},
 
 	drawCanvasFill: function (cvs) {
@@ -486,14 +486,18 @@ const stylesColorsAndText = {
 		 *      use html elements and or svg's instead of canvas
 		 */
 
+		cvs.ctx.save()
+
 		// fill text
 		cvs.ctx.font = '48px verdana'
 		cvs.ctx.fillStyle = 'rgb(247, 163, 37)'
-		cvs.ctx.fillText('DOG 1, DOG2', 475, 450)
+		cvs.ctx.fillText('DOG 1, DOG2', 475, 460)
 
 		// stroke text
 		cvs.ctx.strokeStyle = 'rgb(247, 163, 37)'
-		cvs.ctx.strokeText('mama mia!', 475, 500)
+		cvs.ctx.strokeText('mama mia!', 475, 515)
+
+		cvs.ctx.restore()
 	},
 
 	drawStylingText: function (cvs) {
@@ -516,7 +520,9 @@ const stylesColorsAndText = {
 
 		// show example of textbaseline
 		let x = 650
-		let y = 550
+		let y = 535
+
+		cvs.ctx.save()
 
 		cvs.ctx.font = '48px verdana'
 		cvs.ctx.strokeStyle = 'rgb(62, 119, 243)'
@@ -531,6 +537,8 @@ const stylesColorsAndText = {
 		cvs.ctx.moveTo(x + 10, y)
 		cvs.ctx.lineTo(x + 290, y)
 		cvs.ctx.stroke()
+
+		cvs.ctx.restore()
 	},
 
 	drawTextMeasurement: function (cvs) {
@@ -541,6 +549,8 @@ const stylesColorsAndText = {
 		 * 	- returns a text metrics object containing: width (in pixels)
 		 */
 
+		cvs.ctx.save()
+
 		// measure text
 		cvs.ctx.font = '35px verdana'
 		cvs.ctx.strokeStyle = 'rgb(248, 73, 169)'
@@ -548,8 +558,10 @@ const stylesColorsAndText = {
 		const textMetrics = cvs.ctx.measureText(text)
 		const textWidth = `-> is ~${Math.round(textMetrics.width)}px wide`
 		const buffer = 5
-		cvs.ctx.strokeText(text, 600, 615)
-		cvs.ctx.strokeText(textWidth, 600 + textMetrics.width + buffer, 615)
+		cvs.ctx.strokeText(text, 600, 625)
+		cvs.ctx.strokeText(textWidth, 600 + textMetrics.width + buffer, 625)
+
+		cvs.ctx.restore()
 	},
 
 	colors: false,
