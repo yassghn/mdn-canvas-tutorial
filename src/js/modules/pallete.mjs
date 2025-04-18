@@ -109,11 +109,21 @@ function clippingAndAnimationsPallete(cvs) {
 	}
 }
 
+function drawPallete(cvs, callback, args) {
+	// save default canvas state before drawing lesson series
+	cvs.ctx.save()
+	// draw lesson series
+	callback(cvs, args)
+	// restore default canvas state
+	cvs.ctx.restore()
+}
+
 function pallete(cvs, lineDashOffset) {
-	basicDrawingAndShapesPallete(cvs)
-	stylesColorsAndTextPallete(cvs, lineDashOffset)
-	imagesAndTransformationsPallete(cvs)
-	clippingAndAnimationsPallete(cvs)
+	drawPallete(cvs, basicDrawingAndShapesPallete)
+	drawPallete(cvs, stylesColorsAndTextPallete)
+	drawPallete(cvs, stylesColorsAndTextPallete, lineDashOffset)
+	drawPallete(cvs, imagesAndTransformationsPallete)
+	drawPallete(cvs, clippingAndAnimationsPallete)
 }
 
 export default pallete
