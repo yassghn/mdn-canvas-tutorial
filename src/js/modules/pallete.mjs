@@ -104,7 +104,9 @@ function imagesAndTransformationsPallete(cvs) {
 }
 
 function clippingAndAnimationsPallete(cvs) {
-
+	if (clippingAndAnimations.clippingPaths) {
+		clippingAndAnimations.drawClippingPaths(cvs)
+	}
 }
 
 function pallete(cvs, lineDashOffset) {

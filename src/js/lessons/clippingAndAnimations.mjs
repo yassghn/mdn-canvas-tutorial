@@ -3,6 +3,11 @@
  */
 
 const clippingAndAnimations = {
+	drawClippingPaths: function (cvs) {
+
+	},
+
+	clippingPaths: false
 
 }
 

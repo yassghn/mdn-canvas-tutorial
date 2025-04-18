@@ -8,8 +8,15 @@ async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
 }
 
-const clippingAndAnimationsSetup = {
+function clippingPathsCallback(enabled) {
+	clippingAndAnimations.clippingPaths = enabled
+}
 
+const clippingAndAnimationsSetup = {
+	// clipping paths
+	clippingPathsInit: async function (menu) {
+		await addMenuItem('clipping-paths', 'clipping paths', 'clipping-paths-check', clippingPathsCallback, menu)
+	}
 }
 
 export default clippingAndAnimationsSetup
