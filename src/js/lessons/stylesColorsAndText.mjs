@@ -317,8 +317,8 @@ const stylesColorsAndText = {
 		cvs.ctx.strokeStyle = linearGradient2
 
 		// draw shapes
-		cvs.ctx.fillRect(25, 700, 130, 130)
-		cvs.ctx.strokeRect(65, 740, 50, 50)
+		cvs.ctx.fillRect(35, 700, 130, 130)
+		cvs.ctx.strokeRect(75, 740, 50, 50)
 
 		// radial gradients
 		// set x y coords
