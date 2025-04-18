@@ -2,10 +2,14 @@
  * lessonsInit.mjs
  */
 
-import { addBasicDrawingAndShapesMenu, addStylesColorsAndTextMenu, addImagesAndTransformationsMenu } from './lessonsMenus.mjs'
+import { addBasicDrawingAndShapesMenu,
+	 	 addStylesColorsAndTextMenu,
+		 addImagesAndTransformationsMenu,
+		 addClippingAndAnimationsMenu } from './lessonsMenus.mjs'
 import basicDrawingAndShapesSetup from '../lessons/basicDrawingAndShapesSetup.mjs'
 import stylesColorsAndTextSetup from '../lessons/stylesColorsAndTextSetup.mjs'
 import imagesAndTransformationsSetup from '../lessons/imagesAndTransformationsSetup.mjs'
+import clippingAndAnimationsSetup from '../lessons/clippingAndAnimationsSetup.mjs'
 
 // init lessons
 async function initBasicDrawingAndShapes(menu) {
@@ -46,6 +50,10 @@ async function initImagesAndTransformations(menu) {
 	await imagesAndTransformationsSetup.transformInit(menu)
 }
 
+async function initClippingAndAnimations(menu) {
+
+}
+
 async function initLessons() {
 	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu()
 	await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
@@ -53,6 +61,8 @@ async function initLessons() {
 	await initStylesColorsAndText(stylesColorsAndTextMenu)
 	const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu()
 	await initImagesAndTransformations(imagesAndTransformationsMenu)
+	const clippingAndAnimationsMenu = await addClippingAndAnimationsMenu()
+	await initClippingAndAnimations(clippingAndAnimationsMenu)
 }
 
 export default initLessons

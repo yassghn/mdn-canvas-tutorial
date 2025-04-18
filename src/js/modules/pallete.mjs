@@ -5,6 +5,7 @@
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
+import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -102,10 +103,15 @@ function imagesAndTransformationsPallete(cvs) {
 	}
 }
 
+function clippingAndAnimationsPallete(cvs) {
+
+}
+
 function pallete(cvs, lineDashOffset) {
 	basicDrawingAndShapesPallete(cvs)
 	stylesColorsAndTextPallete(cvs, lineDashOffset)
 	imagesAndTransformationsPallete(cvs)
+	clippingAndAnimationsPallete(cvs)
 }
 
 export default pallete
