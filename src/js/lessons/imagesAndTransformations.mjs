@@ -313,7 +313,57 @@ const imagesAndTransformations = {
 	},
 
 	drawTransform: function (cvs) {
+		/**
+		 * transforms
+		 *
+		 * transform(a, b, c, d, e, f)
+		 * 	- transformation method
+		 * 	- directly modify transformation matrix
+		 *  - multiplies current transformation matrix by arguments
+		 * 	- [ a c e ]
+		 *    [ b d f ]
+		 *    [ 0 0 1 ]
+		 * - if infinity is used for transformation matrix must be marked infinite
+		 *
+		 * a (m11) - horizontal scaling
+		 * b (m12) - horizontal skewing
+		 * c (m21) - vertical skewing
+		 * d (m22) - vertical scaling
+		 * e (dx)  - horizontal moving
+		 * f (dy)  - vertical moving
+		 *
+		 * setTransform(a, b, c, d, e, f)
+		 * 	- resets current transform to identity matrix, calls transform with same args
+		 *  - undoes current transformation, sets new specified transform
+		 *
+		 * resetTransform()
+		 * 	- resets current transform to identity matrix
+		 *  - setTransform(1, 0, 0, 1, 0, 0)
+		 */
 
+		// transform example
+		const x = 1250
+		const y = 450
+		cvs.ctx.save()
+
+		const sin = Math.sin(Math.PI / 6)
+		const cos = Math.cos(Math.PI / 6)
+
+		cvs.ctx.translate(x, y)
+
+		let c = 0
+		for (let i = 0; i <= 12; i++) {
+			c = Math.floor((255 / 12) * i)
+			cvs.ctx.fillStyle = `rgb(155 ${c} ${c})`
+			cvs.ctx.fillRect(0, 0, 100, 10)
+			cvs.ctx.transform(cos, sin, -sin, cos, 0, 0)
+		}
+
+		cvs.ctx.setTransform(-1, 0, 0, 1, x, y)
+		cvs.ctx.fillStyle = 'rgb(255 128 255 / 50%)'
+		cvs.ctx.fillRect(0, 50, 100, 100)
+
+		cvs.ctx.restore()
 	},
 
 	drawingImages: false,
