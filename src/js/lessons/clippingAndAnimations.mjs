@@ -57,7 +57,43 @@ const clippingAndAnimations = {
 	},
 
 	drawInverseClippingPaths: function (cvs) {
+		/**
+		 * inverse clipping paths
+		 *
+		 * no such thing as inverse clipping mask, but can define a mask that fills
+		 * the canvas (or a given portion), with a rectangle, and has a hole in it for the parts
+		 * which you want to skip.
+		 *
+		 * shapes with holes: draw holes in the opposite direction as outter shape.
+		 *
+		 * rectangles have no drawing direction, but behaves as if it is drawn clockwise.
+		 * by default, arc command also goes clockwise (but direction can be changed via final argument)
+		 */
 
+		// punching a whole in the sky
+		let x = 1250
+		let y = 650
+		cvs.ctx.save()
+
+		cvs.ctx.translate(x, y)
+		cvs.ctx.translate(75, 75)
+
+		// clipping path
+		cvs.ctx.beginPath()
+		cvs.ctx.rect(-75, -75, 150, 150)
+		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
+		cvs.ctx.clip()
+
+		// draw stars background
+		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
+		linearGradient.addColorStop(0, '#232256')
+		linearGradient.addColorStop(1, '#143778')
+		cvs.ctx.fillStyle = linearGradient
+		cvs.ctx.fillRect(-75, -75, 150, 150)
+
+		generateStars(cvs)
+
+		cvs.ctx.restore()
 	},
 
 	clippingPaths: false,
