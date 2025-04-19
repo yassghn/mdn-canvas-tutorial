@@ -37,7 +37,7 @@ import canvas from './modules/canvas.mjs'
             // start the lessons
             await initLessons()
             // start drawing
-            draw()
+            requestAnimationFrame(draw)
         } else {
             log('canvas is unsupported.')
         }
