@@ -107,6 +107,9 @@ function clippingAndAnimationsPallete(cvs) {
 	if (clippingAndAnimations.clippingPaths) {
 		clippingAndAnimations.drawClippingPaths(cvs)
 	}
+	if (clippingAndAnimations.inverseClippingPaths) {
+		clippingAndAnimations.drawInverseClippingPaths(cvs)
+	}
 }
 
 function drawPallete(cvs, callback, args) {

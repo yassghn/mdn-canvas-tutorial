@@ -56,7 +56,12 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	clippingPaths: false
+	drawInverseClippingPaths: function (cvs) {
+
+	},
+
+	clippingPaths: false,
+	inverseClippingPaths: false
 
 }
 

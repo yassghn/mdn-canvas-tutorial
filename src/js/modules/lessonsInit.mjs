@@ -52,6 +52,7 @@ async function initImagesAndTransformations(menu) {
 
 async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.clippingPathsInit(menu)
+	await clippingAndAnimationsSetup.inverseClippingPathsInit(menu)
 }
 
 async function initLessons() {
