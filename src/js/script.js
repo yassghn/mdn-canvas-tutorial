@@ -10,7 +10,7 @@ import canvas from './modules/canvas.mjs'
 (function () {
     'use strict'
 
-    const delay = 30
+    const delay = 100
     let lineDashOffset = 0
 
     function setLineDashOffset() {
@@ -23,8 +23,8 @@ import canvas from './modules/canvas.mjs'
     // draw
     function draw() {
         canvas.canvasPallete(lineDashOffset)
-        setTimeout(setLineDashOffset(), delay)
-        requestAnimationFrame(draw)
+        setLineDashOffset()
+        setTimeout(requestAnimationFrame, delay, draw)
     }
 
     // main
