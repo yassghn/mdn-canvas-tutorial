@@ -2,6 +2,8 @@
  * clipping and animations
  */
 
+import { generateStars } from '../modules/render.mjs'
+
 const clippingAndAnimations = {
 	drawClippingPaths: function (cvs) {
 		/**
@@ -49,31 +51,7 @@ const clippingAndAnimations = {
 		cvs.ctx.fillStyle = linearGradient
 		cvs.ctx.fillRect(-75, -75, 150, 150)
 
-		// generate stars
-		for (let i = 1; i < 50; i++) {
-			cvs.ctx.save()
-			cvs.ctx.fillStyle = '#fff'
-			const xpos = 75 - Math.floor(Math.random() * 150)
-			const ypos = 75 - Math.floor(Math.random() * 150)
-			cvs.ctx.translate(xpos, ypos)
-			// draw star
-			const r = Math.floor(Math.random() * 4) + 2
-			cvs.ctx.save()
-			cvs.ctx.beginPath()
-			cvs.ctx.moveTo(r, 0)
-			for (let j = 0; j < 9; j++) {
-				cvs.ctx.rotate(Math.PI / 5)
-				if (j % 2 == 0) {
-					cvs.ctx.lineTo((r / 0.525731) * 0.200811, 0)
-				} else {
-					cvs.ctx.lineTo(r, 0)
-				}
-			}
-			cvs.ctx.closePath()
-			cvs.ctx.fill()
-			cvs.ctx.restore()
-			cvs.ctx.restore()
-		}
+		generateStars(cvs)
 
 		cvs.ctx.restore()
 	},

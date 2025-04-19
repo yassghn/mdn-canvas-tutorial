@@ -41,7 +41,7 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 		// draw gallery art image frame
 		cvs.ctx.drawImage(frameImg, x, y)
 		// check for next row
-		if (((i+1) * rows) % imgs.length == 0) {
+		if (((i + 1) * rows) % imgs.length == 0) {
 			// increment row
 			row++
 		}
@@ -51,5 +51,34 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 		if (col > cols) {
 			col = 1
 		}
+	}
+}
+
+// utlity function to draw randomly positioned stars within a clipped path
+export function generateStars(cvs) {
+	// generate stars
+	for (let i = 1; i < 50; i++) {
+		cvs.ctx.save()
+		cvs.ctx.fillStyle = '#fff'
+		const xpos = 75 - Math.floor(Math.random() * 150)
+		const ypos = 75 - Math.floor(Math.random() * 150)
+		cvs.ctx.translate(xpos, ypos)
+		// draw star
+		const r = Math.floor(Math.random() * 4) + 2
+		cvs.ctx.save()
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(r, 0)
+		for (let j = 0; j < 9; j++) {
+			cvs.ctx.rotate(Math.PI / 5)
+			if (j % 2 == 0) {
+				cvs.ctx.lineTo((r / 0.525731) * 0.200811, 0)
+			} else {
+				cvs.ctx.lineTo(r, 0)
+			}
+		}
+		cvs.ctx.closePath()
+		cvs.ctx.fill()
+		cvs.ctx.restore()
+		cvs.ctx.restore()
 	}
 }
