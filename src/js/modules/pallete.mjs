@@ -110,6 +110,9 @@ function clippingAndAnimationsPallete(cvs) {
 	if (clippingAndAnimations.inverseClippingPaths) {
 		clippingAndAnimations.drawInverseClippingPaths(cvs)
 	}
+	if (clippingAndAnimations.solarSystem) {
+		clippingAndAnimations.drawSolarSystem(cvs)
+	}
 }
 
 function drawPallete(cvs, callback, args) {

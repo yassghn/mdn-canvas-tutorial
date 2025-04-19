@@ -16,6 +16,10 @@ function inverseClippingPathsCallback(enabled) {
 	clippingAndAnimations.inverseClippingPaths = enabled
 }
 
+function solarSystemCallback(enabled) {
+	clippingAndAnimations.solarSystem = enabled
+}
+
 const clippingAndAnimationsSetup = {
 	// clipping paths
 	clippingPathsInit: async function (menu) {
@@ -25,6 +29,11 @@ const clippingAndAnimationsSetup = {
 	// inverse clipping paths
 	inverseClippingPathsInit: async function (menu) {
 		await addMenuItem('inverse-clipping-paths', 'inverse clipping paths', 'inverse-clipping-paths-check', inverseClippingPathsCallback, menu)
+	},
+
+	// solar system
+	solarSystemInit: async function (menu) {
+		await addMenuItem('solar-system', 'solar system', 'solar-system-check', solarSystemCallback, menu)
 	}
 }
 

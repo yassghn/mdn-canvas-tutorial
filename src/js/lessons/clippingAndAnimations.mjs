@@ -96,8 +96,13 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
+	drawSolarSystem: function (cvs) {
+
+	},
+
 	clippingPaths: false,
-	inverseClippingPaths: false
+	inverseClippingPaths: false,
+	solarSystem: false
 
 }
 
