@@ -68,7 +68,7 @@ function addFocusEvents(elems, status) {
 	})
 }
 
-function addMenuItemClickHandler(item, callback) {
+function addMenuItemClickHandler(item, callback, cvs) {
 	const checkbox = item.children[0].querySelectorAll(selectors.toggles)[0]
 	item.children[0].addEventListener('click', (event) => {
 		// prevent two events from being fired
@@ -76,6 +76,9 @@ function addMenuItemClickHandler(item, callback) {
 		event.preventDefault()
 		// get checkbox value and send to callback
 		checkbox.checked = checkbox.checked == true ? false : true
+		// clear canvas
+		cvs.clear()
+		// set menu enabled drawing state
 		callback(checkbox.checked)
 	})
 }
@@ -221,7 +224,7 @@ function populateMenuItem(item, itemId, itemText, checkboxId) {
 	checkbox.setAttribute('name', checkboxId)
 }
 
-async function appendMenuItem(itemId, itemText, checkboxId, callback, menuId) {
+async function appendMenuItem(itemId, itemText, checkboxId, callback, menuId, cvs) {
 	if (!hasMenuItemTemplate()) {
 		await appendMenuItemTemplate()
 	}
@@ -233,7 +236,7 @@ async function appendMenuItem(itemId, itemText, checkboxId, callback, menuId) {
 	// populate menu item
 	populateMenuItem(clone, itemId, itemText, checkboxId)
 	// add click event
-	addMenuItemClickHandler(clone, callback)
+	addMenuItemClickHandler(clone, callback, cvs)
 	// append
 	parent.appendChild(clone)
 }
@@ -267,6 +270,7 @@ function enableAll(enabled, menuId) {
 function menu(menuId) {
 	const menuObj = {
 		id: menuId,
+		cvs: undefined,
 
 		status: {
 			isHidden: true
@@ -283,10 +287,11 @@ function menu(menuId) {
 		},
 
 		addMenuItem: async function (itemId, itemText, checkboxId, callback) {
-			await appendMenuItem(itemId, itemText, checkboxId, callback, this.id)
+			await appendMenuItem(itemId, itemText, checkboxId, callback, this.id, this.cvs)
 		},
 
-		init: async function () {
+		init: async function (cvs) {
+			this.cvs = cvs
 			await insertMenu(this.id)
 			initElems(this.id, this.elems)
 			createMenuEvents(this.elems, this.status)
