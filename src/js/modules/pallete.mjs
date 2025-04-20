@@ -2,7 +2,7 @@
  * pallete.mjs
  */
 
-import { clearClippingPaths, clearInverseClippingPaths } from './render.mjs'
+import { clearClippingPaths, clearInverseClippingPaths, clearLineStyles } from './render.mjs'
 import getComplexePallete from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
