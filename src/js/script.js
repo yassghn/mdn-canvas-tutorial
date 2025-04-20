@@ -11,19 +11,9 @@ import { initPallete } from './modules/pallete.mjs';
 (function () {
     'use strict'
 
-    let lineDashOffset = 0
-
-    function setLineDashOffset() {
-        lineDashOffset++
-        if (lineDashOffset > 5) {
-            lineDashOffset = 0
-        }
-    }
-
     // draw
     function draw(timestamp) {
-        canvas.canvasPallete(lineDashOffset, timestamp)
-        setLineDashOffset()
+        canvas.canvasPallete(timestamp)
         requestAnimationFrame((t) => draw(t))
     }
 
