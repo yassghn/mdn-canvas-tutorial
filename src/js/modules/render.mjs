@@ -123,3 +123,10 @@ export function clearInverseClippingPaths(xpos, ypos, cvs) {
 		cvs.ctx.restore()
 	})
 }
+
+// utility function to clear linestyles lesson
+export function clearLineStyles(xpos, ypos, cvs) {
+	clearPath(xpos, ypos, cvs, (cvs) => {
+		
+	})
+}
