@@ -82,3 +82,44 @@ export function generateStars(cvs) {
 		cvs.ctx.restore()
 	}
 }
+
+// utlity function for rendering boilerplate lesson space canvas clear
+function clearPath(xpos, ypos, cvs, lambda) {
+	cvs.ctx.save()
+	cvs.ctx.translate(xpos, ypos)
+	lambda(cvs)
+	cvs.ctx.restore()
+}
+
+// utlity function to clear clipping paths lesson canvas mask
+export function clearClippingPaths(xpos, ypos, cvs) {
+	clearPath(xpos, ypos, cvs, (cvs) => {
+		cvs.ctx.translate(75, 75)
+
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
+		cvs.ctx.clip()
+
+		// draw stars background
+		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
+		cvs.ctx.fillRect(-75, -75, 150, 150)
+	})
+}
+
+// utlity function to clear inverse clipping paths lesson canvas mask
+export function clearInverseClippingPaths(xpos, ypos, cvs) {
+	clearPath(xpos, ypos, cvs, (cvs) => {
+		cvs.ctx.translate(75, 75)
+
+		cvs.ctx.beginPath()
+		cvs.ctx.rect(-75, -75, 150, 150)
+		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
+		cvs.ctx.clip()
+
+		// draw stars background
+		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
+		cvs.ctx.fillRect(-75, -75, 150, 150)
+
+		cvs.ctx.restore()
+	})
+}
