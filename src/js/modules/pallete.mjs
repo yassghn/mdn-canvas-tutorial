@@ -134,7 +134,6 @@ export function initPallete(timestamp) {
 
 function pallete(cvs, lineDashOffset, timestamp) {
 	drawPallete(cvs, basicDrawingAndShapesPallete)
-	drawPallete(cvs, stylesColorsAndTextPallete)
 	drawPallete(cvs, stylesColorsAndTextPallete, lineDashOffset)
 	drawPallete(cvs, imagesAndTransformationsPallete)
 	drawPallete(cvs, clippingAndAnimationsPallete, timestamp)
