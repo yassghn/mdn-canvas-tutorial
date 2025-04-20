@@ -4,18 +4,18 @@
 
 import menuMgmt from './menuMgmt.mjs'
 
-export async function addBasicDrawingAndShapesMenu() {
-	return await menuMgmt.createMenu('basic-drawing-and-shapes')
+export async function addBasicDrawingAndShapesMenu(cvs) {
+	return await menuMgmt.createMenu('basic-drawing-and-shapes', cvs)
 }
 
-export async function addStylesColorsAndTextMenu() {
-	return await menuMgmt.createMenu('colors-and-text')
+export async function addStylesColorsAndTextMenu(cvs) {
+	return await menuMgmt.createMenu('colors-and-text', cvs)
 }
 
-export async function addImagesAndTransformationsMenu() {
-	return await menuMgmt.createMenu('images-and-transformations')
+export async function addImagesAndTransformationsMenu(cvs) {
+	return await menuMgmt.createMenu('images-and-transformations', cvs)
 }
 
-export async function addClippingAndAnimationsMenu() {
-	return await menuMgmt.createMenu('clipping-and-animations')
+export async function addClippingAndAnimationsMenu(cvs) {
+	return await menuMgmt.createMenu('clipping-and-animations', cvs)
 }
