@@ -129,3 +129,11 @@ export function clearLineStyles(xpos, ypos, cvs) {
 		cvs.ctx.fillRect(0, 0, 700, 401)
 	})
 }
+
+// utility function clear shadows lesson
+export function clearShadows(xpos, ypos, cvs) {
+	clearPath(xpos, ypos, cvs, (cvs) => {
+		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
+		cvs.ctx.fillRect(0, 0, 195, 31)
+	})
+}

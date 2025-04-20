@@ -2,7 +2,7 @@
  * pallete.mjs
  */
 
-import { clearClippingPaths, clearInverseClippingPaths, clearLineStyles } from './render.mjs'
+import { clearClippingPaths, clearInverseClippingPaths, clearLineStyles, clearShadows } from './render.mjs'
 import getComplexePallete from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
@@ -13,6 +13,7 @@ let previousTimestamp = 0
 let clippingPathsPallete = undefined
 let inverseClippingPathsPallete = undefined
 let lineStylesPallete = undefined
+let shadowsPallete = undefined
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -61,9 +62,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
-	if (stylesColorsAndText.shadows) {
-		stylesColorsAndText.drawShadows(cvs)
-	}
+	shadowsPallete.draw(stylesColorsAndText.shadows, cvs)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
@@ -128,6 +127,7 @@ function drawPallete(cvs, callback, timestamp) {
 export function initPallete(timestamp) {
 	previousTimestamp = timestamp
 	lineStylesPallete = getComplexePallete(700, 0, stylesColorsAndText.drawLineStyles, clearLineStyles, true)
+	shadowsPallete = getComplexePallete(475, 380, stylesColorsAndText.drawShadows, clearShadows, true)
 	clippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawClippingPaths, clearClippingPaths)
 	inverseClippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawInverseClippingPaths, clearInverseClippingPaths)
 }
