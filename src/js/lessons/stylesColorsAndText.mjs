@@ -2,6 +2,10 @@
  * stylesColorsAndText.mjs
  */
 
+const delay = 30
+let lineDashOffset = 0
+let lineStylesLastDraw = 0
+
 const stylesColorsAndText = {
 	drawColors: function (cvs) {
 		/**
@@ -104,7 +108,7 @@ const stylesColorsAndText = {
 		}
 	},
 
-	drawLineStyles: function (cvs, lineDashOffset) {
+	drawLineStyles: function (cvs, previousTimestamp, timestamp) {
 		/**
 		 * lines have several properties which style them
 		 *
@@ -267,15 +271,19 @@ const stylesColorsAndText = {
 		 * 	- this property determines where to begin the pattern
 		 */
 
-		// create "marching ants" effect
-		cvs.ctx.clearRect(750, 15, 100, 100)
-		cvs.ctx.setLineDash([4, 2])
-		cvs.ctx.lineDashOffset = -lineDashOffset
-		cvs.ctx.strokeRect(750, 15, 100, 100)
+		if (timestamp == previousTimestamp || timestamp - lineStylesLastDraw >= delay) {
+			// create "marching ants" effect
+			//cvs.ctx.clearRect(750, 15, 100, 100)
+			cvs.ctx.setLineDash([4, 2])
+			cvs.ctx.lineDashOffset = -lineDashOffset
+			cvs.ctx.strokeRect(750, 15, 100, 100)
+			lineDashOffset++
+			lineStylesLastDraw = timestamp
 
-		// reset linedash and offset
-		cvs.ctx.setLineDash([])
-		cvs.ctx.lineDashOffset = 0
+			// reset linedash and offset
+			cvs.ctx.setLineDash([])
+			cvs.ctx.lineDashOffset = 0
+		}
 	},
 
 	drawGradients: function (cvs) {
