@@ -126,12 +126,19 @@ function drawPallete(cvs, callback, args) {
 	cvs.ctx.restore()
 }
 
-function pallete(cvs, lineDashOffset) {
+export function initPallete(timestamp) {
+	previousTimestamp = timestamp
+	clippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawClippingPaths, clearClippingPaths)
+	inverseClippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawInverseClippingPaths, clearInverseClippingPaths)
+}
+
+function pallete(cvs, lineDashOffset, timestamp) {
 	drawPallete(cvs, basicDrawingAndShapesPallete)
 	drawPallete(cvs, stylesColorsAndTextPallete)
 	drawPallete(cvs, stylesColorsAndTextPallete, lineDashOffset)
 	drawPallete(cvs, imagesAndTransformationsPallete)
-	drawPallete(cvs, clippingAndAnimationsPallete)
+	drawPallete(cvs, clippingAndAnimationsPallete, timestamp)
+	previousTimestamp = timestamp
 }
 
 export default pallete
