@@ -100,7 +100,7 @@ export function clearClippingPaths(xpos, ypos, cvs) {
 		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
 		cvs.ctx.clip()
 
-		// draw stars background
+		// clear masked shape background
 		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
 		cvs.ctx.fillRect(-75, -75, 150, 150)
 	})
@@ -116,7 +116,7 @@ export function clearInverseClippingPaths(xpos, ypos, cvs) {
 		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
 		cvs.ctx.clip()
 
-		// draw stars background
+		// clear masked shape background
 		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
 		cvs.ctx.fillRect(-75, -75, 150, 150)
 	})
