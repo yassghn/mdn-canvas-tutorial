@@ -55,11 +55,11 @@ const canvas = {
 		clearCanvas()
 	},
 
-	canvasPallete: function (lineDashOffset, timestamp) {
+	canvasPallete: function (timestamp) {
 		// clear canvas
 		//clearCanvas()
 		// draw menu enabled lessons
-		pallete(cvs, lineDashOffset, timestamp)
+		pallete(cvs, timestamp)
 	}
 }
 

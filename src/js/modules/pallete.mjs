@@ -46,7 +46,7 @@ function basicDrawingAndShapesPallete(cvs) {
 	}
 }
 
-function stylesColorsAndTextPallete(cvs, lineDashOffset) {
+function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.colors) {
 		stylesColorsAndText.drawColors(cvs)
 	}
@@ -54,7 +54,7 @@ function stylesColorsAndTextPallete(cvs, lineDashOffset) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
 	if (stylesColorsAndText.lineStyles) {
-		stylesColorsAndText.drawLineStyles(cvs, lineDashOffset)
+		stylesColorsAndText.drawLineStyles(cvs, timestamp)
 	}
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
@@ -117,11 +117,11 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	}
 }
 
-function drawPallete(cvs, callback, args) {
+function drawPallete(cvs, callback, timestamp) {
 	// save default canvas state before drawing lesson series
 	cvs.ctx.save()
 	// draw lesson series
-	callback(cvs, args)
+	callback(cvs, timestamp)
 	// restore default canvas state
 	cvs.ctx.restore()
 }
@@ -132,9 +132,9 @@ export function initPallete(timestamp) {
 	inverseClippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawInverseClippingPaths, clearInverseClippingPaths)
 }
 
-function pallete(cvs, lineDashOffset, timestamp) {
+function pallete(cvs, timestamp) {
 	drawPallete(cvs, basicDrawingAndShapesPallete)
-	drawPallete(cvs, stylesColorsAndTextPallete, lineDashOffset)
+	drawPallete(cvs, stylesColorsAndTextPallete, timestamp)
 	drawPallete(cvs, imagesAndTransformationsPallete)
 	drawPallete(cvs, clippingAndAnimationsPallete, timestamp)
 	previousTimestamp = timestamp
