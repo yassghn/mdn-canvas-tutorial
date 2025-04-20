@@ -2,10 +2,16 @@
  * pallete.mjs
  */
 
+import { clearClippingPaths, clearInverseClippingPaths } from './render.mjs'
+import getComplexePallete from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
+
+let previousTimestamp = 0
+let clippingPathsPallete = undefined
+let inverseClippingPathsPallete = undefined
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -103,13 +109,9 @@ function imagesAndTransformationsPallete(cvs) {
 	}
 }
 
-function clippingAndAnimationsPallete(cvs) {
-	if (clippingAndAnimations.clippingPaths) {
-		clippingAndAnimations.drawClippingPaths(cvs)
-	}
-	if (clippingAndAnimations.inverseClippingPaths) {
-		clippingAndAnimations.drawInverseClippingPaths(cvs)
-	}
+function clippingAndAnimationsPallete(cvs, timestamp) {
+	clippingPathsPallete.draw(clippingAndAnimations.clippingPaths, cvs, previousTimestamp, timestamp)
+	inverseClippingPathsPallete.draw(clippingAndAnimations.inverseClippingPaths, cvs, previousTimestamp, timestamp)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
