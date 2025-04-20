@@ -12,10 +12,10 @@ async function addDefaultEnabledAll(menu) {
 }
 
 const menuMgmt = {
-	createMenu: async function (menuId) {
+	createMenu: async function (menuId, cvs) {
 		// create menu
 		const newMenu = menu(menuId)
-		await newMenu.init()
+		await newMenu.init(cvs)
 		// add default enable all menu item
 		await addDefaultEnabledAll(newMenu)
 		// return new menu
