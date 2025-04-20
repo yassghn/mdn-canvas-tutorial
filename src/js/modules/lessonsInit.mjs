@@ -56,14 +56,14 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.solarSystemInit(menu)
 }
 
-async function initLessons() {
-	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu()
+async function initLessons(cvs) {
+	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu(cvs)
 	await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
-	const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu()
+	const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu(cvs)
 	await initStylesColorsAndText(stylesColorsAndTextMenu)
-	const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu()
+	const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu(cvs)
 	await initImagesAndTransformations(imagesAndTransformationsMenu)
-	const clippingAndAnimationsMenu = await addClippingAndAnimationsMenu()
+	const clippingAndAnimationsMenu = await addClippingAndAnimationsMenu(cvs)
 	await initClippingAndAnimations(clippingAndAnimationsMenu)
 }
 
