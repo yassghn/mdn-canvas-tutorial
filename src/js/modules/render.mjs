@@ -119,14 +119,13 @@ export function clearInverseClippingPaths(xpos, ypos, cvs) {
 		// draw stars background
 		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
 		cvs.ctx.fillRect(-75, -75, 150, 150)
-
-		cvs.ctx.restore()
 	})
 }
 
 // utility function to clear linestyles lesson
 export function clearLineStyles(xpos, ypos, cvs) {
 	clearPath(xpos, ypos, cvs, (cvs) => {
-		
+		cvs.ctx.fillStyle = `rgb(0, 0, 0)`
+		cvs.ctx.fillRect(0, 0, 700, 401)
 	})
 }
