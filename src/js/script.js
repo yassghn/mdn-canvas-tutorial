@@ -21,10 +21,10 @@ import { initPallete } from './modules/pallete.mjs';
     }
 
     // draw
-    function draw() {
-        canvas.canvasPallete(lineDashOffset)
+    function draw(timestamp) {
+        canvas.canvasPallete(lineDashOffset, timestamp)
         setLineDashOffset()
-        setTimeout(requestAnimationFrame, delay, draw)
+        requestAnimationFrame((t) => draw(t))
     }
 
     // main
