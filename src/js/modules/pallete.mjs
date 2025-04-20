@@ -12,6 +12,7 @@ import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 let previousTimestamp = 0
 let clippingPathsPallete = undefined
 let inverseClippingPathsPallete = undefined
+let lineStylesPallete = undefined
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -53,9 +54,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.transparency) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
-	if (stylesColorsAndText.lineStyles) {
-		stylesColorsAndText.drawLineStyles(cvs, timestamp)
-	}
+	lineStylesPallete.draw(stylesColorsAndText.lineStyles, cvs, previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
 	}
@@ -128,6 +127,7 @@ function drawPallete(cvs, callback, timestamp) {
 
 export function initPallete(timestamp) {
 	previousTimestamp = timestamp
+	lineStylesPallete = getComplexePallete(700, 0, stylesColorsAndText.drawLineStyles, clearLineStyles, true)
 	clippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawClippingPaths, clearClippingPaths)
 	inverseClippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawInverseClippingPaths, clearInverseClippingPaths)
 }
