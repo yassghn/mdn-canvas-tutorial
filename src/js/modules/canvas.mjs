@@ -51,11 +51,15 @@ const canvas = {
 		cvs.ctx = cvs.canvas.getContext('2d')
 	},
 
-	canvasPallete: function (lineDashOffset) {
-		// clear canvas
+	clear: function() {
 		clearCanvas()
+	},
+
+	canvasPallete: function (lineDashOffset, timestamp) {
+		// clear canvas
+		//clearCanvas()
 		// draw menu enabled lessons
-		pallete(cvs, lineDashOffset)
+		pallete(cvs, lineDashOffset, timestamp)
 	}
 }
 
