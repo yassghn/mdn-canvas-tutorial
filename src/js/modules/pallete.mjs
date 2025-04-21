@@ -2,7 +2,7 @@
  * pallete.mjs
  */
 
-import { clearClippingPaths, clearInverseClippingPaths, clearLineStyles, clearShadows } from './render.mjs'
+import { clearClippingPaths, clearInverseClippingPaths, clearLineStyles, clearShadows, clearSolarSystem } from './render.mjs'
 import getComplexePallete from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
@@ -14,6 +14,7 @@ let clippingPathsPallete = undefined
 let inverseClippingPathsPallete = undefined
 let lineStylesPallete = undefined
 let shadowsPallete = undefined
+let solarSystemPallete = undefined
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -110,9 +111,7 @@ function imagesAndTransformationsPallete(cvs) {
 function clippingAndAnimationsPallete(cvs, timestamp) {
 	clippingPathsPallete.draw(clippingAndAnimations.clippingPaths, cvs, previousTimestamp, timestamp)
 	inverseClippingPathsPallete.draw(clippingAndAnimations.inverseClippingPaths, cvs, previousTimestamp, timestamp)
-	if (clippingAndAnimations.solarSystem) {
-		clippingAndAnimations.drawSolarSystem(cvs)
-	}
+	solarSystemPallete.draw(clippingAndAnimations.solarSystem, cvs, previousTimestamp, timestamp)
 }
 
 function drawPallete(cvs, callback, timestamp) {
@@ -130,6 +129,7 @@ export function initPallete(timestamp) {
 	shadowsPallete = getComplexePallete(475, 380, stylesColorsAndText.drawShadows, clearShadows)
 	clippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawClippingPaths, clearClippingPaths)
 	inverseClippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawInverseClippingPaths, clearInverseClippingPaths)
+	solarSystemPallete = getComplexePallete(1450, 650, clippingAndAnimations.drawSolarSystem, clearSolarSystem, true)
 }
 
 function pallete(cvs, timestamp) {
