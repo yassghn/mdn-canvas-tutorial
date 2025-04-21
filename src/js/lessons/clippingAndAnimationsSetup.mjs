@@ -2,6 +2,7 @@
  * clippingAndAnimationsSetup.mjs
  */
 
+import { loadSolarSystemImages } from '../modules/loadWebResource.mjs'
 import clippingAndAnimations from './clippingAndAnimations.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
@@ -34,6 +35,8 @@ const clippingAndAnimationsSetup = {
 	// solar system
 	solarSystemInit: async function (menu) {
 		await addMenuItem('solar-system', 'solar system', 'solar-system-check', solarSystemCallback, menu)
+		// load solar system images
+		await loadSolarSystemImages()
 	}
 }
 
