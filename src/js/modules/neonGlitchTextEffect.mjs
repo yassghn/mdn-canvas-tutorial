@@ -3,17 +3,17 @@
  */
 
 function incrementalShadowProps(props) {
-	if (props.shadowOffset <= 10) {
+	if (props.shadowOffset < 10) {
 		props.shadowOffset++
 	} else {
 		props.shadowPropsUp = false
 	}
-	if (props.shadowBlur <= 2) {
+	if (props.shadowBlur < 3) {
 		props.shadowBlur++
 	} else {
 		props.shadowBlur = 1
 	}
-	if (props.shadowTransparency <= 50) {
+	if (props.shadowTransparency < 50) {
 		props.shadowTransparency += 5
 	}
 }
@@ -24,12 +24,12 @@ function decrementalShadowProps(props) {
 	} else {
 		props.shadowPropsUp = true
 	}
-	if (props.shadowBlur <= 1) {
+	if (props.shadowBlur > 0) {
 		props.shadowBlur--
 	} else {
 		props.shadowBlur = 2
 	}
-	if (props.shadowTransparency <= 50) {
+	if (props.shadowTransparency > 0) {
 		props.shadowTransparency -= 5
 	}
 }
