@@ -176,9 +176,14 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
+	drawClock: function (cvs) {
+
+	},
+
 	clippingPaths: false,
 	inverseClippingPaths: false,
-	solarSystem: false
+	solarSystem: false,
+	clock: false
 
 }
 

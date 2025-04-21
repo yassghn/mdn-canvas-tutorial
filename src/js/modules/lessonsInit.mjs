@@ -54,6 +54,7 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.clippingPathsInit(menu)
 	await clippingAndAnimationsSetup.inverseClippingPathsInit(menu)
 	await clippingAndAnimationsSetup.solarSystemInit(menu)
+	await clippingAndAnimationsSetup.clockInit(menu)
 }
 
 async function initLessons(cvs) {

@@ -21,6 +21,10 @@ function solarSystemCallback(enabled) {
 	clippingAndAnimations.solarSystem = enabled
 }
 
+function clockCallback(enabled) {
+	clippingAndAnimations.clock = enabled
+}
+
 const clippingAndAnimationsSetup = {
 	// clipping paths
 	clippingPathsInit: async function (menu) {
@@ -37,6 +41,11 @@ const clippingAndAnimationsSetup = {
 		await addMenuItem('solar-system', 'solar system', 'solar-system-check', solarSystemCallback, menu)
 		// load solar system images
 		await loadSolarSystemImages()
+	},
+
+	// clock
+	clockInit: async function (menu) {
+		await addMenuItem('clock', 'clock', 'clock-check', clockCallback, menu)
 	}
 }
 

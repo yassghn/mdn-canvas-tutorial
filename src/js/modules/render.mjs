@@ -144,3 +144,10 @@ export function clearSolarSystem(xpos, ypos, cvs) {
 		cvs.ctx.clearRect(0, 0, 300, 300)
 	})
 }
+
+// utility function to clear clock lesson
+export function clearClock(xpos, ypos, cvs) {
+	clearPath(xpos, ypos, cvs, (cvs) => {
+
+	})
+}
