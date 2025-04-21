@@ -62,7 +62,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
-	shadowsPallete.draw(stylesColorsAndText.shadows, cvs)
+	shadowsPallete.draw(stylesColorsAndText.shadows, cvs, previousTimestamp, timestamp)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
