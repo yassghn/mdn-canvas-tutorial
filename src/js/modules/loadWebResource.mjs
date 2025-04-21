@@ -41,3 +41,9 @@ export async function loadArtGalleryImages() {
 	await loadImage('resource/gallery_7.jpg', 'gallery-7-image')
 	await loadImage('resource/gallery_8.jpg', 'gallery-8-image')
 }
+
+export async function loadSolarSystemImages() {
+	await loadImage('resource/canvas_sun.png', 'canvas-sun-image')
+	await loadImage('resource/canvas_earth.png', 'canvas-earth-image')
+	await loadImage('resource/canvas_moon.png', 'canvas-moon-image')
+}
