@@ -112,7 +112,68 @@ const clippingAndAnimations = {
 	},
 
 	drawSolarSystem: function (cvs) {
+		/**
+		 * basic animations
+		 *
+		 * simplistic outline:
+		 * 	1. clear canvas. clearRect or masking.
+		 *  2. save canvas state
+		 *  3. draw animated shapes
+		 *  4. restore canvas state
+		 *
+		 * controlling an animation:
+		 * 	- animation speed is affected by computer hardware
+		 *  - setInterval/setTimeout can be used to delay functions
+		 *  - requestAnimationFrame tells browser to update animation before next repaint
+		 */
 
+		// animated solar system
+		const x = 1450
+		const y = 650
+		cvs.ctx.save()
+		cvs.ctx.translate(x, y)
+
+		// get images
+		const sunImage = document.getElementById('canvas-sun-image')
+		const earthImage = document.getElementById('canvas-earth-image')
+		const moonImage = document.getElementById('canvas-moon-image')
+
+		// set properties
+		cvs.ctx.globalCompositeOperation = 'destination-over'
+		cvs.ctx.fillStyle = 'rgb(0 0 0 / 40%)'
+		cvs.ctx.strokeStyle = 'rgb(0 153 255 / 40%)'
+		cvs.ctx.save()
+		cvs.ctx.translate(150, 150)
+
+		// draw earth
+		const time = new Date()
+		const earthRotA = ((2 * Math.PI) / 60) * time.getSeconds()
+		const earthRotB = ((2 * Math.PI) / 60000) * time.getMilliseconds()
+		cvs.ctx.rotate(earthRotA + earthRotB)
+		cvs.ctx.translate(105, 0)
+		// earth shadow
+		cvs.ctx.fillRect(0, -12, 40, 24)
+		cvs.ctx.drawImage(earthImage, -12, -12)
+
+		// draw moon
+		cvs.ctx.save()
+		const moonRotA = ((2 * Math.PI) / 6) * time.getSeconds()
+		const moonRotB = ((2 * Math.PI) / 6000) * time.getMilliseconds()
+		cvs.ctx.rotate(moonRotA + moonRotB)
+		cvs.ctx.translate(0, 28.5)
+		cvs.ctx.drawImage(moonImage, -3.5, -3.5)
+
+		cvs.ctx.restore()
+		cvs.ctx.restore()
+
+		// draw sun
+		cvs.ctx.beginPath()
+		// earth orbit
+		cvs.ctx.arc(150, 150, 105, 0, Math.PI * 2, false)
+		cvs.ctx.stroke()
+		cvs.ctx.drawImage(sunImage, 0, 0, 300, 300)
+
+		cvs.ctx.restore()
 	},
 
 	clippingPaths: false,
