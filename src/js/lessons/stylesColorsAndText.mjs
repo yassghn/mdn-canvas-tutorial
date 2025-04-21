@@ -2,9 +2,14 @@
  * stylesColorsAndText.mjs
  */
 
-const delay = 30
+import effect from '../modules/effect.mjs'
+
+const delay = 15
+const shadowDelay = 122
+const textEffect = effect.neonGlitchText()
 let lineDashOffset = 0
 let lineStylesLastDraw = 0
+let shadowsLastDraw = 0
 
 const stylesColorsAndText = {
 	drawColors: function (cvs) {
@@ -418,7 +423,7 @@ const stylesColorsAndText = {
 		cvs.ctx.fillRect(15, 189, 150, 150)
 	},
 
-	drawShadows: function (cvs) {
+	drawShadows: function (cvs, previousTimestamp, timestamp) {
 		/**
 		 * creating shadows is done with properties
 		 *
@@ -436,16 +441,37 @@ const stylesColorsAndText = {
 		 *    default is fully transparent black.
 		 */
 
+		let x = 475
+		let y = 400
 		cvs.ctx.save()
+		cvs.ctx.translate(x, y)
 
 		// shadow text
-		cvs.ctx.shadowOffsetX = 7
-		cvs.ctx.shadowOffsetY = 7
-		cvs.ctx.shadowBlur = 3
-		cvs.ctx.shadowColor = 'rgb(50 233 187 / 50%)'
-		cvs.ctx.font = '20px Tahoma'
-		cvs.ctx.fillStyle = 'rgb(255, 255, 255)'
-		cvs.ctx.fillText('MDN Canvas Tutorial', 475, 400)
+		const text = 'MDN Canvas Tutorial'
+		const textColor = 'rgb(255, 255, 255)'
+		const font = '20px Tahoma'
+		const shadowColor = 'rgb(50 233 187)'
+		textEffect.shadowColor = shadowColor
+		textEffect.text = text
+		textEffect.textColor = textColor
+		textEffect.font = font
+		
+		if (timestamp == previousTimestamp || timestamp - shadowsLastDraw >= shadowDelay) {
+			textEffect.setProps()
+
+			cvs.ctx.save()
+			cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
+			cvs.ctx.fillRect(-5, -20, 205, 40)
+			cvs.ctx.restore()
+
+			shadowsLastDraw = timestamp
+		}
+
+		textEffect.render(cvs.ctx)
+
+		cvs.ctx.font = font
+		cvs.ctx.fillStyle = textColor
+		cvs.ctx.fillText(text, 0, 0)
 
 		// reset shadow properties
 		cvs.ctx.restore()
