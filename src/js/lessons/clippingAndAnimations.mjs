@@ -35,23 +35,23 @@ const clippingAndAnimations = {
 		cvs.ctx.save()
 		cvs.ctx.translate(x, y)
 
-			//cvs.ctx.fillRect(0, 0, 150, 150)
-			// create background square
-			cvs.ctx.translate(75, 75)
-	
-			// create a circular clipping path
-			cvs.ctx.beginPath()
-			cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
-			cvs.ctx.clip()
+		//cvs.ctx.fillRect(0, 0, 150, 150)
+		// create background square
+		cvs.ctx.translate(75, 75)
 
-			// draw stars background
-			const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
-			linearGradient.addColorStop(0, '#232256')
-			linearGradient.addColorStop(1, '#143778')
-			cvs.ctx.fillStyle = linearGradient
-			cvs.ctx.fillRect(-75, -75, 150, 150)
+		// create a circular clipping path
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
+		cvs.ctx.clip()
 
-			generateStars(cvs)
+		// draw stars background
+		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
+		linearGradient.addColorStop(0, '#232256')
+		linearGradient.addColorStop(1, '#143778')
+		cvs.ctx.fillStyle = linearGradient
+		cvs.ctx.fillRect(-75, -75, 150, 150)
+
+		generateStars(cvs)
 
 
 		cvs.ctx.restore()
@@ -75,25 +75,25 @@ const clippingAndAnimations = {
 		cvs.ctx.save()
 		cvs.ctx.translate(x, y)
 
-			//cvs.ctx.fillRect(0, 0, 150, 150)
-			//cvs.ctx.clearRect(0, 0, 150, 150)
-			// punching a whole in the sky
-			cvs.ctx.translate(75, 75)
-	
-			// clipping path
-			cvs.ctx.beginPath()
-			cvs.ctx.rect(-75, -75, 150, 150)
-			cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
-			cvs.ctx.clip()
-	
-			// draw stars background
-			const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
-			linearGradient.addColorStop(0, '#232256')
-			linearGradient.addColorStop(1, '#143778')
-			cvs.ctx.fillStyle = linearGradient
-			cvs.ctx.fillRect(-75, -75, 150, 150)
+		//cvs.ctx.fillRect(0, 0, 150, 150)
+		//cvs.ctx.clearRect(0, 0, 150, 150)
+		// punching a whole in the sky
+		cvs.ctx.translate(75, 75)
 
-			generateStars(cvs)
+		// clipping path
+		cvs.ctx.beginPath()
+		cvs.ctx.rect(-75, -75, 150, 150)
+		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
+		cvs.ctx.clip()
+
+		// draw stars background
+		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
+		linearGradient.addColorStop(0, '#232256')
+		linearGradient.addColorStop(1, '#143778')
+		cvs.ctx.fillStyle = linearGradient
+		cvs.ctx.fillRect(-75, -75, 150, 150)
+
+		generateStars(cvs)
 
 
 		cvs.ctx.restore()
