@@ -2,7 +2,7 @@
  * effect.mjs
  */
 
-import neonGlitchTextEffectProps from "./neonGlitchTextEffect.mjs"
+import neonGlitchTextEffectProps from './neonGlitchTextEffect.mjs'
 
 const effect = {
 	neonGlitchText: function () {
