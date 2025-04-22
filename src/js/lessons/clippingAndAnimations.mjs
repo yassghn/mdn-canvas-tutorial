@@ -4,6 +4,9 @@
 
 import { generateStars } from '../modules/render.mjs'
 
+let loopingPanoramaTimestamp = 0
+let loopingPanoramaImageX = 0
+
 const clippingAndAnimations = {
 	drawClippingPaths: function (cvs, previousTimestamp, timestamp) {
 		/**
@@ -269,7 +272,50 @@ const clippingAndAnimations = {
 	},
 
 	drawLoopingPanorama: function (cvs, previousTimestamp, timestamp) {
+		// create a looping panorama
+		const x = 1060
+		const y = 15
+		const scale = .73
+		const delay = 3
+		const rectW = 775
+		const rectH = 145
+		const dx = 0.75
+		const panoramaImage = document.getElementById('looping-panorama-image')
+		const imgW = panoramaImage.width * scale
+		const imgH = panoramaImage.height * scale
 
+		cvs.ctx.save()
+		cvs.ctx.translate(x, y)
+
+		// create a masked rect to fit the panoram image into
+		cvs.ctx.lineWidth = 5
+		cvs.ctx.strokeStyle = 'rgb(206, 97, 240)'
+		cvs.ctx.rect(0, 0, rectW, rectH)
+		cvs.ctx.stroke()
+		cvs.ctx.clip()
+
+		// use timestamps to time panorama view shifts
+		if (timestamp == previousTimestamp || timestamp - loopingPanoramaTimestamp >= delay) {
+			// update timestamp
+			loopingPanoramaTimestamp = timestamp
+			// update x coord
+			loopingPanoramaImageX += dx
+		}
+
+		// x is out of bounds, reset x
+		if (loopingPanoramaImageX > rectW) {
+			loopingPanoramaImageX = -imgW + loopingPanoramaImageX
+		}
+
+		// draw additional image, filling left gap when previous draw ends
+		if (loopingPanoramaImageX > 0) {
+			cvs.ctx.drawImage(panoramaImage, -imgW + loopingPanoramaImageX, 0, imgW, imgH)
+		}
+
+		// draw image panning to the right
+		cvs.ctx.drawImage(panoramaImage, loopingPanoramaImageX, 0, imgW, imgH)
+
+		cvs.ctx.restore()
 	},
 
 	clippingPaths: false,
