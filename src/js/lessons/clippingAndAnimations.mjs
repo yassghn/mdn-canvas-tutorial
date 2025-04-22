@@ -161,7 +161,110 @@ const clippingAndAnimations = {
 	},
 
 	drawClock: function (cvs) {
+		// draw an animated clock which displays the current time
+		const x = 1325
+		const y = 875
+		const date = new Date()
+		cvs.ctx.save()
+		cvs.ctx.translate(x, y)
 
+		cvs.ctx.scale(0.4, 0.4)
+		cvs.ctx.rotate(-Math.PI / 2)
+		cvs.ctx.strokeStyle = 'black'
+		cvs.ctx.fillStyle = 'white'
+		cvs.ctx.lineWidth = 8
+		cvs.ctx.lineCap = 'round'
+		cvs.ctx.save()
+
+		// draw clock background
+		cvs.ctx.save()
+		cvs.ctx.fillStyle = 'moccasin'
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(0, 0, 132, 0, Math.PI * 2, true)
+		cvs.ctx.fill()
+		cvs.ctx.restore()
+
+		// draw hour marks
+		for (let i = 0; i < 12; i++) {
+			cvs.ctx.beginPath()
+			cvs.ctx.rotate(Math.PI / 6)
+			cvs.ctx.moveTo(100, 0)
+			cvs.ctx.lineTo(120, 0)
+			cvs.ctx.stroke()
+		}
+
+		cvs.ctx.restore()
+		cvs.ctx.save()
+
+		// draw minute marks
+		cvs.ctx.lineWidth = 5
+		for (let i = 0; i < 60; i++) {
+			if (i % 5 !== 0) {
+				cvs.ctx.beginPath()
+				cvs.ctx.moveTo(117, 0)
+				cvs.ctx.lineTo(120, 0)
+				cvs.ctx.stroke()
+			}
+			cvs.ctx.rotate(Math.PI / 30)
+		}
+
+		cvs.ctx.restore()
+
+		const sec = date.getSeconds()
+		const min = date.getMinutes()
+		const hr = date.getHours() % 12
+
+		cvs.ctx.fillStyle = 'black'
+
+		// draw hour hand
+		cvs.ctx.save()
+		cvs.ctx.lineWidth = 14
+		cvs.ctx.rotate((Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec)
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(-20, 0)
+		cvs.ctx.lineTo(80, 0)
+		cvs.ctx.stroke()
+		cvs.ctx.restore()
+
+		// draw minute hand
+		cvs.ctx.save()
+		cvs.ctx.lineWidth = 10
+		cvs.ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(-28, 0)
+		cvs.ctx.lineTo(112, 0)
+		cvs.ctx.stroke()
+		cvs.ctx.restore()
+
+		// draw seconds hand
+		cvs.ctx.save()
+		cvs.ctx.lineWidth = 6
+		cvs.ctx.strokeStyle = 'red'
+		cvs.ctx.fillStyle = 'red'
+		cvs.ctx.rotate((sec * Math.PI) / 30)
+		cvs.ctx.beginPath()
+		cvs.ctx.moveTo(-30, 0)
+		cvs.ctx.lineTo(83, 0)
+		cvs.ctx.stroke()
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(0, 0, 10, 0, Math.PI * 2, true)
+		cvs.ctx.fill()
+		cvs.ctx.beginPath()
+		cvs.ctx.arc(95, 0, 10, 0, Math.PI * 2, true)
+		cvs.ctx.stroke()
+		cvs.ctx.fillStyle = 'rgb(0 0 0 / 0%)'
+		cvs.ctx.arc(0, 0, 3, 0, Math.PI * 2, true)
+		cvs.ctx.fill()
+		cvs.ctx.restore()
+
+		// draw clock body
+		cvs.ctx.beginPath()
+		cvs.ctx.lineWidth = 14
+		cvs.ctx.strokeStyle = 'darkgreen'
+		cvs.ctx.arc(0, 0, 142, 0, Math.PI * 2, true)
+		cvs.ctx.stroke()
+
+		cvs.ctx.restore()
 	},
 
 	clippingPaths: false,
