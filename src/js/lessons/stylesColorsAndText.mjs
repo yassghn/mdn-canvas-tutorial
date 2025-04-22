@@ -456,14 +456,8 @@ const stylesColorsAndText = {
 		textEffect.textColor = textColor
 		textEffect.font = font
 		
-		if (timestamp == previousTimestamp || timestamp - shadowsLastDraw >= shadowDelay) {
+ 		if (timestamp == previousTimestamp || timestamp - shadowsLastDraw >= shadowDelay) {
 			textEffect.setProps()
-
-			cvs.ctx.save()
-			cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
-			cvs.ctx.fillRect(-5, -20, 205, 40)
-			cvs.ctx.restore()
-
 			shadowsLastDraw = timestamp
 		}
 
