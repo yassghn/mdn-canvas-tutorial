@@ -13,7 +13,7 @@ function incrementalShadowProps(props) {
 	} else {
 		props.shadowBlur = 1
 	}
-	if (props.shadowTransparency < 50) {
+	if (props.shadowTransparency < 70) {
 		props.shadowTransparency += 5
 	}
 }
@@ -29,7 +29,7 @@ function decrementalShadowProps(props) {
 	} else {
 		props.shadowBlur = 2
 	}
-	if (props.shadowTransparency > 0) {
+	if (props.shadowTransparency > 20) {
 		props.shadowTransparency -= 5
 	}
 }
@@ -47,7 +47,7 @@ function neonGlitchTextEffectProps() {
 		props: {
 			shadowOffset: 0,
 			shadowBlur: 0,
-			shadowTransparency: 0,
+			shadowTransparency: 20,
 			shadowPropsUp: true
 		},
 
