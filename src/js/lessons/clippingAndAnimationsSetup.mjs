@@ -2,7 +2,7 @@
  * clippingAndAnimationsSetup.mjs
  */
 
-import { loadSolarSystemImages } from '../modules/loadWebResource.mjs'
+import { loadLoopingPanoramaImage, loadSolarSystemImages } from '../modules/loadWebResource.mjs'
 import clippingAndAnimations from './clippingAndAnimations.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
@@ -23,6 +23,10 @@ function solarSystemCallback(enabled) {
 
 function clockCallback(enabled) {
 	clippingAndAnimations.clock = enabled
+}
+
+function loopingPanoramaCallback(enabled) {
+	clippingAndAnimations.loopingPanorama = enabled
 }
 
 const clippingAndAnimationsSetup = {
@@ -46,6 +50,13 @@ const clippingAndAnimationsSetup = {
 	// clock
 	clockInit: async function (menu) {
 		await addMenuItem('clock', 'clock', 'clock-check', clockCallback, menu)
+	},
+
+	// looping panorama
+	loopingPanoramaInit: async function (menu) {
+		await addMenuItem('looping-panorama', 'looping panorama', 'looping-panorama-check', loopingPanoramaCallback, menu)
+		// load panorama image
+		await loadLoopingPanoramaImage()
 	}
 }
 

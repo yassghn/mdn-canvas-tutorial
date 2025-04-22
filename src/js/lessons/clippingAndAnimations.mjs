@@ -268,10 +268,15 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
+	drawLoopingPanorama: function (cvs, previousTimestamp, timestamp) {
+
+	},
+
 	clippingPaths: false,
 	inverseClippingPaths: false,
 	solarSystem: false,
-	clock: false
+	clock: false,
+	loopingPanorama: false
 
 }
 

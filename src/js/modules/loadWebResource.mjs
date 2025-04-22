@@ -47,3 +47,7 @@ export async function loadSolarSystemImages() {
 	await loadImage('resource/canvas_earth.png', 'canvas-earth-image')
 	await loadImage('resource/canvas_moon.png', 'canvas-moon-image')
 }
+
+export async function loadLoopingPanoramaImage() {
+	await loadImage('resource/capitan_meadows_yosemite_national_park.jpg', 'looping-panorama-image')
+}

@@ -115,6 +115,9 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
 	clockPallete.draw(clippingAndAnimations.clock, cvs, previousTimestamp, timestamp)
+	if (clippingAndAnimations.loopingPanorama) {
+		clippingAndAnimations.drawLoopingPanorama(cvs, previousTimestamp, timestamp)
+	}
 }
 
 function drawPallete(cvs, callback, timestamp) {
