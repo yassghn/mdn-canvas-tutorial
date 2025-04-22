@@ -290,6 +290,7 @@ const clippingAndAnimations = {
 		// create a masked rect to fit the panoram image into
 		cvs.ctx.lineWidth = 5
 		cvs.ctx.strokeStyle = 'rgb(206, 97, 240)'
+		cvs.ctx.beginPath()
 		cvs.ctx.rect(0, 0, rectW, rectH)
 		cvs.ctx.stroke()
 		cvs.ctx.clip()
