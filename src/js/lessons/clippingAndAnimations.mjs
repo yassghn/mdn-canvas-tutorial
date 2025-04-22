@@ -116,6 +116,7 @@ const clippingAndAnimations = {
 		// animated solar system
 		const x = 1450
 		const y = 650
+		const time = new Date()
 		cvs.ctx.save()
 		cvs.ctx.translate(x, y)
 
@@ -135,28 +136,28 @@ const clippingAndAnimations = {
 		cvs.ctx.arc(150, 150, 105, 0, Math.PI * 2, false)
 		cvs.ctx.stroke()
 
-		//cvs.ctx.save()
-		cvs.ctx.translate(150, 150)
-
-		// draw earth
-		const time = new Date()
+		// setup earth drawing properties
 		const earthRotA = ((2 * Math.PI) / 60) * time.getSeconds()
 		const earthRotB = ((2 * Math.PI) / 60000) * time.getMilliseconds()
+		cvs.ctx.translate(150, 150)
 		cvs.ctx.rotate(earthRotA + earthRotB)
-		cvs.ctx.translate(105, 0)
-		// earth shadow
-		cvs.ctx.fillRect(0, -12, 40, 24)
-		cvs.ctx.drawImage(earthImage, -12, -12)
 
 		// draw moon
 		cvs.ctx.save()
 		const moonRotA = ((2 * Math.PI) / 6) * time.getSeconds()
 		const moonRotB = ((2 * Math.PI) / 6000) * time.getMilliseconds()
+		cvs.ctx.translate(105, 0)
 		cvs.ctx.rotate(moonRotA + moonRotB)
 		cvs.ctx.translate(0, 28.5)
 		cvs.ctx.drawImage(moonImage, -3.5, -3.5)
-
 		cvs.ctx.restore()
+
+		// draw earth
+		cvs.ctx.translate(105, 0)
+		cvs.ctx.drawImage(earthImage, -12, -12)
+		// earth shadow
+		cvs.ctx.fillRect(0, -12, 40, 24)
+
 		cvs.ctx.restore()
 	},
 
