@@ -29,6 +29,10 @@ function loopingPanoramaCallback(enabled) {
 	clippingAndAnimations.loopingPanorama = enabled
 }
 
+function mouseFollowingCallback(enabled) {
+	clippingAndAnimations.mouseFollowing = enabled
+}
+
 const clippingAndAnimationsSetup = {
 	// clipping paths
 	clippingPathsInit: async function (menu) {
@@ -57,6 +61,11 @@ const clippingAndAnimationsSetup = {
 		await addMenuItem('looping-panorama', 'looping panorama', 'looping-panorama-check', loopingPanoramaCallback, menu)
 		// load panorama image
 		await loadLoopingPanoramaImage()
+	},
+
+	// mouse following
+	mouseFollowingInit: async function (menu) {
+		await addMenuItem('mouse-following', 'mouse following', 'mouse-following-check', mouseFollowingCallback, menu)
 	}
 }
 

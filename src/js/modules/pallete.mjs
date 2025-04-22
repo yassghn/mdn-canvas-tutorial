@@ -118,6 +118,9 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	if (clippingAndAnimations.loopingPanorama) {
 		clippingAndAnimations.drawLoopingPanorama(cvs, previousTimestamp, timestamp)
 	}
+	if (clippingAndAnimations.mouseFollowing) {
+		clippingAndAnimations.drawMouseFollowing(cvs)
+	}
 }
 
 function drawPallete(cvs, callback, timestamp) {

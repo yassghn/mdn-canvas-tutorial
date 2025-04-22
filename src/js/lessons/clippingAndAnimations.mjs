@@ -336,11 +336,16 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
+	drawMouseFollowing: function (cvs) {
+
+	},
+
 	clippingPaths: false,
 	inverseClippingPaths: false,
 	solarSystem: false,
 	clock: false,
-	loopingPanorama: false
+	loopingPanorama: false,
+	mouseFollowing: false
 
 }
 

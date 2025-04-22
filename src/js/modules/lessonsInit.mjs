@@ -56,6 +56,7 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.solarSystemInit(menu)
 	await clippingAndAnimationsSetup.clockInit(menu)
 	await clippingAndAnimationsSetup.loopingPanoramaInit(menu)
+	await clippingAndAnimationsSetup.mouseFollowingInit(menu)
 }
 
 async function initLessons(cvs) {
