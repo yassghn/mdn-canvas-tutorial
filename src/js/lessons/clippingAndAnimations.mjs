@@ -127,10 +127,17 @@ const clippingAndAnimations = {
 		const moonImage = document.getElementById('canvas-moon-image')
 
 		// set properties
-		cvs.ctx.globalCompositeOperation = 'destination-over'
+		//cvs.ctx.globalCompositeOperation = 'destination-over'
 		cvs.ctx.fillStyle = 'rgb(0 0 0 / 40%)'
 		cvs.ctx.strokeStyle = 'rgb(0 153 255 / 40%)'
-		cvs.ctx.save()
+		// draw sun
+		cvs.ctx.beginPath()
+		cvs.ctx.drawImage(sunImage, 0, 0, 300, 300)
+		// earth orbit
+		cvs.ctx.arc(150, 150, 105, 0, Math.PI * 2, false)
+		cvs.ctx.stroke()
+
+		//cvs.ctx.save()
 		cvs.ctx.translate(150, 150)
 
 		// draw earth
@@ -154,14 +161,8 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 		cvs.ctx.restore()
 
-		// draw sun
-		cvs.ctx.beginPath()
-		// earth orbit
-		cvs.ctx.arc(150, 150, 105, 0, Math.PI * 2, false)
-		cvs.ctx.stroke()
-		cvs.ctx.drawImage(sunImage, 0, 0, 300, 300)
 
-		cvs.ctx.restore()
+		//cvs.ctx.restore()
 	},
 
 	drawClock: function (cvs) {
