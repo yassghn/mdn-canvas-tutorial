@@ -295,6 +295,36 @@ const clippingAndAnimations = {
 		cvs.ctx.stroke()
 		cvs.ctx.clip()
 
+		if (imgW <= rectW) {
+			// x is out of bounds, reset x
+			if (loopingPanoramaImageX > rectW) {
+				loopingPanoramaImageX = -imgW + loopingPanoramaImageX
+			}
+
+			// draw additional image, filling main left gap when previous draw ends
+			if (loopingPanoramaImageX > 0) {
+				cvs.ctx.drawImage(panoramaImage, -imgW + loopingPanoramaImageX, 0, imgW, imgH)
+			}
+
+			// stitch remainder of panorama loop
+			if (loopingPanoramaImageX - imgW > 0) {
+				// fill small gap to the left between original draw and first stich
+				cvs.ctx.drawImage(panoramaImage, -imgW * 2 + loopingPanoramaImageX, 0, imgW, imgH)
+			}
+		} else {
+			// check for x out of bounds
+			if (loopingPanoramaImageX > rectW) {
+				loopingPanoramaImageX = rectW - imgW
+			}
+			// stitch panorama
+			if (loopingPanoramaImageX > rectW - imgW) {
+				cvs.ctx.drawImage(panoramaImage, loopingPanoramaImageX - imgW + 1, 0, imgW, imgH)
+			}
+		}
+
+		// draw image panning to the right
+		cvs.ctx.drawImage(panoramaImage, loopingPanoramaImageX, 0, imgW, imgH)
+
 		// use timestamps to time panorama view shifts
 		if (timestamp == previousTimestamp || timestamp - loopingPanoramaTimestamp >= delay) {
 			// update timestamp
@@ -302,19 +332,6 @@ const clippingAndAnimations = {
 			// update x coord
 			loopingPanoramaImageX += dx
 		}
-
-		// x is out of bounds, reset x
-		if (loopingPanoramaImageX > rectW) {
-			loopingPanoramaImageX = -imgW + loopingPanoramaImageX
-		}
-
-		// draw additional image, filling left gap when previous draw ends
-		if (loopingPanoramaImageX > 0) {
-			cvs.ctx.drawImage(panoramaImage, -imgW + loopingPanoramaImageX, 0, imgW, imgH)
-		}
-
-		// draw image panning to the right
-		cvs.ctx.drawImage(panoramaImage, loopingPanoramaImageX, 0, imgW, imgH)
 
 		cvs.ctx.restore()
 	},
