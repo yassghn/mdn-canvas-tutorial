@@ -14,7 +14,6 @@ let clippingPathsPallete = undefined
 let inverseClippingPathsPallete = undefined
 let lineStylesPallete = undefined
 let shadowsPallete = undefined
-let solarSystemPallete = undefined
 let clockPallete = undefined
 
 function basicDrawingAndShapesPallete(cvs) {
