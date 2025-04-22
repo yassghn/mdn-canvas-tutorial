@@ -53,7 +53,6 @@ const clippingAndAnimations = {
 
 		generateStars(cvs)
 
-
 		cvs.ctx.restore()
 	},
 
@@ -94,7 +93,6 @@ const clippingAndAnimations = {
 		cvs.ctx.fillRect(-75, -75, 150, 150)
 
 		generateStars(cvs)
-
 
 		cvs.ctx.restore()
 	},
@@ -160,9 +158,6 @@ const clippingAndAnimations = {
 
 		cvs.ctx.restore()
 		cvs.ctx.restore()
-
-
-		//cvs.ctx.restore()
 	},
 
 	drawClock: function (cvs) {
