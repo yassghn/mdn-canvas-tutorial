@@ -54,33 +54,82 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 	}
 }
 
+function renderStar(ctx, offset, a, b, c, d, time, size) {
+	ctx.save()
+	const r = Math.floor(Math.random() * size) + 2
+	const miliMult = ((2 * Math.PI) / 60000) * time
+	const secMult = ((2 * Math.PI / 60) * time)
+	const xpos = offset - Math.floor((secMult * (time/1000)) * ((Math.PI * 2) / a) * b)
+	const ypos = offset - Math.floor((secMult * (time/1000)) * ((Math.PI * 2) / c) * d)
+	ctx.translate(-xpos, ypos)
+	// draw star
+	ctx.save()
+	ctx.fillStyle = '#fff'
+	ctx.beginPath()
+	ctx.moveTo(r, 0)
+	for (let j = 0; j < 9; j++) {
+		ctx.rotate(Math.PI / 5)
+		if (j % 2 == 0) {
+			ctx.lineTo((r / 0.525731) * 0.200811, 0)
+		} else {
+			ctx.lineTo(r, 0)
+		}
+	}
+	ctx.closePath()
+	ctx.fill()
+	ctx.restore()
+	ctx.restore()
+
+	return {x: xpos, y: ypos}
+}
+
+function renderStarTrail(ctx, xpos, ypos) {
+	ctx.save()
+
+	const linearGradient = ctx.createLinearGradient(-75, 75, -xpos, ypos)
+	linearGradient.addColorStop(0, 'rgb(255 255 255 / 25%)')
+	linearGradient.addColorStop(0.5, 'rgb(255 255 255 / 50%)')
+	linearGradient.addColorStop(0.75, 'rgb(255 255 255 / 75%)')
+	linearGradient.addColorStop(1, 'rgb(255 255 255)')
+	ctx.strokeStyle = linearGradient
+	ctx.moveTo(-75, 75)
+	ctx.lineTo(-xpos, ypos)
+	ctx.stroke()
+
+	ctx.restore()
+}
+
 // utlity function to draw randomly positioned stars within a clipped path
 export function generateStars(cvs) {
+	cvs.ctx.save()
+
 	// generate stars
+	const date = new Date()
+	// draw one shooting star
+	const coords = renderStar(cvs.ctx, 75, 55, 15, 55, 15, date.getMilliseconds(), 15)
+	// draw shooting star trail
+	renderStarTrail(cvs.ctx, coords.x, coords.y)
+	// draw shooting star wake of stars
 	for (let i = 1; i < 50; i++) {
-		cvs.ctx.save()
-		cvs.ctx.fillStyle = '#fff'
-		const xpos = 75 - Math.floor(Math.random() * 150)
-		const ypos = 75 - Math.floor(Math.random() * 150)
-		cvs.ctx.translate(xpos, ypos)
-		// draw star
-		const r = Math.floor(Math.random() * 4) + 2
-		cvs.ctx.save()
-		cvs.ctx.beginPath()
-		cvs.ctx.moveTo(r, 0)
-		for (let j = 0; j < 9; j++) {
-			cvs.ctx.rotate(Math.PI / 5)
-			if (j % 2 == 0) {
-				cvs.ctx.lineTo((r / 0.525731) * 0.200811, 0)
-			} else {
-				cvs.ctx.lineTo(r, 0)
-			}
-		}
-		cvs.ctx.closePath()
-		cvs.ctx.fill()
-		cvs.ctx.restore()
-		cvs.ctx.restore()
+		const amax = 60
+		const amin = 50
+		const bmax = 14
+		const bmin = 1
+		const cmax = 60
+		const cmin = 50
+		const dmax = 14
+		const dmin = 1
+		const a = Math.floor(Math.random() * (amax - amin) + amin)
+		const b = Math.floor(Math.random() * (bmax - bmin) + bmin)
+		const c = Math.floor(Math.random() * (cmax - cmin) + cmin)
+		const d = Math.floor(Math.random() * (dmax - dmin) + dmin)
+		const size = Math.floor(Math.random() * (7 - 2) + 2)
+		// gets really close, dmax = 15, dmin = 10
+		// renderStar(cvs.ctx, 75, 55, d, 55, d, ...)
+		renderStar(cvs.ctx, 75, a, b, c, d, date.getMilliseconds(), size)
 	}
+
+	cvs.ctx.restore()
 }
 
 // utlity function for rendering boilerplate lesson space canvas clear
