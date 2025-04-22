@@ -4,10 +4,6 @@
 
 import { generateStars } from '../modules/render.mjs'
 
-const delay = 300
-let clippingPathsLastDraw = 0
-let inverseClippingPathsLastDraw = 0
-
 const clippingAndAnimations = {
 	drawClippingPaths: function (cvs, previousTimestamp, timestamp) {
 		/**
@@ -39,8 +35,6 @@ const clippingAndAnimations = {
 		cvs.ctx.save()
 		cvs.ctx.translate(x, y)
 
-		if (timestamp == previousTimestamp || timestamp - clippingPathsLastDraw >= delay) {
-
 			//cvs.ctx.fillRect(0, 0, 150, 150)
 			// create background square
 			cvs.ctx.translate(75, 75)
@@ -59,8 +53,6 @@ const clippingAndAnimations = {
 
 			generateStars(cvs)
 
-			clippingPathsLastDraw = timestamp
-		}
 
 		cvs.ctx.restore()
 	},
@@ -83,8 +75,6 @@ const clippingAndAnimations = {
 		cvs.ctx.save()
 		cvs.ctx.translate(x, y)
 
-		if (timestamp == previousTimestamp || timestamp - inverseClippingPathsLastDraw >= delay) {
-
 			//cvs.ctx.fillRect(0, 0, 150, 150)
 			//cvs.ctx.clearRect(0, 0, 150, 150)
 			// punching a whole in the sky
@@ -105,8 +95,6 @@ const clippingAndAnimations = {
 
 			generateStars(cvs)
 
-			inverseClippingPathsLastDraw = timestamp
-		}
 
 		cvs.ctx.restore()
 	},
