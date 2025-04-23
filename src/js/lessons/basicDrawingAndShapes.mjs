@@ -175,6 +175,9 @@ const basicDrawingAndShapes = {
 		 * bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
 		 * 	- same as quadratic curve to, but specifies a second pin/pivot/bend point
 		 */
+
+		cvs.ctx.save()
+
 		// draw a quote bubble using quadratic bezier curves
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(575, 525)
@@ -186,24 +189,34 @@ const basicDrawingAndShapes = {
 		cvs.ctx.quadraticCurveTo(625, 525, 575, 525)
 		cvs.ctx.strokeStyle = 'rgb(155, 155, 155)'
 		cvs.ctx.stroke()
+
 		// add text to quote bubble
 		cvs.ctx.font = '36px tahoma'
 		cvs.ctx.lineWidth = 1
 		cvs.ctx.fillStyle = 'rgb(155,155,155)'
 		cvs.ctx.fillText('hi!', 550, 575)
+
 		// draw a heart using cubic bezier curves
-		let x = 475
-		let y = 600
+		const x = 475
+		const y = 600
+		const date = new Date()
+		// calculate scale using a pi & seconds function
+		const scaleCalc = (Math.PI / 15) * (date.getSeconds() % 2)
+		const scale = scaleCalc == 0 ? 1 : scaleCalc + 1
+		cvs.ctx.translate(x, y)
+		// animate heart by scaling
+		cvs.ctx.scale(scale, scale)
 		cvs.ctx.beginPath()
-		cvs.ctx.moveTo(x, y)
-		cvs.ctx.bezierCurveTo(x, y - 3, x - 5, y - 15, x - 25, y - 15)
-		cvs.ctx.bezierCurveTo(x - 55, y - 15, x - 55, y + 22.5, x - 55, y + 22.5)
-		cvs.ctx.bezierCurveTo(x - 55, y + 40, x - 35, y + 62, x, y + 80)
-		cvs.ctx.bezierCurveTo(x + 35, y + 62, x + 55, y + 40, x + 55, y + 22.5)
-		cvs.ctx.bezierCurveTo(x + 55, y + 22.5, x + 55, y - 15, x + 25, y - 15)
-		cvs.ctx.bezierCurveTo(x + 10, y - 15, x, y - 3, x, y)
+		cvs.ctx.bezierCurveTo(0, -3, -5, -15, -25, -15)
+		cvs.ctx.bezierCurveTo(-55, -15, -55, 22.5, -55, 22.5)
+		cvs.ctx.bezierCurveTo(-55, 40, -35, 62, 0, 80)
+		cvs.ctx.bezierCurveTo(35, 62, 55, 40, 55, 22.5)
+		cvs.ctx.bezierCurveTo(55, 22.5, 55, -15, 25, -15)
+		cvs.ctx.bezierCurveTo(10, -15, 0, -3, 0, 0)
 		cvs.ctx.fillStyle = 'rgb(255, 100, 100)'
 		cvs.ctx.fill()
+
+		cvs.ctx.restore()
 	},
 
 	// combining 2d canvas lessons
