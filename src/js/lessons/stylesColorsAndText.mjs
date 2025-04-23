@@ -281,7 +281,7 @@ const stylesColorsAndText = {
 			//cvs.ctx.clearRect(750, 15, 100, 100)
 			cvs.ctx.setLineDash([4, 2])
 			cvs.ctx.lineDashOffset = -lineDashOffset
-			cvs.ctx.strokeRect(750, 15, 100, 100)
+			cvs.ctx.strokeRect(725, 19, 100, 100)
 			lineDashOffset++
 			lineStylesLastDraw = timestamp
 

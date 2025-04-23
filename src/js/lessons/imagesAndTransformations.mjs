@@ -44,8 +44,8 @@ const imagesAndTransformations = {
 		 */
 
 		// use image as a backdrop for a small line graph
-		let x = 875
-		let y = 15
+		let x = 860
+		let y = 19
 		cvs.ctx.strokeStyle = 'rgb(0, 0, 0)'
 		// get image and draw it
 		const img = document.getElementById('drawing-images-backdrop-image')
