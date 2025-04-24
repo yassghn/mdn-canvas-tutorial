@@ -28,6 +28,7 @@ import { initPallete } from './modules/pallete.mjs'
             await initLessons(canvas)
             // get timestamp
             const timestamp = document.timeline.currentTime
+            // init pallete
             initPallete(timestamp)
             // start drawing
             requestAnimationFrame(draw)
