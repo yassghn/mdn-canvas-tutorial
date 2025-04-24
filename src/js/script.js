@@ -5,7 +5,7 @@
 import { log } from './modules/util.mjs'
 import initLessons from './modules/lessonsInit.mjs'
 import canvas from './modules/canvas.mjs'
-import { initPallete } from './modules/pallete.mjs';
+import { initPallete } from './modules/pallete.mjs'
 
 // script.js
 (function () {
