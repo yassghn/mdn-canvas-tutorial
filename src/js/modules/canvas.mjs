@@ -4,6 +4,26 @@
 
 import pallete from './pallete.mjs'
 
+/**
+ * NOTES:
+ * CanvasRenderingContext2D
+ * 	- object properties are getter/setter pairs not actual variables with values.
+ *  - implement get/set propname function bindings
+ *    	const obj = { get propname() { ... } set propname() { ... } }
+ *      console.log(obj.propname) // calls getter function for propname
+ *      obj.propname = 'value' // calls setter function for propname
+ *  - to get property names (without functions)
+ *    getProps = (object) => {
+ *       let props = [];
+ *       for (const prop in object) {
+ *         if (JSON.stringify(object[prop])) {
+ *           props.push(prop)
+ *         }
+ *       }
+ *       return props
+ *    }
+ */
+
 // canvas object
 const cvs = {
 	// canvas html element
