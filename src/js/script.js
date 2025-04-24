@@ -13,8 +13,8 @@ import { initPallete } from './modules/pallete.mjs';
 
     // draw
     function draw(timestamp) {
-        canvas.canvasPallete(timestamp)
         requestAnimationFrame((t) => draw(t))
+        canvas.canvasPallete(timestamp)
     }
 
     // main
