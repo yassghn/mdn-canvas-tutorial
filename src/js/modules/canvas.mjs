@@ -75,6 +75,10 @@ const canvas = {
 		clearCanvas()
 	},
 
+	get: function() {
+		return cvs
+	},
+
 	canvasPallete: function (timestamp) {
 		// clear canvas
 		clearCanvas()
