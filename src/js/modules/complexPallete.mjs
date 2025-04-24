@@ -11,13 +11,13 @@ function getComplexePallete(xpos, ypos, drawFunc, clearFunc, clear = false) {
 		drawCallback: drawFunc,
 		clearCallback: clearFunc,
 
-		draw: function (enabled, cvs, previousTimestamp, timestamp) {
+		draw: function (enabled, ...args) {
 			if (enabled) {
 				this.cleared = false
 				if (this.clearEveryDraw) {
 					this.clearCallback(this.x, this.y, cvs)
 				}
-				this.drawCallback(cvs, previousTimestamp, timestamp)
+				this.drawCallback(...args)
 			} else {
 				if (!this.cleared) {
 					this.cleared = true
