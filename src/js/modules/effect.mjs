@@ -2,7 +2,9 @@
  * effect.mjs
  */
 
+import ContextState from './ContextState.mjs'
 import neonGlitchTextEffectProps from './neonGlitchTextEffect.mjs'
+import scrollingTextEffect from './scrollingTextEffect.mjs'
 
 const effect = {
 	neonGlitchText: function () {
@@ -34,4 +36,39 @@ const effect = {
 	}
 }
 
-export default effect
+
+// scrolling text effect
+export function ScrollingText() {
+	this.ctxState = undefined
+	this.effect = undefined
+
+	const init = (ctx, props, text, maxWidth, startX, ypos, scrollWidth) => {
+		// set context properties
+		this.ctxState = new ContextState(ctx, props)
+		// create effect
+		this.effect = scrollingTextEffect(this.ctxState, text, maxWidth, startX, ypos, scrollWidth)
+	}
+
+	const nextDraw = () => {
+		this.effect.update()
+	}
+
+	const draw = (ctx) => {
+		ctx.fillText(this.effect.props.text, this.effect.props.x, this.effect.props.y)
+	}
+
+	this.render = () => {
+		// draw
+		this.ctxState.apply(draw)
+		// update effect properties for next draw
+		nextDraw()
+	}
+
+	this.setState = (ctx, scrollingTextProps, text, maxWidth, startXpos, ypos, scrollWidth) => {
+		// init singleton properties
+		if (!this.ctxState) {
+			init(ctx, scrollingTextProps, text, maxWidth, startXpos, ypos, scrollWidth)
+		}
+	}
+
+}
