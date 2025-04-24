@@ -8,6 +8,7 @@ import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
+import effects from './effects.mjs'
 
 let previousTimestamp = 0
 let clippingPathsPallete = undefined
@@ -15,6 +16,9 @@ let inverseClippingPathsPallete = undefined
 let lineStylesPallete = undefined
 let shadowsPallete = undefined
 let clockPallete = undefined
+const efx = effects()
+const neonGlitch = efx.text.neonGlitch()
+const scrollLeft = efx.text.leftScroll()
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -36,7 +40,7 @@ function basicDrawingAndShapesPallete(cvs) {
 		basicDrawingAndShapes.drawArcs(cvs)
 	}
 	if (basicDrawingAndShapes.bezierAndQuadraticCurves) {
-		basicDrawingAndShapes.drawBezierAndQuadraticCurves(cvs)
+		basicDrawingAndShapes.drawBezierAndQuadraticCurves(cvs, scrollLeft)
 	}
 	if (basicDrawingAndShapes.combinations) {
 		basicDrawingAndShapes.drawCombinations(cvs)
@@ -63,7 +67,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
-	shadowsPallete.draw(stylesColorsAndText.shadows, cvs, previousTimestamp, timestamp)
+	shadowsPallete.draw(stylesColorsAndText.shadows, cvs, previousTimestamp, timestamp, neonGlitch)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
