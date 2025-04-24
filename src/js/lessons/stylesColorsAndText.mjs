@@ -2,11 +2,8 @@
  * stylesColorsAndText.mjs
  */
 
-import effect from '../modules/effect.mjs'
-
 const delay = 15
 const shadowDelay = 122
-const textEffect = effect.neonGlitchText()
 let lineDashOffset = 0
 let lineStylesLastDraw = 0
 let shadowsLastDraw = 0
@@ -423,7 +420,7 @@ const stylesColorsAndText = {
 		cvs.ctx.fillRect(15, 189, 150, 150)
 	},
 
-	drawShadows: function (cvs, previousTimestamp, timestamp) {
+	drawShadows: function (cvs, previousTimestamp, timestamp, textEffect) {
 		/**
 		 * creating shadows is done with properties
 		 *
