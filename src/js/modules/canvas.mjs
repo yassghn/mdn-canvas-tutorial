@@ -26,8 +26,6 @@ import pallete from './pallete.mjs'
 
 // canvas object
 const cvs = {
-	// canvas html element
-	canvas: undefined,
 	// canvas width/height
 	width: undefined,
 	height: undefined,
@@ -37,8 +35,8 @@ const cvs = {
 
 function setCanvasDimensions() {
 	// set widths to window
-	cvs.width = (cvs.canvas.width = window.innerWidth)
-	cvs.height = (cvs.canvas.height = window.innerHeight)
+	cvs.width = (cvs.ctx.canvas.width = window.innerWidth)
+	cvs.height = (cvs.ctx.canvas.height = window.innerHeight)
 }
 
 function clearCanvas() {
@@ -55,7 +53,7 @@ const canvas = {
 
 	// check browser for canvas support
 	isCanvasSupported: function () {
-		if (cvs.canvas.getContext) {
+		if (cvs.ctx.canvas.getContext) {
 			return true
 		}
 		return false
@@ -64,11 +62,11 @@ const canvas = {
 	// configure canvas object
 	configCanvas: function () {
 		// get canvas
-		cvs.canvas = document.querySelector('#tutorial-canvas')
+		const canvas = document.querySelector('#tutorial-canvas')
+		// get canvas context
+		cvs.ctx = canvas.getContext('2d')
 		// set canvas dimentions
 		setCanvasDimensions()
-		// get canvas context
-		cvs.ctx = cvs.canvas.getContext('2d')
 	},
 
 	clear: function() {
