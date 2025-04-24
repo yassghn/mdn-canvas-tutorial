@@ -2,6 +2,7 @@
  * basicDrawingAndShapes.mjs
  */
 
+import ContextProperties from '../modules/ContextProperties.mjs'
 import { roundedRect } from '../modules/render.mjs'
 
 const basicDrawingAndShapes = {
@@ -164,7 +165,7 @@ const basicDrawingAndShapes = {
 		}
 	},
 
-	drawBezierAndQuadraticCurves(cvs) {
+	drawBezierAndQuadraticCurves(cvs, textEffect) {
 		/**
 		 * bezier curves in cubic and quadratic forms. used to draw complex organic shapes.
 		 *
@@ -179,26 +180,38 @@ const basicDrawingAndShapes = {
 		cvs.ctx.save()
 
 		// draw a quote bubble using quadratic bezier curves
+		let x = 575
+		let y = 525
+		cvs.ctx.save()
+		cvs.ctx.translate(x, y)
 		cvs.ctx.beginPath()
-		cvs.ctx.moveTo(575, 525)
-		cvs.ctx.quadraticCurveTo(525, 525, 525, 562.5)
-		cvs.ctx.quadraticCurveTo(525, 600, 550, 600)
-		cvs.ctx.quadraticCurveTo(550, 620, 530, 625)
-		cvs.ctx.quadraticCurveTo(560, 620, 565, 600)
-		cvs.ctx.quadraticCurveTo(625, 600, 625, 562.5)
-		cvs.ctx.quadraticCurveTo(625, 525, 575, 525)
+		cvs.ctx.moveTo(0, 0)
+		cvs.ctx.quadraticCurveTo(-50,0,-50,37.5)
+		cvs.ctx.quadraticCurveTo(-50,75,-25,75)
+		cvs.ctx.quadraticCurveTo(-25,95,-45,100)
+		cvs.ctx.quadraticCurveTo(-15,95,-10,75)
+		cvs.ctx.quadraticCurveTo(50,75,50,37.5)
+		cvs.ctx.quadraticCurveTo(50,0,0,0)
 		cvs.ctx.strokeStyle = 'rgb(155, 155, 155)'
 		cvs.ctx.stroke()
+		cvs.ctx.clip()
 
-		// add text to quote bubble
-		cvs.ctx.font = '36px tahoma'
-		cvs.ctx.lineWidth = 1
-		cvs.ctx.fillStyle = 'rgb(155,155,155)'
-		cvs.ctx.fillText('hi!', 550, 575)
+		// animate quote bubble text
+		const dx = .99
+		const bubbleWidth = 100
+		const text = 'TODAYS NEWS @7: yassghn. man? or machine?'
+		const props = new ContextProperties().props
+		props.font = '36px tahoma'
+		props.lineWidth = 1
+		props.fillStyle = 'rgb(155, 155, 155)'
+		textEffect.setState(cvs.ctx, props, text, bubbleWidth, -25, 50, dx)
+		textEffect.render()
+
+		cvs.ctx.restore()
 
 		// draw a heart using cubic bezier curves
-		const x = 475
-		const y = 600
+		x = 475
+		y = 600
 		const date = new Date()
 		// calculate scale using a pi & seconds function
 		const scaleCalc = (Math.PI / 15) * (date.getSeconds() % 2)
