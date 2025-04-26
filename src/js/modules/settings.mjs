@@ -24,9 +24,9 @@ function _addDefaultSettings() {
 	}
 }
 
-function _updateCurrentSettings(store) {
-	for (const setting in store) {
-		store[setting] = localStorage.getItem(setting)
+function _updateCurrentSettings() {
+	for (const setting in _store) {
+		_store[setting].val = localStorage.getItem(setting)
 	}
 }
 
