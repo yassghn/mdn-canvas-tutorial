@@ -39,6 +39,10 @@ function _processKeyboardInput(event) {
 	}
 }
 
+function _processMouseInput(coords) {
+	settings.mousePos = coords
+}
+
 function _addKeyboardListener() {
 	document.addEventListener('keydown', (event) => {
 		// check if pre configured modifier was used
@@ -51,8 +55,16 @@ function _addKeyboardListener() {
 	})
 }
 
+function _addMouseMoveListener() {
+	document.addEventListener('mousemove', (event) => {
+		const coords = {x: event.clientX, y: event.clientY}
+		_processMouseInput(coords)
+	})
+}
+
 function _init() {
 	_addKeyboardListener()
+	_addMouseMoveListener()
 }
 
 const peripheralInput = {
