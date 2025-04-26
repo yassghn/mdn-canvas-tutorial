@@ -31,7 +31,7 @@ function _isValidModifier(event) {
 	}
 }
 
-function processInput(event) {
+function _processKeyboardInput(event) {
 	switch (event.key) {
 		case _keyBindings.keys.enter.key:
 			settings.drawGridLines = settings.drawGridLines == true ? false : true
