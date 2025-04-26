@@ -6,6 +6,8 @@ import { log } from './modules/util.mjs'
 import initLessons from './modules/lessonsInit.mjs'
 import canvas from './modules/canvas.mjs'
 import { initPallete } from './modules/pallete.mjs'
+import peripheralInput from './modules/peripheralInput.mjs'
+import settings from './modules/settings.mjs'
 
 // script.js
 (function () {
@@ -24,6 +26,10 @@ import { initPallete } from './modules/pallete.mjs'
         // check browser support for canvas
         if (canvas.isCanvasSupported()) {
             log('canvas is supported!')
+            // init settings
+            settings.init()
+            // init peripheral input
+            peripheralInput.init()
             // start the lessons
             await initLessons(canvas)
             // get timestamp
