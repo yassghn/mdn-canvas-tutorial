@@ -19,11 +19,11 @@ import { initPallete } from './modules/pallete.mjs'
 
     // main
     async function canvasTutorial() {
+        // configure canvas object
+        canvas.configCanvas()
         // check browser support for canvas
-        if (canvas.isCanvasSupported) {
+        if (canvas.isCanvasSupported()) {
             log('canvas is supported!')
-            // configure canvas object
-            canvas.configCanvas()
             // start the lessons
             await initLessons(canvas)
             // get timestamp
