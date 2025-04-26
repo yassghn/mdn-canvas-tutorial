@@ -6,6 +6,11 @@ const _defaults = {
 	drawGridLines: {
 		name: 'drawGridLines',
 		val: false
+	},
+
+	mousePos: {
+		name: 'mousePos',
+		val: {x: -1, y: -1}
 	}
 }
 
@@ -44,6 +49,7 @@ const settings = {
 		_updateCurrentSettings()
 	},
 
+	// grid lines
 	get drawGridLines() {
 		return _getValue(_defaults.drawGridLines.name)
 	},
@@ -51,6 +57,15 @@ const settings = {
 	set drawGridLines(value) {
 		_updateStore(_defaults.drawGridLines.name, value)
 	},
+
+	// mouse pos
+	get mousePos() {
+		return _getValue(_defaults.mousePos.name)
+	},
+
+	set mousePos(value) {
+		_updateStore(_defaults.mousePos.name, value)
+	}
 }
 
 export default settings
