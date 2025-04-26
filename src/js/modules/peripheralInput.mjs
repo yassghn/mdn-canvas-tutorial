@@ -17,7 +17,7 @@ const _keyBindings = {
 	}
 }
 
-function isTargetKey(event) {
+function _isTargetKey(event) {
 	// check for enter key
 	const enter = _keyBindings.keys.enter
 	if (event.key === enter.key && event.keyCode == enter.keyCode) {
@@ -25,7 +25,7 @@ function isTargetKey(event) {
 	}
 }
 
-function isValidModifier(event) {
+function _isValidModifier(event) {
 	if (_keyBindings.modifier.ctrl) {
 		return event.ctrlKey
 	}
@@ -42,10 +42,10 @@ function processInput(event) {
 function _addKeyboardListener() {
 	document.addEventListener('keydown', (event) => {
 		// check if pre configured modifier was used
-		if (isValidModifier(event)) {
+		if (_isValidModifier(event)) {
 			// check if key combo is valid
-			if (isTargetKey(event)) {
-				processInput(event)
+			if (_isTargetKey(event)) {
+				_processKeyboardInput(event)
 			}
 		}
 	})
