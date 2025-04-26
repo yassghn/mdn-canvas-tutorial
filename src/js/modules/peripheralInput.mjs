@@ -51,9 +51,13 @@ function _addKeyboardListener() {
 	})
 }
 
+function _init() {
+	_addKeyboardListener()
+}
+
 const peripheralInput = {
 	init: function () {
-		_addKeyboardListener()
+		_init()
 	}
 }
 
