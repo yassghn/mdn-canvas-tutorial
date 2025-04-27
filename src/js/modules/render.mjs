@@ -72,6 +72,19 @@ function drawGridText(ctx, text, x, y) {
 	ctx.fillText(text, x, y)
 }
 
+export function trackGridLines(cvs, mousePos) {
+	const props = new ContextProperties().props
+	props.lineWidth = 2
+	props.strokeStyle = `rgb(243, 130, 192)`
+	const state = new ContextState(cvs.ctx, props)
+	state.apply((ctx, mousePos, maxX, maxY) => {
+		// draw vertical grid line
+		drawGridLine(ctx, mousePos.x, 0, maxY)
+		// draw horizontal grid line
+		drawGridLine(ctx, 0, mousePos.y, maxX)
+	}, mousePos, cvs.width, cvs.height)
+}
+
 export function drawGridLines(cvs, mousePos) {
 	const dx = 50
 	const dy = dx

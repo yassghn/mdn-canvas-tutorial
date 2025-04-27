@@ -3,7 +3,7 @@
  */
 
 import settings from './settings.mjs'
-import { drawGridLines } from './render.mjs'
+import { drawGridLines, trackGridLines } from './render.mjs'
 
 const _mouseTrack = {
 	elem: undefined,
@@ -20,8 +20,8 @@ function _updateLabels() {
 
 function _updatePosition() {
 	const coords = settings.mousePos
-	const x = coords.x - _mouseTrack.width
-	const y = coords.y - _mouseTrack.height
+	const x = coords.x - _mouseTrack.width - 1
+	const y = coords.y - _mouseTrack.height - 1
 	_mouseTrack.elem.style.left = `${x}px`
 	_mouseTrack.elem.style.top = `${y}px`
 }
@@ -80,9 +80,20 @@ function _draw(cvs) {
 	}
 }
 
+function _drawOver(cvs) {
+	// draw grid lines and mouse track
+	if (settings.drawGridLines == true.toString()) {
+		trackGridLines(cvs, settings.mousePos)
+	}
+}
+
 const ui = {
 	draw: function(cvs) {
 		_draw(cvs)
+	},
+
+	drawOver: function(cvs) {
+		_drawOver(cvs)
 	}
 }
 

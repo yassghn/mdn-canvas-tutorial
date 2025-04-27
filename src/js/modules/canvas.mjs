@@ -85,6 +85,8 @@ const canvas = {
 		ui.draw(cvs)
 		// draw menu enabled lessons
 		pallete(cvs, timestamp)
+		// draw ui over layer
+		ui.drawOver(cvs)
 	}
 }
 
