@@ -13,27 +13,26 @@ const _mouseTrack = {
 	height: 0
 }
 
-function _updateLabels() {
-	_mouseTrack.labelx.innerText = `xpos: ${settings.mousePos.x}`
-	_mouseTrack.labely.innerText = `ypos: ${settings.mousePos.y}`
+function _updateLabels(coords) {
+	_mouseTrack.labelx.innerText = `xpos: ${coords.x}`
+	_mouseTrack.labely.innerText = `ypos: ${coords.y}`
 }
 
-function _updatePosition() {
-	const coords = settings.mousePos
+function _updatePosition(coords) {
 	const x = coords.x - _mouseTrack.width - 1
 	const y = coords.y - _mouseTrack.height - 1
 	_mouseTrack.elem.style.left = `${x}px`
 	_mouseTrack.elem.style.top = `${y}px`
 }
 
-function _addLabels(content) {
+function _addLabels(content, coords) {
 	const labelx = document.createElement('label')
 	const labely = document.createElement('label')
 	_mouseTrack.labelx = labelx
 	_mouseTrack.labely = labely
 	content.appendChild(labelx)
 	content.appendChild(labely)
-	_updateLabels()
+	_updateLabels(coords)
 }
 
 function _setDimenstions() {
@@ -42,11 +41,11 @@ function _setDimenstions() {
 	_mouseTrack.height = parseInt(style.height.split('px')[0])
 }
 
-function _prepareMouseTrack() {
+function _prepareMouseTrack(coords) {
 	const mouseTrack = document.getElementById('mouse-track')
 	const content = mouseTrack.firstElementChild
 	_mouseTrack.elem = mouseTrack
-	_addLabels(content)
+	_addLabels(content, coords)
 	_setDimenstions()
 }
 
@@ -55,25 +54,26 @@ function _toggleMouseTrack() {
 	_mouseTrack.elem.hidden = hidden == true ? false : true
 }
 
-function _renderMouseTrack() {
+function _renderMouseTrack(coords) {
 	// check for unhide
 	if (_mouseTrack.elem.hidden) {
 		_toggleMouseTrack()
 	}
 	// update position
-	_updatePosition()
-	_updateLabels()
+	_updatePosition(coords)
+	_updateLabels(coords)
 }
 
 function _draw(cvs) {
+	const coords = settings.mousePos
 	// check to initialize _mouseTrack
 	if (!_mouseTrack.elem) {
-		_prepareMouseTrack()
+		_prepareMouseTrack(coords)
 	}
 	// draw grid lines and mouse track
 	if (settings.drawGridLines == true.toString()) {
-		_renderMouseTrack()
-		drawGridLines(cvs, settings.mousePos)
+		_renderMouseTrack(coords)
+		drawGridLines(cvs)
 	} else if (!_mouseTrack.elem.hidden) {
 		// hide mouse track
 		_toggleMouseTrack()
