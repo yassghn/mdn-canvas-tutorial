@@ -72,7 +72,6 @@ function _draw(cvs) {
 	}
 	// draw grid lines and mouse track
 	if (settings.drawGridLines == true.toString()) {
-		_renderMouseTrack(coords)
 		drawGridLines(cvs)
 	} else if (!_mouseTrack.elem.hidden) {
 		// hide mouse track
@@ -81,9 +80,11 @@ function _draw(cvs) {
 }
 
 function _drawOver(cvs) {
+	const coords = settings.mousePos
 	// draw grid lines and mouse track
 	if (settings.drawGridLines == true.toString()) {
-		trackGridLines(cvs, settings.mousePos)
+		trackGridLines(cvs, coords)
+		_renderMouseTrack(coords)
 	}
 }
 
