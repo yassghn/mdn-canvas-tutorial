@@ -85,7 +85,7 @@ export function trackGridLines(cvs, mousePos) {
 	}, mousePos, cvs.width, cvs.height)
 }
 
-export function drawGridLines(cvs, mousePos) {
+export function drawGridLines(cvs) {
 	const dx = 50
 	const dy = dx
 	const maxX = cvs.width
@@ -98,7 +98,7 @@ export function drawGridLines(cvs, mousePos) {
 	props.textBaseline = 'bottom'
 	props.textAlign = 'right'
 	const state = new ContextState(cvs.ctx, props)
-	state.apply((ctx, maxX, maxY, dx, dy, mousePos) => {
+	state.apply((ctx, maxX, maxY, dx, dy) => {
 		const textOffset = 15
 		const every = 50
 		let lastx = 0
@@ -136,7 +136,7 @@ export function drawGridLines(cvs, mousePos) {
 				lastylabel = ytrack
 			}
 		}
-	}, maxX, maxY, dx, dy, mousePos)
+	}, maxX, maxY, dx, dy)
 }
 
 function renderStar(ctx, offset, a, b, c, d, time, size) {
