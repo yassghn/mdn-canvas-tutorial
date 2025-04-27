@@ -56,6 +56,22 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 	}
 }
 
+function drawGridLine(ctx, x, y, max) {
+	ctx.beginPath()
+	ctx.moveTo(x, y)
+	if (y == 0) {
+		ctx.lineTo(x, max)
+	} else {
+		ctx.lineTo(max, y)
+	}
+	ctx.stroke()
+}
+
+function drawGridText(ctx, text, x, y) {
+	ctx.beginPath()
+	ctx.fillText(text, x, y)
+}
+
 export function drawGridLines(cvs, mousePos) {
 	const dx = 50
 	const dy = dx
@@ -73,38 +89,38 @@ export function drawGridLines(cvs, mousePos) {
 		const textOffset = 15
 		const every = 50
 		let lastx = 0
+		let lastxlabel = 0
 		let lasty = 0
+		let lastylabel = 0
 		ctx.save()
 		// draw gridlines
 		for (let xtrack = 0; xtrack < maxX; xtrack += dx) {
 			// draw xpos text every set amount
-			if (xtrack == 0 || (xtrack - lastx) % every == 0) {
+			if (xtrack == 0 || (xtrack - lastx) % dx == 0) {
 				// draw vertical grid line
-				ctx.beginPath()
-				ctx.moveTo(xtrack, 0)
-				ctx.lineTo(xtrack, maxY)
-				ctx.stroke()
-				// draw x coord text
-				ctx.beginPath()
-				ctx.moveTo(0, 0)
-				ctx.fillText(`${xtrack}`, xtrack, textOffset)
+				drawGridLine(ctx, xtrack, 0, maxY)
 				lastx = xtrack
+			}
+			// draw grid text every set amount
+			if (xtrack == 0 || (xtrack - lastxlabel) % every == 0) {
+				// draw x coord text
+				drawGridText(ctx, `${xtrack}`, xtrack, textOffset)
+				lastxlabel = xtrack
 			}
 		}
 		ctx.restore()
 		for (let ytrack = 0; ytrack < maxY; ytrack += dy) {
 			// draw ypos text every set amount
-			if (ytrack == 0 || (ytrack - lasty) % every == 0) {
-				// draw horizontal
-				ctx.beginPath()
-				ctx.moveTo(0, ytrack)
-				ctx.lineTo(maxX, ytrack)
-				ctx.stroke()
-				// draw ycoord text
-				ctx.beginPath()
-				ctx.moveTo(0, 0)
-				ctx.fillText(`${ytrack}`, textOffset+10, ytrack)
+			if (ytrack == 0 || (ytrack - lasty) % dy == 0) {
+				// draw horizontal grid line
+				drawGridLine(ctx, 0, ytrack, maxX)
 				lasty = ytrack
+			}
+			// draw grid text every set amount
+			if (ytrack == 0 || (ytrack - lastylabel) % every == 0) {
+				// draw ycoord text
+				drawGridText(ctx, `${ytrack}`, textOffset + 10, ytrack)
+				lastylabel = ytrack
 			}
 		}
 	}, maxX, maxY, dx, dy, mousePos)
