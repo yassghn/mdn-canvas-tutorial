@@ -4,6 +4,8 @@
  * render.mjs
  */
 
+import ContextState from './ContextState.mjs'
+import ContextProperties from './ContextProperties.mjs'
 import { calculateColumnWidth, calculateRowHeight } from './math.mjs'
 
 // utility function to draw a rectangle with rounded corners
@@ -54,13 +56,67 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 	}
 }
 
+export function drawGridLines(cvs, mousePos) {
+	const dx = 50
+	const dy = dx
+	const maxX = cvs.width
+	const maxY = cvs.height
+	const props = new ContextProperties().props
+	props.lineWidth = 1
+	props.strokeStyle = `rgb(24, 193, 245)`
+	props.fillStyle = `rgb(24, 193, 245)`
+	props.font = `12px tahoma`
+	props.textBaseline = 'bottom'
+	props.textAlign = 'right'
+	const state = new ContextState(cvs.ctx, props)
+	state.apply((ctx, maxX, maxY, dx, dy, mousePos) => {
+		const textOffset = 15
+		const every = 50
+		let lastx = 0
+		let lasty = 0
+		ctx.save()
+		// draw gridlines
+		for (let xtrack = 0; xtrack < maxX; xtrack += dx) {
+			// draw xpos text every set amount
+			if (xtrack == 0 || (xtrack - lastx) % every == 0) {
+				// draw vertical grid line
+				ctx.beginPath()
+				ctx.moveTo(xtrack, 0)
+				ctx.lineTo(xtrack, maxY)
+				ctx.stroke()
+				// draw x coord text
+				ctx.beginPath()
+				ctx.moveTo(0, 0)
+				ctx.fillText(`${xtrack}`, xtrack, textOffset)
+				lastx = xtrack
+			}
+		}
+		ctx.restore()
+		for (let ytrack = 0; ytrack < maxY; ytrack += dy) {
+			// draw ypos text every set amount
+			if (ytrack == 0 || (ytrack - lasty) % every == 0) {
+				// draw horizontal
+				ctx.beginPath()
+				ctx.moveTo(0, ytrack)
+				ctx.lineTo(maxX, ytrack)
+				ctx.stroke()
+				// draw ycoord text
+				ctx.beginPath()
+				ctx.moveTo(0, 0)
+				ctx.fillText(`${ytrack}`, textOffset+10, ytrack)
+				lasty = ytrack
+			}
+		}
+	}, maxX, maxY, dx, dy, mousePos)
+}
+
 function renderStar(ctx, offset, a, b, c, d, time, size) {
 	ctx.save()
 	const r = Math.floor(Math.random() * size) + 2
 	const miliMult = ((2 * Math.PI) / 60000) * time
 	const secMult = ((2 * Math.PI / 60) * time)
-	const xpos = offset - Math.floor((secMult * (time/1000)) * ((Math.PI * 2) / a) * b)
-	const ypos = offset - Math.floor((secMult * (time/1000)) * ((Math.PI * 2) / c) * d)
+	const xpos = offset - Math.floor((secMult * (time / 1000)) * ((Math.PI * 2) / a) * b)
+	const ypos = offset - Math.floor((secMult * (time / 1000)) * ((Math.PI * 2) / c) * d)
 	ctx.translate(-xpos, ypos)
 	// draw star
 	ctx.save()
@@ -80,7 +136,7 @@ function renderStar(ctx, offset, a, b, c, d, time, size) {
 	ctx.restore()
 	ctx.restore()
 
-	return {x: xpos, y: ypos}
+	return { x: xpos, y: ypos }
 }
 
 function renderStarTrail(ctx, xpos, ypos) {

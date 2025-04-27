@@ -3,6 +3,7 @@
  */
 
 import pallete from './pallete.mjs'
+import ui from './ui.mjs'
 
 /**
  * NOTES:
@@ -80,6 +81,8 @@ const canvas = {
 	canvasPallete: function (timestamp) {
 		// clear canvas
 		clearCanvas()
+		// draw ui
+		ui.draw(cvs)
 		// draw menu enabled lessons
 		pallete(cvs, timestamp)
 	}
