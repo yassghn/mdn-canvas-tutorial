@@ -3,6 +3,7 @@
  */
 
 import { generateStars } from '../modules/render.mjs'
+import settings from '../modules/settings.mjs'
 
 let loopingPanoramaTimestamp = 0
 let loopingPanoramaImageX = 0
@@ -45,7 +46,9 @@ const clippingAndAnimations = {
 		// create a circular clipping path
 		cvs.ctx.beginPath()
 		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
-		cvs.ctx.clip()
+		if (settings.noClipDebug == false.toString()) {
+			cvs.ctx.clip()
+		}
 
 		// draw stars background
 		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
@@ -86,7 +89,9 @@ const clippingAndAnimations = {
 		cvs.ctx.beginPath()
 		cvs.ctx.rect(-75, -75, 150, 150)
 		cvs.ctx.arc(0, 0, 60, 0, Math.PI * 2, true)
-		cvs.ctx.clip()
+		if (settings.noClipDebug == false.toString()) {
+			cvs.ctx.clip()
+		}
 
 		// draw stars background
 		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)

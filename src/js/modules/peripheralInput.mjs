@@ -38,6 +38,7 @@ function _processKeyboardInput(event) {
 			const newValue = doDraw == true ? 'false' : 'true'
 			settings.drawGridLines = newValue
 			settings.drawPointerTrack = newValue
+			settings.noClipDebug = newValue
 			break;
 	}
 }

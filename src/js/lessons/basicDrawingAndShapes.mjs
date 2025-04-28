@@ -4,6 +4,7 @@
 
 import ContextProperties from '../modules/ContextProperties.mjs'
 import { roundedRect } from '../modules/render.mjs'
+import settings from '../modules/settings.mjs'
 
 const basicDrawingAndShapes = {
 	drawSimpleExample: function (cvs) {
@@ -186,15 +187,17 @@ const basicDrawingAndShapes = {
 		cvs.ctx.translate(x, y)
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(0, 0)
-		cvs.ctx.quadraticCurveTo(-50,0,-50,37.5)
-		cvs.ctx.quadraticCurveTo(-50,75,-25,75)
-		cvs.ctx.quadraticCurveTo(-25,95,-45,100)
-		cvs.ctx.quadraticCurveTo(-15,95,-10,75)
-		cvs.ctx.quadraticCurveTo(50,75,50,37.5)
-		cvs.ctx.quadraticCurveTo(50,0,0,0)
+		cvs.ctx.quadraticCurveTo(-50, 0, -50, 37.5)
+		cvs.ctx.quadraticCurveTo(-50, 75, -25, 75)
+		cvs.ctx.quadraticCurveTo(-25, 95, -45, 100)
+		cvs.ctx.quadraticCurveTo(-15, 95, -10, 75)
+		cvs.ctx.quadraticCurveTo(50, 75, 50, 37.5)
+		cvs.ctx.quadraticCurveTo(50, 0, 0, 0)
 		cvs.ctx.strokeStyle = 'rgb(155, 155, 155)'
 		cvs.ctx.stroke()
-		cvs.ctx.clip()
+		if (settings.noClipDebug == false.toString()) {
+			cvs.ctx.clip()
+		}
 
 		// animate quote bubble text
 		const dx = .99

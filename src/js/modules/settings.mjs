@@ -16,6 +16,11 @@ const _defaults = {
 	pointerPos: {
 		name: 'pointerPos',
 		val: {x: -1, y: -1}
+	},
+
+	noClipDebug: {
+		name: 'noClipDebug',
+		val: 'false'
 	}
 }
 
@@ -24,7 +29,7 @@ const _store = { ..._defaults }
 function _addDefaultSettings() {
 	for (const setting in _defaults) {
 		if (localStorage.getItem(setting) == null) {
-			localStorage.setItem(setting, _defaults[setting])
+			localStorage.setItem(setting, _defaults[setting].val)
 		}
 	}
 }
@@ -79,6 +84,15 @@ const settings = {
 
 	set pointerPos(value) {
 		_updateStore(_defaults.pointerPos.name, value)
+	},
+
+	// no clip debug
+	get noClipDebug() {
+		return _getValue(_defaults.noClipDebug.name)
+	},
+
+	set noClipDebug(value) {
+		_updateStore(_defaults.noClipDebug.name, value)
 	}
 }
 
