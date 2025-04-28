@@ -98,11 +98,11 @@ function _drawOver(cvs) {
 }
 
 const ui = {
-	draw: function(cvs) {
+	draw: function (cvs) {
 		_draw(cvs)
 	},
 
-	drawOver: function(cvs) {
+	drawOver: function (cvs) {
 		_drawOver(cvs)
 	}
 }
