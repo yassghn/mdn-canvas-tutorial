@@ -5,7 +5,7 @@
 const _defaults = {
 	drawGridLines: {
 		name: 'drawGridLines',
-		val: false
+		val: 'false'
 	},
 
 	drawPointerTrack: {
