@@ -35,7 +35,9 @@ function _processKeyboardInput(event) {
 	switch (event.key) {
 		case _keyBindings.keys.enter.key:
 			const doDraw = settings.drawGridLines == true.toString()
-			settings.drawGridLines = doDraw == true ? 'false' : 'true'
+			const newValue = doDraw == true ? 'false' : 'true'
+			settings.drawGridLines = newValue
+			settings.drawPointerTrack = newValue
 			break;
 	}
 }
