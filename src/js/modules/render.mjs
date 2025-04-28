@@ -58,11 +58,13 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 
 function drawGridLine(ctx, x, y, max, every, other) {
 	let restore = false
-	if (x % every != 0 || y % every != 0) {
-		restore = true
-		ctx.save()
-		ctx.strokeStyle = other.strokeStyle
-		ctx.lineWidth = other.lineWidth
+	if (every && other) {
+		if (x % every != 0 || y % every != 0) {
+			restore = true
+			ctx.save()
+			ctx.strokeStyle = other.strokeStyle
+			ctx.lineWidth = other.lineWidth
+		}
 	}
 	ctx.beginPath()
 	ctx.moveTo(x, y)
@@ -101,7 +103,7 @@ export function drawGridLines(cvs) {
 	const labelEvery = 50
 	const other = {
 		strokeStyle: `rgb(240, 76, 89)`,
-	    lineWidth: .5
+		lineWidth: .5
 	}
 	const maxX = cvs.width
 	const maxY = cvs.height
