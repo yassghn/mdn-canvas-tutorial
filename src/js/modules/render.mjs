@@ -56,7 +56,14 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 	}
 }
 
-function drawGridLine(ctx, x, y, max) {
+function drawGridLine(ctx, x, y, max, every, other) {
+	let restore = false
+	if (x % every != 0 || y % every != 0) {
+		restore = true
+		ctx.save()
+		ctx.strokeStyle = other.strokeStyle
+		ctx.lineWidth = other.lineWidth
+	}
 	ctx.beginPath()
 	ctx.moveTo(x, y)
 	if (y == 0) {
@@ -65,6 +72,9 @@ function drawGridLine(ctx, x, y, max) {
 		ctx.lineTo(max, y)
 	}
 	ctx.stroke()
+	if (restore) {
+		ctx.restore()
+	}
 }
 
 function drawGridText(ctx, text, x, y) {
@@ -86,9 +96,13 @@ export function trackGridLines(cvs, mousePos) {
 }
 
 export function drawGridLines(cvs) {
-	const dx = 50
+	const dx = 10
 	const dy = dx
 	const labelEvery = 50
+	const other = {
+		strokeStyle: `rgb(240, 76, 89)`,
+	    lineWidth: .5
+	}
 	const maxX = cvs.width
 	const maxY = cvs.height
 	const props = new ContextProperties().props
@@ -99,7 +113,7 @@ export function drawGridLines(cvs) {
 	props.textBaseline = 'bottom'
 	props.textAlign = 'right'
 	const state = new ContextState(cvs.ctx, props)
-	state.apply((ctx, maxX, maxY, dx, dy, every) => {
+	state.apply((ctx, maxX, maxY, dx, dy, every, other) => {
 		const labelOffset = 3
 		const textHeight = parseInt(ctx.font.split('px')[0])
 		let lastx = 0
@@ -112,7 +126,7 @@ export function drawGridLines(cvs) {
 			// draw xpos text every set amount
 			if (xtrack == 0 || (xtrack - lastx) % dx == 0) {
 				// draw vertical grid line
-				drawGridLine(ctx, xtrack, 0, maxY)
+				drawGridLine(ctx, xtrack, 0, maxY, every, other)
 				lastx = xtrack
 			}
 			// draw grid text every set amount
@@ -129,7 +143,7 @@ export function drawGridLines(cvs) {
 			// draw ypos text every set amount
 			if (ytrack == 0 || (ytrack - lasty) % dy == 0) {
 				// draw horizontal grid line
-				drawGridLine(ctx, 0, ytrack, maxX)
+				drawGridLine(ctx, 0, ytrack, maxX, every, other)
 				lasty = ytrack
 			}
 			// draw grid text every set amount
@@ -141,7 +155,7 @@ export function drawGridLines(cvs) {
 				lastylabel = ytrack
 			}
 		}
-	}, maxX, maxY, dx, dy, labelEvery)
+	}, maxX, maxY, dx, dy, labelEvery, other)
 }
 
 function renderStar(ctx, offset, a, b, c, d, time, size) {
