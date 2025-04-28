@@ -87,6 +87,11 @@ function _drawOver(cvs) {
 	if (settings.drawPointerTrack == true.toString()) {
 		trackGridLines(cvs, coords)
 		_renderpointerTrack(coords)
+	} else {
+		// make sure pointer track dom element is hidden
+		if (!_pointerTrack.elem.hidden) {
+			_togglepointerTrack()
+		}
 	}
 }
 
