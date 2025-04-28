@@ -60,14 +60,34 @@ function _addKeyboardListener() {
 
 function _addPointerMoveListener() {
 	document.addEventListener('pointermove', (event) => {
-		const coords = {x: event.clientX, y: event.clientY}
-		_processPointerInput(coords)
+		if (settings.drawPointerTrack) {
+			const coords = { x: event.clientX, y: event.clientY }
+			_processPointerInput(coords)
+		}
 	})
+}
+
+function _addPointerLeaveListener() {
+	document.body.addEventListener('pointerleave', (event) => {
+		settings.drawPointerTrack = 'false'
+	})
+}
+
+function _addPointerEnterListener() {
+	document.body.addEventListener('pointerenter', (event) => {
+		settings.drawPointerTrack = 'true'
+	})
+}
+
+function _addPointerEvents() {
+	_addPointerMoveListener()
+	_addPointerLeaveListener()
+	_addPointerEnterListener()
 }
 
 function _init() {
 	_addKeyboardListener()
-	_addPointerMoveListener()
+	_addPointerEvents()
 }
 
 const peripheralInput = {
