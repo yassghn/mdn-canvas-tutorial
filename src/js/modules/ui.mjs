@@ -84,13 +84,15 @@ function _draw(cvs) {
 function _drawOver(cvs) {
 	const coords = settings.pointerPos
 	// draw grid lines and pointer track
-	if (settings.drawPointerTrack == true.toString()) {
-		trackGridLines(cvs, coords)
-		_renderpointerTrack(coords)
-	} else {
-		// make sure pointer track dom element is hidden
-		if (!_pointerTrack.elem.hidden) {
-			_togglePointerTrack()
+	if (settings.drawGridLines == true.toString()) {
+		if (settings.drawPointerTrack == true.toString()) {
+			trackGridLines(cvs, coords)
+			_renderpointerTrack(coords)
+		} else {
+			// make sure pointer track dom element is hidden
+			if (!_pointerTrack.elem.hidden) {
+				_togglePointerTrack()
+			}
 		}
 	}
 }
