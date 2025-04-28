@@ -15,7 +15,7 @@ html, body {
     border: 1px solid white;
 }
 
-#mouse-track {
+#pointer-track {
     position: absolute;
     background: beige;
     display: flex;
@@ -26,12 +26,12 @@ html, body {
     z-index: 2;
 }
 
-#mouse-track-content {
+#pointer-track-content {
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
 
-#mouse-track-content label {
+#pointer-track-content label {
     padding: 2px;
 }

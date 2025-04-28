@@ -8,8 +8,8 @@ const _defaults = {
 		val: false
 	},
 
-	mousePos: {
-		name: 'mousePos',
+	pointerPos: {
+		name: 'pointerPos',
 		val: {x: -1, y: -1}
 	}
 }
@@ -58,13 +58,13 @@ const settings = {
 		_updateStore(_defaults.drawGridLines.name, value)
 	},
 
-	// mouse pos
-	get mousePos() {
-		return _getValue(_defaults.mousePos.name)
+	// pointer pos
+	get pointerPos() {
+		return _getValue(_defaults.pointerPos.name)
 	},
 
-	set mousePos(value) {
-		_updateStore(_defaults.mousePos.name, value)
+	set pointerPos(value) {
+		_updateStore(_defaults.pointerPos.name, value)
 	}
 }
 

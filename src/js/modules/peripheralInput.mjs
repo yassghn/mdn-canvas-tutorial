@@ -40,8 +40,8 @@ function _processKeyboardInput(event) {
 	}
 }
 
-function _processMouseInput(coords) {
-	settings.mousePos = coords
+function _processPointerInput(coords) {
+	settings.pointerPos = coords
 }
 
 function _addKeyboardListener() {
@@ -56,16 +56,16 @@ function _addKeyboardListener() {
 	})
 }
 
-function _addMouseMoveListener() {
-	document.addEventListener('mousemove', (event) => {
+function _addPointerMoveListener() {
+	document.addEventListener('pointermove', (event) => {
 		const coords = {x: event.clientX, y: event.clientY}
-		_processMouseInput(coords)
+		_processPointerInput(coords)
 	})
 }
 
 function _init() {
 	_addKeyboardListener()
-	_addMouseMoveListener()
+	_addPointerMoveListener()
 }
 
 const peripheralInput = {

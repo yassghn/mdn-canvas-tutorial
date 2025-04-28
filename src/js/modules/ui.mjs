@@ -5,7 +5,7 @@
 import settings from './settings.mjs'
 import { drawGridLines, trackGridLines } from './render.mjs'
 
-const _mouseTrack = {
+const _pointerTrack = {
 	elem: undefined,
 	labelx: undefined,
 	labely: undefined,
@@ -14,52 +14,52 @@ const _mouseTrack = {
 }
 
 function _updateLabels(coords) {
-	_mouseTrack.labelx.innerText = `xpos: ${coords.x}`
-	_mouseTrack.labely.innerText = `ypos: ${coords.y}`
+	_pointerTrack.labelx.innerText = `xpos: ${coords.x}`
+	_pointerTrack.labely.innerText = `ypos: ${coords.y}`
 }
 
 function _updatePosition(coords) {
-	const x = coords.x - _mouseTrack.width - 1
-	const y = coords.y - _mouseTrack.height - 1
-	_mouseTrack.elem.style.left = `${x}px`
-	_mouseTrack.elem.style.top = `${y}px`
+	const x = coords.x - _pointerTrack.width - 1
+	const y = coords.y - _pointerTrack.height - 1
+	_pointerTrack.elem.style.left = `${x}px`
+	_pointerTrack.elem.style.top = `${y}px`
 }
 
 function _addLabels(content, coords) {
 	const labelx = document.createElement('label')
 	const labely = document.createElement('label')
-	_mouseTrack.labelx = labelx
-	_mouseTrack.labely = labely
+	_pointerTrack.labelx = labelx
+	_pointerTrack.labely = labely
 	content.appendChild(labelx)
 	content.appendChild(labely)
 	_updateLabels(coords)
 }
 
 function _setDimenstions() {
-	const style = getComputedStyle(_mouseTrack.elem)
-	_mouseTrack.width = parseInt(style.width.split('px')[0])
-	_mouseTrack.height = parseInt(style.height.split('px')[0])
+	const style = getComputedStyle(_pointerTrack.elem)
+	_pointerTrack.width = parseInt(style.width.split('px')[0])
+	_pointerTrack.height = parseInt(style.height.split('px')[0])
 }
 
-function _prepareMouseTrack(coords) {
-	const mouseTrack = document.getElementById('mouse-track')
-	const content = mouseTrack.firstElementChild
-	_mouseTrack.elem = mouseTrack
+function _preparepointerTrack(coords) {
+	const pointerTrack = document.getElementById('pointer-track')
+	const content = pointerTrack.firstElementChild
+	_pointerTrack.elem = pointerTrack
 	_addLabels(content, coords)
 	_setDimenstions()
 }
 
-function _toggleMouseTrack() {
-	const hidden = _mouseTrack.elem.hidden
-	_mouseTrack.elem.hidden = hidden == true ? false : true
+function _togglepointerTrack() {
+	const hidden = _pointerTrack.elem.hidden
+	_pointerTrack.elem.hidden = hidden == true ? false : true
 	// hide/unhide cursor from body
 	document.body.style.cursor = hidden == true ? 'none' : 'default'
 }
 
-function _renderMouseTrack(coords) {
+function _renderpointerTrack(coords) {
 	// check for unhide
-	if (_mouseTrack.elem.hidden) {
-		_toggleMouseTrack()
+	if (_pointerTrack.elem.hidden) {
+		_togglepointerTrack()
 	}
 	// update position
 	_updatePosition(coords)
@@ -67,26 +67,26 @@ function _renderMouseTrack(coords) {
 }
 
 function _draw(cvs) {
-	const coords = settings.mousePos
-	// check to initialize _mouseTrack
-	if (!_mouseTrack.elem) {
-		_prepareMouseTrack(coords)
+	const coords = settings.pointerPos
+	// check to initialize _pointerTrack
+	if (!_pointerTrack.elem) {
+		_preparepointerTrack(coords)
 	}
-	// draw grid lines and mouse track
+	// draw grid lines and pointer track
 	if (settings.drawGridLines == true.toString()) {
 		drawGridLines(cvs)
-	} else if (!_mouseTrack.elem.hidden) {
-		// hide mouse track
-		_toggleMouseTrack()
+	} else if (!_pointerTrack.elem.hidden) {
+		// hide pointer track
+		_togglepointerTrack()
 	}
 }
 
 function _drawOver(cvs) {
-	const coords = settings.mousePos
-	// draw grid lines and mouse track
+	const coords = settings.pointerPos
+	// draw grid lines and pointer track
 	if (settings.drawGridLines == true.toString()) {
 		trackGridLines(cvs, coords)
-		_renderMouseTrack(coords)
+		_renderpointerTrack(coords)
 	}
 }
 
