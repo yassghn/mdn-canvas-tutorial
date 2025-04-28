@@ -84,7 +84,7 @@ function _draw(cvs) {
 function _drawOver(cvs) {
 	const coords = settings.pointerPos
 	// draw grid lines and pointer track
-	if (settings.drawGridLines == true.toString()) {
+	if (settings.drawPointerTrack == true.toString()) {
 		trackGridLines(cvs, coords)
 		_renderpointerTrack(coords)
 	}
