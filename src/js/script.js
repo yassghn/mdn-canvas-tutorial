@@ -9,4 +9,4 @@ import canvasTutorial from './modules/canvasTutorial.mjs'
     'use strict'
     // run script
     window.onload = canvasTutorial
-})();
+})()
