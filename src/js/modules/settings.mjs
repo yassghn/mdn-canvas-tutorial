@@ -8,6 +8,11 @@ const _defaults = {
 		val: false
 	},
 
+	drawPointerTrack: {
+		name: 'drawPointerTrack',
+		val: 'false'
+	},
+
 	pointerPos: {
 		name: 'pointerPos',
 		val: {x: -1, y: -1}
@@ -56,6 +61,15 @@ const settings = {
 
 	set drawGridLines(value) {
 		_updateStore(_defaults.drawGridLines.name, value)
+	},
+
+	// pointer track
+	get drawPointerTrack() {
+		return _getValue(_defaults.drawPointerTrack.name)
+	},
+
+	set drawPointerTrack(value) {
+		_updateStore(_defaults.drawPointerTrack.name, value)
 	},
 
 	// pointer pos
