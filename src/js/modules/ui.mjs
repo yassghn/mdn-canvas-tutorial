@@ -52,6 +52,8 @@ function _prepareMouseTrack(coords) {
 function _toggleMouseTrack() {
 	const hidden = _mouseTrack.elem.hidden
 	_mouseTrack.elem.hidden = hidden == true ? false : true
+	// hide/unhide cursor from body
+	document.body.style.cursor = hidden == true ? 'none' : 'default'
 }
 
 function _renderMouseTrack(coords) {
