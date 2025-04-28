@@ -41,7 +41,7 @@ function _setDimenstions() {
 	_pointerTrack.height = parseInt(style.height.split('px')[0])
 }
 
-function _preparepointerTrack(coords) {
+function _preparePointerTrack(coords) {
 	const pointerTrack = document.getElementById('pointer-track')
 	const content = pointerTrack.firstElementChild
 	_pointerTrack.elem = pointerTrack
@@ -49,7 +49,7 @@ function _preparepointerTrack(coords) {
 	_setDimenstions()
 }
 
-function _togglepointerTrack() {
+function _togglePointerTrack() {
 	const hidden = _pointerTrack.elem.hidden
 	_pointerTrack.elem.hidden = hidden == true ? false : true
 	// hide/unhide cursor from body
@@ -59,7 +59,7 @@ function _togglepointerTrack() {
 function _renderpointerTrack(coords) {
 	// check for unhide
 	if (_pointerTrack.elem.hidden) {
-		_togglepointerTrack()
+		_togglePointerTrack()
 	}
 	// update position
 	_updatePosition(coords)
@@ -70,14 +70,14 @@ function _draw(cvs) {
 	const coords = settings.pointerPos
 	// check to initialize _pointerTrack
 	if (!_pointerTrack.elem) {
-		_preparepointerTrack(coords)
+		_preparePointerTrack(coords)
 	}
 	// draw grid lines and pointer track
 	if (settings.drawGridLines == true.toString()) {
 		drawGridLines(cvs)
 	} else if (!_pointerTrack.elem.hidden) {
 		// hide pointer track
-		_togglepointerTrack()
+		_togglePointerTrack()
 	}
 }
 
@@ -90,7 +90,7 @@ function _drawOver(cvs) {
 	} else {
 		// make sure pointer track dom element is hidden
 		if (!_pointerTrack.elem.hidden) {
-			_togglepointerTrack()
+			_togglePointerTrack()
 		}
 	}
 }
