@@ -88,7 +88,6 @@ export function trackGridLines(cvs, mousePos) {
 export function drawGridLines(cvs) {
 	const dx = 50
 	const dy = dx
-	const textOffset = 15
 	const labelEvery = 50
 	const maxX = cvs.width
 	const maxY = cvs.height
@@ -100,7 +99,9 @@ export function drawGridLines(cvs) {
 	props.textBaseline = 'bottom'
 	props.textAlign = 'right'
 	const state = new ContextState(cvs.ctx, props)
-	state.apply((ctx, maxX, maxY, dx, dy, every, textOffset) => {
+	state.apply((ctx, maxX, maxY, dx, dy, every) => {
+		const labelOffset = 3
+		const textHeight = parseInt(ctx.font.split('px')[0])
 		let lastx = 0
 		let lastxlabel = 0
 		let lasty = 0
@@ -116,8 +117,10 @@ export function drawGridLines(cvs) {
 			}
 			// draw grid text every set amount
 			if (xtrack == 0 || (xtrack - lastxlabel) % every == 0) {
+				// get offset based on text height calculation
+				const offset = textHeight + labelOffset + 1
 				// draw x coord text
-				drawGridText(ctx, `${xtrack}`, xtrack, textOffset)
+				drawGridText(ctx, `${xtrack}`, xtrack - labelOffset, offset)
 				lastxlabel = xtrack
 			}
 		}
@@ -131,12 +134,14 @@ export function drawGridLines(cvs) {
 			}
 			// draw grid text every set amount
 			if (ytrack == 0 || (ytrack - lastylabel) % every == 0) {
+				// get offset based on text width calculation
+				const offset = ctx.measureText(`${ytrack}`).width + labelOffset + 1
 				// draw ycoord text
-				drawGridText(ctx, `${ytrack}`, textOffset + 10, ytrack)
+				drawGridText(ctx, `${ytrack}`, offset, ytrack - labelOffset)
 				lastylabel = ytrack
 			}
 		}
-	}, maxX, maxY, dx, dy, labelEvery, textOffset)
+	}, maxX, maxY, dx, dy, labelEvery)
 }
 
 function renderStar(ctx, offset, a, b, c, d, time, size) {
