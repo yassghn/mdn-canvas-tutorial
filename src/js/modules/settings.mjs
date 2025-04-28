@@ -53,10 +53,15 @@ function _updateState(setting, value) {
 	_setValue(setting, value)
 }
 
+function _init() {
+	_addDefaultSettings()
+	_updateCurrentSettings()
+}
+
 const settings = {
+	// initialize
 	init: function () {
-		_addDefaultSettings()
-		_updateCurrentSettings()
+		_init()
 	},
 
 	// grid lines
