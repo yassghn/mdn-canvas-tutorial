@@ -24,7 +24,7 @@ const _defaults = {
 	}
 }
 
-const _store = { ..._defaults }
+const _state = { ..._defaults }
 
 function _addDefaultSettings() {
 	for (const setting in _defaults) {
@@ -35,21 +35,21 @@ function _addDefaultSettings() {
 }
 
 function _updateCurrentSettings() {
-	for (const setting in _store) {
-		_store[setting].val = localStorage.getItem(setting)
+	for (const setting in _state) {
+		_state[setting].val = localStorage.getItem(setting)
 	}
 }
 
 function _getValue(setting) {
-	return _store[setting].val
+	return _state[setting].val
 }
 
 function _setValue(setting, value) {
 	localStorage.setItem(setting, value)
 }
 
-function _updateStore(setting, value) {
-	_store[setting].val = value
+function _updateState(setting, value) {
+	_state[setting].val = value
 	_setValue(setting, value)
 }
 
@@ -65,7 +65,7 @@ const settings = {
 	},
 
 	set drawGridLines(value) {
-		_updateStore(_defaults.drawGridLines.name, value)
+		_updateState(_defaults.drawGridLines.name, value)
 	},
 
 	// pointer track
@@ -74,7 +74,7 @@ const settings = {
 	},
 
 	set drawPointerTrack(value) {
-		_updateStore(_defaults.drawPointerTrack.name, value)
+		_updateState(_defaults.drawPointerTrack.name, value)
 	},
 
 	// pointer pos
@@ -83,7 +83,7 @@ const settings = {
 	},
 
 	set pointerPos(value) {
-		_updateStore(_defaults.pointerPos.name, value)
+		_updateState(_defaults.pointerPos.name, value)
 	},
 
 	// no clip debug
@@ -92,7 +92,7 @@ const settings = {
 	},
 
 	set noClipDebug(value) {
-		_updateStore(_defaults.noClipDebug.name, value)
+		_updateState(_defaults.noClipDebug.name, value)
 	}
 }
 
