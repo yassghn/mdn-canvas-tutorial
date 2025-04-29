@@ -2,11 +2,11 @@
  * contextProperties.mjs
  */
 
-import canvas from './canvas.mjs'
+import uiCanvas from './uiCanvas.mjs'
 
 function isValidCanvasContextProperty(propname) {
-	const cvs = canvas.get()
-	return Reflect.has(cvs.ctx, propname)
+	const ctx = uiCanvas.get().ctx
+	return Reflect.has(ctx, propname)
 }
 
 function ContextProperties(properties = undefined) {
