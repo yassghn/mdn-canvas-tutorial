@@ -18,11 +18,11 @@ export function roundedRect(ctx, x, y, width, height, radius) {
 	ctx.arcTo(x, y, x, y + radius, radius)
 }
 
-function getXpos(xpos, col, maxCols, buffer, width) {
+function _getXpos(xpos, col, maxCols, buffer, width) {
 	return calculateColumnWidth(xpos, col, maxCols, buffer, width)
 }
 
-function getYPos(ypos, row, maxRows, buffer, height) {
+function _getYPos(ypos, row, maxRows, buffer, height) {
 	return calculateRowHeight(ypos, row, maxRows, buffer, height)
 }
 
@@ -36,8 +36,8 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 		// get img
 		const img = imgs[i]
 		// get frame (x, y)
-		const x = getXpos(xpos, col, cols, buffer, img.width)
-		const y = getYPos(ypos, row, rows, buffer, img.height)
+		const x = _getXpos(xpos, col, cols, buffer, img.width)
+		const y = _getYPos(ypos, row, rows, buffer, img.height)
 		// draw gallery art image
 		cvs.ctx.drawImage(img, x + offset, y + offset)
 		// draw gallery art image frame
@@ -56,7 +56,7 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 	}
 }
 
-function drawGridLine(ctx, x, y, max, every, other) {
+function _drawGridLine(ctx, x, y, max, every, other) {
 	let restore = false
 	if (every && other) {
 		if (x % every != 0 || y % every != 0) {
@@ -79,7 +79,7 @@ function drawGridLine(ctx, x, y, max, every, other) {
 	}
 }
 
-function drawGridText(ctx, text, x, y) {
+function _drawGridText(ctx, text, x, y) {
 	ctx.beginPath()
 	ctx.fillText(text, x, y)
 }
@@ -91,9 +91,9 @@ export function trackGridLines(cvs, mousePos) {
 	const state = new ContextState(cvs.ctx, props)
 	state.apply((ctx, mousePos, maxX, maxY) => {
 		// draw vertical grid line
-		drawGridLine(ctx, mousePos.x, 0, maxY)
+		_drawGridLine(ctx, mousePos.x, 0, maxY)
 		// draw horizontal grid line
-		drawGridLine(ctx, 0, mousePos.y, maxX)
+		_drawGridLine(ctx, 0, mousePos.y, maxX)
 	}, mousePos, cvs.width, cvs.height)
 }
 
@@ -128,7 +128,7 @@ export function drawGridLines(cvs) {
 			// draw xpos text every set amount
 			if (xtrack == 0 || (xtrack - lastx) % dx == 0) {
 				// draw vertical grid line
-				drawGridLine(ctx, xtrack, 0, maxY, every, other)
+				_drawGridLine(ctx, xtrack, 0, maxY, every, other)
 				lastx = xtrack
 			}
 			// draw grid text every set amount
@@ -136,7 +136,7 @@ export function drawGridLines(cvs) {
 				// get offset based on text height calculation
 				const offset = textHeight + labelOffset + 1
 				// draw x coord text
-				drawGridText(ctx, `${xtrack}`, xtrack - labelOffset, offset)
+				_drawGridText(ctx, `${xtrack}`, xtrack - labelOffset, offset)
 				lastxlabel = xtrack
 			}
 		}
@@ -145,7 +145,7 @@ export function drawGridLines(cvs) {
 			// draw ypos text every set amount
 			if (ytrack == 0 || (ytrack - lasty) % dy == 0) {
 				// draw horizontal grid line
-				drawGridLine(ctx, 0, ytrack, maxX, every, other)
+				_drawGridLine(ctx, 0, ytrack, maxX, every, other)
 				lasty = ytrack
 			}
 			// draw grid text every set amount
@@ -153,14 +153,14 @@ export function drawGridLines(cvs) {
 				// get offset based on text width calculation
 				const offset = ctx.measureText(`${ytrack}`).width + labelOffset + 1
 				// draw ycoord text
-				drawGridText(ctx, `${ytrack}`, offset, ytrack - labelOffset)
+				_drawGridText(ctx, `${ytrack}`, offset, ytrack - labelOffset)
 				lastylabel = ytrack
 			}
 		}
 	}, maxX, maxY, dx, dy, labelEvery, other)
 }
 
-function renderStar(ctx, offset, a, b, c, d, time, size) {
+function _renderStar(ctx, offset, a, b, c, d, time, size) {
 	ctx.save()
 	const r = Math.floor(Math.random() * size) + 2
 	const miliMult = ((2 * Math.PI) / 60000) * time
@@ -189,7 +189,7 @@ function renderStar(ctx, offset, a, b, c, d, time, size) {
 	return { x: xpos, y: ypos }
 }
 
-function renderStarTrail(ctx, xpos, ypos) {
+function _renderStarTrail(ctx, xpos, ypos) {
 	ctx.save()
 
 	const linearGradient = ctx.createLinearGradient(-75, 75, -xpos, ypos)
@@ -212,9 +212,9 @@ export function generateStars(cvs) {
 	// generate stars
 	const date = new Date()
 	// draw one shooting star
-	const coords = renderStar(cvs.ctx, 75, 55, 15, 55, 15, date.getMilliseconds(), 15)
+	const coords = _renderStar(cvs.ctx, 75, 55, 15, 55, 15, date.getMilliseconds(), 15)
 	// draw shooting star trail
-	renderStarTrail(cvs.ctx, coords.x, coords.y)
+	_renderStarTrail(cvs.ctx, coords.x, coords.y)
 	// draw shooting star wake of stars
 	for (let i = 1; i < 50; i++) {
 		const amax = 60
@@ -231,15 +231,15 @@ export function generateStars(cvs) {
 		const d = Math.floor(Math.random() * (dmax - dmin) + dmin)
 		const size = Math.floor(Math.random() * (7 - 2) + 2)
 		// gets really close, dmax = 15, dmin = 10
-		// renderStar(cvs.ctx, 75, 55, d, 55, d, ...)
-		renderStar(cvs.ctx, 75, a, b, c, d, date.getMilliseconds(), size)
+		// _renderStar(cvs.ctx, 75, 55, d, 55, d, ...)
+		_renderStar(cvs.ctx, 75, a, b, c, d, date.getMilliseconds(), size)
 	}
 
 	cvs.ctx.restore()
 }
 
 // utlity function for rendering boilerplate lesson space canvas clear
-function clearPath(xpos, ypos, cvs, lambda) {
+function _clearPath(xpos, ypos, cvs, lambda) {
 	cvs.ctx.save()
 	cvs.ctx.translate(xpos, ypos)
 	lambda(cvs)
@@ -248,7 +248,7 @@ function clearPath(xpos, ypos, cvs, lambda) {
 
 // utlity function to clear clipping paths lesson canvas mask
 export function clearClippingPaths(xpos, ypos, cvs) {
-	clearPath(xpos, ypos, cvs, (cvs) => {
+	_clearPath(xpos, ypos, cvs, (cvs) => {
 		cvs.ctx.translate(75, 75)
 
 		cvs.ctx.beginPath()
@@ -263,7 +263,7 @@ export function clearClippingPaths(xpos, ypos, cvs) {
 
 // utlity function to clear inverse clipping paths lesson canvas mask
 export function clearInverseClippingPaths(xpos, ypos, cvs) {
-	clearPath(xpos, ypos, cvs, (cvs) => {
+	_clearPath(xpos, ypos, cvs, (cvs) => {
 		cvs.ctx.translate(75, 75)
 
 		cvs.ctx.beginPath()
@@ -279,7 +279,7 @@ export function clearInverseClippingPaths(xpos, ypos, cvs) {
 
 // utility function to clear linestyles lesson
 export function clearLineStyles(xpos, ypos, cvs) {
-	clearPath(xpos, ypos, cvs, (cvs) => {
+	_clearPath(xpos, ypos, cvs, (cvs) => {
 		cvs.ctx.fillStyle = `rgb(0, 0, 0)`
 		cvs.ctx.fillRect(0, 0, 700, 401)
 	})
@@ -287,7 +287,7 @@ export function clearLineStyles(xpos, ypos, cvs) {
 
 // utility function clear shadows lesson
 export function clearShadows(xpos, ypos, cvs) {
-	clearPath(xpos, ypos, cvs, (cvs) => {
+	_clearPath(xpos, ypos, cvs, (cvs) => {
 		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
 		cvs.ctx.fillRect(0, 0, 195, 40)
 	})
@@ -295,7 +295,7 @@ export function clearShadows(xpos, ypos, cvs) {
 
 // utility function to clear clock lesson
 export function clearClock(xpos, ypos, cvs) {
-	clearPath(xpos, ypos, cvs, (cvs) => {
+	_clearPath(xpos, ypos, cvs, (cvs) => {
 
 	})
 }

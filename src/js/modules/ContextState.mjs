@@ -2,7 +2,7 @@
  * contextState.mjs
  */
 
-import ContextProperties from "./ContextProperties.mjs"
+import ContextProperties from './ContextProperties.mjs'
 
 function ContextState(ctx, properties) {
 	this.self = undefined

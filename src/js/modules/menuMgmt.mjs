@@ -4,11 +4,11 @@
 
 import menu from './menu.mjs'
 
-async function addDefaultEnabledAll(menu) {
+async function _addDefaultEnabledAll(menu) {
 	// create id for menu item
 	const id = `enable-all-${menu.id}`
 	// pass callback as lambda to not lose the context on 'this'
-	await menu.addMenuItem(id, 'enable all'.toUpperCase(), `${id}-check`, (args) => menu.enableAllCallback(args))
+	await menu.addMenuItem(id, 'enable all'.toUpperCase(), `${id}-check`, (args) => menu.enableAll(args))
 }
 
 const menuMgmt = {
@@ -17,7 +17,7 @@ const menuMgmt = {
 		const newMenu = menu(menuId)
 		await newMenu.init(cvs)
 		// add default enable all menu item
-		await addDefaultEnabledAll(newMenu)
+		await _addDefaultEnabledAll(newMenu)
 		// return new menu
 		return newMenu
 	}

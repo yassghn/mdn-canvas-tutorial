@@ -2,7 +2,7 @@
  * neonGlitchTextEffect.mjs
  */
 
-function incrementalShadowProps(props) {
+function _incrementalShadowProps(props) {
 	if (props.shadowOffset < 10) {
 		props.shadowOffset++
 	} else {
@@ -18,7 +18,7 @@ function incrementalShadowProps(props) {
 	}
 }
 
-function decrementalShadowProps(props) {
+function _decrementalShadowProps(props) {
 	if (props.shadowOffset > 0) {
 		props.shadowOffset--
 	} else {
@@ -34,11 +34,11 @@ function decrementalShadowProps(props) {
 	}
 }
 
-function setShadowProps(props) {
+function _setShadowProps(props) {
 	if (props.shadowPropsUp) {
-		incrementalShadowProps(props)
+		_incrementalShadowProps(props)
 	} else {
-		decrementalShadowProps(props)
+		_decrementalShadowProps(props)
 	}
 }
 
@@ -52,7 +52,7 @@ function neonGlitchTextEffectProps() {
 		},
 
 		setProps: function() {
-			setShadowProps(this.props)
+			_setShadowProps(this.props)
 		}
 	}
 	return effect

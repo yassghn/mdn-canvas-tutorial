@@ -34,7 +34,6 @@ export function neonGlitchText() {
 	return neonGlitchTextEffect
 }
 
-
 // scrolling text effect
 export function ScrollingText() {
 	this.ctxState = undefined

@@ -2,17 +2,17 @@
  * scrollingTextEffect.mjs
  */
 
-function measureText(ctxState, text) {
+function _measureText(ctxState, text) {
 	const width = ctxState.apply((ctx, text) => {
 		return ctx.measureText(text).width
 	}, text)
 	return width
 }
 
-function setProps(effect, ctxState, text, maxWidth, startXpos, ypos, scrollWidth) {
+function _setProps(effect, ctxState, text, maxWidth, startXpos, ypos, scrollWidth) {
 	// set properties
 	effect.props.text = text
-	effect.props.textWidth = measureText(ctxState, text)
+	effect.props.textWidth = _measureText(ctxState, text)
 	effect.props.maxWidth = maxWidth
 	effect.props.startX = startXpos
 	effect.props.x = startXpos
@@ -20,7 +20,7 @@ function setProps(effect, ctxState, text, maxWidth, startXpos, ypos, scrollWidth
 	effect.props.scrollWidth = scrollWidth
 }
 
-function updateProps(props) {
+function _updateProps(props) {
 	// scroll to the left
 	props.x -= props.scrollWidth
 	// check for reset x
@@ -43,11 +43,11 @@ function scrollingTextEffect(...props) {
 		},
 
 		update: function () {
-			updateProps(this.props)
+			_updateProps(this.props)
 		}
 	}
 	// set effects initial properties
-	setProps(effect, ...props)
+	_setProps(effect, ...props)
 	// return effect
 	return effect
 }
