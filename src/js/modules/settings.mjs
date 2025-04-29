@@ -13,11 +13,6 @@ const _defaults = {
 		val: 'false'
 	},
 
-	pointerPos: {
-		name: 'pointerPos',
-		val: {x: -1, y: -1}
-	},
-
 	noClipDebug: {
 		name: 'noClipDebug',
 		val: 'false'
@@ -85,15 +80,6 @@ const settings = {
 
 	set drawPointerTrack(value) {
 		_updateState(_defaults.drawPointerTrack.name, value)
-	},
-
-	// pointer pos
-	get pointerPos() {
-		return _getValue(_defaults.pointerPos.name)
-	},
-
-	set pointerPos(value) {
-		_updateState(_defaults.pointerPos.name, value)
 	},
 
 	// no clip debug
