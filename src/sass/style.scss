@@ -11,8 +11,18 @@ html, body {
     background-color: black;
 }
 
-#tutorial-canvas {
+canvas {
     border: 1px solid white;
+}
+
+.stack {
+    position: relative;
+}
+
+.stack canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 #pointer-track {

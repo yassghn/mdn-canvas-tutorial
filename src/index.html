@@ -12,9 +12,17 @@
     <script src="lib/animatelo.min.js"></script>
   </head>
   <body>
-    <canvas id="tutorial-canvas">
-      <p>mdn canvas tutorial canvas</p>
-    </canvas>
+    <div class="stack">
+      <canvas id="ui-overlay-canvas">
+        <p>mdn canvas tutorial canvas</p>
+      </canvas>
+      <canvas id="tutorial-canvas">
+        <p>mdn canvas tutorial canvas</p>
+      </canvas>
+      <canvas id="ui-canvas">
+        <p>mdn canvas tutorial canvas</p>
+      </canvas>
+    </div>
     <div id="tutorial-menu-placeholder"></div>
     <div id="pointer-track" hidden><div id="pointer-track-content"></div></div>
     <script type="module" src="js/script.js" type="text/javascript"></script>
