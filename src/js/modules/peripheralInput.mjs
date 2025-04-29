@@ -41,11 +41,16 @@ function _isValidModifier(event) {
 function _processKeyboardInput(event) {
 	switch (event.key) {
 		case _keyBindings.keys.enter.key:
-			const doDraw = settings.drawGridLines == true.toString()
-			const newValue = doDraw == true ? 'false' : 'true'
-			settings.drawGridLines = newValue
-			settings.drawPointerTrack = newValue
-			settings.noClipDebug = newValue
+			if (_isValidModifier(event)) {
+				const doDraw = settings.drawGridLines == true.toString()
+				const newValue = doDraw == true ? 'false' : 'true'
+				settings.drawGridLines = newValue
+				settings.drawPointerTrack = newValue
+				settings.noClipDebug = newValue
+			}
+			break;
+		case _keyBindings.keys.space.key:
+			settings.pauseAnimation = settings.pauseAnimation == true.toString() ? 'false' : 'true'
 			break;
 	}
 }
