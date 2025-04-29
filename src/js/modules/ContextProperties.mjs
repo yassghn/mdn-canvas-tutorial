@@ -34,7 +34,7 @@ const _defaults = {
 function ContextProperties(properties = undefined) {
 	Object.assign(this, _defaults)
 
-	const init = (properties) => {
+	const _init = (properties) => {
 		if (properties) {
 			// iterate this keys
 			Object.keys(_defaults).forEach((prop) => {
@@ -44,7 +44,7 @@ function ContextProperties(properties = undefined) {
 		}
 	}
 
-	const setProps = (ctx) => {
+	const _setProps = (ctx) => {
 		// iterate properties
 		Object.keys(_defaults).forEach((prop) => {
 			// check if prop is undefined,
@@ -56,10 +56,10 @@ function ContextProperties(properties = undefined) {
 	}
 
 	this.set = (ctx) => {
-		setProps(ctx)
+		_setProps(ctx)
 	}
 
-	init(properties)
+	_init(properties)
 }
 
 export default ContextProperties
