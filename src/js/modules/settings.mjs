@@ -45,12 +45,12 @@ function _getValue(setting) {
 }
 
 function _setValue(setting, value) {
-	localStorage.setItem(setting, value)
+	_updateState(setting, value)
 }
 
 function _updateState(setting, value) {
 	_state[setting].val = value
-	_setValue(setting, value)
+	localStorage.setItem(setting, value)
 }
 
 function _init() {
@@ -70,7 +70,7 @@ const settings = {
 	},
 
 	set drawGridLines(value) {
-		_updateState(_defaults.drawGridLines.name, value)
+		_setValue(_defaults.drawGridLines.name, value)
 	},
 
 	// pointer track
@@ -79,7 +79,7 @@ const settings = {
 	},
 
 	set drawPointerTrack(value) {
-		_updateState(_defaults.drawPointerTrack.name, value)
+		_setValue(_defaults.drawPointerTrack.name, value)
 	},
 
 	// no clip debug
@@ -88,7 +88,7 @@ const settings = {
 	},
 
 	set noClipDebug(value) {
-		_updateState(_defaults.noClipDebug.name, value)
+		_setValue(_defaults.noClipDebug.name, value)
 	},
 
 	// no clip debug
@@ -97,7 +97,7 @@ const settings = {
 	},
 
 	set pauseAnimation(value) {
-		_updateState(_defaults.pauseAnimation.name, value)
+		_setValue(_defaults.pauseAnimation.name, value)
 	}
 }
 
