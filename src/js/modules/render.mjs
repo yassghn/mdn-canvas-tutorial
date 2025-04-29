@@ -85,7 +85,7 @@ function _drawGridText(ctx, text, x, y) {
 }
 
 export function trackGridLines(cvs, mousePos) {
-	const props = new ContextProperties().props
+	const props = new ContextProperties()
 	props.lineWidth = 2
 	props.strokeStyle = `rgb(243, 130, 192)`
 	const state = new ContextState(cvs.ctx, props)
@@ -107,7 +107,7 @@ export function drawGridLines(cvs) {
 	}
 	const maxX = cvs.width
 	const maxY = cvs.height
-	const props = new ContextProperties().props
+	const props = new ContextProperties()
 	props.lineWidth = 1
 	props.strokeStyle = `rgb(24, 193, 245)`
 	props.fillStyle = `rgb(24, 193, 245)`
