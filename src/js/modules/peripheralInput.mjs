@@ -56,12 +56,9 @@ function _processPointerInput(coords) {
 
 function _addKeyboardListener() {
 	document.addEventListener('keydown', (event) => {
-		// check if pre configured modifier was used
-		if (_isValidModifier(event)) {
-			// check if key combo is valid
-			if (_isTargetKey(event)) {
-				_processKeyboardInput(event)
-			}
+		// check if key combo is valid
+		if (_isTargetKey(event)) {
+			_processKeyboardInput(event)
 		}
 	})
 }
