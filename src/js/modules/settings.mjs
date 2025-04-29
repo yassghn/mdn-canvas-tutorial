@@ -58,12 +58,10 @@ function _init() {
 	_updateCurrentSettings()
 }
 
-const settings = {
-	// initialize
-	init: function () {
-		_init()
-	},
+// auto init
+[_init()]
 
+const settings = {
 	// grid lines
 	get drawGridLines() {
 		return _getValue(_defaults.drawGridLines.name)

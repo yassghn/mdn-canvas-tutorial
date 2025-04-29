@@ -35,8 +35,6 @@ async function _mdnCanvasTutorial() {
 	// check browser support for canvas
 	if (lessonsCanvas.isSupported()) {
 		log('canvas is supported!')
-		// init settings
-		settings.init()
 		// init peripheral input
 		peripheralInput.init()
 		// start the lessons
