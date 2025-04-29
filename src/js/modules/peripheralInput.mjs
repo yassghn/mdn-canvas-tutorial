@@ -3,6 +3,7 @@
  */
 
 import settings from './settings.mjs'
+import { enableAll } from './ui.mjs'
 
 const _keyBindings = {
 	modifier: {
@@ -50,9 +51,14 @@ function _processKeyboardInput(event) {
 			}
 			break;
 		case _keyBindings.keys.space.key:
-			// prevent pressing spacebar from scrolling page
-			event.preventDefault()
-			settings.pauseAnimation = settings.pauseAnimation == true.toString() ? 'false' : 'true'
+			// check if modifier was used
+			if (event.ctrlKey) {
+				enableAll()
+			} else {
+				// prevent pressing spacebar from scrolling page
+				event.preventDefault()
+				settings.pauseAnimation = settings.pauseAnimation == true.toString() ? 'false' : 'true'
+			}
 			break;
 	}
 }

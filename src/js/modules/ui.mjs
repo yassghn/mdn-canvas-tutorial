@@ -107,4 +107,21 @@ const ui = {
 	}
 }
 
+export function enableAll() {
+	// get all enable all toggles
+	const toggles = document.querySelectorAll('div[id|="enable-all"]')
+	// check length
+	if (toggles.length > 0) {
+		// create a click event
+		const event = new Event('click', { bubbles: true, cancelable: false, composed: true })
+		// iterate toggles firing event
+		for (const toggle of toggles) {
+			// set toggle state
+			toggle.checked = toggle.checked ? false : true
+			// fire event
+			toggle.dispatchEvent(event)
+		}
+	}
+}
+
 export default ui
