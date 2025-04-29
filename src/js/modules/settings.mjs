@@ -21,6 +21,11 @@ const _defaults = {
 	noClipDebug: {
 		name: 'noClipDebug',
 		val: 'false'
+	},
+
+	pauseAnimation: {
+		name: 'pauseAnimation',
+		val: 'false'
 	}
 }
 
@@ -98,6 +103,15 @@ const settings = {
 
 	set noClipDebug(value) {
 		_updateState(_defaults.noClipDebug.name, value)
+	},
+
+	// no clip debug
+	get pauseAnimation() {
+		return _getValue(_defaults.pauseAnimation.name)
+	},
+
+	set pauseAnimation(value) {
+		_updateState(_defaults.pauseAnimation.name, value)
 	}
 }
 
