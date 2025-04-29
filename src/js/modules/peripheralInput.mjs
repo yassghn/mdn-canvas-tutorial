@@ -50,6 +50,8 @@ function _processKeyboardInput(event) {
 			}
 			break;
 		case _keyBindings.keys.space.key:
+			// prevent pressing spacebar from scrolling page
+			event.preventDefault()
 			settings.pauseAnimation = settings.pauseAnimation == true.toString() ? 'false' : 'true'
 			break;
 	}
