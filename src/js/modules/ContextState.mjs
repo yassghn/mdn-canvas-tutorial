@@ -9,7 +9,7 @@ function ContextState(ctx, properties) {
 	this.ctx = undefined
 	this.props = undefined
 
-	const init = (ctx, properties) => {
+	const _init = (ctx, properties) => {
 		if (!this.self) {
 			this.self = this
 			this.ctx = ctx
@@ -17,7 +17,7 @@ function ContextState(ctx, properties) {
 		}
 	}
 
-	const setProps = (self) => {
+	const _setProps = (self) => {
 		self.props.set(self.ctx)
 	}
 
@@ -25,7 +25,7 @@ function ContextState(ctx, properties) {
 		// save state
 		this.ctx.save()
 		// set canvas state properties
-		setProps(this.self)
+		_setProps(this.self)
 		// get return value of lambda (if any)
 		const ret = lambda(this.ctx, ...args)
 		// restore state
@@ -34,7 +34,7 @@ function ContextState(ctx, properties) {
 		return ret
 	}
 
-	init(ctx, properties)
+	_init(ctx, properties)
 }
 
 export default ContextState
