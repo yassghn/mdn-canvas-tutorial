@@ -253,14 +253,14 @@ function _enableAll(enabled, menuId) {
 	const toggles = parent.getElementsByTagName('input')
 	// iterate toggles
 	if (toggles.length > 1) {
+		// create a click event
+		const event = new Event('click', { bubbles: true, cancelable: false, composed: true })
 		// skip first toggle (enable all)
 		for (let i = 1; i < toggles.length; i++) {
 			// get toggle element
 			const toggle = toggles[i]
 			// set toggle state
 			toggle.checked = enabled ? false : true
-			// create a click event
-			const event = new Event('click', { bubbles: true, cancelable: false, composed: true })
 			// fire toggle click event
 			toggle.dispatchEvent(event)
 		}
