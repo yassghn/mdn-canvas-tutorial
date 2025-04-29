@@ -36,8 +36,8 @@ function ContextProperties(properties = undefined) {
 
 	const _init = (properties) => {
 		if (properties) {
-			// iterate this keys
-			Object.keys(_defaults).forEach((prop) => {
+			// iterate default keys
+			Object.keys(_defaults).filter((prop) => properties[prop]).forEach((prop) => {
 				// set propertyy value
 				this[prop] = properties[prop]
 			})
