@@ -54,6 +54,8 @@ function _processKeyboardInput(event) {
 		case _keyBindings.keys.space.key:
 			// check if modifier was used
 			if (event.ctrlKey) {
+				const enable = settings.enableAll == true.toString()
+				settings.enableAll = enable ? 'false' : 'true'
 				enableAll()
 			} else {
 				// prevent pressing spacebar from scrolling page

@@ -21,6 +21,11 @@ const _defaults = {
 	pauseAnimation: {
 		name: 'pauseAnimation',
 		val: 'false'
+	},
+
+	enableAll: {
+		name: 'enableAll',
+		val: 'false'
 	}
 }
 
@@ -96,6 +101,15 @@ const settings = {
 
 	set pauseAnimation(value) {
 		_setValue(_defaults.pauseAnimation.name, value)
+	},
+
+	// no clip debug
+	get enableAll() {
+		return _getValue(_defaults.enableAll.name)
+	},
+
+	set enableAll(value) {
+		_setValue(_defaults.enableAll.name, value)
 	}
 }
 
