@@ -3,6 +3,7 @@
  */
 
 import { log } from './util.mjs'
+import { config } from './config.mjs'
 import initLessons from './lessonsInit.mjs'
 import canvas from './canvas.mjs'
 import { initPallete } from './pallete.mjs'
