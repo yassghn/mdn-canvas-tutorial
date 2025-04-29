@@ -2,7 +2,7 @@
  * mdnCanvasTutorial.mjs
  */
 
-import { log } from './util.mjs'
+import { log, loglvl } from './util.mjs'
 import { config } from './config.mjs'
 import initLessons from './lessonsInit.mjs'
 import uiCanvas from './uiCanvas.mjs'
@@ -22,11 +22,11 @@ function _draw(timestamp) {
 		}
 		uiOverlayCanvas.draw()
 	} catch (e) {
+		log(e, loglvl.ERROR)
 		// bring up debugger on error
 		if (config.debug) {
 			debugger
 		}
-		console.error(e)
 	}
 }
 
