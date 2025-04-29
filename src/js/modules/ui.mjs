@@ -18,11 +18,23 @@ function _updateLabels(coords) {
 	_pointerTrack.labely.innerText = `ypos: ${coords.y}`
 }
 
+function _calculatePosition(coords) {
+	// value of canvas drawing lineWidth for grid lines tracking
+	const offsetConst = 2
+	// check pointer track position is past any x/y 0 edge
+	const xedge = coords.x - _pointerTrack.width < 0
+	const yedge = coords.y - _pointerTrack.height < 0
+	// set position coordinates based on edge intersection (mirror across x/y axis when necessary)
+	const x = xedge ? coords.x + offsetConst + 1 : coords.x - _pointerTrack.width - 1
+	const y = yedge ? coords.y + offsetConst + 1 : coords.y - _pointerTrack.height - 1
+	// return pos
+	return { x: x, y: y }
+}
+
 function _updatePosition(coords) {
-	const x = coords.x - _pointerTrack.width - 1
-	const y = coords.y - _pointerTrack.height - 1
-	_pointerTrack.elem.style.left = `${x}px`
-	_pointerTrack.elem.style.top = `${y}px`
+	const pos = _calculatePosition(coords)
+	_pointerTrack.elem.style.left = `${pos.x}px`
+	_pointerTrack.elem.style.top = `${pos.y}px`
 }
 
 function _addLabels(content, coords) {
