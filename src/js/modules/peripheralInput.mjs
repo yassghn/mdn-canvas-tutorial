@@ -11,17 +11,24 @@ const _keyBindings = {
 
 	keys: {
 		enter: {
-			key: 'Enter',
-			keyCode: 13
+			code: 'Enter',
+			key: 'Enter'
+		},
+
+		space: {
+			code: 'Space',
+			key: ' '
 		}
 	}
 }
 
 function _isTargetKey(event) {
 	// check for enter key
-	const enter = _keyBindings.keys.enter
-	if (event.key === enter.key && event.keyCode == enter.keyCode) {
-		return true
+	for (const keyName in _keyBindings.keys) {
+		const key = _keyBindings.keys[keyName]
+		if (key.code == event.code && key.code == event.code) {
+			return true
+		}
 	}
 }
 
