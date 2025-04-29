@@ -39,32 +39,32 @@ export function ScrollingText() {
 	this.ctxState = undefined
 	this.effect = undefined
 
-	const init = (ctx, props, text, maxWidth, startX, ypos, scrollWidth) => {
+	const _init = (ctx, props, text, maxWidth, startX, ypos, scrollWidth) => {
 		// set context properties
 		this.ctxState = new ContextState(ctx, props)
 		// create effect
 		this.effect = scrollingTextEffect(this.ctxState, text, maxWidth, startX, ypos, scrollWidth)
 	}
 
-	const nextDraw = () => {
+	const _nextDraw = () => {
 		this.effect.update()
 	}
 
-	const draw = (ctx) => {
+	const _draw = (ctx) => {
 		ctx.fillText(this.effect.props.text, this.effect.props.x, this.effect.props.y)
 	}
 
 	this.render = () => {
 		// draw
-		this.ctxState.apply(draw)
+		this.ctxState.apply(_draw)
 		// update effect properties for next draw
-		nextDraw()
+		_nextDraw()
 	}
 
 	this.setState = (ctx, scrollingTextProps, text, maxWidth, startXpos, ypos, scrollWidth) => {
 		// init singleton properties
 		if (!this.ctxState) {
-			init(ctx, scrollingTextProps, text, maxWidth, startXpos, ypos, scrollWidth)
+			_init(ctx, scrollingTextProps, text, maxWidth, startXpos, ypos, scrollWidth)
 		}
 	}
 
