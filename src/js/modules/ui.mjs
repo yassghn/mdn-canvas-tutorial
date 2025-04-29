@@ -3,6 +3,7 @@
  */
 
 import settings from './settings.mjs'
+import state from './state.mjs'
 import { drawGridLines, trackGridLines } from './render.mjs'
 
 const _pointerTrack = {
@@ -78,8 +79,14 @@ function _renderpointerTrack(coords) {
 	_updateLabels(coords)
 }
 
+function _getPointerCoords() {
+	const x = state.pointerPosX
+	const y = state.pointerPosY
+	return { x: x, y: y }
+}
+
 function _draw(cvs) {
-	const coords = settings.pointerPos
+	const coords = _getPointerCoords()
 	// check to initialize _pointerTrack
 	if (!_pointerTrack.elem) {
 		_preparePointerTrack(coords)
@@ -94,7 +101,7 @@ function _draw(cvs) {
 }
 
 function _drawOver(cvs) {
-	const coords = settings.pointerPos
+	const coords =  _getPointerCoords()
 	// draw grid lines and pointer track
 	if (settings.drawGridLines == true.toString()) {
 		if (settings.drawPointerTrack == true.toString()) {

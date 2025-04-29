@@ -3,6 +3,7 @@
  */
 
 import settings from './settings.mjs'
+import state from './state.mjs'
 import { enableAll } from './ui.mjs'
 
 const _keyBindings = {
@@ -64,7 +65,8 @@ function _processKeyboardInput(event) {
 }
 
 function _processPointerInput(coords) {
-	settings.pointerPos = coords
+	state.pointerPosX = coords.x
+	state.pointerPosY = coords.y
 }
 
 function _addKeyboardListener() {
@@ -78,7 +80,7 @@ function _addKeyboardListener() {
 
 function _addPointerMoveListener() {
 	document.addEventListener('pointermove', (event) => {
-		if (settings.drawPointerTrack) {
+		if (settings.drawPointerTrack == true.toString()) {
 			const coords = { x: event.clientX, y: event.clientY }
 			_processPointerInput(coords)
 		}
@@ -93,7 +95,9 @@ function _addPointerLeaveListener() {
 
 function _addPointerEnterListener() {
 	document.body.addEventListener('pointerenter', (event) => {
-		settings.drawPointerTrack = 'true'
+		if (settings.drawGridLines == true.toString()) {
+			settings.drawPointerTrack = 'true'
+		}
 	})
 }
 
