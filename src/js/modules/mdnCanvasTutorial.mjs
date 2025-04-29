@@ -56,7 +56,10 @@ const mdnCanvasTutorial = async () => {
 	await _mdnCanvasTutorial()
 }
 
-// adjust canvas
-window.onresize = canvas.adjustCanvas
+export function resizeCanvasObjects() {
+	lessonsCanvas.resize()
+	uiCanvas.resize()
+	uiOverlayCanvas.resize()
+}
 
 export default mdnCanvasTutorial
