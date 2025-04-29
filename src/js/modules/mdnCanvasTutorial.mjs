@@ -11,7 +11,6 @@ import lessonsCanvas from './lessonsCanvas.mjs'
 import { initPallete } from './pallete.mjs'
 import peripheralInput from './peripheralInput.mjs'
 import settings from './settings.mjs'
-import { enableAll } from './ui.mjs'
 
 // draw
 function _draw(timestamp) {
@@ -32,14 +31,14 @@ function _draw(timestamp) {
 }
 
 // main
-async function _mdnCanvasTutorial() {
+function _mdnCanvasTutorial() {
 	// check browser support for canvas
 	if (lessonsCanvas.isSupported()) {
 		log('canvas is supported!')
 		// init peripheral input
 		peripheralInput.init()
 		// start the lessons
-		await initLessons(lessonsCanvas)
+		initLessons(lessonsCanvas)
 		// get timestamp
 		const timestamp = document.timeline.currentTime
 		// init pallete
@@ -51,12 +50,8 @@ async function _mdnCanvasTutorial() {
 	}
 }
 
-const mdnCanvasTutorial = async () => {
-	await _mdnCanvasTutorial()
-	// check for enable all
-	if (settings.enableAll == true.toString()) {
-		enableAll()
-	}
+const mdnCanvasTutorial = () => {
+	_mdnCanvasTutorial()
 }
 
 export function resizeCanvasObjects() {

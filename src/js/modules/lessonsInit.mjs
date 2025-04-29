@@ -2,14 +2,18 @@
  * lessonsInit.mjs
  */
 
-import { addBasicDrawingAndShapesMenu,
-	 	 addStylesColorsAndTextMenu,
-		 addImagesAndTransformationsMenu,
-		 addClippingAndAnimationsMenu } from './lessonsMenus.mjs'
+import {
+	addBasicDrawingAndShapesMenu,
+	addStylesColorsAndTextMenu,
+	addImagesAndTransformationsMenu,
+	addClippingAndAnimationsMenu
+} from './lessonsMenus.mjs'
 import basicDrawingAndShapesSetup from '../lessons/basicDrawingAndShapesSetup.mjs'
 import stylesColorsAndTextSetup from '../lessons/stylesColorsAndTextSetup.mjs'
 import imagesAndTransformationsSetup from '../lessons/imagesAndTransformationsSetup.mjs'
 import clippingAndAnimationsSetup from '../lessons/clippingAndAnimationsSetup.mjs'
+import settings from './settings.mjs'
+import { enableAll } from './ui.mjs'
 
 // init lessons
 async function initBasicDrawingAndShapes(menu) {
@@ -59,15 +63,26 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.mouseFollowingInit(menu)
 }
 
-async function initLessons(cvs) {
-	const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu(cvs)
-	await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
-	const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu(cvs)
-	await initStylesColorsAndText(stylesColorsAndTextMenu)
-	const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu(cvs)
-	await initImagesAndTransformations(imagesAndTransformationsMenu)
-	const clippingAndAnimationsMenu = await addClippingAndAnimationsMenu(cvs)
-	await initClippingAndAnimations(clippingAndAnimationsMenu)
+async function _initLessons(cvs) {
+	return new Promise(async (resolve) => {
+		const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu(cvs)
+		await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
+		const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu(cvs)
+		await initStylesColorsAndText(stylesColorsAndTextMenu)
+		const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu(cvs)
+		await initImagesAndTransformations(imagesAndTransformationsMenu)
+		const clippingAndAnimationsMenu = await addClippingAndAnimationsMenu(cvs)
+		await initClippingAndAnimations(clippingAndAnimationsMenu)
+		resolve((() => {
+			if (settings.enableAll == true.toString()) {
+				enableAll()
+			}
+		})())
+	})
+}
+
+function initLessons(cvs) {
+	_initLessons(cvs)
 }
 
 export default initLessons
