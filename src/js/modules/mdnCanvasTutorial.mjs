@@ -1,5 +1,5 @@
 /**
- * canvasTutorial.mjs
+ * mdnCanvasTutorial.mjs
  */
 
 import { log } from './util.mjs'
@@ -16,7 +16,7 @@ function _draw(timestamp) {
 }
 
 // main
-async function _canvasTutorial() {
+async function _mdnCanvasTutorial() {
 	// configure canvas object
 	canvas.configCanvas()
 	// check browser support for canvas
@@ -39,11 +39,11 @@ async function _canvasTutorial() {
 	}
 }
 
-const canvasTutorial = async () => {
-	await _canvasTutorial()
+const mdnCanvasTutorial = async () => {
+	await _mdnCanvasTutorial()
 }
 
 // adjust canvas
 window.onresize = canvas.adjustCanvas
 
-export default canvasTutorial
+export default mdnCanvasTutorial
