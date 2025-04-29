@@ -2,9 +2,6 @@
  * canvas.mjs
  */
 
-import pallete from './pallete.mjs'
-import ui from './ui.mjs'
-
 /**
  * NOTES:
  * CanvasRenderingContext2D
@@ -81,12 +78,6 @@ const canvas = {
 	canvasPallete: function (timestamp) {
 		// clear canvas
 		clearCanvas()
-		// draw ui
-		ui.draw(cvs)
-		// draw menu enabled lessons
-		pallete(cvs, timestamp)
-		// draw ui over layer
-		ui.drawOver(cvs)
 	}
 }
 
