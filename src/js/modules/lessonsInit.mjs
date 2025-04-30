@@ -63,22 +63,19 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.mouseFollowingInit(menu)
 }
 
+async function _menuInit(cvs, addMenu, init) {
+	const menu = await addMenu(cvs)
+	await init(menu)
+}
+
 async function _initLessons(cvs) {
-	return new Promise(async (resolve) => {
-		const basicDrawingAndShapesMenu = await addBasicDrawingAndShapesMenu(cvs)
-		await initBasicDrawingAndShapes(basicDrawingAndShapesMenu)
-		const stylesColorsAndTextMenu = await addStylesColorsAndTextMenu(cvs)
-		await initStylesColorsAndText(stylesColorsAndTextMenu)
-		const imagesAndTransformationsMenu = await addImagesAndTransformationsMenu(cvs)
-		await initImagesAndTransformations(imagesAndTransformationsMenu)
-		const clippingAndAnimationsMenu = await addClippingAndAnimationsMenu(cvs)
-		await initClippingAndAnimations(clippingAndAnimationsMenu)
-		resolve((() => {
-			if (settings.enableAll == true.toString()) {
-				enableAll()
-			}
-		})())
-	})
+	await _menuInit(cvs, addBasicDrawingAndShapesMenu, initBasicDrawingAndShapes)
+	await _menuInit(cvs, addStylesColorsAndTextMenu, initStylesColorsAndText)
+	await _menuInit(cvs, addImagesAndTransformationsMenu, initImagesAndTransformations)
+	await _menuInit(cvs, addClippingAndAnimationsMenu, initClippingAndAnimations)
+	if (settings.enableAll == true.toString()) {
+		enableAll()
+	}
 }
 
 function initLessons(cvs) {
