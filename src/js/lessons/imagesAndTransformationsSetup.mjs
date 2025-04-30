@@ -50,28 +50,28 @@ const imagesAndTransformationsSetup = {
 	drawingImagesInit: async function (menu) {
 		await addMenuItem('drawing-images', 'drawing images', 'drawing-images-check', drawingImagesCallback, menu)
 		// load backdrop image
-		loadBackdropImage()
+		await loadBackdropImage()
 	},
 
 	// scaling
 	scalingImagesInit: async function (menu) {
 		await addMenuItem('scaling-images', 'scaling images', 'scaling-images-check', scalingImagesCallback, menu)
 		// load rhino image
-		loadScalingImage()
+		await loadScalingImage()
 	},
 
 	// slicing
 	slicingInit: async function (menu) {
 		await addMenuItem('slicing', 'slicing', 'slicing-check', slicingCallback, menu)
 		// load picture frame image
-		loadSlicingImage()
+		await loadSlicingImage()
 	},
 
 	// art gallery
 	artGalleryInit: async function (menu) {
 		await addMenuItem('art-gallery', 'art gallery', 'art-gallery-check', artGalleryCallback, menu)
 		// load gallery images
-		loadArtGalleryImages()
+		await loadArtGalleryImages()
 	},
 
 	// save restore state
