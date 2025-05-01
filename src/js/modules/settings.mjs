@@ -58,9 +58,15 @@ function _updateState(setting, value) {
 	localStorage.setItem(setting, value)
 }
 
+function _setInitialStateOnLoad() {
+	// make sure animation is not paused on start
+	_setValue(_defaults.pauseAnimation.name, 'false')
+}
+
 function _init() {
 	_addDefaultSettings()
 	_updateCurrentSettings()
+	_setInitialStateOnLoad()
 }
 
 // auto init
