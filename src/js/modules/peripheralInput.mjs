@@ -83,10 +83,8 @@ function _addKeyboardListener() {
 
 function _addPointerMoveListener() {
 	document.addEventListener('pointermove', (event) => {
-		if (settings.drawPointerTrack == true.toString()) {
-			const coords = { x: event.clientX, y: event.clientY }
-			_processPointerInput(coords)
-		}
+		const coords = { x: event.clientX, y: event.clientY }
+		_processPointerInput(coords)
 	})
 }
 
