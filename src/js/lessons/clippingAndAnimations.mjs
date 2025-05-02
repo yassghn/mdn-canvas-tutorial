@@ -363,7 +363,7 @@ const clippingAndAnimations = {
 		 * todo:
 		 *
 		 * custom implementation of trail, and a rework of setting
-		 * and transparency values.
+		 * any transparency values.
 		 */
 		mouseFollowParticles.trailWidth = 4
 		mouseFollowParticles.rotationSpeed = 0.02
