@@ -11,45 +11,22 @@ const _effectProps = {
 	ctx: undefined,
 	amount: undefined,
 	coords: undefined,
-	trailWidth: undefined,
 	rotationSpeed: undefined
 }
 
 function _reduceRadius(radius) {
 	let r = radius
-	const dA1 = .2
+	const dA1 = .07
 	const dB1 = .1
-	if ((radius > 1) && (radius - dA1) > 0) {
+	if ((radius > 2) && (radius - dA1) > 0) {
 		r -= dA1
-	} else if (((radius - 1) <= 0) && (radius - dB1) > 0) {
+	} else if (((radius - 1) <= 1) && (radius - dB1) > 1) {
 		r -= dB1
 	}
 	return r
 }
 
-function _renderParticleTrail(ctx, pCoords, lc, color, radius, theta, t, rotationSpeed) {
-	let nTheta = theta
-	const nextCoords = { ...lc }
-	const ctxProps = new ContextProperties()
-	ctxProps.fillStyle = color
-	const ctxState = new ContextState(ctx, ctxProps)
-	ctxState.apply((ctx, _coords, _pCoords, _lc, _radius, _nTheta, _rts) => {
-		let r = _radius
-		for (let i = 0; i < 20; i++) {
-			r = _reduceRadius(r)
-			// keep speed the same
-			_nTheta += _rts
-			// - or + ?
-			_coords.x = lc.x + Math.sin(Math.abs(_nTheta)) * t
-			_coords.y = lc.y + Math.cos(Math.abs(_nTheta)) * t
-			ctx.beginPath()
-			ctx.arc(_coords.x, _coords.y, r, 0, 2 * Math.PI)
-			ctx.fill()
-		}
-	}, nextCoords, pCoords, lc, radius, nTheta, rotationSpeed)
-}
-
-/* function _renderParticleTrail(particle, lc) {
+function _renderParticleTrail(particle, lc) {
 	const ctx = particle.ctx
 	//const defaultCoords = { ...particle.coords }
 	const coords = { ...particle.coords }
@@ -59,36 +36,40 @@ function _renderParticleTrail(ctx, pCoords, lc, color, radius, theta, t, rotatio
 	const t = particle.t
 	const radius = particle.radius
 
-	// update rotation values
-	//theta += rts
-	// swap sin/cos reverses direction
+	// swap sin/cos spins counter clockwise
 	coords.x = lc.x + Math.sin(theta) * t
 	coords.y = lc.y + Math.cos(theta) * t
 
 	const ctxProps = new ContextProperties()
 	ctxProps.fillStyle = color
+	ctxProps.globalAlpha = .3
 	const ctxState = new ContextState(ctx, ctxProps)
 
 	ctxState.apply((_ctx, _coords, _lc, _radius, _theta, _rts, _t) => {
 		let r = _radius
-		for (let i = 0; i < 20; i++) {
+		// generate x amount of extra particles "trailing" behind
+		for (let i = 0; i < (_radius * (Math.PI * 4)); i++) {
+			// reduce radius of each "extra particle" i.e. trail
 			r = _reduceRadius(r)
-			//_theta += _rts
 			// - or + ?
-			_coords.x = _lc.x + Math.sin(_theta) * _t
-			_coords.y = _lc.y + Math.cos(_theta) * _t
-			ctx.beginPath()
-			ctx.arc(_coords.x, _coords.y, r, 0, 2 * Math.PI)
-			ctx.fill()
+			// need theta update here to properly trail
+			// subtracting rotation speed inverts the trail
+			_theta -= _rts
+			_coords.x = _lc.x + Math.cos(_theta) * _t
+			_coords.y = _lc.y + Math.sin(_theta) * _t
+			// draw
+			_ctx.beginPath()
+			_ctx.arc(_coords.x, _coords.y, r, 0, 2 * Math.PI)
+			_ctx.fill()
 		}
-	}, ctx, coords, lc, radius, theta, rts, t)
+	}, coords, lc, radius, theta, rts, t)
 }
 
 function _renderParticleTrails(particles, lcs) {
 	particles.forEach((particle, index) => {
 		_renderParticleTrail(particle, lcs[index])
 	})
-} */
+}
 
 function _renderParticle(ctx, coords, color, radius) {
 	const ctxProps = new ContextProperties()
@@ -105,7 +86,6 @@ function _Particle(props, color) {
 	this.ctx = props.ctx
 	this.defaultCoords = { ...props.coords }
 	this.coords = { ...props.coords }
-	this.trailWidth = props.trailWidth
 	this.rotationSpeed = props.rotationSpeed
 	this.color = color
 	this.theta = Math.random() * Math.PI * 2
@@ -134,8 +114,8 @@ function _Particle(props, color) {
 		// update rotation values
 		this.theta += this.rotationSpeed
 		// swap sin/cos reverses direction
-		this.coords.x = lastCenter.x + Math.sin(this.theta) * this.t
-		this.coords.y = lastCenter.y + Math.cos(this.theta) * this.t
+		this.coords.x = lastCenter.x + Math.cos(this.theta) * this.t
+		this.coords.y = lastCenter.y + Math.sin(this.theta) * this.t
 		// return last center
 		return lastCenter
 	}
@@ -146,7 +126,7 @@ function _Particle(props, color) {
 		// rotate particles
 		const lc = _rotate()
 		// draw
-		_renderParticleTrail(this.ctx, prevCoords, lc, this.color, this.radius, this.theta, this.t, this.rotationSpeed)
+		//_renderParticleTrail(this.ctx, prevCoords, lc, this.color, this.radius, this.theta, this.t, this.rotationSpeed)
 		_renderParticle(this.ctx, this.coords, this.color, this.radius)
 		return lc
 	}
@@ -167,8 +147,8 @@ function _ParticleGenerator(props) {
 
 	this.render = () => {
 		let lcs = []
-		//_renderParticleTrails(_particles, lcs)
 		_particles.forEach((particle) => { lcs.push(particle.render()) })
+		_renderParticleTrails(_particles, lcs)
 	}
 
 	_init(props)
