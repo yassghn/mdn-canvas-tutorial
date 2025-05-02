@@ -5,6 +5,7 @@
 import ContextState from './ContextState.mjs'
 import neonGlitchTextEffectProps from './neonGlitchTextEffect.mjs'
 import scrollingTextEffect from './scrollingTextEffect.mjs'
+import spinningParticlesEffect from './spinningParticlesEffect.mjs'
 
 export function neonGlitchText() {
 	const neonGlitchTextEffect = {
@@ -68,4 +69,9 @@ export function ScrollingText() {
 		}
 	}
 
+}
+
+// spinning particles
+export function spinningParticles() {
+	return spinningParticlesEffect()
 }

@@ -10,9 +10,17 @@ const effects = function() {
 		leftScroll: () => new effectsModules.ScrollingText()
 	}
 
+	const particleEffects = {
+		spinningParticles: () => effectsModules.spinningParticles()
+	}
+
 	const effects = {
 		get text() {
 			return textEffects
+		},
+
+		get particles() {
+			return particleEffects
 		}
 	}
 

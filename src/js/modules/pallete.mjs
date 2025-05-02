@@ -19,6 +19,7 @@ let clockPallete = undefined
 const efx = effects()
 const neonGlitch = efx.text.neonGlitch()
 const scrollLeft = efx.text.leftScroll()
+const mouseFollowParticles = efx.particles.spinningParticles()
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -123,7 +124,7 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 		clippingAndAnimations.drawLoopingPanorama(cvs, previousTimestamp, timestamp)
 	}
 	if (clippingAndAnimations.mouseFollowing) {
-		clippingAndAnimations.drawMouseFollowing(cvs)
+		clippingAndAnimations.drawMouseFollowing(cvs, mouseFollowParticles)
 	}
 }
 
