@@ -353,6 +353,18 @@ const clippingAndAnimations = {
 		mouseFollowParticles.amount = 101
 		mouseFollowParticles.coords = { ...coords }
 		mouseFollowParticles.globalAlpha = 0.5
+		/**
+		 * notes:
+		 *
+		 * our rect is fully cleared every draw. the mdn lesson uses an
+		 * alpha value during re-drawing a rect which creates the appearance of
+		 * a fading trail.
+		 *
+		 * todo:
+		 *
+		 * custom implementation of trail, and a rework of setting
+		 * and transparency values.
+		 */
 		mouseFollowParticles.trailWidth = 4
 		mouseFollowParticles.rotationSpeed = 0.02
 		// render effect
