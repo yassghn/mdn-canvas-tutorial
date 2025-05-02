@@ -126,6 +126,9 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	if (clippingAndAnimations.mouseFollowing) {
 		clippingAndAnimations.drawMouseFollowing(cvs, mouseFollowParticles)
 	}
+	if (clippingAndAnimations.boundaries) {
+		clippingAndAnimations.drawBoundaries(cvs)
+	}
 }
 
 function drawPallete(cvs, callback, timestamp) {

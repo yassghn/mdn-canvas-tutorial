@@ -357,12 +357,17 @@ const clippingAndAnimations = {
 		mouseFollowParticles.render()
 	},
 
+	drawBoundaries: function (cvs) {
+
+	},
+
 	clippingPaths: false,
 	inverseClippingPaths: false,
 	solarSystem: false,
 	clock: false,
 	loopingPanorama: false,
-	mouseFollowing: false
+	mouseFollowing: false,
+	boundaries: false
 
 }
 

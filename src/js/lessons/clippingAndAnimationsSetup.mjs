@@ -33,6 +33,10 @@ function mouseFollowingCallback(enabled) {
 	clippingAndAnimations.mouseFollowing = enabled
 }
 
+function boundariesCallback(enabled) {
+	clippingAndAnimations.boundaries = enabled
+}
+
 const clippingAndAnimationsSetup = {
 	// clipping paths
 	clippingPathsInit: async function (menu) {
@@ -66,6 +70,11 @@ const clippingAndAnimationsSetup = {
 	// mouse following
 	mouseFollowingInit: async function (menu) {
 		await addMenuItem('mouse-following', 'mouse following', 'mouse-following-check', mouseFollowingCallback, menu)
+	},
+
+	// boundaries
+	boundariesInit: async function (menu) {
+		await addMenuItem('boundaries', 'boundaries', 'boundaries-check', boundariesCallback, menu)
 	}
 }
 
