@@ -58,7 +58,6 @@ function _Particle(props, color) {
 		ctxProps.globalAlpha = this.globalAlpha
 		ctxProps.lineWidth = this.trailWidth
 		ctxProps.strokeStyle = this.color
-		ctxProps.fillStyle = 'rgb(0 0 0 / 5%)'
 		const ctxState = new ContextState(this.ctx, ctxProps)
 		ctxState.apply((ctx, prevCoords, nextCoords) => {
 			ctx.beginPath()
