@@ -92,7 +92,7 @@ function _addPointerLeaveListener() {
 	document.body.addEventListener('pointerleave', (event) => {
 		settings.drawPointerTrack = 'false'
 		// pointer left viewable document window, set coordinates out of bounds
-		_processPointerInput({x: -1, y: -1})
+		_processPointerInput({ x: -1, y: -1 })
 	})
 }
 
