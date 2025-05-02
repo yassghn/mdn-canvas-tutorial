@@ -110,11 +110,12 @@ function _render(effect) {
 
 function spinningParticlesEffect() {
 	const effect = {
+		..._effectProps,
+
 		_particleGenerator: undefined,
 
 		render: function() {
-			// pass this as object self, already has properties due to Object.assign
-			// this keyword is not an object
+			// pass this as object self. this keyword is not an object.
 			const self = this
 			// check properties are valid
 			if (_isValidProps(self)) {
@@ -122,9 +123,6 @@ function spinningParticlesEffect() {
 			}
 		}
 	}
-
-	// assigned effects properties
-	Object.assign(effect, _effectProps)
 
 	return effect
 }
