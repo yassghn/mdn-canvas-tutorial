@@ -83,8 +83,12 @@ function _addKeyboardListener() {
 
 function _addPointerMoveListener() {
 	document.addEventListener('pointermove', (event) => {
-		const coords = { x: event.clientX, y: event.clientY }
-		_processPointerInput(coords)
+		// check pointer in window. otherwise slowly moving at edges, near scroll bar,
+		// incorrectly records move coordinates again
+		if (pointer().inWindow) {
+			const coords = { x: event.clientX, y: event.clientY }
+			_processPointerInput(coords)
+		}
 	})
 }
 
