@@ -5,6 +5,7 @@
 import settings from './settings.mjs'
 import state from './state.mjs'
 import { enableAll } from './ui.mjs'
+import pointer from './pointer.mjs'
 
 const _keyBindings = {
 	modifier: {
@@ -92,6 +93,8 @@ function _addPointerMoveListener() {
 function _addPointerLeaveListener() {
 	document.body.addEventListener('pointerleave', (event) => {
 		settings.drawPointerTrack = 'false'
+		// pointer left viewable document window, set coordinates out of bounds
+		_processPointerInput({x: -1, y: -1})
 	})
 }
 
@@ -100,6 +103,9 @@ function _addPointerEnterListener() {
 		if (settings.drawGridLines == true.toString()) {
 			settings.drawPointerTrack = 'true'
 		}
+		// update pointer coords
+		const coords = { x: event.clientX, y: event.clientY }
+		_processPointerInput(coords)
 	})
 }
 
