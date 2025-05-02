@@ -352,7 +352,6 @@ const clippingAndAnimations = {
 		mouseFollowParticles.ctx = cvs.ctx
 		mouseFollowParticles.amount = 101
 		mouseFollowParticles.coords = { ...coords }
-		mouseFollowParticles.globalAlpha = 0.5
 		/**
 		 * notes:
 		 *
