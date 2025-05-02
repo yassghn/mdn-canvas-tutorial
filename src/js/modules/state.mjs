@@ -43,9 +43,16 @@ function _setValue(state, value) {
 	_updateState(state, value)
 }
 
+function _setInitialStateOnLoad() {
+	// do not keep previous pointer coords
+	_setValue(_defaults.pointerPosX.name, -1)
+	_setValue(_defaults.pointerPosY.name, -1)
+}
+
 function _init() {
 	_addDefaultState()
 	_updateCurrentState()
+	_setInitialStateOnLoad()
 }
 
 // auto init
