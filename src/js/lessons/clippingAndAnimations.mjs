@@ -2,6 +2,7 @@
  * clipping and animations
  */
 
+import pointer from '../modules/pointer.mjs'
 import { generateStars } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
@@ -341,8 +342,21 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawMouseFollowing: function (cvs) {
-
+	drawMouseFollowing: function (cvs, mouseFollowParticles) {
+		// set default coords to empty canvas position
+		let coords = {
+			x: 1600,
+			y: 450
+		}
+		// set effect properties
+		mouseFollowParticles.ctx = cvs.ctx
+		mouseFollowParticles.amount = 101
+		mouseFollowParticles.coords = { ...coords }
+		mouseFollowParticles.globalAlpha = 0.5
+		mouseFollowParticles.trailWidth = 4
+		mouseFollowParticles.rotationSpeed = 0.02
+		// render effect
+		mouseFollowParticles.render()
 	},
 
 	clippingPaths: false,
