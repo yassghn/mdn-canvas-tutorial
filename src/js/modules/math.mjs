@@ -29,3 +29,15 @@ export function calculateRectCenter(xpos, ypos, width, height) {
 
 	return coords
 }
+
+export function generateColor() {
+	const hexSet = '0123456789ABCDEF'
+	const hexPrefix = '#'
+	let color = [hexPrefix]
+	// generate random hex color string
+	for (let i = 1; i <= 6; i++) {
+		color.push(hexSet[Math.ceil(Math.random() * 15)])
+	}
+	// return color as string
+	return color.join('')
+}
