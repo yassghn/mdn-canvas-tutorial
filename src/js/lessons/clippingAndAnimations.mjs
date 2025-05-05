@@ -2,8 +2,10 @@
  * clipping and animations
  */
 
+import ContextProperties from '../modules/ContextProperties.mjs'
+import ContextState from '../modules/ContextState.mjs'
 import pointer from '../modules/pointer.mjs'
-import { generateStars } from '../modules/render.mjs'
+import { generateStars, getShield, getSword } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
 let loopingPanoramaTimestamp = 0
@@ -357,8 +359,38 @@ const clippingAndAnimations = {
 		mouseFollowParticles.render()
 	},
 
+	sword: getSword(),
 	drawBoundaries: function (cvs) {
+		/**
+		 * boudnaries
+		 *
+		 * collision detection
+		 * 	- measure x/y edges of object to edges of another object on canvas (or the canvas edges themselves)
+		 *  - reverse velocity vectors when edges meet
+		 */
 
+		// shield is tightly coupled to sword coords and velocity
+		const shield = getShield(this.sword)
+
+		// draw sword & shield
+		this.sword.render(cvs.ctx)
+		shield.render(cvs.ctx)
+
+		// update on screen position, adding velicty to coordinates
+		const newCoords = { x: this.sword.coords.x + this.sword.velocity.x, y: this.sword.coords.y + this.sword.velocity.y }
+		this.sword.setCoords(newCoords)
+
+		// collision detection with response
+		if (this.sword.isBoundingHeightCollision(cvs.height)) {
+			// invert y velcoity
+			const dvy = { x: this.sword.velocity.x, y: -this.sword.velocity.y }
+			this.sword.setVelocity(dvy)
+		}
+		if (shield.isBoundingWidthCollision(cvs.width)) {
+			// invert x velcoity
+			const dvx = { x: -this.sword.velocity.x, y: this.sword.velocity.y }
+			this.sword.setVelocity(dvx)
+		}
 	},
 
 	clippingPaths: false,

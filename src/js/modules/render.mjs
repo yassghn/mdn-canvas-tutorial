@@ -299,3 +299,206 @@ export function clearClock(xpos, ypos, cvs) {
 
 	})
 }
+
+export function getShield(swordProps) {
+	const _shieldProps = {
+		defaultCoords: {
+			x: swordProps.defaultCoords.x,
+			y: swordProps.defaultCoords.y
+		},
+
+		dimensions: {
+			w: 150,
+			h: 125
+		},
+
+		velocity: {
+			x: swordProps.velocity.x,
+			y: swordProps.velocity.y
+		}
+	}
+
+	const shield = {
+		..._shieldProps,
+
+		coords: { ...swordProps.coords },
+
+		render: function (ctx) {
+			const props = new ContextProperties()
+			props.strokeStyle = `rgb(237, 237, 237)`
+			props.fillStyle = `rgb(237, 237, 237)`
+			props.lineWidth = 2
+			const state = new ContextState(ctx, props)
+			state.apply((_ctx, _coords, _dimensions) => {
+				/**
+				 * note: the start of this is just figuring out how to get that nice aesthetic center
+				 * for the shield position.
+				 */
+
+				// get x/y pos for translate
+				const x = _coords.x - Math.ceil(this.dimensions.w / 2) + Math.ceil(swordProps.dimensions.w / 2)
+				const y = _coords.y - Math.ceil(swordProps.dimensions.h / 2)
+				_ctx.translate(x, y)
+
+				// outline of shield shape and position
+				/* _ctx.rect(0, 0, _dimensions.w, _dimensions.h)
+				_ctx.stroke() */
+
+				// outline of center of 0, 0 translate path
+				/* _ctx.arc(0, 0, 20, 0, Math.PI * 2)
+				_ctx.stroke() */
+
+				// adjust translate to required center
+				// lol, 5, what 5? where 5?
+				const newX = Math.ceil(swordProps.dimensions.crossGuardWidth / 2 + swordProps.dimensions.w - 5)
+				const newY = Math.ceil(swordProps.dimensions.crossGuardHeight / 2 + swordProps.dimensions.h / 2)
+				_ctx.translate(newX, newY)
+				// draw square wrapped in arc to point out new center
+				/* _ctx.moveTo(0, 0)
+				_ctx.beginPath()
+				_ctx.rect(0, 0, 10, 10)
+				_ctx.stroke()
+				_ctx.beginPath()
+				_ctx.arc(0, 0, 10, 0, Math.PI * 2)
+				_ctx.stroke() */
+
+				// draw shield
+				ctx.beginPath()
+				ctx.moveTo(0, 0)
+				ctx.quadraticCurveTo(0, 25, 100, 0)
+				ctx.quadraticCurveTo(50, 25, 0, 150)
+				ctx.quadraticCurveTo(-50, 25, -100, 0)
+				//ctx.quadraticCurveTo(0, -25, 0, 0)
+				ctx.quadraticCurveTo(0, 25, 0, 0)
+				ctx.stroke()
+			}, this.coords, this.dimensions)
+		},
+
+		setCoords: function (newCoords) {
+			this.coords = { ...newCoords }
+		},
+
+		isBoundingWidthCollision: function (width) {
+			// check right then left
+			if (this.coords.x + this.velocity.x > width - 150 ||
+				this.coords.x + this.velocity.x < this.dimensions.w - 150/2) {
+				return true
+			}
+			return false
+		}
+	}
+
+	return shield
+}
+
+function _getRandomVelocity(maxx, minx, maxy, miny) {
+	const mult = Math.floor(Math.random() * (10 - 1) + 1)
+	const tx = Math.floor(Math.random() * (maxx - minx) + minx)
+	const ty = Math.floor(Math.random() * (maxy - miny) + miny)
+	const vx = mult % 2 == 0 ? tx : -tx
+	const vy = mult % 3 == 0 ? ty : -ty
+	return { x: vx, y: vy }
+}
+
+export function getSword() {
+	const _swordProps = {
+		defaultCoords: {
+			x: 800,
+			y: 450
+		},
+
+		dimensions: {
+			w: 30,
+			h: 200,
+			crossGuardWidth: 100,
+			crossGuardHeight: 20
+		},
+
+		velocity: {
+			..._getRandomVelocity(7, 5, 5, 3)
+		}
+	}
+
+	const sword = {
+		..._swordProps,
+
+		coords: { ..._swordProps.defaultCoords },
+
+		render: function (ctx) {
+			const props = new ContextProperties()
+			props.strokeStyle = `rgb(237, 237, 237)`
+			props.fillStyle = `rgb(237, 237, 237)`
+			props.lineWidth = 2
+			const state = new ContextState(ctx, props)
+			state.apply((_ctx, _coords, _dimensions) => {
+
+				// draw sword stem (blade without point)
+				_ctx.beginPath()
+				_ctx.rect(_coords.x, _coords.y, _dimensions.w, _dimensions.h)
+				_ctx.stroke()
+
+				// draw sword point
+				_ctx.save()
+				_ctx.translate(_coords.x, _coords.y + _dimensions.h)
+				_ctx.beginPath()
+				_ctx.moveTo(0, 0)
+				_ctx.lineTo(_dimensions.w, 0)
+				_ctx.lineTo(_dimensions.w / 2, 30)
+				_ctx.closePath()
+				_ctx.stroke()
+				_ctx.restore()
+
+				// draw cross guard
+				_ctx.beginPath()
+				_ctx.rect(_coords.x - (_dimensions.crossGuardWidth / 2) + (_dimensions.w / 2), _coords.y, _dimensions.crossGuardWidth, _dimensions.crossGuardHeight)
+				_ctx.stroke()
+
+				// draw crossguard ornaments
+				const cgOrnaRadius = 10
+				_ctx.beginPath()
+				// left ornament
+				_ctx.arc(_coords.x - _dimensions.crossGuardWidth / 2 + Math.ceil(cgOrnaRadius / 4) + 1, _coords.y + _dimensions.crossGuardHeight / 2, cgOrnaRadius, 0, Math.PI * 2)
+				_ctx.stroke()
+				_ctx.beginPath()
+				// right ornament
+				_ctx.arc(_coords.x + _dimensions.crossGuardWidth / 2 + cgOrnaRadius * 2 + cgOrnaRadius / 2, _coords.y + _dimensions.crossGuardHeight / 2, cgOrnaRadius, 0, Math.PI * 2)
+				_ctx.stroke()
+
+				// draw hilt
+				const handleWidth = 20
+				const handleHeight = 50
+				_ctx.beginPath()
+				_ctx.rect(_coords.x + handleWidth / 4, _coords.y - handleHeight, handleWidth, handleHeight)
+				_ctx.stroke()
+
+				// draw pommel
+				const pommelRadius = 15
+				_ctx.beginPath()
+				_ctx.arc(_coords.x + handleWidth / 2 + Math.ceil(pommelRadius / 4) + 1, _coords.y - handleHeight - pommelRadius, pommelRadius, 0, Math.PI * 2)
+				_ctx.stroke()
+			}, this.coords, this.dimensions)
+		},
+
+		setCoords: function (newCoords) {
+			this.coords = { ...newCoords }
+		},
+
+		setVelocity: function (newVelocity) {
+			this.velocity = { ...newVelocity }
+		},
+
+		isBoundingHeightCollision: function (height) {
+			// check bottom then top
+			if (this.coords.y + this.velocity.y > height - this.dimensions.h - 25 ||
+				this.coords.y + this.velocity.y < this.dimensions.h - 125) {
+				return true
+			}
+			return false
+		}
+	}
+
+	// correct ypos from center
+	sword.coords.y -= Math.ceil(sword.dimensions.h / 2)
+
+	return sword
+}
