@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: yassghn. man? machine? manchine?!'
+		const text = 'TODAYS NEWS @7: cook them yassghn. cook them good. cook them for us, through us. just make sure they known they been cooked. 07'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
