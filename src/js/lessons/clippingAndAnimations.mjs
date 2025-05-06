@@ -393,13 +393,18 @@ const clippingAndAnimations = {
 		}
 	},
 
+	drawAcceleration: function (cvs) {
+
+	},
+
 	clippingPaths: false,
 	inverseClippingPaths: false,
 	solarSystem: false,
 	clock: false,
 	loopingPanorama: false,
 	mouseFollowing: false,
-	boundaries: false
+	boundaries: false,
+	acceleration: false
 
 }
 

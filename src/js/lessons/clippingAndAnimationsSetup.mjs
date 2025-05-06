@@ -37,6 +37,10 @@ function boundariesCallback(enabled) {
 	clippingAndAnimations.boundaries = enabled
 }
 
+function accelerationCallback(enabled) {
+	clippingAndAnimations.acceleration = enabled
+}
+
 const clippingAndAnimationsSetup = {
 	// clipping paths
 	clippingPathsInit: async function (menu) {
@@ -75,6 +79,11 @@ const clippingAndAnimationsSetup = {
 	// boundaries
 	boundariesInit: async function (menu) {
 		await addMenuItem('boundaries', 'boundaries', 'boundaries-check', boundariesCallback, menu)
+	},
+
+	// acceleration
+	accelerationInit: async function (menu) {
+		await addMenuItem('acceleration', 'acceleration', 'acceleration-check', accelerationCallback, menu)
 	}
 }
 

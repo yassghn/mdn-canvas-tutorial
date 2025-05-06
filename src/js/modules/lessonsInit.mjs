@@ -62,6 +62,7 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.loopingPanoramaInit(menu)
 	await clippingAndAnimationsSetup.mouseFollowingInit(menu)
 	await clippingAndAnimationsSetup.boundariesInit(menu)
+	await clippingAndAnimationsSetup.accelerationInit(menu)
 }
 
 async function _menuInit(cvs, addMenu, init) {

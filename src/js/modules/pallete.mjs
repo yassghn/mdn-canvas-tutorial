@@ -129,6 +129,9 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	if (clippingAndAnimations.boundaries) {
 		clippingAndAnimations.drawBoundaries(cvs)
 	}
+	if (clippingAndAnimations.acceleration) {
+		clippingAndAnimations.drawAcceleration(cvs)
+	}
 }
 
 function drawPallete(cvs, callback, timestamp) {
