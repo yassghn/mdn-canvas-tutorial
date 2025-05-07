@@ -4,8 +4,9 @@
 
 import ContextProperties from '../modules/ContextProperties.mjs'
 import ContextState from '../modules/ContextState.mjs'
+import { generateColor } from '../modules/math.mjs'
 import pointer from '../modules/pointer.mjs'
-import { generateStars, getShield, getSword } from '../modules/render.mjs'
+import { generateStars, getBall, getShield, getSword } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
 let loopingPanoramaTimestamp = 0
@@ -393,8 +394,46 @@ const clippingAndAnimations = {
 		}
 	},
 
+	ball: getBall(),
 	drawAcceleration: function (cvs) {
+		/**
+		 * use velocity vectors to change acceleration of moving objects
+		 * can implement a quasi gravity
+		 */
 
+		// create a linear gradient for the ball
+		const x0 = this.ball.coords.x - this.ball.radius
+		const y0 = this.ball.coords.y - this.ball.radius
+		const x1 = this.ball.coords.x + this.ball.radius
+		const y1 = this.ball.coords.y + this.ball.radius
+		const linearGradient = cvs.ctx.createLinearGradient(x0, y0, x1, y1)
+		linearGradient.addColorStop(0, generateColor())
+		linearGradient.addColorStop(.8, generateColor())
+
+		// draw the ball
+		this.ball.render(cvs.ctx, linearGradient)
+
+		// update ball coordinates using a velocity vector
+		this.ball.coords.x += this.ball.velocity.x
+		this.ball.coords.y += this.ball.velocity.y
+
+		// update velocity vector y axis
+		//this.ball.velocity.y *= 0.99
+		this.ball.velocity.y += 0.25
+
+		// collision detection
+		if (this.ball.coords.y + this.ball.velocity.y > cvs.height - this.ball.radius ||
+			this.ball.coords.y + this.ball.velocity.y < this.ball.radius) {
+			// keep ball bounce in control
+			this.ball.velocity.y *= 0.99
+			// invert y velocity at top/bottom edges of canvas
+			this.ball.velocity.y = -this.ball.velocity.y
+		}
+		if (this.ball.coords.x + this.ball.velocity.x > cvs.width - this.ball.radius ||
+			this.ball.coords.x + this.ball.velocity.x < this.ball.radius) {
+			// invert x velocity at left/right edges of canvas
+			this.ball.velocity.x = -this.ball.velocity.x
+		}
 	},
 
 	clippingPaths: false,

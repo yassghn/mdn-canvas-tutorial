@@ -6,7 +6,7 @@
 
 import ContextState from './ContextState.mjs'
 import ContextProperties from './ContextProperties.mjs'
-import { calculateColumnWidth, calculateRowHeight } from './math.mjs'
+import { calculateColumnWidth, calculateRowHeight, generateColor } from './math.mjs'
 
 // utility function to draw a rectangle with rounded corners
 export function roundedRect(ctx, x, y, width, height, radius) {
@@ -381,7 +381,7 @@ export function getShield(swordProps) {
 		isBoundingWidthCollision: function (width) {
 			// check right then left
 			if (this.coords.x + this.velocity.x > width - 150 ||
-				this.coords.x + this.velocity.x < this.dimensions.w - 150/2) {
+				this.coords.x + this.velocity.x < this.dimensions.w - 150 / 2) {
 				return true
 			}
 			return false
@@ -501,4 +501,35 @@ export function getSword() {
 	sword.coords.y -= Math.ceil(sword.dimensions.h / 2)
 
 	return sword
+}
+
+export function getBall() {
+	const _ballProps = {
+		coords: {
+			x: 800,
+			y: 400
+		},
+
+		velocity: { ..._getRandomVelocity(10, 5, 10, 5) },
+
+		radius: 45
+	}
+
+	const ball = {
+		..._ballProps,
+
+		render: function(ctx, linearGradient) {
+			const props = new ContextProperties()
+			props.fillStyle = linearGradient
+			const state = new ContextState(ctx, props)
+			state.apply((_ctx, _coords, _radius) => {
+				_ctx.beginPath()
+				_ctx.arc(_coords.x, _coords.y, _radius, 0, Math.PI * 2)
+				_ctx.closePath()
+				_ctx.fill()
+			}, this.coords, this.radius)
+		}
+	}
+
+	return ball
 }
