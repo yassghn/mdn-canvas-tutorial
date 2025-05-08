@@ -4,6 +4,7 @@
 
 import ContextProperties from '../modules/ContextProperties.mjs'
 import ContextState from '../modules/ContextState.mjs'
+import effects from '../modules/effects.mjs'
 import { generateColor } from '../modules/math.mjs'
 import pointer from '../modules/pointer.mjs'
 import { generateStars, getBall, getShield, getSword } from '../modules/render.mjs'
@@ -395,6 +396,7 @@ const clippingAndAnimations = {
 	},
 
 	ball: getBall(),
+	ballTrail: effects().shapes.ballTrail(),
 	drawAcceleration: function (cvs) {
 		/**
 		 * use velocity vectors to change acceleration of moving objects
@@ -410,6 +412,12 @@ const clippingAndAnimations = {
 		linearGradient.addColorStop(0, generateColor())
 		linearGradient.addColorStop(.8, generateColor())
 
+		// set ball trail effect properties
+		this.ballTrail.ctx = cvs.ctx
+		this.ballTrail.ball = this.ball
+		this.ballTrail.fillStyle = linearGradient
+		// draw ball trail
+		this.ballTrail.render()
 		// draw the ball
 		this.ball.render(cvs.ctx, linearGradient)
 

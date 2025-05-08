@@ -2,6 +2,7 @@
  * effect.mjs
  */
 
+import ballTrailingEffect from './ballTrailingEffect.mjs'
 import ContextState from './ContextState.mjs'
 import neonGlitchTextEffectProps from './neonGlitchTextEffect.mjs'
 import scrollingTextEffect from './scrollingTextEffect.mjs'
@@ -74,4 +75,9 @@ export function ScrollingText() {
 // spinning particles
 export function spinningParticles() {
 	return spinningParticlesEffect()
+}
+
+// ball trailing effect
+export function ballTrail() {
+	return ballTrailingEffect()
 }

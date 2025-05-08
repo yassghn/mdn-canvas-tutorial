@@ -14,6 +14,10 @@ const effects = function() {
 		spinningParticles: () => effectsModules.spinningParticles()
 	}
 
+	const shapeEffects = {
+		ballTrail: () => effectsModules.ballTrail()
+	}
+
 	const effects = {
 		get text() {
 			return textEffects
@@ -21,6 +25,10 @@ const effects = function() {
 
 		get particles() {
 			return particleEffects
+		},
+
+		get shapes() {
+			return shapeEffects
 		}
 	}
 
