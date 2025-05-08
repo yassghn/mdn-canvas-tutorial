@@ -6,7 +6,7 @@
 
 import ContextState from './ContextState.mjs'
 import ContextProperties from './ContextProperties.mjs'
-import { calculateColumnWidth, calculateRowHeight, generateColor } from './math.mjs'
+import { calculateColumnWidth, calculateRowHeight } from './math.mjs'
 
 // utility function to draw a rectangle with rounded corners
 export function roundedRect(ctx, x, y, width, height, radius) {
