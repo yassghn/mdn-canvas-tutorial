@@ -41,3 +41,10 @@ export function generateColor() {
 	// return color as string
 	return color.join('')
 }
+
+export function invertVelocity(velocity) {
+	const v = { ...velocity }
+	v.x = -v.x
+	v.y = -v.y
+	return v
+}
