@@ -2,9 +2,9 @@
  * ballTrailingEffect.mjs
  */
 
-import ContextProperties from './ContextProperties.mjs'
-import ContextState from './ContextState.mjs'
-import { invertVelocity } from './math.mjs'
+import ContextProperties from '../ContextProperties.mjs'
+import ContextState from '../ContextState.mjs'
+import { invertVelocity } from '../math.mjs'
 
 const _effectProps = {
 	ctx: null,

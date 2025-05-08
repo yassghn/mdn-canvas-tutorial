@@ -2,7 +2,7 @@
  * effects.mjs
  */
 
-import * as effectsModules from './effect.mjs'
+import * as effectsModules from './effects/effect.mjs'
 
 const effects = function() {
 	const textEffects = {
