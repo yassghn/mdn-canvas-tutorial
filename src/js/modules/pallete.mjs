@@ -138,7 +138,7 @@ function imageDataAndOptimizationPallete(cvs) {
 
 }
 
-function drawPallete(cvs, callback, timestamp) {
+function renderPallete(cvs, callback, timestamp) {
 	// save default canvas state before drawing lesson series
 	cvs.ctx.save()
 	// draw lesson series
@@ -156,13 +156,17 @@ export function initPallete(timestamp) {
 	clockPallete = getComplexePallete(1250, 800, clippingAndAnimations.drawClock, clearClock)
 }
 
-function pallete(cvs, timestamp) {
-	drawPallete(cvs, basicDrawingAndShapesPallete)
-	drawPallete(cvs, stylesColorsAndTextPallete, timestamp)
-	drawPallete(cvs, imagesAndTransformationsPallete)
-	drawPallete(cvs, clippingAndAnimationsPallete, timestamp)
-	drawPallete(cvs, imageDataAndOptimizationPallete)
+function _pallete(cvs, timestamp) {
 	previousTimestamp = timestamp
+	renderPallete(cvs, basicDrawingAndShapesPallete)
+	renderPallete(cvs, stylesColorsAndTextPallete, timestamp)
+	renderPallete(cvs, imagesAndTransformationsPallete)
+	renderPallete(cvs, clippingAndAnimationsPallete, timestamp)
+	renderPallete(cvs, imageDataAndOptimizationPallete)
+}
+
+function pallete(cvs, timestamp) {
+	_pallete(cvs, timestamp)
 }
 
 export default pallete
