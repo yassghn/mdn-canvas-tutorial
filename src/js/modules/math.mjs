@@ -54,7 +54,7 @@ function getCircleX(radius, theta, h) {
 }
 
 function getCircleY(radius, theta, k) {
-	return radius * Math.cos(theta) + k
+	return radius * Math.sin(theta) + k
 }
 
 function getThetas() {
@@ -90,7 +90,7 @@ export function getCircleGridPoints(center, radius) {
 	 * (h, k) = circle center
 	 *
 	 * x = r * cos(t) + h
-	 * y = r * cos(t) + k
+	 * y = r * sin(t) + k
 	 *
 	 * NOTE:
 	 * 	can get theta with: degrees * (pi / 180)
@@ -104,7 +104,7 @@ export function getCircleGridPoints(center, radius) {
 		points.push({ x: x, y: y })
 	})
 	return points
-}
+}  
 
 export function isPointerCollision(pointer, obj) {
 	if (pointer.inWindow) {
