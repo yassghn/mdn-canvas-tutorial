@@ -6,7 +6,7 @@
 
 import ContextState from './ContextState.mjs'
 import ContextProperties from './ContextProperties.mjs'
-import { calculateColumnWidth, calculateRowHeight } from './math.mjs'
+import { calculateColumnWidth, calculateRowHeight, getCircleGridPoints } from './math.mjs'
 
 // utility function to draw a rectangle with rounded corners
 export function roundedRect(ctx, x, y, width, height, radius) {
@@ -509,16 +509,27 @@ export function getBall() {
 			x: 800,
 			y: 400
 		},
-
 		velocity: { ..._getRandomVelocity(10, 5, 10, 5) },
+		radius: 45,
+		edges: []
+	}
 
-		radius: 45
+	function updateEdges(self) {
+		const edges = getCircleGridPoints(self.coords, self.radius)
+		// ceil edges
+		self.edges = edges.map((edge) => {
+			return { x: Math.ceil(edge.x), y: Math.ceil(edge.y) }
+		})
 	}
 
 	const ball = {
 		..._ballProps,
 
-		render: function(ctx, linearGradient) {
+		render: function (ctx, linearGradient) {
+			// update edges
+			const self = this
+			updateEdges(self)
+			// draw
 			const props = new ContextProperties()
 			props.fillStyle = linearGradient
 			const state = new ContextState(ctx, props)

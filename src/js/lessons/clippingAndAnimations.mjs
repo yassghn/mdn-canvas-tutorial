@@ -5,7 +5,7 @@
 import ContextProperties from '../modules/ContextProperties.mjs'
 import ContextState from '../modules/ContextState.mjs'
 import effects from '../modules/effects.mjs'
-import { generateColor } from '../modules/math.mjs'
+import { generateColor, invertVelocity, isPointerCollision } from '../modules/math.mjs'
 import pointer from '../modules/pointer.mjs'
 import { generateStars, getBall, getShield, getSword } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
@@ -403,6 +403,9 @@ const clippingAndAnimations = {
 		 * can implement a quasi gravity
 		 */
 
+		// get pointer
+		const pointerState = pointer()
+
 		// create a linear gradient for the ball
 		const x0 = this.ball.coords.x - this.ball.radius
 		const y0 = this.ball.coords.y - this.ball.radius
@@ -441,6 +444,11 @@ const clippingAndAnimations = {
 			this.ball.coords.x + this.ball.velocity.x < this.ball.radius) {
 			// invert x velocity at left/right edges of canvas
 			this.ball.velocity.x = -this.ball.velocity.x
+		}
+
+		// pointer collision detection
+		if (isPointerCollision(pointerState, this.ball)) {
+			this.ball.velocity = invertVelocity(this.ball.velocity)
 		}
 	},
 
