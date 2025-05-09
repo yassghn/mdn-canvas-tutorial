@@ -19,3 +19,7 @@ export async function addImagesAndTransformationsMenu(cvs) {
 export async function addClippingAndAnimationsMenu(cvs) {
 	return await menuMgmt.createMenu('clipping-and-animations', cvs)
 }
+
+export async function addImageDataAndOptimizationMenu(cvs) {
+	return await menuMgmt.createMenu('image-data-and-optimization', cvs)
+}

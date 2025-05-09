@@ -134,6 +134,10 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	}
 }
 
+function imageDataAndOptimizationPallete(cvs) {
+
+}
+
 function drawPallete(cvs, callback, timestamp) {
 	// save default canvas state before drawing lesson series
 	cvs.ctx.save()
@@ -157,6 +161,7 @@ function pallete(cvs, timestamp) {
 	drawPallete(cvs, stylesColorsAndTextPallete, timestamp)
 	drawPallete(cvs, imagesAndTransformationsPallete)
 	drawPallete(cvs, clippingAndAnimationsPallete, timestamp)
+	drawPallete(cvs, imageDataAndOptimizationPallete)
 	previousTimestamp = timestamp
 }
 

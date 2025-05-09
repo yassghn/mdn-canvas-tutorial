@@ -6,7 +6,8 @@ import {
 	addBasicDrawingAndShapesMenu,
 	addStylesColorsAndTextMenu,
 	addImagesAndTransformationsMenu,
-	addClippingAndAnimationsMenu
+	addClippingAndAnimationsMenu,
+	addImageDataAndOptimizationMenu
 } from './lessonsMenus.mjs'
 import basicDrawingAndShapesSetup from '../lessons/basicDrawingAndShapesSetup.mjs'
 import stylesColorsAndTextSetup from '../lessons/stylesColorsAndTextSetup.mjs'
@@ -65,6 +66,10 @@ async function initClippingAndAnimations(menu) {
 	await clippingAndAnimationsSetup.accelerationInit(menu)
 }
 
+async function initImageDataAndOptimization(menu) {
+
+}
+
 async function _menuInit(cvs, addMenu, init) {
 	const menu = await addMenu(cvs)
 	await init(menu)
@@ -75,6 +80,7 @@ async function _initLessons(cvs) {
 	await _menuInit(cvs, addStylesColorsAndTextMenu, initStylesColorsAndText)
 	await _menuInit(cvs, addImagesAndTransformationsMenu, initImagesAndTransformations)
 	await _menuInit(cvs, addClippingAndAnimationsMenu, initClippingAndAnimations)
+	await _menuInit(cvs, addImageDataAndOptimizationMenu, initImageDataAndOptimization)
 	if (settings.enableAll == true.toString()) {
 		enableAll()
 	}
