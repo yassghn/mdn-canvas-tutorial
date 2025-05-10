@@ -2,9 +2,6 @@
  * stylesColorsAndText.mjs
  */
 
-const shadowDelay = 122
-let shadowsLastDraw = 0
-
 const stylesColorsAndText = {
 	drawColors: function (cvs) {
 		/**
@@ -417,7 +414,7 @@ const stylesColorsAndText = {
 		cvs.ctx.fillRect(15, 189, 150, 150)
 	},
 
-	drawShadows: function (cvs, previousTimestamp, timestamp, textEffect) {
+	drawShadows: function (cvs, vars, previousTimestamp, timestamp, textEffect) {
 		/**
 		 * creating shadows is done with properties
 		 *
@@ -450,9 +447,9 @@ const stylesColorsAndText = {
 		textEffect.textColor = textColor
 		textEffect.font = font
 		
- 		if (timestamp == previousTimestamp || timestamp - shadowsLastDraw >= shadowDelay) {
+ 		if (timestamp == previousTimestamp || timestamp - vars.shadowsLastDraw >= vars.shadowDelay) {
 			textEffect.setProps()
-			shadowsLastDraw = timestamp
+			vars.shadowsLastDraw = timestamp
 		}
 
 		textEffect.render(cvs.ctx)

@@ -172,6 +172,10 @@ export function initPallete(timestamp) {
 		lineStylesLastDraw: 0
 	}
 	_complexPalletes.shadowsPallete = hewComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
+	_complexPalletes.shadowsPallete.varsObj = {
+		shadowDelay: 122,
+		shadowsLastDraw: 0
+	}
 	_complexPalletes.clippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawClippingPaths)
 	_complexPalletes.inverseClippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
 	_complexPalletes.clockPallete = hewComplexePallete(clippingAndAnimations.drawClock)
