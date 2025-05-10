@@ -12,21 +12,18 @@ import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import effects from './effects.mjs'
 
 const _complexPalletes = {
+	bezierAndQuadraticCurvesPallete: null,
 	clippingPathsPallete: null,
 	inverseClippingPathsPallete: null,
 	lineStylesPallete: null,
 	shadowsPallete: null,
-	clockPallete: null
+	clockPallete: null,
+	mouseFollowingPallete: null
 }
 
 const _palleteArgs = {
 	previousTimestamp: 0
 }
-
-const efx = effects()
-const neonGlitch = efx.text.neonGlitch()
-const scrollLeft = efx.text.leftScroll()
-const mouseFollowParticles = efx.particles.spinningParticles()
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -47,9 +44,8 @@ function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.arcs) {
 		basicDrawingAndShapes.drawArcs(cvs)
 	}
-	if (basicDrawingAndShapes.bezierAndQuadraticCurves) {
-		basicDrawingAndShapes.drawBezierAndQuadraticCurves(cvs, scrollLeft)
-	}
+	_complexPalletes.bezierAndQuadraticCurvesPallete
+		.render(basicDrawingAndShapes.bezierAndQuadraticCurves, cvs)
 	if (basicDrawingAndShapes.combinations) {
 		basicDrawingAndShapes.drawCombinations(cvs)
 	}
@@ -77,7 +73,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
 	_complexPalletes.shadowsPallete
-		.render(stylesColorsAndText.shadows, cvs, _palleteArgs.previousTimestamp, timestamp, neonGlitch)
+		.render(stylesColorsAndText.shadows, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
@@ -135,9 +131,8 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	if (clippingAndAnimations.loopingPanorama) {
 		clippingAndAnimations.drawLoopingPanorama(cvs, _palleteArgs.previousTimestamp, timestamp)
 	}
-	if (clippingAndAnimations.mouseFollowing) {
-		clippingAndAnimations.drawMouseFollowing(cvs, mouseFollowParticles)
-	}
+	_complexPalletes.mouseFollowingPallete
+		.render(clippingAndAnimations.mouseFollowing, cvs)
 	if (clippingAndAnimations.boundaries) {
 		clippingAndAnimations.drawBoundaries(cvs)
 	}
@@ -162,12 +157,21 @@ function renderPallete(cvs, callback, timestamp) {
 }
 
 export function initPallete(timestamp) {
+	// set prev and current timestamp is the same on init
 	_palleteArgs.previousTimestamp = timestamp
+	// init effects
+	const efx = effects()
+	const neonGlitch = efx.text.neonGlitch()
+	const scrollLeft = efx.text.leftScroll()
+	const mouseFollowParticles = efx.particles.spinningParticles()
+	// init complex pallets
+	_complexPalletes.bezierAndQuadraticCurvesPallete = getComplexePallete(basicDrawingAndShapes.drawBezierAndQuadraticCurves, scrollLeft)
 	_complexPalletes.lineStylesPallete = getComplexePallete(stylesColorsAndText.drawLineStyles)
-	_complexPalletes.shadowsPallete = getComplexePallete(stylesColorsAndText.drawShadows)
+	_complexPalletes.shadowsPallete = getComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
 	_complexPalletes.clippingPathsPallete = getComplexePallete(clippingAndAnimations.drawClippingPaths)
 	_complexPalletes.inverseClippingPathsPallete = getComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
 	_complexPalletes.clockPallete = getComplexePallete(clippingAndAnimations.drawClock)
+	_complexPalletes.mouseFollowingPallete = getComplexePallete(clippingAndAnimations.drawMouseFollowing, mouseFollowParticles)
 }
 
 function _pallete(cvs, timestamp) {
