@@ -2,7 +2,7 @@
  * pallete.mjs
  */
 
-import hewComplexePallete from './complexPallete.mjs'
+import hewComplexePallete, { renderComplexPallete } from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
@@ -43,8 +43,8 @@ function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.arcs) {
 		basicDrawingAndShapes.drawArcs(cvs)
 	}
-	_complexPalletes.bezierAndQuadraticCurvesPallete
-		.render(basicDrawingAndShapes.bezierAndQuadraticCurves, cvs)
+	renderComplexPallete(_complexPalletes.bezierAndQuadraticCurvesPallete, basicDrawingAndShapes.bezierAndQuadraticCurves,
+		                 cvs)
 	if (basicDrawingAndShapes.combinations) {
 		basicDrawingAndShapes.drawCombinations(cvs)
 	}
@@ -63,16 +63,16 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.transparency) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
-	_complexPalletes.lineStylesPallete
-		.render(stylesColorsAndText.lineStyles, cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.lineStylesPallete, stylesColorsAndText.lineStyles,
+						 cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
 	}
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
-	_complexPalletes.shadowsPallete
-		.render(stylesColorsAndText.shadows, cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.shadowsPallete, stylesColorsAndText.shadows,
+		                cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
@@ -118,20 +118,20 @@ function imagesAndTransformationsPallete(cvs) {
 }
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
-	_complexPalletes.clippingPathsPallete
-		.render(clippingAndAnimations.clippingPaths, cvs, _palleteArgs.previousTimestamp, timestamp)
-	_complexPalletes.inverseClippingPathsPallete
-		.render(clippingAndAnimations.inverseClippingPaths, cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.clippingPathsPallete, clippingAndAnimations.clippingPaths,
+		                 cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete, clippingAndAnimations.inverseClippingPaths,
+		                 cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
-	_complexPalletes.clockPallete
-		.render(clippingAndAnimations.clock, cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.clockPallete, clippingAndAnimations.clock,
+		                cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (clippingAndAnimations.loopingPanorama) {
 		clippingAndAnimations.drawLoopingPanorama(cvs, _palleteArgs.previousTimestamp, timestamp)
 	}
-	_complexPalletes.mouseFollowingPallete
-		.render(clippingAndAnimations.mouseFollowing, cvs)
+	renderComplexPallete(_complexPalletes.mouseFollowingPallete,
+		                 clippingAndAnimations.mouseFollowing, cvs)
 	if (clippingAndAnimations.boundaries) {
 		clippingAndAnimations.drawBoundaries(cvs)
 	}
@@ -166,6 +166,11 @@ export function initPallete(timestamp) {
 	// init complex pallets
 	_complexPalletes.bezierAndQuadraticCurvesPallete = hewComplexePallete(basicDrawingAndShapes.drawBezierAndQuadraticCurves, scrollLeft)
 	_complexPalletes.lineStylesPallete = hewComplexePallete(stylesColorsAndText.drawLineStyles)
+	_complexPalletes.lineStylesPallete.varsObj = {
+		delay: 15,
+		lineDashOffset: 0,
+		lineStylesLastDraw: 0
+	}
 	_complexPalletes.shadowsPallete = hewComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
 	_complexPalletes.clippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawClippingPaths)
 	_complexPalletes.inverseClippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
