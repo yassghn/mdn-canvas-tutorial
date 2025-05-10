@@ -62,14 +62,14 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.transparency) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
-	lineStylesPallete.draw(stylesColorsAndText.lineStyles, cvs, previousTimestamp, timestamp)
+	lineStylesPallete.render(stylesColorsAndText.lineStyles, cvs, previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
 	}
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
-	shadowsPallete.draw(stylesColorsAndText.shadows, cvs, previousTimestamp, timestamp, neonGlitch)
+	shadowsPallete.render(stylesColorsAndText.shadows, cvs, previousTimestamp, timestamp, neonGlitch)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
@@ -115,12 +115,12 @@ function imagesAndTransformationsPallete(cvs) {
 }
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
-	clippingPathsPallete.draw(clippingAndAnimations.clippingPaths, cvs, previousTimestamp, timestamp)
-	inverseClippingPathsPallete.draw(clippingAndAnimations.inverseClippingPaths, cvs, previousTimestamp, timestamp)
+	clippingPathsPallete.render(clippingAndAnimations.clippingPaths, cvs, previousTimestamp, timestamp)
+	inverseClippingPathsPallete.render(clippingAndAnimations.inverseClippingPaths, cvs, previousTimestamp, timestamp)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
-	clockPallete.draw(clippingAndAnimations.clock, cvs, previousTimestamp, timestamp)
+	clockPallete.render(clippingAndAnimations.clock, cvs, previousTimestamp, timestamp)
 	if (clippingAndAnimations.loopingPanorama) {
 		clippingAndAnimations.drawLoopingPanorama(cvs, previousTimestamp, timestamp)
 	}

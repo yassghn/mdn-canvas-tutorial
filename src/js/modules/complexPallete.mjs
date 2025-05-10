@@ -11,7 +11,7 @@ function getComplexePallete(xpos, ypos, drawFunc, clearFunc, clear = false) {
 		drawCallback: drawFunc,
 		clearCallback: clearFunc,
 
-		draw: function (enabled, cvs, ...args) {
+		render: function (enabled, cvs, ...args) {
 			if (enabled) {
 				this.cleared = false
 				if (this.clearEveryDraw) {
