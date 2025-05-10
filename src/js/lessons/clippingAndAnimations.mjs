@@ -2,8 +2,6 @@
  * clipping and animations
  */
 
-import ContextProperties from '../modules/ContextProperties.mjs'
-import ContextState from '../modules/ContextState.mjs'
 import effects from '../modules/effects.mjs'
 import { generateColor, invertVelocity, isPointerCollision } from '../modules/math.mjs'
 import pointer from '../modules/pointer.mjs'

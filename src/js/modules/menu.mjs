@@ -2,8 +2,6 @@
  * menu.js
  */
 
-import { log } from './util.mjs'
-
 const _config = {
 	animDuration: { duration: 300 }
 }
