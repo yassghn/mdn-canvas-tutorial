@@ -2,7 +2,7 @@
  * complexPallete.mjs
  */
 
-function getComplexePallete(drawFunc, ...args) {
+function hewComplexePallete(drawFunc, ...args) {
 	const complexPallete = {
 		drawCallback: drawFunc,
 		args: [...args],
@@ -16,4 +16,4 @@ function getComplexePallete(drawFunc, ...args) {
 	return complexPallete
 }
 
-export default getComplexePallete
+export default hewComplexePallete

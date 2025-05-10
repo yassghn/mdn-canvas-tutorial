@@ -2,7 +2,7 @@
  * pallete.mjs
  */
 
-import getComplexePallete from './complexPallete.mjs'
+import hewComplexePallete from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
@@ -164,13 +164,13 @@ export function initPallete(timestamp) {
 	const scrollLeft = efx.text.leftScroll()
 	const mouseFollowParticles = efx.particles.spinningParticles()
 	// init complex pallets
-	_complexPalletes.bezierAndQuadraticCurvesPallete = getComplexePallete(basicDrawingAndShapes.drawBezierAndQuadraticCurves, scrollLeft)
-	_complexPalletes.lineStylesPallete = getComplexePallete(stylesColorsAndText.drawLineStyles)
-	_complexPalletes.shadowsPallete = getComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
-	_complexPalletes.clippingPathsPallete = getComplexePallete(clippingAndAnimations.drawClippingPaths)
-	_complexPalletes.inverseClippingPathsPallete = getComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
-	_complexPalletes.clockPallete = getComplexePallete(clippingAndAnimations.drawClock)
-	_complexPalletes.mouseFollowingPallete = getComplexePallete(clippingAndAnimations.drawMouseFollowing, mouseFollowParticles)
+	_complexPalletes.bezierAndQuadraticCurvesPallete = hewComplexePallete(basicDrawingAndShapes.drawBezierAndQuadraticCurves, scrollLeft)
+	_complexPalletes.lineStylesPallete = hewComplexePallete(stylesColorsAndText.drawLineStyles)
+	_complexPalletes.shadowsPallete = hewComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
+	_complexPalletes.clippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawClippingPaths)
+	_complexPalletes.inverseClippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
+	_complexPalletes.clockPallete = hewComplexePallete(clippingAndAnimations.drawClock)
+	_complexPalletes.mouseFollowingPallete = hewComplexePallete(clippingAndAnimations.drawMouseFollowing, mouseFollowParticles)
 }
 
 function _pallete(cvs, timestamp) {
