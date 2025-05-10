@@ -9,7 +9,7 @@ function getComplexePallete(drawFunc, ...args) {
 
 		render: function (enabled, cvs, ...args) {
 			if (enabled) {
-				this.drawCallback(cvs, ...this.args, ...args)
+				this.drawCallback(cvs, ...args, ...this.args)
 			}
 		}
 	}
