@@ -13,6 +13,7 @@ import basicDrawingAndShapesSetup from '../lessons/basicDrawingAndShapesSetup.mj
 import stylesColorsAndTextSetup from '../lessons/stylesColorsAndTextSetup.mjs'
 import imagesAndTransformationsSetup from '../lessons/imagesAndTransformationsSetup.mjs'
 import clippingAndAnimationsSetup from '../lessons/clippingAndAnimationsSetup.mjs'
+import imageDataAndOptimizationSetup from '../lessons/imageDataAndOptimizationSetup.mjs'
 import settings from './settings.mjs'
 import { enableAll } from './ui.mjs'
 
@@ -67,7 +68,7 @@ async function initClippingAndAnimations(menu) {
 }
 
 async function initImageDataAndOptimization(menu) {
-
+	await imageDataAndOptimizationSetup.colorPickerInit(menu)
 }
 
 async function _menuInit(cvs, addMenu, init) {

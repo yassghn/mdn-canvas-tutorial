@@ -8,6 +8,7 @@ import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
+import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import effects from './effects.mjs'
 
 let previousTimestamp = 0
@@ -135,7 +136,9 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 }
 
 function imageDataAndOptimizationPallete(cvs) {
-
+	if (imageDataAndOptimization.colorPicker) {
+		imageDataAndOptimization.drawColorPicker(cvs)
+	}
 }
 
 function renderPallete(cvs, callback, timestamp) {
