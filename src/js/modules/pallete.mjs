@@ -47,8 +47,8 @@ function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.arcs) {
 		basicDrawingAndShapes.drawArcs(cvs)
 	}
-	renderComplexPallete(_complexPalletes.bezierAndQuadraticCurvesPallete, basicDrawingAndShapes.bezierAndQuadraticCurves,
-		cvs)
+	renderComplexPallete(_complexPalletes.bezierAndQuadraticCurvesPallete,
+		basicDrawingAndShapes.bezierAndQuadraticCurves, cvs)
 	if (basicDrawingAndShapes.combinations) {
 		basicDrawingAndShapes.drawCombinations(cvs)
 	}
@@ -67,8 +67,8 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.transparency) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
-	renderComplexPallete(_complexPalletes.lineStylesPallete, stylesColorsAndText.lineStyles,
-		cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.lineStylesPallete,
+		stylesColorsAndText.lineStyles, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
 	}
@@ -122,10 +122,10 @@ function imagesAndTransformationsPallete(cvs) {
 }
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
-	renderComplexPallete(_complexPalletes.clippingPathsPallete, clippingAndAnimations.clippingPaths,
-		cvs)
-	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete, clippingAndAnimations.inverseClippingPaths,
-		cvs)
+	renderComplexPallete(_complexPalletes.clippingPathsPallete,
+		clippingAndAnimations.clippingPaths, cvs)
+	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete,
+		clippingAndAnimations.inverseClippingPaths, cvs)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
@@ -133,12 +133,12 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 		cvs, _palleteArgs.previousTimestamp, timestamp)
 	renderComplexPallete(_complexPalletes.loopingPanoramaPallete, clippingAndAnimations.loopingPanorama,
 		cvs, _palleteArgs.previousTimestamp, timestamp)
-	renderComplexPallete(_complexPalletes.mouseFollowingPallete, clippingAndAnimations.mouseFollowing,
-		cvs)
-	renderComplexPallete(_complexPalletes.boundariesPallete, clippingAndAnimations.boundaries,
-		cvs)
-	renderComplexPallete(_complexPalletes.accelerationPallete, clippingAndAnimations.acceleration,
-		cvs)
+	renderComplexPallete(_complexPalletes.mouseFollowingPallete,
+		clippingAndAnimations.mouseFollowing, cvs)
+	renderComplexPallete(_complexPalletes.boundariesPallete,
+		clippingAndAnimations.boundaries, cvs)
+	renderComplexPallete(_complexPalletes.accelerationPallete,
+		clippingAndAnimations.acceleration, cvs)
 
 }
 
