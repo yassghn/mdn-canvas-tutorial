@@ -2,15 +2,23 @@
  * complexPallete.mjs
  */
 
+export function renderComplexPallete(pallete, enabled, cvs, ...args) {
+	if (enabled) {
+		if (pallete.vars) {
+			pallete.drawCallback(cvs, pallete.vars, ...args, ...pallete.args)
+		} else {
+			pallete.drawCallback(cvs, ...args, ...pallete.args)
+		}
+	}
+}
+
 function hewComplexePallete(drawFunc, ...args) {
 	const complexPallete = {
 		drawCallback: drawFunc,
 		args: [...args],
 
-		render: function (enabled, cvs, ...args) {
-			if (enabled) {
-				this.drawCallback(cvs, ...args, ...this.args)
-			}
+		set varsObj(vars) {
+			this.vars = { ...vars }
 		}
 	}
 	return complexPallete
