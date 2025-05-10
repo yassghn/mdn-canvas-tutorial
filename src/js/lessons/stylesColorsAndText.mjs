@@ -2,10 +2,7 @@
  * stylesColorsAndText.mjs
  */
 
-const delay = 15
 const shadowDelay = 122
-let lineDashOffset = 0
-let lineStylesLastDraw = 0
 let shadowsLastDraw = 0
 
 const stylesColorsAndText = {
@@ -110,7 +107,7 @@ const stylesColorsAndText = {
 		}
 	},
 
-	drawLineStyles: function (cvs, previousTimestamp, timestamp) {
+	drawLineStyles: function (cvs, vars, previousTimestamp, timestamp) {
 		/**
 		 * lines have several properties which style them
 		 *
@@ -273,14 +270,14 @@ const stylesColorsAndText = {
 		 * 	- this property determines where to begin the pattern
 		 */
 
-		if (timestamp == previousTimestamp || timestamp - lineStylesLastDraw >= delay) {
+		if (timestamp == previousTimestamp || timestamp - vars.lineStylesLastDraw >= vars.delay) {
 			// create "marching ants" effect
 			//cvs.ctx.clearRect(750, 15, 100, 100)
 			cvs.ctx.setLineDash([4, 2])
-			cvs.ctx.lineDashOffset = -lineDashOffset
+			cvs.ctx.lineDashOffset = -vars.lineDashOffset
 			cvs.ctx.strokeRect(725, 19, 100, 100)
-			lineDashOffset++
-			lineStylesLastDraw = timestamp
+			vars.lineDashOffset++
+			vars.lineStylesLastDraw = timestamp
 
 			// reset linedash and offset
 			cvs.ctx.setLineDash([])
