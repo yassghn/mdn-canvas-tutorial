@@ -2,10 +2,9 @@
  * clipping and animations
  */
 
-import effects from '../modules/effects.mjs'
 import { generateColor, invertVelocity, isPointerCollision } from '../modules/math.mjs'
 import pointer from '../modules/pointer.mjs'
-import { generateStars, getBall, getShield, getSword } from '../modules/render.mjs'
+import { generateStars, getShield } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
 const clippingAndAnimations = {
