@@ -47,6 +47,7 @@ function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.arcs) {
 		basicDrawingAndShapes.drawArcs(cvs)
 	}
+	// bezier and quadratic curves
 	renderComplexPallete(_complexPalletes.bezierAndQuadraticCurvesPallete,
 		basicDrawingAndShapes.bezierAndQuadraticCurves, cvs)
 	if (basicDrawingAndShapes.combinations) {
@@ -67,6 +68,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.transparency) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
+	// line styles
 	renderComplexPallete(_complexPalletes.lineStylesPallete,
 		stylesColorsAndText.lineStyles, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
@@ -75,6 +77,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
+	// shadows pallete
 	renderComplexPallete(_complexPalletes.shadowsPallete, stylesColorsAndText.shadows,
 		cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.canvasFill) {
@@ -122,21 +125,28 @@ function imagesAndTransformationsPallete(cvs) {
 }
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
+	// clipping paths
 	renderComplexPallete(_complexPalletes.clippingPathsPallete,
 		clippingAndAnimations.clippingPaths, cvs)
+	// inverse clipping paths
 	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete,
 		clippingAndAnimations.inverseClippingPaths, cvs)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
+	// clock
 	renderComplexPallete(_complexPalletes.clockPallete, clippingAndAnimations.clock,
 		cvs, _palleteArgs.previousTimestamp, timestamp)
+	// looping panorama
 	renderComplexPallete(_complexPalletes.loopingPanoramaPallete, clippingAndAnimations.loopingPanorama,
 		cvs, _palleteArgs.previousTimestamp, timestamp)
+	// mouse following
 	renderComplexPallete(_complexPalletes.mouseFollowingPallete,
 		clippingAndAnimations.mouseFollowing, cvs)
+	// boundaries
 	renderComplexPallete(_complexPalletes.boundariesPallete,
 		clippingAndAnimations.boundaries, cvs)
+	// acceleration
 	renderComplexPallete(_complexPalletes.accelerationPallete,
 		clippingAndAnimations.acceleration, cvs)
 
@@ -166,31 +176,41 @@ export function initPallete(timestamp) {
 	const scrollLeft = efx.text.leftScroll()
 	const mouseFollowParticles = efx.particles.spinningParticles()
 	// init complex pallets
+	// bezier and quadratic curves
 	_complexPalletes.bezierAndQuadraticCurvesPallete = hewComplexePallete(basicDrawingAndShapes.drawBezierAndQuadraticCurves, scrollLeft)
+	// line styles
 	_complexPalletes.lineStylesPallete = hewComplexePallete(stylesColorsAndText.drawLineStyles)
 	_complexPalletes.lineStylesPallete.varsObj = {
 		delay: 15,
 		lineDashOffset: 0,
 		lineStylesLastDraw: 0
 	}
+	// shadows
 	_complexPalletes.shadowsPallete = hewComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
 	_complexPalletes.shadowsPallete.varsObj = {
 		shadowDelay: 122,
 		shadowsLastDraw: 0
 	}
+	// clipping paths
 	_complexPalletes.clippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawClippingPaths)
+	// inverse clipping paths
 	_complexPalletes.inverseClippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
+	// looping panorama
 	_complexPalletes.loopingPanoramaPallete = hewComplexePallete(clippingAndAnimations.drawLoopingPanorama)
 	_complexPalletes.loopingPanoramaPallete.varsObj = {
 		loopingPanoramaTimestamp: 0,
 		loopingPanoramaImageX: 0
 	}
+	// clock
 	_complexPalletes.clockPallete = hewComplexePallete(clippingAndAnimations.drawClock)
+	// mouse follow
 	_complexPalletes.mouseFollowingPallete = hewComplexePallete(clippingAndAnimations.drawMouseFollowing, mouseFollowParticles)
+	// boundaries
 	_complexPalletes.boundariesPallete = hewComplexePallete(clippingAndAnimations.drawBoundaries)
 	_complexPalletes.boundariesPallete.varsObj = {
 		sword: getSword()
 	}
+	// acceleration
 	_complexPalletes.accelerationPallete = hewComplexePallete(clippingAndAnimations.drawAcceleration)
 	_complexPalletes.accelerationPallete.varsObj = {
 		ball: getBall(),
