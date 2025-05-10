@@ -157,12 +157,12 @@ export function initPallete(timestamp) {
 }
 
 function _pallete(cvs, timestamp) {
-	previousTimestamp = timestamp
 	renderPallete(cvs, basicDrawingAndShapesPallete)
 	renderPallete(cvs, stylesColorsAndTextPallete, timestamp)
 	renderPallete(cvs, imagesAndTransformationsPallete)
 	renderPallete(cvs, clippingAndAnimationsPallete, timestamp)
 	renderPallete(cvs, imageDataAndOptimizationPallete)
+	previousTimestamp = timestamp
 }
 
 function pallete(cvs, timestamp) {
