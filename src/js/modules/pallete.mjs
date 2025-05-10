@@ -152,11 +152,11 @@ function renderPallete(cvs, callback, timestamp) {
 
 export function initPallete(timestamp) {
 	previousTimestamp = timestamp
-	lineStylesPallete = getComplexePallete(700, 0, stylesColorsAndText.drawLineStyles, clearLineStyles)
-	shadowsPallete = getComplexePallete(475, 380, stylesColorsAndText.drawShadows, clearShadows)
-	clippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawClippingPaths, clearClippingPaths)
-	inverseClippingPathsPallete = getComplexePallete(1250, 650, clippingAndAnimations.drawInverseClippingPaths, clearInverseClippingPaths)
-	clockPallete = getComplexePallete(1250, 800, clippingAndAnimations.drawClock, clearClock)
+	lineStylesPallete = getComplexePallete(stylesColorsAndText.drawLineStyles)
+	shadowsPallete = getComplexePallete(stylesColorsAndText.drawShadows)
+	clippingPathsPallete = getComplexePallete(clippingAndAnimations.drawClippingPaths)
+	inverseClippingPathsPallete = getComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
+	clockPallete = getComplexePallete(clippingAndAnimations.drawClock)
 }
 
 function _pallete(cvs, timestamp) {
