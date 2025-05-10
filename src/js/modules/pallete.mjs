@@ -9,15 +9,19 @@ import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import effects from './effects.mjs'
+import { getBall, getSword } from './render.mjs'
 
 const _complexPalletes = {
 	bezierAndQuadraticCurvesPallete: null,
 	clippingPathsPallete: null,
 	inverseClippingPathsPallete: null,
+	loopingPanoramaPallete: null,
 	lineStylesPallete: null,
 	shadowsPallete: null,
 	clockPallete: null,
-	mouseFollowingPallete: null
+	mouseFollowingPallete: null,
+	boundariesPallete: null,
+	accelerationPallete: null
 }
 
 const _palleteArgs = {
@@ -44,7 +48,7 @@ function basicDrawingAndShapesPallete(cvs) {
 		basicDrawingAndShapes.drawArcs(cvs)
 	}
 	renderComplexPallete(_complexPalletes.bezierAndQuadraticCurvesPallete, basicDrawingAndShapes.bezierAndQuadraticCurves,
-		                 cvs)
+		cvs)
 	if (basicDrawingAndShapes.combinations) {
 		basicDrawingAndShapes.drawCombinations(cvs)
 	}
@@ -64,7 +68,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
 	renderComplexPallete(_complexPalletes.lineStylesPallete, stylesColorsAndText.lineStyles,
-						 cvs, _palleteArgs.previousTimestamp, timestamp)
+		cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
 	}
@@ -72,7 +76,7 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
 	renderComplexPallete(_complexPalletes.shadowsPallete, stylesColorsAndText.shadows,
-		                cvs, _palleteArgs.previousTimestamp, timestamp)
+		cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
@@ -119,25 +123,23 @@ function imagesAndTransformationsPallete(cvs) {
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
 	renderComplexPallete(_complexPalletes.clippingPathsPallete, clippingAndAnimations.clippingPaths,
-		                 cvs, _palleteArgs.previousTimestamp, timestamp)
+		cvs, _palleteArgs.previousTimestamp, timestamp)
 	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete, clippingAndAnimations.inverseClippingPaths,
-		                 cvs, _palleteArgs.previousTimestamp, timestamp)
+		cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
 	renderComplexPallete(_complexPalletes.clockPallete, clippingAndAnimations.clock,
-		                cvs, _palleteArgs.previousTimestamp, timestamp)
-	if (clippingAndAnimations.loopingPanorama) {
-		clippingAndAnimations.drawLoopingPanorama(cvs, _palleteArgs.previousTimestamp, timestamp)
-	}
-	renderComplexPallete(_complexPalletes.mouseFollowingPallete,
-		                 clippingAndAnimations.mouseFollowing, cvs)
-	if (clippingAndAnimations.boundaries) {
-		clippingAndAnimations.drawBoundaries(cvs)
-	}
-	if (clippingAndAnimations.acceleration) {
-		clippingAndAnimations.drawAcceleration(cvs)
-	}
+		cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.loopingPanoramaPallete, clippingAndAnimations.loopingPanorama,
+		cvs, _palleteArgs.previousTimestamp, timestamp)
+	renderComplexPallete(_complexPalletes.mouseFollowingPallete, clippingAndAnimations.mouseFollowing,
+		cvs)
+	renderComplexPallete(_complexPalletes.boundariesPallete, clippingAndAnimations.boundaries,
+		cvs)
+	renderComplexPallete(_complexPalletes.accelerationPallete, clippingAndAnimations.acceleration,
+		cvs)
+
 }
 
 function imageDataAndOptimizationPallete(cvs) {
@@ -178,8 +180,22 @@ export function initPallete(timestamp) {
 	}
 	_complexPalletes.clippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawClippingPaths)
 	_complexPalletes.inverseClippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
+	_complexPalletes.loopingPanoramaPallete = hewComplexePallete(clippingAndAnimations.drawLoopingPanorama)
+	_complexPalletes.loopingPanoramaPallete.varsObj = {
+		loopingPanoramaTimestamp: 0,
+		loopingPanoramaImageX: 0
+	}
 	_complexPalletes.clockPallete = hewComplexePallete(clippingAndAnimations.drawClock)
 	_complexPalletes.mouseFollowingPallete = hewComplexePallete(clippingAndAnimations.drawMouseFollowing, mouseFollowParticles)
+	_complexPalletes.boundariesPallete = hewComplexePallete(clippingAndAnimations.drawBoundaries)
+	_complexPalletes.boundariesPallete.varsObj = {
+		sword: getSword()
+	}
+	_complexPalletes.accelerationPallete = hewComplexePallete(clippingAndAnimations.drawAcceleration)
+	_complexPalletes.accelerationPallete.varsObj = {
+		ball: getBall(),
+		ballTrail: effects().shapes.ballTrail(),
+	}
 }
 
 function _pallete(cvs, timestamp) {

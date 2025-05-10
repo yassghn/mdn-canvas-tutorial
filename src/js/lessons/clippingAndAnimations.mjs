@@ -8,9 +8,6 @@ import pointer from '../modules/pointer.mjs'
 import { generateStars, getBall, getShield, getSword } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
-let loopingPanoramaTimestamp = 0
-let loopingPanoramaImageX = 0
-
 const clippingAndAnimations = {
 	drawClippingPaths: function (cvs, previousTimestamp, timestamp) {
 		/**
@@ -279,7 +276,7 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawLoopingPanorama: function (cvs, previousTimestamp, timestamp) {
+	drawLoopingPanorama: function (cvs, vars, previousTimestamp, timestamp) {
 		// create a looping panorama
 		const x = 1060
 		const y = 15
@@ -305,40 +302,40 @@ const clippingAndAnimations = {
 
 		if (imgW <= rectW) {
 			// x is out of bounds, reset x
-			if (loopingPanoramaImageX > rectW) {
-				loopingPanoramaImageX = -imgW + loopingPanoramaImageX
+			if (vars.loopingPanoramaImageX > rectW) {
+				vars.loopingPanoramaImageX = -imgW + vars.loopingPanoramaImageX
 			}
 
 			// draw additional image, filling main left gap when previous draw ends
-			if (loopingPanoramaImageX > 0) {
-				cvs.ctx.drawImage(panoramaImage, -imgW + loopingPanoramaImageX, 0, imgW, imgH)
+			if (vars.loopingPanoramaImageX > 0) {
+				cvs.ctx.drawImage(panoramaImage, -imgW + vars.loopingPanoramaImageX, 0, imgW, imgH)
 			}
 
 			// stitch remainder of panorama loop
-			if (loopingPanoramaImageX - imgW > 0) {
+			if (vars.loopingPanoramaImageX - imgW > 0) {
 				// fill small gap to the left between original draw and first stich
-				cvs.ctx.drawImage(panoramaImage, -imgW * 2 + loopingPanoramaImageX, 0, imgW, imgH)
+				cvs.ctx.drawImage(panoramaImage, -imgW * 2 + vars.loopingPanoramaImageX, 0, imgW, imgH)
 			}
 		} else {
 			// check for x out of bounds
-			if (loopingPanoramaImageX > rectW) {
-				loopingPanoramaImageX = rectW - imgW
+			if (vars.loopingPanoramaImageX > rectW) {
+				vars.loopingPanoramaImageX = rectW - imgW
 			}
 			// stitch panorama
-			if (loopingPanoramaImageX > rectW - imgW) {
-				cvs.ctx.drawImage(panoramaImage, loopingPanoramaImageX - imgW + 1, 0, imgW, imgH)
+			if (vars.loopingPanoramaImageX > rectW - imgW) {
+				cvs.ctx.drawImage(panoramaImage, vars.loopingPanoramaImageX - imgW + 1, 0, imgW, imgH)
 			}
 		}
 
 		// draw image panning to the right
-		cvs.ctx.drawImage(panoramaImage, loopingPanoramaImageX, 0, imgW, imgH)
+		cvs.ctx.drawImage(panoramaImage, vars.loopingPanoramaImageX, 0, imgW, imgH)
 
 		// use timestamps to time panorama view shifts
-		if (timestamp == previousTimestamp || timestamp - loopingPanoramaTimestamp >= delay) {
+		if (timestamp == previousTimestamp || timestamp - vars.loopingPanoramaTimestamp >= delay) {
 			// update timestamp
-			loopingPanoramaTimestamp = timestamp
+			vars.loopingPanoramaTimestamp = timestamp
 			// update x coord
-			loopingPanoramaImageX += dx
+			vars.loopingPanoramaImageX += dx
 		}
 
 		cvs.ctx.restore()
@@ -359,8 +356,7 @@ const clippingAndAnimations = {
 		mouseFollowParticles.render()
 	},
 
-	sword: getSword(),
-	drawBoundaries: function (cvs) {
+	drawBoundaries: function (cvs, vars) {
 		/**
 		 * boudnaries
 		 *
@@ -370,32 +366,30 @@ const clippingAndAnimations = {
 		 */
 
 		// shield is tightly coupled to sword coords and velocity
-		const shield = getShield(this.sword)
+		const shield = getShield(vars.sword)
 
 		// draw sword & shield
-		this.sword.render(cvs.ctx)
+		vars.sword.render(cvs.ctx)
 		shield.render(cvs.ctx)
 
 		// update on screen position, adding velicty to coordinates
-		const newCoords = { x: this.sword.coords.x + this.sword.velocity.x, y: this.sword.coords.y + this.sword.velocity.y }
-		this.sword.setCoords(newCoords)
+		const newCoords = { x: vars.sword.coords.x + vars.sword.velocity.x, y: vars.sword.coords.y + vars.sword.velocity.y }
+		vars.sword.setCoords(newCoords)
 
 		// collision detection with response
-		if (this.sword.isBoundingHeightCollision(cvs.height)) {
+		if (vars.sword.isBoundingHeightCollision(cvs.height)) {
 			// invert y velcoity
-			const dvy = { x: this.sword.velocity.x, y: -this.sword.velocity.y }
-			this.sword.setVelocity(dvy)
+			const dvy = { x: vars.sword.velocity.x, y: -vars.sword.velocity.y }
+			vars.sword.setVelocity(dvy)
 		}
 		if (shield.isBoundingWidthCollision(cvs.width)) {
 			// invert x velcoity
-			const dvx = { x: -this.sword.velocity.x, y: this.sword.velocity.y }
-			this.sword.setVelocity(dvx)
+			const dvx = { x: -vars.sword.velocity.x, y: vars.sword.velocity.y }
+			vars.sword.setVelocity(dvx)
 		}
 	},
 
-	ball: getBall(),
-	ballTrail: effects().shapes.ballTrail(),
-	drawAcceleration: function (cvs) {
+	drawAcceleration: function (cvs, vars) {
 		/**
 		 * use velocity vectors to change acceleration of moving objects
 		 * can implement a quasi gravity
@@ -405,48 +399,48 @@ const clippingAndAnimations = {
 		const pointerState = pointer()
 
 		// create a linear gradient for the ball
-		const x0 = this.ball.coords.x - this.ball.radius
-		const y0 = this.ball.coords.y - this.ball.radius
-		const x1 = this.ball.coords.x + this.ball.radius
-		const y1 = this.ball.coords.y + this.ball.radius
+		const x0 = vars.ball.coords.x - vars.ball.radius
+		const y0 = vars.ball.coords.y - vars.ball.radius
+		const x1 = vars.ball.coords.x + vars.ball.radius
+		const y1 = vars.ball.coords.y + vars.ball.radius
 		const linearGradient = cvs.ctx.createLinearGradient(x0, y0, x1, y1)
 		linearGradient.addColorStop(0, generateColor())
 		linearGradient.addColorStop(.8, generateColor())
 
 		// set ball trail effect properties
-		this.ballTrail.ctx = cvs.ctx
-		this.ballTrail.ball = this.ball
-		this.ballTrail.fillStyle = linearGradient
+		vars.ballTrail.ctx = cvs.ctx
+		vars.ballTrail.ball = vars.ball
+		vars.ballTrail.fillStyle = linearGradient
 		// draw ball trail
-		this.ballTrail.render()
+		vars.ballTrail.render()
 		// draw the ball
-		this.ball.render(cvs.ctx, linearGradient)
+		vars.ball.render(cvs.ctx, linearGradient)
 
 		// update ball coordinates using a velocity vector
-		this.ball.coords.x += this.ball.velocity.x
-		this.ball.coords.y += this.ball.velocity.y
+		vars.ball.coords.x += vars.ball.velocity.x
+		vars.ball.coords.y += vars.ball.velocity.y
 
 		// update velocity vector y axis
-		//this.ball.velocity.y *= 0.99
-		this.ball.velocity.y += 0.25
+		//vars.ball.velocity.y *= 0.99
+		vars.ball.velocity.y += 0.25
 
 		// collision detection
-		if (this.ball.coords.y + this.ball.velocity.y > cvs.height - this.ball.radius ||
-			this.ball.coords.y + this.ball.velocity.y < this.ball.radius) {
+		if (vars.ball.coords.y + vars.ball.velocity.y > cvs.height - vars.ball.radius ||
+			vars.ball.coords.y + vars.ball.velocity.y < vars.ball.radius) {
 			// keep ball bounce in control
-			this.ball.velocity.y *= 0.99
+			vars.ball.velocity.y *= 0.99
 			// invert y velocity at top/bottom edges of canvas
-			this.ball.velocity.y = -this.ball.velocity.y
+			vars.ball.velocity.y = -vars.ball.velocity.y
 		}
-		if (this.ball.coords.x + this.ball.velocity.x > cvs.width - this.ball.radius ||
-			this.ball.coords.x + this.ball.velocity.x < this.ball.radius) {
+		if (vars.ball.coords.x + vars.ball.velocity.x > cvs.width - vars.ball.radius ||
+			vars.ball.coords.x + vars.ball.velocity.x < vars.ball.radius) {
 			// invert x velocity at left/right edges of canvas
-			this.ball.velocity.x = -this.ball.velocity.x
+			vars.ball.velocity.x = -vars.ball.velocity.x
 		}
 
 		// pointer collision detection
-		if (isPointerCollision(pointerState, this.ball)) {
-			this.ball.velocity = invertVelocity(this.ball.velocity)
+		if (isPointerCollision(pointerState, vars.ball)) {
+			vars.ball.velocity = invertVelocity(vars.ball.velocity)
 		}
 	},
 
