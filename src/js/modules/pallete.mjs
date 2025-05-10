@@ -123,9 +123,9 @@ function imagesAndTransformationsPallete(cvs) {
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
 	renderComplexPallete(_complexPalletes.clippingPathsPallete, clippingAndAnimations.clippingPaths,
-		cvs, _palleteArgs.previousTimestamp, timestamp)
+		cvs)
 	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete, clippingAndAnimations.inverseClippingPaths,
-		cvs, _palleteArgs.previousTimestamp, timestamp)
+		cvs)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}

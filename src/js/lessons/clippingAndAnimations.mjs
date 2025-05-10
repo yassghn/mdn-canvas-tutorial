@@ -8,7 +8,7 @@ import { generateStars, getShield } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
 const clippingAndAnimations = {
-	drawClippingPaths: function (cvs, previousTimestamp, timestamp) {
+	drawClippingPaths: function (cvs) {
 		/**
 		 * clipping paths
 		 *
@@ -61,7 +61,7 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawInverseClippingPaths: function (cvs, previousTimestamp, timestamp) {
+	drawInverseClippingPaths: function (cvs) {
 		/**
 		 * inverse clipping paths
 		 *
