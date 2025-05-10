@@ -11,12 +11,18 @@ import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import effects from './effects.mjs'
 
-let previousTimestamp = 0
-let clippingPathsPallete = undefined
-let inverseClippingPathsPallete = undefined
-let lineStylesPallete = undefined
-let shadowsPallete = undefined
-let clockPallete = undefined
+const _complexPalletes = {
+	clippingPathsPallete: null,
+	inverseClippingPathsPallete: null,
+	lineStylesPallete: null,
+	shadowsPallete: null,
+	clockPallete: null
+}
+
+const _palleteArgs = {
+	previousTimestamp: 0
+}
+
 const efx = effects()
 const neonGlitch = efx.text.neonGlitch()
 const scrollLeft = efx.text.leftScroll()
@@ -62,14 +68,16 @@ function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.transparency) {
 		stylesColorsAndText.drawTransparency(cvs)
 	}
-	lineStylesPallete.render(stylesColorsAndText.lineStyles, cvs, previousTimestamp, timestamp)
+	_complexPalletes.lineStylesPallete
+		.render(stylesColorsAndText.lineStyles, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
 		stylesColorsAndText.drawGradients(cvs)
 	}
 	if (stylesColorsAndText.patterns) {
 		stylesColorsAndText.drawPatterns(cvs)
 	}
-	shadowsPallete.render(stylesColorsAndText.shadows, cvs, previousTimestamp, timestamp, neonGlitch)
+	_complexPalletes.shadowsPallete
+		.render(stylesColorsAndText.shadows, cvs, _palleteArgs.previousTimestamp, timestamp, neonGlitch)
 	if (stylesColorsAndText.canvasFill) {
 		stylesColorsAndText.drawCanvasFill(cvs)
 	}
@@ -115,14 +123,17 @@ function imagesAndTransformationsPallete(cvs) {
 }
 
 function clippingAndAnimationsPallete(cvs, timestamp) {
-	clippingPathsPallete.render(clippingAndAnimations.clippingPaths, cvs, previousTimestamp, timestamp)
-	inverseClippingPathsPallete.render(clippingAndAnimations.inverseClippingPaths, cvs, previousTimestamp, timestamp)
+	_complexPalletes.clippingPathsPallete
+		.render(clippingAndAnimations.clippingPaths, cvs, _palleteArgs.previousTimestamp, timestamp)
+	_complexPalletes.inverseClippingPathsPallete
+		.render(clippingAndAnimations.inverseClippingPaths, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (clippingAndAnimations.solarSystem) {
 		clippingAndAnimations.drawSolarSystem(cvs)
 	}
-	clockPallete.render(clippingAndAnimations.clock, cvs, previousTimestamp, timestamp)
+	_complexPalletes.clockPallete
+		.render(clippingAndAnimations.clock, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (clippingAndAnimations.loopingPanorama) {
-		clippingAndAnimations.drawLoopingPanorama(cvs, previousTimestamp, timestamp)
+		clippingAndAnimations.drawLoopingPanorama(cvs, _palleteArgs.previousTimestamp, timestamp)
 	}
 	if (clippingAndAnimations.mouseFollowing) {
 		clippingAndAnimations.drawMouseFollowing(cvs, mouseFollowParticles)
@@ -151,12 +162,12 @@ function renderPallete(cvs, callback, timestamp) {
 }
 
 export function initPallete(timestamp) {
-	previousTimestamp = timestamp
-	lineStylesPallete = getComplexePallete(stylesColorsAndText.drawLineStyles)
-	shadowsPallete = getComplexePallete(stylesColorsAndText.drawShadows)
-	clippingPathsPallete = getComplexePallete(clippingAndAnimations.drawClippingPaths)
-	inverseClippingPathsPallete = getComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
-	clockPallete = getComplexePallete(clippingAndAnimations.drawClock)
+	_palleteArgs.previousTimestamp = timestamp
+	_complexPalletes.lineStylesPallete = getComplexePallete(stylesColorsAndText.drawLineStyles)
+	_complexPalletes.shadowsPallete = getComplexePallete(stylesColorsAndText.drawShadows)
+	_complexPalletes.clippingPathsPallete = getComplexePallete(clippingAndAnimations.drawClippingPaths)
+	_complexPalletes.inverseClippingPathsPallete = getComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
+	_complexPalletes.clockPallete = getComplexePallete(clippingAndAnimations.drawClock)
 }
 
 function _pallete(cvs, timestamp) {
@@ -165,7 +176,8 @@ function _pallete(cvs, timestamp) {
 	renderPallete(cvs, imagesAndTransformationsPallete)
 	renderPallete(cvs, clippingAndAnimationsPallete, timestamp)
 	renderPallete(cvs, imageDataAndOptimizationPallete)
-	previousTimestamp = timestamp
+	// update previous timestamp after drawing
+	_palleteArgs.previousTimestamp = timestamp
 }
 
 function pallete(cvs, timestamp) {
