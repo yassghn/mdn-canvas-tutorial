@@ -2,6 +2,7 @@
  * uiCanvas.mjs
  */
 
+import api from './api.mjs'
 import pallete from './pallete.mjs'
 
 /**
@@ -31,7 +32,9 @@ const _cvs = {
 	width: undefined,
 	height: undefined,
 	// canvas rendering context
-	ctx: undefined
+	ctx: undefined,
+	// attach api
+	api: api
 }
 
 function _setDimensions() {
@@ -60,6 +63,8 @@ function _init() {
 	const canvas = document.getElementById('tutorial-canvas')
 	// get canvas context
 	_cvs.ctx = canvas.getContext('2d')
+	// init api
+	_cvs.api.init(_cvs.ctx)
 	// set canvas dimentions
 	_setDimensions()
 }
