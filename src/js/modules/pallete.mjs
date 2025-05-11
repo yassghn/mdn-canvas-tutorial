@@ -2,31 +2,19 @@
  * pallete.mjs
  */
 
-import hewComplexePallete, { renderComplexPallete } from './complexPallete.mjs'
+import { renderComplexPallete } from './complexPallete.mjs'
 import basicDrawingAndShapes from '../lessons/basicDrawingAndShapes.mjs'
 import stylesColorsAndText from '../lessons/stylesColorsAndText.mjs'
 import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
-import effects from './effects.mjs'
-import { getBall, getSword } from './render.mjs'
-
-const _complexPalletes = {
-	bezierAndQuadraticCurvesPallete: null,
-	clippingPathsPallete: null,
-	inverseClippingPathsPallete: null,
-	loopingPanoramaPallete: null,
-	lineStylesPallete: null,
-	shadowsPallete: null,
-	clockPallete: null,
-	mouseFollowingPallete: null,
-	boundariesPallete: null,
-	accelerationPallete: null
-}
+import palleteHewer from './palleteHewer.mjs'
 
 const _palleteArgs = {
 	previousTimestamp: 0
 }
+
+const _complexPalletes = { ...palleteHewer() }
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
@@ -170,52 +158,6 @@ function renderPallete(cvs, callback, timestamp) {
 export function initPallete(timestamp) {
 	// set prev and current timestamp is the same on init
 	_palleteArgs.previousTimestamp = timestamp
-	// init effects
-	const efx = effects()
-	const neonGlitch = efx.text.neonGlitch()
-	const scrollLeft = efx.text.leftScroll()
-	const mouseFollowParticles = efx.particles.spinningParticles()
-	// init complex pallets
-	// bezier and quadratic curves
-	_complexPalletes.bezierAndQuadraticCurvesPallete = hewComplexePallete(basicDrawingAndShapes.drawBezierAndQuadraticCurves, scrollLeft)
-	// line styles
-	_complexPalletes.lineStylesPallete = hewComplexePallete(stylesColorsAndText.drawLineStyles)
-	_complexPalletes.lineStylesPallete.varsObj = {
-		delay: 15,
-		lineDashOffset: 0,
-		lineStylesLastDraw: 0
-	}
-	// shadows
-	_complexPalletes.shadowsPallete = hewComplexePallete(stylesColorsAndText.drawShadows, neonGlitch)
-	_complexPalletes.shadowsPallete.varsObj = {
-		shadowDelay: 122,
-		shadowsLastDraw: 0
-	}
-	// clipping paths
-	_complexPalletes.clippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawClippingPaths)
-	// inverse clipping paths
-	_complexPalletes.inverseClippingPathsPallete = hewComplexePallete(clippingAndAnimations.drawInverseClippingPaths)
-	// looping panorama
-	_complexPalletes.loopingPanoramaPallete = hewComplexePallete(clippingAndAnimations.drawLoopingPanorama)
-	_complexPalletes.loopingPanoramaPallete.varsObj = {
-		loopingPanoramaTimestamp: 0,
-		loopingPanoramaImageX: 0
-	}
-	// clock
-	_complexPalletes.clockPallete = hewComplexePallete(clippingAndAnimations.drawClock)
-	// mouse follow
-	_complexPalletes.mouseFollowingPallete = hewComplexePallete(clippingAndAnimations.drawMouseFollowing, mouseFollowParticles)
-	// boundaries
-	_complexPalletes.boundariesPallete = hewComplexePallete(clippingAndAnimations.drawBoundaries)
-	_complexPalletes.boundariesPallete.varsObj = {
-		sword: getSword()
-	}
-	// acceleration
-	_complexPalletes.accelerationPallete = hewComplexePallete(clippingAndAnimations.drawAcceleration)
-	_complexPalletes.accelerationPallete.varsObj = {
-		ball: getBall(),
-		ballTrail: effects().shapes.ballTrail(),
-	}
 }
 
 function _pallete(cvs, timestamp) {
