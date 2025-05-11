@@ -8,6 +8,7 @@ import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import hewComplexePallete from './complexPallete.mjs'
 import { getBall, getSword } from './render.mjs'
 import effects from './effects.mjs'
+import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 
 const _palletes = {
 	bezierAndQuadraticCurvesPallete: null,
@@ -19,7 +20,8 @@ const _palletes = {
 	clockPallete: null,
 	mouseFollowingPallete: null,
 	boundariesPallete: null,
-	accelerationPallete: null
+	accelerationPallete: null,
+	colorPickerPallete: null
 }
 
 /**
@@ -153,6 +155,18 @@ function _initPalletes() {
 		vars: {
 			ball: getBall(),
 			ballTrail: effects().shapes.ballTrail(),
+		}
+	})
+
+	// color picker
+	palletes.colorPickerPallete = buildPallete({
+		render: imageDataAndOptimization.drawColorPicker,
+		complex: true,
+		vars: {
+			lastDraw: null,
+			delay: 400,
+			hoverColor: 'rgb(0, 0, 0 / 1%)',
+			selectedColor: null
 		}
 	})
 

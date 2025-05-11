@@ -140,10 +140,11 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 
 }
 
-function imageDataAndOptimizationPallete(cvs) {
-	if (imageDataAndOptimization.colorPicker) {
-		imageDataAndOptimization.drawColorPicker(cvs)
-	}
+function imageDataAndOptimizationPallete(cvs, timestamp) {
+	// color picker
+	renderComplexPallete(_complexPalletes.colorPickerPallete,
+		imageDataAndOptimization.colorPicker, cvs, _palleteArgs.previousTimestamp, timestamp)
+
 }
 
 function renderPallete(cvs, callback, timestamp) {
@@ -165,7 +166,7 @@ function _pallete(cvs, timestamp) {
 	renderPallete(cvs, stylesColorsAndTextPallete, timestamp)
 	renderPallete(cvs, imagesAndTransformationsPallete)
 	renderPallete(cvs, clippingAndAnimationsPallete, timestamp)
-	renderPallete(cvs, imageDataAndOptimizationPallete)
+	renderPallete(cvs, imageDataAndOptimizationPallete, timestamp)
 	// update previous timestamp after drawing
 	_palleteArgs.previousTimestamp = timestamp
 }
