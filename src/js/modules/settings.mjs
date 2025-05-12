@@ -31,7 +31,7 @@ const _defaults = {
 
 const _state = { ..._defaults }
 
-function _addDefaultSettings() {
+function _addDefaultsToLocalStorage() {
 	for (const setting in _defaults) {
 		if (localStorage.getItem(setting) == null) {
 			localStorage.setItem(setting, _defaults[setting].val)
@@ -39,7 +39,7 @@ function _addDefaultSettings() {
 	}
 }
 
-function _updateCurrentSettings() {
+function _getLocalStorageSettings() {
 	for (const setting in _state) {
 		_state[setting].val = localStorage.getItem(setting)
 	}
@@ -60,12 +60,12 @@ function _updateState(setting, value) {
 
 function _setInitialStateOnLoad() {
 	// make sure animation is not paused on start
-	_setValue(_defaults.pauseAnimation.name, 'false')
+	_setValue(_state.pauseAnimation.name, 'false')
 }
 
 function _init() {
-	_addDefaultSettings()
-	_updateCurrentSettings()
+	_addDefaultsToLocalStorage()
+	_getLocalStorageSettings()
 	_setInitialStateOnLoad()
 }
 
@@ -75,47 +75,47 @@ function _init() {
 const settings = {
 	// grid lines
 	get renderGridLines() {
-		return _getValue(_defaults.renderGridLines.name)
+		return _getValue(_state.renderGridLines.name)
 	},
 
 	set renderGridLines(value) {
-		_setValue(_defaults.renderGridLines.name, value)
+		_setValue(_state.renderGridLines.name, value)
 	},
 
 	// pointer track
 	get renderPointerTrack() {
-		return _getValue(_defaults.renderPointerTrack.name)
+		return _getValue(_state.renderPointerTrack.name)
 	},
 
 	set renderPointerTrack(value) {
-		_setValue(_defaults.renderPointerTrack.name, value)
+		_setValue(_state.renderPointerTrack.name, value)
 	},
 
 	// no clip debug
 	get noClipDebug() {
-		return _getValue(_defaults.noClipDebug.name)
+		return _getValue(_state.noClipDebug.name)
 	},
 
 	set noClipDebug(value) {
-		_setValue(_defaults.noClipDebug.name, value)
+		_setValue(_state.noClipDebug.name, value)
 	},
 
 	// no clip debug
 	get pauseAnimation() {
-		return _getValue(_defaults.pauseAnimation.name)
+		return _getValue(_state.pauseAnimation.name)
 	},
 
 	set pauseAnimation(value) {
-		_setValue(_defaults.pauseAnimation.name, value)
+		_setValue(_state.pauseAnimation.name, value)
 	},
 
 	// no clip debug
 	get enableAll() {
-		return _getValue(_defaults.enableAll.name)
+		return _getValue(_state.enableAll.name)
 	},
 
 	set enableAll(value) {
-		_setValue(_defaults.enableAll.name, value)
+		_setValue(_state.enableAll.name, value)
 	}
 }
 
