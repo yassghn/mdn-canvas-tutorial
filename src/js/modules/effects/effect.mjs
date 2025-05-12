@@ -52,14 +52,14 @@ export function ScrollingText() {
 		this.effect.update()
 	}
 
-	const _draw = (ctx) => {
+	const _render = (ctx) => {
 		ctx.fillText(this.effect.props.text, this.effect.props.x, this.effect.props.y)
 	}
 
 	this.render = () => {
-		// draw
-		this.ctxState.apply(_draw)
-		// update effect properties for next draw
+		// render
+		this.ctxState.apply(_render)
+		// update effect properties for next render
 		_nextDraw()
 	}
 

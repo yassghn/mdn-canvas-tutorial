@@ -5,16 +5,16 @@
 export function renderComplexPallete(pallete, enabled, cvs, ...args) {
 	if (enabled) {
 		if (pallete.vars) {
-			pallete.drawCallback(cvs, pallete.vars, ...args, ...pallete.args)
+			pallete.renderCallback(cvs, pallete.vars, ...args, ...pallete.args)
 		} else {
-			pallete.drawCallback(cvs, ...args, ...pallete.args)
+			pallete.renderCallback(cvs, ...args, ...pallete.args)
 		}
 	}
 }
 
-function hewComplexePallete(drawFunc, ...args) {
+function hewComplexePallete(renderFunc, ...args) {
 	const complexPallete = {
-		drawCallback: drawFunc,
+		renderCallback: renderFunc,
 		args: [...args],
 
 		set varsObj(vars) {

@@ -8,13 +8,13 @@ import { generateStars, getShield } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
 const clippingAndAnimations = {
-	drawClippingPaths: function (cvs) {
+	renderClippingPaths: function (cvs) {
 		/**
 		 * clipping paths
 		 *
 		 * clip()
 		 * 	- used as a mask to hide unwanted parts of a shape
-		 *  - everything that falls outside of the set path won't get drawn
+		 *  - everything that falls outside of the set path won't get rendered
 		 *  - similair function to stroke(), fill(), closePath() methods
 		 *  - turns a path into a clipping path
 		 *  - canvas has a default clipping path of the exact same size as the canvas (no clipping occurs)
@@ -22,8 +22,8 @@ const clippingAndAnimations = {
 		 * NOTE:
 		 * 	the effect of clipping paths can also be achieved via the globalCompositeOperation property.
 		 *  using 'source-in' and 'source-atop' values to achieve masking effects.
-		 *  the difference is that clipping paths are never drawn to the canvas, and clipping path
-		 *  is never affected by adding new shapes. more suited to drawing multiple shapes in 'restricted area'
+		 *  the difference is that clipping paths are never rendered to the canvas, and clipping path
+		 *  is never affected by adding new shapes. more suited to rendering multiple shapes in 'restricted area'
 		 *
 		 * globalCompositeOperation = type
 		 * 	- can be used to hide unwanted parts of a shape
@@ -32,7 +32,7 @@ const clippingAndAnimations = {
 		 */
 
 		// clipping example
-		// use circular clipping path to restrict drawing of a set of random stars to a particular canvas region
+		// use circular clipping path to restrict rendering of a set of random stars to a particular canvas region
 		const x = 1250
 		const y = 650
 		cvs.ctx.save()
@@ -49,7 +49,7 @@ const clippingAndAnimations = {
 			cvs.ctx.clip()
 		}
 
-		// draw stars background
+		// render stars background
 		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
 		linearGradient.addColorStop(0, '#232256')
 		linearGradient.addColorStop(1, '#143778')
@@ -61,7 +61,7 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawInverseClippingPaths: function (cvs) {
+	renderInverseClippingPaths: function (cvs) {
 		/**
 		 * inverse clipping paths
 		 *
@@ -69,9 +69,9 @@ const clippingAndAnimations = {
 		 * the canvas (or a given portion), with a rectangle, and has a hole in it for the parts
 		 * which you want to skip.
 		 *
-		 * shapes with holes: draw holes in the opposite direction as outter shape.
+		 * shapes with holes: render holes in the opposite direction as outter shape.
 		 *
-		 * rectangles have no drawing direction, but behaves as if it is drawn clockwise.
+		 * rectangles have no rendering direction, but behaves as if it is rendered clockwise.
 		 * by default, arc command also goes clockwise (but direction can be changed via final argument)
 		 */
 		let x = 1250
@@ -92,7 +92,7 @@ const clippingAndAnimations = {
 			cvs.ctx.clip()
 		}
 
-		// draw stars background
+		// render stars background
 		const linearGradient = cvs.ctx.createLinearGradient(0, -75, 0, 75)
 		linearGradient.addColorStop(0, '#232256')
 		linearGradient.addColorStop(1, '#143778')
@@ -104,14 +104,14 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawSolarSystem: function (cvs) {
+	renderSolarSystem: function (cvs) {
 		/**
 		 * basic animations
 		 *
 		 * simplistic outline:
 		 * 	1. clear canvas. clearRect or masking.
 		 *  2. save canvas state
-		 *  3. draw animated shapes
+		 *  3. render animated shapes
 		 *  4. restore canvas state
 		 *
 		 * controlling an animation:
@@ -136,20 +136,20 @@ const clippingAndAnimations = {
 		//cvs.ctx.globalCompositeOperation = 'destination-over'
 		cvs.ctx.fillStyle = 'rgb(0 0 0 / 40%)'
 		cvs.ctx.strokeStyle = 'rgb(0 153 255 / 40%)'
-		// draw sun
+		// render sun
 		cvs.ctx.beginPath()
 		cvs.ctx.drawImage(sunImage, 0, 0, 300, 300)
 		// earth orbit
 		cvs.ctx.arc(150, 150, 105, 0, Math.PI * 2, false)
 		cvs.ctx.stroke()
 
-		// setup earth drawing properties
+		// setup earth rendering properties
 		const earthRotA = ((2 * Math.PI) / 60) * time.getSeconds()
 		const earthRotB = ((2 * Math.PI) / 60000) * time.getMilliseconds()
 		cvs.ctx.translate(150, 150)
 		cvs.ctx.rotate(earthRotA + earthRotB)
 
-		// draw moon
+		// render moon
 		cvs.ctx.save()
 		const moonRotA = ((2 * Math.PI) / 6) * time.getSeconds()
 		const moonRotB = ((2 * Math.PI) / 6000) * time.getMilliseconds()
@@ -159,7 +159,7 @@ const clippingAndAnimations = {
 		cvs.ctx.drawImage(moonImage, -3.5, -3.5)
 		cvs.ctx.restore()
 
-		// draw earth
+		// render earth
 		cvs.ctx.translate(105, 0)
 		cvs.ctx.drawImage(earthImage, -12, -12)
 		// earth shadow
@@ -168,8 +168,8 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawClock: function (cvs) {
-		// draw an animated clock which displays the current time
+	renderClock: function (cvs) {
+		// render an animated clock which displays the current time
 		const x = 1325
 		const y = 875
 		const date = new Date()
@@ -184,7 +184,7 @@ const clippingAndAnimations = {
 		cvs.ctx.lineCap = 'round'
 		cvs.ctx.save()
 
-		// draw clock background
+		// render clock background
 		cvs.ctx.save()
 		cvs.ctx.fillStyle = 'moccasin'
 		cvs.ctx.beginPath()
@@ -192,7 +192,7 @@ const clippingAndAnimations = {
 		cvs.ctx.fill()
 		cvs.ctx.restore()
 
-		// draw hour marks
+		// render hour marks
 		for (let i = 0; i < 12; i++) {
 			cvs.ctx.beginPath()
 			cvs.ctx.rotate(Math.PI / 6)
@@ -204,7 +204,7 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 		cvs.ctx.save()
 
-		// draw minute marks
+		// render minute marks
 		cvs.ctx.lineWidth = 5
 		for (let i = 0; i < 60; i++) {
 			if (i % 5 !== 0) {
@@ -224,7 +224,7 @@ const clippingAndAnimations = {
 
 		cvs.ctx.fillStyle = 'black'
 
-		// draw hour hand
+		// render hour hand
 		cvs.ctx.save()
 		cvs.ctx.lineWidth = 14
 		cvs.ctx.rotate((Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec)
@@ -234,7 +234,7 @@ const clippingAndAnimations = {
 		cvs.ctx.stroke()
 		cvs.ctx.restore()
 
-		// draw minute hand
+		// render minute hand
 		cvs.ctx.save()
 		cvs.ctx.lineWidth = 10
 		cvs.ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
@@ -244,7 +244,7 @@ const clippingAndAnimations = {
 		cvs.ctx.stroke()
 		cvs.ctx.restore()
 
-		// draw seconds hand
+		// render seconds hand
 		cvs.ctx.save()
 		cvs.ctx.lineWidth = 6
 		cvs.ctx.strokeStyle = 'red'
@@ -265,7 +265,7 @@ const clippingAndAnimations = {
 		cvs.ctx.fill()
 		cvs.ctx.restore()
 
-		// draw clock body
+		// render clock body
 		cvs.ctx.beginPath()
 		cvs.ctx.lineWidth = 14
 		cvs.ctx.strokeStyle = 'darkgreen'
@@ -275,7 +275,7 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawLoopingPanorama: function (cvs, vars, previousTimestamp, timestamp) {
+	renderLoopingPanorama: function (cvs, vars, previousTimestamp, timestamp) {
 		// create a looping panorama
 		const x = 1060
 		const y = 15
@@ -305,14 +305,14 @@ const clippingAndAnimations = {
 				vars.loopingPanoramaImageX = -imgW + vars.loopingPanoramaImageX
 			}
 
-			// draw additional image, filling main left gap when previous draw ends
+			// render additional image, filling main left gap when previous render ends
 			if (vars.loopingPanoramaImageX > 0) {
 				cvs.ctx.drawImage(panoramaImage, -imgW + vars.loopingPanoramaImageX, 0, imgW, imgH)
 			}
 
 			// stitch remainder of panorama loop
 			if (vars.loopingPanoramaImageX - imgW > 0) {
-				// fill small gap to the left between original draw and first stich
+				// fill small gap to the left between original render and first stich
 				cvs.ctx.drawImage(panoramaImage, -imgW * 2 + vars.loopingPanoramaImageX, 0, imgW, imgH)
 			}
 		} else {
@@ -326,7 +326,7 @@ const clippingAndAnimations = {
 			}
 		}
 
-		// draw image panning to the right
+		// render image panning to the right
 		cvs.ctx.drawImage(panoramaImage, vars.loopingPanoramaImageX, 0, imgW, imgH)
 
 		// use timestamps to time panorama view shifts
@@ -340,7 +340,7 @@ const clippingAndAnimations = {
 		cvs.ctx.restore()
 	},
 
-	drawMouseFollowing: function (cvs, mouseFollowParticles) {
+	renderMouseFollowing: function (cvs, mouseFollowParticles) {
 		// set default coords to empty canvas position
 		let coords = {
 			x: 1600,
@@ -355,7 +355,7 @@ const clippingAndAnimations = {
 		mouseFollowParticles.render()
 	},
 
-	drawBoundaries: function (cvs, vars) {
+	renderBoundaries: function (cvs, vars) {
 		/**
 		 * boudnaries
 		 *
@@ -367,7 +367,7 @@ const clippingAndAnimations = {
 		// shield is tightly coupled to sword coords and velocity
 		const shield = getShield(vars.sword)
 
-		// draw sword & shield
+		// render sword & shield
 		vars.sword.render(cvs.ctx)
 		shield.render(cvs.ctx)
 
@@ -388,7 +388,7 @@ const clippingAndAnimations = {
 		}
 	},
 
-	drawAcceleration: function (cvs, vars) {
+	renderAcceleration: function (cvs, vars) {
 		/**
 		 * use velocity vectors to change acceleration of moving objects
 		 * can implement a quasi gravity
@@ -410,9 +410,9 @@ const clippingAndAnimations = {
 		vars.ballTrail.ctx = cvs.ctx
 		vars.ballTrail.ball = vars.ball
 		vars.ballTrail.fillStyle = linearGradient
-		// draw ball trail
+		// render ball trail
 		vars.ballTrail.render()
-		// draw the ball
+		// render the ball
 		vars.ball.render(cvs.ctx, linearGradient)
 
 		// update ball coordinates using a velocity vector

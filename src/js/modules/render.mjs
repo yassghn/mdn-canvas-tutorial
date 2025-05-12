@@ -8,7 +8,7 @@ import ContextState from './ContextState.mjs'
 import ContextProperties from './ContextProperties.mjs'
 import { calculateColumnWidth, calculateRowHeight, getCircleGridPoints } from './math.mjs'
 
-// utility function to draw a rectangle with rounded corners
+// utility function to render a rectangle with rounded corners
 export function roundedRect(ctx, x, y, width, height, radius) {
 	ctx.beginPath()
 	ctx.moveTo(x, y + radius)
@@ -38,9 +38,9 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 		// get frame (x, y)
 		const x = _getXpos(xpos, col, cols, buffer, img.width)
 		const y = _getYPos(ypos, row, rows, buffer, img.height)
-		// draw gallery art image
+		// render gallery art image
 		cvs.ctx.drawImage(img, x + offset, y + offset)
-		// draw gallery art image frame
+		// render gallery art image frame
 		cvs.ctx.drawImage(frameImg, x, y)
 		// check for next row
 		if (((i + 1) * rows) % imgs.length == 0) {
@@ -56,7 +56,7 @@ export function gallerize(cvs, imgs, frameImg, xpos, ypos, rows, cols, buffer, o
 	}
 }
 
-function _drawGridLine(ctx, x, y, max, every, other) {
+function renderGridLine(ctx, x, y, max, every, other) {
 	let restore = false
 	if (every && other) {
 		if (x % every != 0 || y % every != 0) {
@@ -79,7 +79,7 @@ function _drawGridLine(ctx, x, y, max, every, other) {
 	}
 }
 
-function _drawGridText(ctx, text, x, y) {
+function renderGridText(ctx, text, x, y) {
 	ctx.beginPath()
 	ctx.fillText(text, x, y)
 }
@@ -90,14 +90,14 @@ export function trackGridLines(cvs, mousePos) {
 	props.strokeStyle = `rgb(243, 130, 192)`
 	const state = new ContextState(cvs.ctx, props)
 	state.apply((ctx, mousePos, maxX, maxY) => {
-		// draw vertical grid line
-		_drawGridLine(ctx, mousePos.x, 0, maxY)
-		// draw horizontal grid line
-		_drawGridLine(ctx, 0, mousePos.y, maxX)
+		// render vertical grid line
+		renderGridLine(ctx, mousePos.x, 0, maxY)
+		// render horizontal grid line
+		renderGridLine(ctx, 0, mousePos.y, maxX)
 	}, mousePos, cvs.width, cvs.height)
 }
 
-export function drawGridLines(cvs) {
+export function renderGridLines(cvs) {
 	const dx = 10
 	const dy = dx
 	const labelEvery = 50
@@ -123,37 +123,37 @@ export function drawGridLines(cvs) {
 		let lasty = 0
 		let lastylabel = 0
 		ctx.save()
-		// draw gridlines
+		// render gridlines
 		for (let xtrack = 0; xtrack < maxX; xtrack++) {
-			// draw xpos text every set amount
+			// render xpos text every set amount
 			if (xtrack == 0 || (xtrack - lastx) % dx == 0) {
-				// draw vertical grid line
-				_drawGridLine(ctx, xtrack, 0, maxY, every, other)
+				// render vertical grid line
+				renderGridLine(ctx, xtrack, 0, maxY, every, other)
 				lastx = xtrack
 			}
-			// draw grid text every set amount
+			// render grid text every set amount
 			if (xtrack == 0 || (xtrack - lastxlabel) % every == 0) {
 				// get offset based on text height calculation
 				const offset = textHeight + labelOffset + 1
-				// draw x coord text
-				_drawGridText(ctx, `${xtrack}`, xtrack - labelOffset, offset)
+				// render x coord text
+				renderGridText(ctx, `${xtrack}`, xtrack - labelOffset, offset)
 				lastxlabel = xtrack
 			}
 		}
 		ctx.restore()
 		for (let ytrack = 0; ytrack < maxY; ytrack++) {
-			// draw ypos text every set amount
+			// render ypos text every set amount
 			if (ytrack == 0 || (ytrack - lasty) % dy == 0) {
-				// draw horizontal grid line
-				_drawGridLine(ctx, 0, ytrack, maxX, every, other)
+				// render horizontal grid line
+				renderGridLine(ctx, 0, ytrack, maxX, every, other)
 				lasty = ytrack
 			}
-			// draw grid text every set amount
+			// render grid text every set amount
 			if (ytrack == 0 || (ytrack - lastylabel) % every == 0) {
 				// get offset based on text width calculation
 				const offset = ctx.measureText(`${ytrack}`).width + labelOffset + 1
-				// draw ycoord text
-				_drawGridText(ctx, `${ytrack}`, offset, ytrack - labelOffset)
+				// render ycoord text
+				renderGridText(ctx, `${ytrack}`, offset, ytrack - labelOffset)
 				lastylabel = ytrack
 			}
 		}
@@ -168,7 +168,7 @@ function _renderStar(ctx, offset, a, b, c, d, time, size) {
 	const xpos = offset - Math.floor((secMult * (time / 1000)) * ((Math.PI * 2) / a) * b)
 	const ypos = offset - Math.floor((secMult * (time / 1000)) * ((Math.PI * 2) / c) * d)
 	ctx.translate(-xpos, ypos)
-	// draw star
+	// render star
 	ctx.save()
 	ctx.fillStyle = '#fff'
 	ctx.beginPath()
@@ -205,17 +205,17 @@ function _renderStarTrail(ctx, xpos, ypos) {
 	ctx.restore()
 }
 
-// utlity function to draw randomly positioned stars within a clipped path
+// utlity function to render randomly positioned stars within a clipped path
 export function generateStars(cvs) {
 	cvs.ctx.save()
 
 	// generate stars
 	const date = new Date()
-	// draw one shooting star
+	// render one shooting star
 	const coords = _renderStar(cvs.ctx, 75, 55, 15, 55, 15, date.getMilliseconds(), 15)
-	// draw shooting star trail
+	// render shooting star trail
 	_renderStarTrail(cvs.ctx, coords.x, coords.y)
-	// draw shooting star wake of stars
+	// render shooting star wake of stars
 	for (let i = 1; i < 50; i++) {
 		const amax = 60
 		const amin = 50
@@ -353,7 +353,7 @@ export function getShield(swordProps) {
 				const newX = Math.ceil(swordProps.dimensions.crossGuardWidth / 2 + swordProps.dimensions.w - 5)
 				const newY = Math.ceil(swordProps.dimensions.crossGuardHeight / 2 + swordProps.dimensions.h / 2)
 				_ctx.translate(newX, newY)
-				// draw square wrapped in arc to point out new center
+				// render square wrapped in arc to point out new center
 				/* _ctx.moveTo(0, 0)
 				_ctx.beginPath()
 				_ctx.rect(0, 0, 10, 10)
@@ -362,7 +362,7 @@ export function getShield(swordProps) {
 				_ctx.arc(0, 0, 10, 0, Math.PI * 2)
 				_ctx.stroke() */
 
-				// draw shield
+				// render shield
 				ctx.beginPath()
 				ctx.moveTo(0, 0)
 				ctx.quadraticCurveTo(0, 25, 100, 0)
@@ -432,12 +432,12 @@ export function getSword() {
 			const state = new ContextState(ctx, props)
 			state.apply((_ctx, _coords, _dimensions) => {
 
-				// draw sword stem (blade without point)
+				// render sword stem (blade without point)
 				_ctx.beginPath()
 				_ctx.rect(_coords.x, _coords.y, _dimensions.w, _dimensions.h)
 				_ctx.stroke()
 
-				// draw sword point
+				// render sword point
 				_ctx.save()
 				_ctx.translate(_coords.x, _coords.y + _dimensions.h)
 				_ctx.beginPath()
@@ -448,12 +448,12 @@ export function getSword() {
 				_ctx.stroke()
 				_ctx.restore()
 
-				// draw cross guard
+				// render cross guard
 				_ctx.beginPath()
 				_ctx.rect(_coords.x - (_dimensions.crossGuardWidth / 2) + (_dimensions.w / 2), _coords.y, _dimensions.crossGuardWidth, _dimensions.crossGuardHeight)
 				_ctx.stroke()
 
-				// draw crossguard ornaments
+				// render crossguard ornaments
 				const cgOrnaRadius = 10
 				_ctx.beginPath()
 				// left ornament
@@ -464,14 +464,14 @@ export function getSword() {
 				_ctx.arc(_coords.x + _dimensions.crossGuardWidth / 2 + cgOrnaRadius * 2 + cgOrnaRadius / 2, _coords.y + _dimensions.crossGuardHeight / 2, cgOrnaRadius, 0, Math.PI * 2)
 				_ctx.stroke()
 
-				// draw hilt
+				// render hilt
 				const handleWidth = 20
 				const handleHeight = 50
 				_ctx.beginPath()
 				_ctx.rect(_coords.x + handleWidth / 4, _coords.y - handleHeight, handleWidth, handleHeight)
 				_ctx.stroke()
 
-				// draw pommel
+				// render pommel
 				const pommelRadius = 15
 				_ctx.beginPath()
 				_ctx.arc(_coords.x + handleWidth / 2 + Math.ceil(pommelRadius / 4) + 1, _coords.y - handleHeight - pommelRadius, pommelRadius, 0, Math.PI * 2)
@@ -529,7 +529,7 @@ export function getBall() {
 			// update edges
 			const self = this
 			updateEdges(self)
-			// draw
+			// render
 			const props = new ContextProperties()
 			props.fillStyle = linearGradient
 			const state = new ContextState(ctx, props)

@@ -76,7 +76,7 @@ function _addMenuItemClickHandler(item, callback, cvs) {
 		checkbox.checked = checkbox.checked == true ? false : true
 		// clear canvas
 		cvs.clear()
-		// set menu enabled drawing state
+		// set menu enabled rendering state
 		callback(checkbox.checked)
 	})
 }

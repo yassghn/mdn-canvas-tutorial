@@ -7,11 +7,11 @@ import { roundedRect } from '../modules/render.mjs'
 import settings from '../modules/settings.mjs'
 
 const basicDrawingAndShapes = {
-	drawSimpleExample: function (cvs) {
+	renderSimpleExample: function (cvs) {
 		// notes:
 		// the grid: normally(?) 1 unit = 1px in canvas grid
 		// top-left corner of canvas is coordinate (0, 0)
-		// drawing moves as x units from left, y units from top
+		// rendering moves as x units from left, y units from top
 		cvs.ctx.fillStyle = 'rgb(200 0 0)'
 		// fillRect(x, y, width, height)
 		cvs.ctx.fillRect(10, 10, 50, 50)
@@ -19,19 +19,19 @@ const basicDrawingAndShapes = {
 		cvs.ctx.fillRect(30, 30, 50, 50)
 	},
 
-	drawRectangularShape: function (cvs) {
+	renderRectangularShape: function (cvs) {
 		cvs.ctx.fillStyle = 'rgb(0 100 100)'
 		cvs.ctx.strokeStyle = 'rgb(355 100 100)'
-		// draw filled rectangle
+		// render filled rectangle
 		cvs.ctx.fillRect(40, 40, 100, 100)
-		// draw rectangular outline
+		// render rectangular outline
 		cvs.ctx.strokeRect(60, 60, 60, 60)
 		// clear rectangular area (make it fully transparent)
 		// everything behind clear becomes transparent
 		cvs.ctx.clearRect(65, 65, 50, 50)
 	},
 
-	drawTriangleShapesAndPaths: function (cvs) {
+	renderTriangleShapesAndPaths: function (cvs) {
 		/**
 		 * a path is a list of points
 		 * connected by various line segments/shapes of various properties
@@ -41,7 +41,7 @@ const basicDrawingAndShapes = {
 		 * making shapes with paths
 		 *
 		 * 1. create path
-		 * 2. draw path
+		 * 2. render path
 		 * 3. stroke/fill path to render it
 		 *
 		 * note: (almost) always specify starting position after resetting a path
@@ -55,14 +55,14 @@ const basicDrawingAndShapes = {
 		cvs.ctx.fill()
 	},
 
-	drawMovingThePen: function (cvs) {
+	renderMovingThePen: function (cvs) {
 		/**
-		 * moveTo(x, y) doesn't actually draw anything
+		 * moveTo(x, y) doesn't actually render anything
 		 * 	- like lifting a pen from one spot to another
 		 *
-		 * can use moveTo to draw unconnect paths
+		 * can use moveTo to render unconnect paths
 		 */
-		// draw smiley face
+		// render smiley face
 		cvs.ctx.beginPath()
 		// outer circle
 		cvs.ctx.arc(275, 275, 50, 0, Math.PI * 2, true)
@@ -84,22 +84,22 @@ const basicDrawingAndShapes = {
 		cvs.ctx.stroke()
 	},
 
-	drawLines: function (cvs) {
+	renderLines: function (cvs) {
 		/**
-		 * using lineTo(x, y) to draw straight lines
-		 * 	- draw line from current position to x,y point
+		 * using lineTo(x, y) to render straight lines
+		 * 	- render line from current position to x,y point
 		 *
 		 * end of the previous path is starting point, or
 		 * you can use moveTo
 		 */
-		// draw filled triangle
+		// render filled triangle
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(355, 389)
 		cvs.ctx.lineTo(435, 389)
 		cvs.ctx.lineTo(355, 469)
 		cvs.ctx.fillStyle = 'rgb(255, 150, 255)'
 		cvs.ctx.fill()
-		// draw stroked triangle
+		// render stroked triangle
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(455, 489)
 		cvs.ctx.lineTo(455, 409)
@@ -115,15 +115,15 @@ const basicDrawingAndShapes = {
 		cvs.ctx.stroke()
 	},
 
-	drawArcs(cvs) {
+	renderArcs(cvs) {
 		/**
-		 * circles and arcs are drawn with arc(...) and arcTo(...)
+		 * circles and arcs are rendered with arc(...) and arcTo(...)
 		 *
 		 * arc(x, y, radius, startAngle, endAngle, counterclockwise)
-		 * 	- draw an arc centered at (x, y), radius starts at startangle to endangle, direction
+		 * 	- render an arc centered at (x, y), radius starts at startangle to endangle, direction
 		 *
 		 * arcTo(x1, y1, x2, y2, radius)
-		 * 	- draw an arc with the control points and radius connected to the previous point via straight line
+		 * 	- render an arc with the control points and radius connected to the previous point via straight line
 		 *
 		 * startangle and endangle are measured in radians along the curve of the circle
 		 * 	- measured from x axis
@@ -131,7 +131,7 @@ const basicDrawingAndShapes = {
 		 * note: angles are measured in radians, not degress
 		 * 	- convert to degrees to radians (Math.PI/180)*degrees
 		 */
-		// draw 6 stroked circles/pieces
+		// render 6 stroked circles/pieces
 		// 6 filled circles/pieces
 		for (let i = 0; i < 4; i++) {
 			for (let j = 0; j < 3; j++) {
@@ -148,7 +148,7 @@ const basicDrawingAndShapes = {
 				const endAngle = Math.PI + (Math.PI * j) / 2
 				// use modulous operator, compare result to 0 for a boolean to determine direction
 				const counterclockwise = i % 2 !== 0
-				// draw
+				// render
 				cvs.ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise)
 				// half the circles will be stroked, half will be filled
 				if (i > 1) {
@@ -166,12 +166,12 @@ const basicDrawingAndShapes = {
 		}
 	},
 
-	drawBezierAndQuadraticCurves(cvs, textEffect) {
+	renderBezierAndQuadraticCurves(cvs, textEffect) {
 		/**
-		 * bezier curves in cubic and quadratic forms. used to draw complex organic shapes.
+		 * bezier curves in cubic and quadratic forms. used to render complex organic shapes.
 		 *
 		 * quadraticCurveTo(cp1x, cp1y, x, y)
-		 * 	- draws curve from current pen position to (x, y) endpoint
+		 * 	- renders curve from current pen position to (x, y) endpoint
 		 *  - using control point (pin/pivot/bend point), specified by (cp1x, cp1y)
 		 *
 		 * bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
@@ -180,7 +180,7 @@ const basicDrawingAndShapes = {
 
 		cvs.ctx.save()
 
-		// draw a quote bubble using quadratic bezier curves
+		// render a quote bubble using quadratic bezier curves
 		let x = 575
 		let y = 525
 		cvs.ctx.save()
@@ -212,7 +212,7 @@ const basicDrawingAndShapes = {
 
 		cvs.ctx.restore()
 
-		// draw a heart using cubic bezier curves
+		// render a heart using cubic bezier curves
 		x = 475
 		y = 600
 		const date = new Date()
@@ -236,12 +236,12 @@ const basicDrawingAndShapes = {
 	},
 
 	// combining 2d canvas lessons
-	drawCombinations: function (cvs) {
+	renderCombinations: function (cvs) {
 		// pacman scene
 		let x = 15
 		let y = 500
 
-		// first draw arcade level (walls)
+		// first render arcade level (walls)
 		cvs.ctx.strokeStyle = 'rgb(100,155,155)'
 		roundedRect(cvs.ctx, x + 12, y + 12, 184, 168, 15)
 		cvs.ctx.stroke()
@@ -256,14 +256,14 @@ const basicDrawingAndShapes = {
 		roundedRect(cvs.ctx, x + 135, y + 119, 25, 49, 10)
 		cvs.ctx.stroke()
 
-		// draw pacman
+		// render pacman
 		cvs.ctx.beginPath()
 		cvs.ctx.arc(x + 37, y + 37, 13, Math.PI / 7, -Math.PI / 7, false)
 		cvs.ctx.lineTo(x + 31, y + 37)
 		cvs.ctx.fillStyle = 'rgb(100, 155, 155)'
 		cvs.ctx.fill()
 
-		// draw pacman's food
+		// render pacman's food
 		for (let i = 0; i < 8; i++) {
 			cvs.ctx.fillRect(x + 51 + i * 16, y + 35, 4, 4)
 		}
@@ -276,7 +276,7 @@ const basicDrawingAndShapes = {
 			cvs.ctx.fillRect(x + 51 + i * 16, y + 99, 4, 4)
 		}
 
-		// draw pacman enemy body
+		// render pacman enemy body
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(x + 83, y + 116)
 		cvs.ctx.lineTo(x + 83, y + 102)
@@ -291,7 +291,7 @@ const basicDrawingAndShapes = {
 		cvs.ctx.lineTo(x + 83, y + 116)
 		cvs.ctx.fill()
 
-		// draw pacman enemy eyes
+		// render pacman enemy eyes
 		cvs.ctx.fillStyle = 'white'
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(x + 91, y + 96)
@@ -306,7 +306,7 @@ const basicDrawingAndShapes = {
 		cvs.ctx.bezierCurveTo(x + 107, y + 99, x + 106, y + 96, x + 103, y + 96)
 		cvs.ctx.fill()
 
-		// draw pacman enemy eyeballs
+		// render pacman enemy eyeballs
 		cvs.ctx.fillStyle = 'rgb(100, 155, 155)'
 		cvs.ctx.beginPath()
 		cvs.ctx.arc(x + 101, y + 102, 2, 0, Math.PI * 2, true)
@@ -316,22 +316,22 @@ const basicDrawingAndShapes = {
 		cvs.ctx.fill()
 	},
 
-	drawShapesWithHoles(cvs) {
+	renderShapesWithHoles(cvs) {
 		/**
-		 * shapes and their holes need to be drawn anti clock direction to one another
-		 * so draw a shape moving clockwise, then draw the hole movinc ounter clockwise, or in reverse
+		 * shapes and their holes need to be rendered anti clock direction to one another
+		 * so render a shape moving clockwise, then render the hole movinc ounter clockwise, or in reverse
 		 */
-		// draw rectangle behind the triforce
+		// render rectangle behind the triforce
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(250, 25)
 		cvs.ctx.fillStyle = 'rgb(245, 10, 100)'
 		cvs.ctx.fillRect(250, 80, 250, 25)
-		// draw shape (moving clockwise)
+		// render shape (moving clockwise)
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(300, 50)
 		cvs.ctx.lineTo(450, 50)
 		cvs.ctx.lineTo(375, 179.9)
-		// draw shape hole (moving counter clockwise)
+		// render shape hole (moving counter clockwise)
 		cvs.ctx.moveTo(375, 70)
 		cvs.ctx.lineTo(350, 110)
 		cvs.ctx.lineTo(400, 110)
@@ -340,7 +340,7 @@ const basicDrawingAndShapes = {
 		cvs.ctx.fill()
 	},
 
-	drawPath2d(cvs) {
+	renderPath2d(cvs) {
 		/**
 		 * shapes can be stored as path2d objects
 		 */

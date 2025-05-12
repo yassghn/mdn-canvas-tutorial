@@ -77,48 +77,48 @@ function _initPalletes() {
 
 	// bezier and quadratic curves
 	palletes.bezierAndQuadraticCurvesPallete = buildPallete({
-		render: basicDrawingAndShapes.drawBezierAndQuadraticCurves,
+		render: basicDrawingAndShapes.renderBezierAndQuadraticCurves,
 		complex: true,
 		args: [scrollLeft]
 	})
 
 	// line styles
 	palletes.lineStylesPallete = buildPallete({
-		render: stylesColorsAndText.drawLineStyles,
+		render: stylesColorsAndText.renderLineStyles,
 		complex: true,
 		vars: {
 			delay: 15,
 			lineDashOffset: 0,
-			lineStylesLastDraw: 0
+			lineStylesLastrender: 0
 		}
 	})
 
 	// shadows
 	palletes.shadowsPallete = buildPallete({
-		render: stylesColorsAndText.drawShadows,
+		render: stylesColorsAndText.renderShadows,
 		complex: true,
 		vars: {
 			shadowDelay: 122,
-			shadowsLastDraw: 0
+			shadowsLastrender: 0
 		},
 		args: [neonGlitch]
 	})
 
 	// clipping paths
 	palletes.clippingPathsPallete = buildPallete({
-		render: clippingAndAnimations.drawClippingPaths,
+		render: clippingAndAnimations.renderClippingPaths,
 		complex: true
 	})
 
 	// inverse clipping paths
 	palletes.inverseClippingPathsPallete = buildPallete({
-		render: clippingAndAnimations.drawInverseClippingPaths,
+		render: clippingAndAnimations.renderInverseClippingPaths,
 		complex: true
 	})
 
 	// looping panorama
 	palletes.loopingPanoramaPallete = buildPallete({
-		render: clippingAndAnimations.drawLoopingPanorama,
+		render: clippingAndAnimations.renderLoopingPanorama,
 		complex: true,
 		vars: {
 			loopingPanoramaTimestamp: 0,
@@ -128,20 +128,20 @@ function _initPalletes() {
 
 	// clock
 	palletes.clockPallete = buildPallete({
-		render: clippingAndAnimations.drawClock,
+		render: clippingAndAnimations.renderClock,
 		complex: true
 	})
 
 	// mouse follow
 	palletes.mouseFollowingPallete = buildPallete({
-		render: clippingAndAnimations.drawMouseFollowing,
+		render: clippingAndAnimations.renderMouseFollowing,
 		complex: true,
 		args: [mouseFollowParticles]
 	})
 
 	// boundaries
 	palletes.boundariesPallete = buildPallete({
-		render: clippingAndAnimations.drawBoundaries,
+		render: clippingAndAnimations.renderBoundaries,
 		complex: true,
 		vars: {
 			sword: getSword()
@@ -150,7 +150,7 @@ function _initPalletes() {
 
 	// acceleration
 	palletes.accelerationPallete = buildPallete({
-		render: clippingAndAnimations.drawAcceleration,
+		render: clippingAndAnimations.renderAcceleration,
 		complex: true,
 		vars: {
 			ball: getBall(),
@@ -160,10 +160,10 @@ function _initPalletes() {
 
 	// color picker
 	palletes.colorPickerPallete = buildPallete({
-		render: imageDataAndOptimization.drawColorPicker,
+		render: imageDataAndOptimization.renderColorPicker,
 		complex: true,
 		vars: {
-			lastDraw: null,
+			lastRender: null,
 			delay: 400,
 			hoverColor: 'rgb(0, 0, 0 / 1%)',
 			selectedColor: null

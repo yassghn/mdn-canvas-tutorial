@@ -45,10 +45,10 @@ function _processKeyboardInput(event) {
 	switch (event.key) {
 		case _keyBindings.keys.enter.key:
 			if (_isValidModifier(event)) {
-				const doDraw = settings.drawGridLines == true.toString()
+				const doDraw = settings.renderGridLines == true.toString()
 				const newValue = doDraw == true ? 'false' : 'true'
-				settings.drawGridLines = newValue
-				settings.drawPointerTrack = newValue
+				settings.renderGridLines = newValue
+				settings.renderPointerTrack = newValue
 				settings.noClipDebug = newValue
 			}
 			break;
@@ -94,7 +94,7 @@ function _addPointerMoveListener() {
 
 function _addPointerLeaveListener() {
 	document.body.addEventListener('pointerleave', (event) => {
-		settings.drawPointerTrack = 'false'
+		settings.renderPointerTrack = 'false'
 		// pointer left viewable document window, set coordinates out of bounds
 		_processPointerInput({ x: -1, y: -1 })
 	})
@@ -102,8 +102,8 @@ function _addPointerLeaveListener() {
 
 function _addPointerEnterListener() {
 	document.body.addEventListener('pointerenter', (event) => {
-		if (settings.drawGridLines == true.toString()) {
-			settings.drawPointerTrack = 'true'
+		if (settings.renderGridLines == true.toString()) {
+			settings.renderPointerTrack = 'true'
 		}
 		// update pointer coords
 		const coords = { x: event.clientX, y: event.clientY }

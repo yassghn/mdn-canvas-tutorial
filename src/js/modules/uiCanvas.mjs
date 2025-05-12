@@ -68,12 +68,12 @@ const uiCanvas = {
 		return _get()
 	},
 
-	// draw to canvas
-	draw: function () {
+	// render to canvas
+	render: function () {
 		// clear canvas
 		_clear()
-		// draw ui
-		ui.draw(_get())
+		// render ui
+		ui.render(_get())
 	}
 }
 

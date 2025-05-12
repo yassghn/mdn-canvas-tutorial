@@ -7,7 +7,7 @@ import { gallerize } from '../modules/render.mjs'
 
 const imagesAndTransformations = {
 
-	drawDrawingImages: function (cvs) {
+	renderDrawingImages: function (cvs) {
 		/**
 		 * using images:
 		 *
@@ -15,7 +15,7 @@ const imagesAndTransformations = {
 		 *
 		 * importing images
 		 * 	1. get reference to htmlimagelement object or another canvas element (or provide url)
-		 *  2. draw image using canvas' drawImage function
+		 *  2. render image using canvas' drawImage function
 		 *
 		 * image source: HTMLImageElement, SVGImageElement, HTMLVideoElement, HTMLCanvasElement, ImageBitmap,
 		 * 	OffscreenCanvas, VideoFrame
@@ -29,28 +29,28 @@ const imagesAndTransformations = {
 		 *
 		 * using other canvas elements
 		 * 	- access canvas on the same page source via document query selectors
-		 * 	- make sure image is drawn before retrieving
+		 * 	- make sure image is rendered before retrieving
 		 *
-		 * images must be loaded before drawing to canvas
+		 * images must be loaded before rendering to canvas
 		 * 	- add event listeners for 'load' event, or await HTMLImageElement.decode()
 		 *
 		 * can use embedded images vai data url: img.src = "data:image/gif;base64,R0lGODlhCwALAIAAAAAA3pn/ZiH5BAEAAAEALAAAAAALAAsAAAIUhA+hkcuO4lmNVindo7qyrIXiGBYAOw==";
 		 *
 		 * canvas allows to use frames from a video retrievable via document query selectors
 		 *
-		 * drawing images:
+		 * rendering images:
 		 *	- drawImage(image, x, y)
-		 *      draw specified image at coordinates (x, y)
+		 *      render specified image at coordinates (x, y)
 		 */
 
 		// use image as a backdrop for a small line graph
 		let x = 860
 		let y = 19
 		cvs.ctx.strokeStyle = 'rgb(0, 0, 0)'
-		// get image and draw it
+		// get image and render it
 		const img = document.getElementById('drawing-images-backdrop-image')
 		cvs.ctx.drawImage(img, x, y)
-		// draw line graph over the image
+		// render line graph over the image
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(x + 30, y + 96)
 		cvs.ctx.lineTo(x + 70, y + 66)
@@ -59,7 +59,7 @@ const imagesAndTransformations = {
 		cvs.ctx.stroke()
 	},
 
-	drawScalingImages: function (cvs) {
+	renderScalingImages: function (cvs) {
 		/**
 		 * scaling
 		 *
@@ -86,13 +86,13 @@ const imagesAndTransformations = {
 		}
 	},
 
-	drawSlicing: function (cvs) {
+	renderSlicing: function (cvs) {
 		/**
 		 * slicing
 		 *
 		 * drawImage(image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight)
 		 * 	- third variant of drawImage function
-		 * 	- takes a given area of an image, scales, and draws it
+		 * 	- takes a given area of an image, scales, and renders it
 		 *  - source (x, y) coords and width/height -> destination (x, y) coords and width/height
 		 */
 
@@ -104,18 +104,18 @@ const imagesAndTransformations = {
 		const imgFrame = document.getElementById('slicing-images-frame-image')
 		// frame picture of the rhino
 		cvs.ctx.drawImage(img, 33, 71, 104, 124, x + 21, y + 20, 87, 104)
-		// draw frame
+		// render frame
 		cvs.ctx.drawImage(imgFrame, x, y)
 	},
 
-	drawArtGallery: function (cvs) {
+	renderArtGallery: function (cvs) {
 		/**
 		 * art gallery
 		 *
 		 * combining images lessons
 		 */
 
-		// draw art gallery
+		// render art gallery
 		let x = 580
 		let y = 639
 
@@ -133,7 +133,7 @@ const imagesAndTransformations = {
 			galleryImgs.push(img)
 		}
 
-		// draw art gallery background
+		// render art gallery background
 		const pattern = cvs.ctx.createPattern(bgImg, 'repeat-x')
 		cvs.ctx.fillStyle = pattern
 		cvs.ctx.fillRect(x, y, 660, 380)
@@ -146,18 +146,18 @@ const imagesAndTransformations = {
 		gallerize(cvs, galleryImgs, frameImg, x, y, 2, 4, buffer, offset)
 	},
 
-	drawSaveRestoreState: function (cvs) {
+	renderSaveRestoreState: function (cvs) {
 		/**
 		 * save and restore state
 		 *
 		 * save()
 		 * 	- saves entire state of canvas onto a stack.
-		 *  - pushes current drawing state onto the stack
+		 *  - pushes current rendering state onto the stack
 		 * restore()
 		 * 	- restores entire state of canvas from state stack.
 		 *  - pops last pushed state off the stack
 		 *
-		 * drawing state:
+		 * rendering state:
 		 * 	- translations (translate, rotate, scale)
 		 *  - canvas properties/attributes
 		 *  - clipping path
@@ -169,16 +169,16 @@ const imagesAndTransformations = {
 
 		// save default state
 		cvs.ctx.save()
-		// draw green rectangle
+		// render green rectangle
 		cvs.ctx.fillStyle = 'rgb(69, 240, 46)'
 		cvs.ctx.fillRect(x, y, 150, 150)
 		// save state (saves fillStyle)
 		cvs.ctx.save()
-		// draw black rectangle
+		// render black rectangle
 		cvs.ctx.fillStyle = 'rgb(0, 0, 0)'
 		cvs.ctx.fillRect(x + 15, y + 15, 120, 120)
 		cvs.ctx.save()
-		// draw grayish-blue rectangle
+		// render grayish-blue rectangle
 		cvs.ctx.fillStyle = 'rgb(171, 196, 219)'
 		// set globalALpha
 		cvs.ctx.globalAlpha = 0.5
@@ -193,7 +193,7 @@ const imagesAndTransformations = {
 		cvs.ctx.restore()
 	},
 
-	drawTranslating: function (cvs) {
+	renderTranslating: function (cvs) {
 		/**
 		 * translating
 		 *
@@ -209,7 +209,7 @@ const imagesAndTransformations = {
 		// translate example
 		let x = 200
 		let y = 860
-		// draw 3x3 grid of squares, moving their position via transalte
+		// render 3x3 grid of squares, moving their position via transalte
 		for (let i = 0; i < 3; i++) {
 			for (let j = 0; j < 3; j++) {
 				cvs.ctx.save()
@@ -221,7 +221,7 @@ const imagesAndTransformations = {
 		}
 	},
 
-	drawRotating: function (cvs) {
+	renderRotating: function (cvs) {
 		/**
 		 * rotating
 		 *
@@ -260,14 +260,14 @@ const imagesAndTransformations = {
 		cvs.ctx.translate(center.x, center.y)
 		cvs.ctx.rotate((Math.PI / 180) * 25)
 		cvs.ctx.translate(-(center.x), -(center.y))
-		// draw rectangle rotated around center of previous rectangle
+		// render rectangle rotated around center of previous rectangle
 		cvs.ctx.fillStyle = 'rgb(225, 109, 248)'
 		cvs.ctx.fillRect(100, 30, 50, 50)
 
 		cvs.ctx.restore()
 	},
 
-	drawScaling: function (cvs) {
+	renderScaling: function (cvs) {
 		/**
 		 * scaling
 		 *
@@ -312,7 +312,7 @@ const imagesAndTransformations = {
 		cvs.ctx.restore()
 	},
 
-	drawTransform: function (cvs) {
+	renderTransform: function (cvs) {
 		/**
 		 * transforms
 		 *

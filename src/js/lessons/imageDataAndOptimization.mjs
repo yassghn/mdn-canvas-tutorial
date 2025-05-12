@@ -9,7 +9,7 @@ import pointer from '../modules/pointer.mjs'
 
 const imageDataAndOptimization = {
 
-	drawColorPicker: function (cvs, vars, previousTimestamp, timestamp) {
+	renderColorPicker: function (cvs, vars, previousTimestamp, timestamp) {
 		/**
 		 * image data object
 		 *
@@ -40,11 +40,11 @@ const imageDataAndOptimization = {
 
 		/**
 		 * getImageData is very expensive. slows down animation significantly.
-		 * add a delay check. timestamp == previousTimestamp is first draw.
+		 * add a delay check. timestamp == previousTimestamp is first render.
 		 */
-		if (timestamp == previousTimestamp || timestamp - vars.lastDraw >= vars.delay) {
-			// update last draw
-			vars.lastDraw = timestamp
+		if (timestamp == previousTimestamp || timestamp - vars.lastRender >= vars.delay) {
+			// update last render
+			vars.lastRender = timestamp
 			// get color directly under cursor
 			if (pointerState.inWindow) {
 				const pixel = cvs.ctx.getImageData(pointerState.coords.x, pointerState.coords.y, 1, 1)
@@ -63,7 +63,7 @@ const imageDataAndOptimization = {
 		props.font = '15px tahoma'
 		const state = new ContextState(cvs.ctx, props)
 
-		// draw color picker
+		// render color picker
 		state.apply((_ctx, _color) => {
 			// init api
 			const $ = api
@@ -74,30 +74,30 @@ const imageDataAndOptimization = {
 			const size = 100
 			// set grid position
 			_ctx.translate(x, y)
-			// draw hover square
+			// render hover square
 			_ctx.fillStyle = _color.hover
 			_ctx.moveTo(0, 0)
 			_ctx.beginPath()
 			_ctx.rect(0, 0, size, size)
 			_ctx.fill()
-			// draw rgba value over hover color
+			// render rgba value over hover color
 			_ctx.fillStyle = 'white'
 			_ctx.beginPath()
 			_ctx.fillText(_color.hover, 0, -5)
-			// draw verticle label
+			// render verticle label
 			$.verticalLabel('hover color', -15, 0)
-			// draw selected color square
+			// render selected color square
 			_ctx.fillStyle = _color.selected
 			// translate x pos
 			_ctx.translate(175, 0)
 			_ctx.beginPath()
 			_ctx.rect(0, 0, size, size)
 			_ctx.fill()
-			// draw rgba value over selected color
+			// render rgba value over selected color
 			_ctx.fillStyle = 'white'
 			_ctx.beginPath()
 			_ctx.fillText(_color.selected, 0, -5)
-			// draw verticle label
+			// render verticle label
 			$.verticalLabel('selected color', -15, 0)
 
 		}, color)

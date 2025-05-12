@@ -57,7 +57,7 @@ function _renderParticleTrail(particle, lc) {
 			_theta -= _rts
 			_coords.x = _lc.x + Math.cos(_theta) * _t
 			_coords.y = _lc.y + Math.sin(_theta) * _t
-			// draw
+			// render
 			_ctx.beginPath()
 			_ctx.arc(_coords.x, _coords.y, r, 0, 2 * Math.PI)
 			_ctx.fill()
@@ -125,7 +125,7 @@ function _Particle(props, color) {
 		const prevCoords = { ...this.nextCoords }
 		// rotate particles
 		const lc = _rotate()
-		// draw
+		// render
 		//_renderParticleTrail(this.ctx, prevCoords, lc, this.color, this.radius, this.theta, this.t, this.rotationSpeed)
 		_renderParticle(this.ctx, this.coords, this.color, this.radius)
 		return lc

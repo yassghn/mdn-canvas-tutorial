@@ -4,7 +4,7 @@
 
 import settings from './settings.mjs'
 import state from './state.mjs'
-import { drawGridLines, trackGridLines } from './render.mjs'
+import { renderGridLines, trackGridLines } from './render.mjs'
 
 const _pointerTrack = {
 	elem: undefined,
@@ -20,7 +20,7 @@ function _updateLabels(coords) {
 }
 
 function _calculatePosition(coords) {
-	// value of canvas drawing lineWidth for grid lines tracking
+	// value of canvas rendering lineWidth for grid lines tracking
 	const offsetConst = 2
 	// check pointer track position is past any x/y 0 edge
 	const xedge = coords.x - _pointerTrack.width < 0
@@ -85,26 +85,26 @@ function _getPointerCoords() {
 	return { x: x, y: y }
 }
 
-function _draw(cvs) {
+function _render(cvs) {
 	const coords = _getPointerCoords()
 	// check to initialize _pointerTrack
 	if (!_pointerTrack.elem) {
 		_preparePointerTrack(coords)
 	}
-	// draw grid lines and pointer track
-	if (settings.drawGridLines == true.toString()) {
-		drawGridLines(cvs)
+	// render grid lines and pointer track
+	if (settings.renderGridLines == true.toString()) {
+		renderGridLines(cvs)
 	} else if (!_pointerTrack.elem.hidden) {
 		// hide pointer track
 		_togglePointerTrack()
 	}
 }
 
-function _drawOver(cvs) {
+function _renderOver(cvs) {
 	const coords =  _getPointerCoords()
-	// draw grid lines and pointer track
-	if (settings.drawGridLines == true.toString()) {
-		if (settings.drawPointerTrack == true.toString()) {
+	// render grid lines and pointer track
+	if (settings.renderGridLines == true.toString()) {
+		if (settings.renderPointerTrack == true.toString()) {
 			trackGridLines(cvs, coords)
 			_renderpointerTrack(coords)
 		} else {
@@ -117,12 +117,12 @@ function _drawOver(cvs) {
 }
 
 const ui = {
-	draw: function (cvs) {
-		_draw(cvs)
+	render: function (cvs) {
+		_render(cvs)
 	},
 
-	drawOver: function (cvs) {
-		_drawOver(cvs)
+	renderOver: function (cvs) {
+		_renderOver(cvs)
 	}
 }
 

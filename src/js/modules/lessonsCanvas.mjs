@@ -94,11 +94,11 @@ const lessonsCanvas = {
 		return _get()
 	},
 
-	// draw to canvas
-	draw: function (timestamp) {
+	// render to canvas
+	render: function (timestamp) {
 		// clear canvas
 		_clear()
-		// draw pallete
+		// render pallete
 		pallete(_get(), timestamp)
 	}
 }

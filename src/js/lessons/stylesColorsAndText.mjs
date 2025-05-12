@@ -3,7 +3,7 @@
  */
 
 const stylesColorsAndText = {
-	drawColors: function (cvs) {
+	renderColors: function (cvs) {
 		/**
 		 * fillStyle and strokeStyle can be used to apply colors to shapes
 		 *
@@ -12,7 +12,7 @@ const stylesColorsAndText = {
 		 *
 		 * default color is set to black
 		 *
-		 * these properties are not reset when drawing new shapes
+		 * these properties are not reset when rendering new shapes
 		 *
 		 * color is a string representing a css color, gradient object, or a pattern object
 		 */
@@ -26,7 +26,7 @@ const stylesColorsAndText = {
 		// using commas displays the color in vscode source
 		cvs.ctx.fillStyle = 'rgb(255, 165, 100)'
 
-		// draw a 6x6 square color pallete
+		// render a 6x6 square color pallete
 		for (let i = 0; i < 6; i++) {
 			for (let j = 0; j < 6; j++) {
 				cvs.ctx.fillStyle = `rgb(${Math.floor(255 - 50 * i)} ${Math.floor(255 - 30 * j)} ${Math.floor(255 - 20 * (i + j) ^ 2)})`
@@ -34,7 +34,7 @@ const stylesColorsAndText = {
 			}
 		}
 
-		// draw a 6x6 grid of circles
+		// render a 6x6 grid of circles
 		for (let i = 0; i < 6; i++) {
 			for (let j = 0; j < 6; j++) {
 				cvs.ctx.strokeStyle = `rgb(${Math.floor(255 - 40 * (i + j))} ${Math.floor(255 - 120 * j)} ${Math.floor(255 - 100 * (i + j) ^ 2)})`
@@ -45,14 +45,14 @@ const stylesColorsAndText = {
 		}
 	},
 
-	drawTransparency: function (cvs) {
+	renderTransparency: function (cvs) {
 		/**
 		 * transparency is done through globalAlpha property, or assigning semi-transparant colors to stroke/fill style
 		 *
 		 * globalAlpha = transparencyValue
 		 * 	- 0.0 (fully transparent) to 1.0 (fully opaque)
 		 *
-		 * globalAlpha is more useful when drawing a lot of transparent shapes
+		 * globalAlpha is more useful when rendering a lot of transparent shapes
 		 * otherwise set transparent colors for individual shape
 		 */
 
@@ -61,7 +61,7 @@ const stylesColorsAndText = {
 		cvs.ctx.strokeStyle = 'rgb(255 0 0 / 50%)'
 		cvs.ctx.fillStyle = 'rgb(255 0 0 / 50%)'
 
-		// draw four opaque squares with a set of semi transparent circles over them
+		// render four opaque squares with a set of semi transparent circles over them
 		cvs.ctx.fillStyle = 'rgb(200, 100, 100)'
 		cvs.ctx.fillRect(230, 510, 75, 75)
 		cvs.ctx.fillStyle = 'rgb(100, 200, 200)'
@@ -74,7 +74,7 @@ const stylesColorsAndText = {
 		// set gransparency property
 		cvs.ctx.globalAlpha = 0.2
 
-		// draw semi cricles
+		// render semi cricles
 		for (let i = 0; i < 7; i++) {
 			cvs.ctx.beginPath()
 			cvs.ctx.arc(305, 585, 10 + 10 * i, 0, Math.PI * 2, true)
@@ -84,7 +84,7 @@ const stylesColorsAndText = {
 		// reset global alpha
 		cvs.ctx.globalAlpha = 1.0
 
-		// draw four rectangles with increasing opacity
+		// render four rectangles with increasing opacity
 		cvs.ctx.fillStyle = 'rgb(200, 100, 100)'
 		cvs.ctx.fillRect(539, 14, 150, 37.5)
 		cvs.ctx.fillStyle = 'rgb(100, 200, 200)'
@@ -104,7 +104,7 @@ const stylesColorsAndText = {
 		}
 	},
 
-	drawLineStyles: function (cvs, vars, previousTimestamp, timestamp) {
+	renderLineStyles: function (cvs, vars, previousTimestamp, timestamp) {
 		/**
 		 * lines have several properties which style them
 		 *
@@ -131,9 +131,9 @@ const stylesColorsAndText = {
 		 *
 		 * NOTES:
 		 * obtaining crisp lines
-		 * 	- odd-integer-width thickness lines get drawn between two unit grid sections.
+		 * 	- odd-integer-width thickness lines get rendered between two unit grid sections.
 		 * 	  half way between. resulting in unclear lines. can adjust lines with decimals.
-		 *  - even-width lines, so don't draw them with decimals.
+		 *  - even-width lines, so don't render them with decimals.
 		 *  * helps to ensure scalable 2d graphics look correct regardless of scaling or other
 		 *    transforms
 		 */
@@ -162,7 +162,7 @@ const stylesColorsAndText = {
 		 * 	- ends of lines are squared off passed end point
 		 */
 
-		// draw horizontal guides (shows passed or at end point)
+		// render horizontal guides (shows passed or at end point)
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(700, 200)
 		cvs.ctx.lineTo(830, 200)
@@ -170,7 +170,7 @@ const stylesColorsAndText = {
 		cvs.ctx.lineTo(830, 330)
 		cvs.ctx.stroke()
 
-		// draw verticle lines
+		// render verticle lines
 		const lineCaps = ['butt', 'round', 'square']
 		lineCaps.forEach((lineCap, i) => {
 			cvs.ctx.lineWidth = 15
@@ -230,7 +230,7 @@ const stylesColorsAndText = {
 		 *
 		 */
 
-		// draw guides
+		// render guides
 		cvs.ctx.lineWidth = 2
 		cvs.ctx.strokeRect(1040, 200, 160, 50)
 
@@ -242,7 +242,7 @@ const stylesColorsAndText = {
 			cvs.ctx.miterLimit = 10
 		}
 
-		// draw lines
+		// render lines
 		cvs.ctx.lineWidth = 10
 		cvs.ctx.beginPath()
 		cvs.ctx.moveTo(1045, 200)
@@ -262,19 +262,19 @@ const stylesColorsAndText = {
 		 *
 		 * setLineDash(...)
 		 * 	- function arguments are a list of numbers that specify distances
-		 * 	  to alternately draw lines
+		 * 	  to alternately render lines
 		 * lineDashOffset
 		 * 	- this property determines where to begin the pattern
 		 */
 
-		if (timestamp == previousTimestamp || timestamp - vars.lineStylesLastDraw >= vars.delay) {
+		if (timestamp == previousTimestamp || timestamp - vars.lineStylesLastRender >= vars.delay) {
 			// create "marching ants" effect
 			//cvs.ctx.clearRect(750, 15, 100, 100)
 			cvs.ctx.setLineDash([4, 2])
 			cvs.ctx.lineDashOffset = -vars.lineDashOffset
 			cvs.ctx.strokeRect(725, 19, 100, 100)
 			vars.lineDashOffset++
-			vars.lineStylesLastDraw = timestamp
+			vars.lineStylesLastRender = timestamp
 
 			// reset linedash and offset
 			cvs.ctx.setLineDash([])
@@ -282,7 +282,7 @@ const stylesColorsAndText = {
 		}
 	},
 
-	drawGradients: function (cvs) {
+	renderGradients: function (cvs) {
 		/**
 		 * shapes can be filled/stroked with linear, radial, and conic gradients using canvas gradient objects.
 		 *
@@ -320,7 +320,7 @@ const stylesColorsAndText = {
 		cvs.ctx.fillStyle = linearGradient
 		cvs.ctx.strokeStyle = linearGradient2
 
-		// draw shapes
+		// render shapes
 		cvs.ctx.fillRect(35, 700, 130, 130)
 		cvs.ctx.strokeRect(75, 740, 50, 50)
 
@@ -350,7 +350,7 @@ const stylesColorsAndText = {
 		radialGradient4.addColorStop(0.8, 'rgb(138, 64, 207)')
 		radialGradient4.addColorStop(1, 'rgb(161 83 142 / 0%)')
 
-		// draw shapes
+		// render shapes
 		cvs.ctx.fillStyle = radialGradient4
 		cvs.ctx.fillRect(x, y, 150, 150)
 		cvs.ctx.fillStyle = radialGradient3
@@ -380,14 +380,14 @@ const stylesColorsAndText = {
 		conicGradient2.addColorStop(0.75, 'rgb(243, 148, 38)')
 		conicGradient2.addColorStop(1, 'rgb(243, 240, 54)')
 
-		// draw shapes
+		// render shapes
 		cvs.ctx.fillStyle = conicGradient
 		cvs.ctx.fillRect(x + 12, y + 25, 100, 100)
 		cvs.ctx.fillStyle = conicGradient2
 		cvs.ctx.fillRect(x + 137, y + 25, 100, 100)
 	},
 
-	drawPatterns: function (cvs) {
+	renderPatterns: function (cvs) {
 		/**
 		 * createPattern(image, type)
 		 * 	- creates and returns a new canvas pattern object
@@ -414,7 +414,7 @@ const stylesColorsAndText = {
 		cvs.ctx.fillRect(15, 189, 150, 150)
 	},
 
-	drawShadows: function (cvs, vars, previousTimestamp, timestamp, textEffect) {
+	renderShadows: function (cvs, vars, previousTimestamp, timestamp, textEffect) {
 		/**
 		 * creating shadows is done with properties
 		 *
@@ -447,9 +447,9 @@ const stylesColorsAndText = {
 		textEffect.textColor = textColor
 		textEffect.font = font
 		
- 		if (timestamp == previousTimestamp || timestamp - vars.shadowsLastDraw >= vars.shadowDelay) {
+ 		if (timestamp == previousTimestamp || timestamp - vars.shadowsLastRender >= vars.shadowDelay) {
 			textEffect.setProps()
-			vars.shadowsLastDraw = timestamp
+			vars.shadowsLastRender = timestamp
 		}
 
 		textEffect.render(cvs.ctx)
@@ -462,7 +462,7 @@ const stylesColorsAndText = {
 		cvs.ctx.restore()
 	},
 
-	drawCanvasFill: function (cvs) {
+	renderCanvasFill: function (cvs) {
 		/**
 		 * canvas fill rules
 		 *
@@ -485,18 +485,18 @@ const stylesColorsAndText = {
 		cvs.ctx.fill('evenodd')
 	},
 
-	drawDrawingText: function (cvs) {
+	renderDrawingText: function (cvs) {
 		/**
-		 * drawing text
+		 * rendering text
 		 *
 		 * fillText(text, x, y [, maxWidth])
-		 * 	- fills given text at pos (x, y), optional max draw width
+		 * 	- fills given text at pos (x, y), optional max render width
 		 * strokeText(text, x, y [, maxWidth])
-		 * 	- stroke given text at pos (x, y), optional max draw width
+		 * 	- stroke given text at pos (x, y), optional max render width
 		 *
 		 * NOTES:
 		 * 	accessibility concerns
-		 * 	  - canvas element is a bitmap, does not provide information about any draw objects.
+		 * 	  - canvas element is a bitmap, does not provide information about any render objects.
 		 * 	  - text can cause legibility issues with users relying on screen magnification
 		 * 	  - pixels within a canvas element do not scale, can become blurry with magnification.
 		 *      letters are not vectors, they are a letter-shaped collection of pixels.
@@ -519,7 +519,7 @@ const stylesColorsAndText = {
 		cvs.ctx.restore()
 	},
 
-	drawStylingText: function (cvs) {
+	renderStylingText: function (cvs) {
 		/**
 		 * these properties adjust the way text gets displayed on the canvas
 		 *
@@ -560,7 +560,7 @@ const stylesColorsAndText = {
 		cvs.ctx.restore()
 	},
 
-	drawTextMeasurement: function (cvs) {
+	renderTextMeasurement: function (cvs) {
 		/**
 		 * can obtain text metrics about any given text
 		 *

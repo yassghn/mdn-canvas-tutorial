@@ -18,97 +18,97 @@ const _complexPalletes = { ...palleteHewer() }
 
 function basicDrawingAndShapesPallete(cvs) {
 	if (basicDrawingAndShapes.simpleExample) {
-		basicDrawingAndShapes.drawSimpleExample(cvs)
+		basicDrawingAndShapes.renderSimpleExample(cvs)
 	}
 	if (basicDrawingAndShapes.rectangularShape) {
-		basicDrawingAndShapes.drawRectangularShape(cvs)
+		basicDrawingAndShapes.renderRectangularShape(cvs)
 	}
 	if (basicDrawingAndShapes.triangleShapeAndPaths) {
-		basicDrawingAndShapes.drawTriangleShapesAndPaths(cvs)
+		basicDrawingAndShapes.renderTriangleShapesAndPaths(cvs)
 	}
 	if (basicDrawingAndShapes.movingThePen) {
-		basicDrawingAndShapes.drawMovingThePen(cvs)
+		basicDrawingAndShapes.renderMovingThePen(cvs)
 	}
 	if (basicDrawingAndShapes.lines) {
-		basicDrawingAndShapes.drawLines(cvs)
+		basicDrawingAndShapes.renderLines(cvs)
 	}
 	if (basicDrawingAndShapes.arcs) {
-		basicDrawingAndShapes.drawArcs(cvs)
+		basicDrawingAndShapes.renderArcs(cvs)
 	}
 	// bezier and quadratic curves
 	renderComplexPallete(_complexPalletes.bezierAndQuadraticCurvesPallete,
 		basicDrawingAndShapes.bezierAndQuadraticCurves, cvs)
 	if (basicDrawingAndShapes.combinations) {
-		basicDrawingAndShapes.drawCombinations(cvs)
+		basicDrawingAndShapes.renderCombinations(cvs)
 	}
 	if (basicDrawingAndShapes.shapesWithHoles) {
-		basicDrawingAndShapes.drawShapesWithHoles(cvs)
+		basicDrawingAndShapes.renderShapesWithHoles(cvs)
 	}
 	if (basicDrawingAndShapes.path2d) {
-		basicDrawingAndShapes.drawPath2d(cvs)
+		basicDrawingAndShapes.renderPath2d(cvs)
 	}
 }
 
 function stylesColorsAndTextPallete(cvs, timestamp) {
 	if (stylesColorsAndText.colors) {
-		stylesColorsAndText.drawColors(cvs)
+		stylesColorsAndText.renderColors(cvs)
 	}
 	if (stylesColorsAndText.transparency) {
-		stylesColorsAndText.drawTransparency(cvs)
+		stylesColorsAndText.renderTransparency(cvs)
 	}
 	// line styles
 	renderComplexPallete(_complexPalletes.lineStylesPallete,
 		stylesColorsAndText.lineStyles, cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.gradients) {
-		stylesColorsAndText.drawGradients(cvs)
+		stylesColorsAndText.renderGradients(cvs)
 	}
 	if (stylesColorsAndText.patterns) {
-		stylesColorsAndText.drawPatterns(cvs)
+		stylesColorsAndText.renderPatterns(cvs)
 	}
 	// shadows pallete
 	renderComplexPallete(_complexPalletes.shadowsPallete, stylesColorsAndText.shadows,
 		cvs, _palleteArgs.previousTimestamp, timestamp)
 	if (stylesColorsAndText.canvasFill) {
-		stylesColorsAndText.drawCanvasFill(cvs)
+		stylesColorsAndText.renderCanvasFill(cvs)
 	}
 	if (stylesColorsAndText.drawingText) {
-		stylesColorsAndText.drawDrawingText(cvs)
+		stylesColorsAndText.renderDrawingText(cvs)
 	}
 	if (stylesColorsAndText.stylingText) {
-		stylesColorsAndText.drawStylingText(cvs)
+		stylesColorsAndText.renderStylingText(cvs)
 	}
 	if (stylesColorsAndText.textMeasurement) {
-		stylesColorsAndText.drawTextMeasurement(cvs)
+		stylesColorsAndText.renderTextMeasurement(cvs)
 	}
 }
 
 function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.drawingImages) {
-		imagesAndTransformations.drawDrawingImages(cvs)
+		imagesAndTransformations.renderDrawingImages(cvs)
 	}
 	if (imagesAndTransformations.scalingImages) {
-		imagesAndTransformations.drawScalingImages(cvs)
+		imagesAndTransformations.renderScalingImages(cvs)
 	}
 	if (imagesAndTransformations.slicing) {
-		imagesAndTransformations.drawSlicing(cvs)
+		imagesAndTransformations.renderSlicing(cvs)
 	}
 	if (imagesAndTransformations.artGallery) {
-		imagesAndTransformations.drawArtGallery(cvs)
+		imagesAndTransformations.renderArtGallery(cvs)
 	}
 	if (imagesAndTransformations.saveRestoreState) {
-		imagesAndTransformations.drawSaveRestoreState(cvs)
+		imagesAndTransformations.renderSaveRestoreState(cvs)
 	}
 	if (imagesAndTransformations.translating) {
-		imagesAndTransformations.drawTranslating(cvs)
+		imagesAndTransformations.renderTranslating(cvs)
 	}
 	if (imagesAndTransformations.rotating) {
-		imagesAndTransformations.drawRotating(cvs)
+		imagesAndTransformations.renderRotating(cvs)
 	}
 	if (imagesAndTransformations.scaling) {
-		imagesAndTransformations.drawScaling(cvs)
+		imagesAndTransformations.renderScaling(cvs)
 	}
 	if (imagesAndTransformations.transform) {
-		imagesAndTransformations.drawTransform(cvs)
+		imagesAndTransformations.renderTransform(cvs)
 	}
 }
 
@@ -120,7 +120,7 @@ function clippingAndAnimationsPallete(cvs, timestamp) {
 	renderComplexPallete(_complexPalletes.inverseClippingPathsPallete,
 		clippingAndAnimations.inverseClippingPaths, cvs)
 	if (clippingAndAnimations.solarSystem) {
-		clippingAndAnimations.drawSolarSystem(cvs)
+		clippingAndAnimations.renderSolarSystem(cvs)
 	}
 	// clock
 	renderComplexPallete(_complexPalletes.clockPallete, clippingAndAnimations.clock,
@@ -148,9 +148,9 @@ function imageDataAndOptimizationPallete(cvs, timestamp) {
 }
 
 function renderPallete(cvs, callback, timestamp) {
-	// save default canvas state before drawing lesson series
+	// save default canvas state before rendering lesson series
 	cvs.ctx.save()
-	// draw lesson series
+	// render lesson series
 	callback(cvs, timestamp)
 	// restore default canvas state
 	cvs.ctx.restore()
@@ -167,7 +167,7 @@ function _pallete(cvs, timestamp) {
 	renderPallete(cvs, imagesAndTransformationsPallete)
 	renderPallete(cvs, clippingAndAnimationsPallete, timestamp)
 	renderPallete(cvs, imageDataAndOptimizationPallete, timestamp)
-	// update previous timestamp after drawing
+	// update previous timestamp after rendering
 	_palleteArgs.previousTimestamp = timestamp
 }
 

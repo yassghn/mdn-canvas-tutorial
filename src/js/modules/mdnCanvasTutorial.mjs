@@ -12,15 +12,15 @@ import { initPallete } from './pallete.mjs'
 import peripheralInput from './peripheralInput.mjs'
 import settings from './settings.mjs'
 
-// draw
-function _draw(timestamp) {
-	requestAnimationFrame((t) => _draw(t))
+// render
+function _render(timestamp) {
+	requestAnimationFrame((t) => _render(t))
 	try {
-		uiCanvas.draw()
+		uiCanvas.render()
 		if (settings.pauseAnimation == false.toString()) {
-			lessonsCanvas.draw(timestamp)
+			lessonsCanvas.render(timestamp)
 		}
-		uiOverlayCanvas.draw()
+		uiOverlayCanvas.render()
 	} catch (e) {
 		log(e, loglvl.ERROR)
 		// bring up debugger on error
@@ -43,8 +43,8 @@ function _mdnCanvasTutorial() {
 		const timestamp = document.timeline.currentTime
 		// init pallete
 		initPallete(timestamp)
-		// start drawing
-		requestAnimationFrame(_draw)
+		// start rendering
+		requestAnimationFrame(_render)
 	} else {
 		log('canvas is unsupported.')
 	}

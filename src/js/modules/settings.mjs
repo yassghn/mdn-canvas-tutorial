@@ -3,13 +3,13 @@
  */
 
 const _defaults = {
-	drawGridLines: {
-		name: 'drawGridLines',
+	renderGridLines: {
+		name: 'renderGridLines',
 		val: 'false'
 	},
 
-	drawPointerTrack: {
-		name: 'drawPointerTrack',
+	renderPointerTrack: {
+		name: 'renderPointerTrack',
 		val: 'false'
 	},
 
@@ -74,21 +74,21 @@ function _init() {
 
 const settings = {
 	// grid lines
-	get drawGridLines() {
-		return _getValue(_defaults.drawGridLines.name)
+	get renderGridLines() {
+		return _getValue(_defaults.renderGridLines.name)
 	},
 
-	set drawGridLines(value) {
-		_setValue(_defaults.drawGridLines.name, value)
+	set renderGridLines(value) {
+		_setValue(_defaults.renderGridLines.name, value)
 	},
 
 	// pointer track
-	get drawPointerTrack() {
-		return _getValue(_defaults.drawPointerTrack.name)
+	get renderPointerTrack() {
+		return _getValue(_defaults.renderPointerTrack.name)
 	},
 
-	set drawPointerTrack(value) {
-		_setValue(_defaults.drawPointerTrack.name, value)
+	set renderPointerTrack(value) {
+		_setValue(_defaults.renderPointerTrack.name, value)
 	},
 
 	// no clip debug

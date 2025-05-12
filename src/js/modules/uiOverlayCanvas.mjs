@@ -68,12 +68,12 @@ const uiOverlayCanvas = {
 		return _get()
 	},
 
-	// draw to canvas
-	draw: function () {
+	// render to canvas
+	render: function () {
 		// clear canvas
 		_clear()
-		// draw ui
-		ui.drawOver(_get())
+		// render ui
+		ui.renderOver(_get())
 		// get bmp
 		//return _getImageBitmap()
 	}

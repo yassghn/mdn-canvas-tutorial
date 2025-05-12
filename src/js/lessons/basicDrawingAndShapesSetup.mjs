@@ -59,7 +59,7 @@ const basicDrawingAndShapesSetup = {
 		await addMenuItem('rectangular-shape', 'rectangular shape', 'rectangular-shape-check', rectangularShapeCallback, menu)
 	},
 
-	// drawing a triangle
+	// rendering a triangle
 	triangleShapeAndPathsInit: async function (menu) {
 		await addMenuItem('triangle-shape-and-paths', 'triangle shape and paths', 'triangle-shape-and-paths-check', triangleShapeAndPathsCallback, menu)
 	},
@@ -84,7 +84,7 @@ const basicDrawingAndShapesSetup = {
 		await addMenuItem('bezier-and-quadratic-curves', 'bezier and quadratic curves', 'bezier-and-quadratic-curves-check', bezierAndQuadraticCurvesCallback, menu)
 	},
 
-	// combining drawing lessons
+	// combining rendering lessons
 	combinationsInit: async function(menu) {
 		await addMenuItem('combinations', 'combinations', 'combinations-check', combinationsCallback, menu)
 	},
