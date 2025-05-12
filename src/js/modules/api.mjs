@@ -4,13 +4,6 @@
 
 import textApi from './api/text.mjs'
 
-
-const _textApi = {
-	label: {
-		vertical: textApi.label.vertical
-	}
-}
-
 const api = {
 
 	init: function(ctx) {
@@ -18,7 +11,7 @@ const api = {
 	},
 
 	get verticalLabel() {
-		return (text, x, y) => { return _textApi.label.vertical(this.ctx, text, x, y) }
+		return (text, x, y) => { return textApi.label.vertical(this.ctx, text, x, y) }
 	}
 }
 
