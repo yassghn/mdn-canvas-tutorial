@@ -17,16 +17,16 @@ const _defaults = {
 const _state = { ..._defaults }
 
 function _addDefaultsToLocalStorage() {
-	for (const state in _defaults) {
-		if (localStorage.getItem(state) == null) {
-			localStorage.setItem(state, _defaults[state].val)
+	for (const name in _defaults) {
+		if (localStorage.getItem(name) == null) {
+			localStorage.setItem(name, _defaults[name].val)
 		}
 	}
 }
 
 function _getLocalStorageState() {
-	for (const state in _state) {
-		_state[state].val = localStorage.getItem(state)
+	for (const name in _state) {
+		_state[name].val = localStorage.getItem(name)
 	}
 }
 
