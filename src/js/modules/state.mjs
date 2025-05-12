@@ -16,7 +16,7 @@ const _defaults = {
 
 const _state = { ..._defaults }
 
-function _addDefaultState() {
+function _addDefaultsToLocalStorage() {
 	for (const state in _defaults) {
 		if (localStorage.getItem(state) == null) {
 			localStorage.setItem(state, _defaults[state].val)
@@ -24,19 +24,19 @@ function _addDefaultState() {
 	}
 }
 
-function _updateCurrentState() {
+function _getLocalStorageState() {
 	for (const state in _state) {
 		_state[state].val = localStorage.getItem(state)
 	}
 }
 
-function _getValue(state) {
-	return _state[state].val
+function _getValue(name) {
+	return _state[name].val
 }
 
-function _updateState(state, value) {
-	_state[state].val = value
-	localStorage.setItem(state, value)
+function _updateState(name, value) {
+	_state[name].val = value
+	localStorage.setItem(name, value)
 }
 
 function _setValue(state, value) {
@@ -45,13 +45,13 @@ function _setValue(state, value) {
 
 function _setInitialStateOnLoad() {
 	// do not keep previous pointer coords
-	_setValue(_defaults.pointerPosX.name, -1)
-	_setValue(_defaults.pointerPosY.name, -1)
+	_setValue(_state.pointerPosX.name, -1)
+	_setValue(_state.pointerPosY.name, -1)
 }
 
 function _init() {
-	_addDefaultState()
-	_updateCurrentState()
+	_addDefaultsToLocalStorage()
+	_getLocalStorageState()
 	_setInitialStateOnLoad()
 }
 
@@ -61,20 +61,20 @@ function _init() {
 const state = {
 	// pointer pos
 	get pointerPosX() {
-		return _getValue(_defaults.pointerPosX.name)
+		return _getValue(_state.pointerPosX.name)
 	},
 
 	set pointerPosX(value) {
-		_setValue(_defaults.pointerPosX.name, value)
+		_setValue(_state.pointerPosX.name, value)
 	},
 
 	// pointer pos
 	get pointerPosY() {
-		return _getValue(_defaults.pointerPosY.name)
+		return _getValue(_state.pointerPosY.name)
 	},
 
 	set pointerPosY(value) {
-		_setValue(_defaults.pointerPosY.name, value)
+		_setValue(_state.pointerPosY.name, value)
 	}
 }
 
