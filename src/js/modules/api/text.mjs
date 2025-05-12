@@ -2,12 +2,18 @@
  * text.mjs
  */
 
+import ContextProperties from '../ContextProperties.mjs'
 import ContextState from '../ContextState.mjs'
 
 function _verticalLabel(ctx, text, x, y) {
-	// create svg element
+	// get text array
 	const textArray = text.split('')
-	const state = new ContextState(ctx)
+	// init props and state
+	const props = new ContextProperties()
+	props.font = ctx.font
+	props.textAlign = 'center'
+	props.textBaseline = 'top'
+	const state = new ContextState(ctx, props)
 	state.apply((_ctx, _textArray, _x, _y) => {
 		// get font size
 		const height = parseInt(_ctx.font.split('px')[0])

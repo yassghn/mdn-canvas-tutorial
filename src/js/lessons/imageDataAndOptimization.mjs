@@ -85,7 +85,7 @@ const imageDataAndOptimization = {
 			_ctx.beginPath()
 			_ctx.fillText(_color.hover, 0, -5)
 			// render verticle label
-			$.verticalLabel('hover color', -15, 0)
+			$.verticalLabel('hover color', -15, -15)
 			// render selected color square
 			_ctx.fillStyle = _color.selected
 			// translate x pos
@@ -98,7 +98,7 @@ const imageDataAndOptimization = {
 			_ctx.beginPath()
 			_ctx.fillText(_color.selected, 0, -5)
 			// render verticle label
-			$.verticalLabel('selected color', -15, 0)
+			$.verticalLabel('selected color', -15, -15)
 
 		}, color)
 	},
