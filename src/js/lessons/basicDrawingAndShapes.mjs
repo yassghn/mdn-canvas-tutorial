@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: THE FALL of the tippy toe dancing liberals, and ALL of their partners.'
+		const text = 'TODAYS NEWS @7: remember, my friends! through, with, within ether context properties patterns overlay, this, OUI is defined!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
