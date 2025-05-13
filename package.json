@@ -14,7 +14,8 @@
     "watch": "npm run gulp watch",
     "clean": "npm run gulp clean",
     "cleanbuild": "npm run clean && npm run build",
-    "serve": "npm run gulp serve"
+    "serve": "npm run gulp serve",
+    "pserve": "python -m http.server 8000 -d ./dist/"
   },
   "keywords": [
     "mdn",
