@@ -48,7 +48,7 @@ function _renderParticleTrail(particle, lc) {
 	ctxState.apply((_ctx, _coords, _lc, _radius, _theta, _rts, _t) => {
 		let r = _radius
 		// generate x amount of extra particles "trailing" behind
-		for (let i = 0; i < (_radius * (Math.PI * 4)); i++) {
+		for (let i = 0; i < Math.floor((_radius * (Math.PI * 4))); i++) {
 			// reduce radius of each "extra particle" i.e. trail
 			r = _reduceRadius(r)
 			// - or + ?
