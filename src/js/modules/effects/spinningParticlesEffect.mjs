@@ -65,12 +65,6 @@ function _renderParticleTrail(particle, lc) {
 	}, coords, lc, radius, theta, rts, t)
 }
 
-function _renderParticleTrails(particles, lcs) {
-	particles.forEach((particle, index) => {
-		_renderParticleTrail(particle, lcs[index])
-	})
-}
-
 function _renderParticle(ctx, coords, color, radius) {
 	const ctxProps = new ContextProperties()
 	ctxProps.fillStyle = color
@@ -126,7 +120,8 @@ function _Particle(props, color) {
 		// rotate particles
 		const lc = _rotate()
 		// render
-		//_renderParticleTrail(this.ctx, prevCoords, lc, this.color, this.radius, this.theta, this.t, this.rotationSpeed)
+		const self = this
+		_renderParticleTrail(self, lc)
 		_renderParticle(this.ctx, this.coords, this.color, this.radius)
 		return lc
 	}
@@ -148,7 +143,7 @@ function _ParticleGenerator(props) {
 	this.render = () => {
 		let lcs = []
 		_particles.forEach((particle) => { lcs.push(particle.render()) })
-		_renderParticleTrails(_particles, lcs)
+		//_renderParticleTrails(_particles, lcs)
 	}
 
 	_init(props)
