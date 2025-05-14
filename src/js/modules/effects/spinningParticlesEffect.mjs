@@ -49,6 +49,9 @@ function _renderParticleTrail(particle, lc) {
 		for (let i = 0; i < repeat; i++) {
 			// reduce radius of each "extra particle" i.e. trail
 			r = _reduceRadius(_radius, r)
+			if (radius < 0) {
+				return
+			}
 			// - or + ?
 			// need theta update here to properly trail
 			// subtracting rotation speed inverts the trail
