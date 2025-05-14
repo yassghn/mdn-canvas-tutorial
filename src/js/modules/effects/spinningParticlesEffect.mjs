@@ -42,13 +42,17 @@ function _renderParticleTrail(particle, lc) {
 
 	const ctxProps = new ContextProperties()
 	ctxProps.fillStyle = color
-	ctxProps.globalAlpha = .3
+	ctxProps.globalAlpha = .13
 	const ctxState = new ContextState(ctx, ctxProps)
 
 	ctxState.apply((_ctx, _coords, _lc, _radius, _theta, _rts, _t) => {
 		let r = _radius
+		// get max trail
+		const repeat = Math.floor((_radius * (Math.PI * 2))) - 1
+		// calculate global alpha delta
+		const dGlobalAlpha = Number(_ctx.globalAlpha / repeat).toFixed(4)
 		// generate x amount of extra particles "trailing" behind
-		for (let i = 0; i < Math.floor((_radius * (Math.PI * 4))); i++) {
+		for (let i = 0; i < repeat; i++) {
 			// reduce radius of each "extra particle" i.e. trail
 			r = _reduceRadius(r)
 			// - or + ?
@@ -61,6 +65,8 @@ function _renderParticleTrail(particle, lc) {
 			_ctx.beginPath()
 			_ctx.arc(_coords.x, _coords.y, r, 0, 2 * Math.PI)
 			_ctx.fill()
+			// update global alpha
+			_ctx.globalAlpha -= dGlobalAlpha
 		}
 	}, coords, lc, radius, theta, rts, t)
 }
