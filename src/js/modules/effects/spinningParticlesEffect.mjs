@@ -141,9 +141,7 @@ function _ParticleGenerator(props) {
 	}
 
 	this.render = () => {
-		let lcs = []
-		_particles.forEach((particle) => { lcs.push(particle.render()) })
-		//_renderParticleTrails(_particles, lcs)
+		_particles.forEach((particle) => { particle.render() })
 	}
 
 	_init(props)
