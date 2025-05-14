@@ -14,15 +14,9 @@ const _effectProps = {
 	rotationSpeed: undefined
 }
 
-function _reduceRadius(radius) {
-	let r = radius
-	const dA1 = .07
-	const dB1 = .1
-	if ((radius > 2) && (radius - dA1) > 0) {
-		r -= dA1
-	} else if (((radius - 1) <= 1) && (radius - dB1) > 1) {
-		r -= dB1
-	}
+function _reduceRadius(pRadius, radius) {
+	const delta = (Math.PI * (pRadius / 180))
+	const r = radius - delta
 	return r
 }
 
@@ -54,7 +48,7 @@ function _renderParticleTrail(particle, lc) {
 		// generate x amount of extra particles "trailing" behind
 		for (let i = 0; i < repeat; i++) {
 			// reduce radius of each "extra particle" i.e. trail
-			r = _reduceRadius(r)
+			r = _reduceRadius(_radius, r)
 			// - or + ?
 			// need theta update here to properly trail
 			// subtracting rotation speed inverts the trail
