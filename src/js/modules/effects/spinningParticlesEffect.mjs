@@ -84,8 +84,8 @@ function _Particle(props, color) {
 	this.color = color
 	this.theta = Math.random() * Math.PI * 2
 	this.st = this.theta
-	this.t = (Math.random() * (150 - 10) + 10)
 	this.radius = Math.floor(Math.random() * (5 - 2) + 2)
+	this.t = (Math.random() * (150 - (this.radius + 7)) + (this.radius + 7))
 
 	// rotate particles
 	const _rotate = () => {
