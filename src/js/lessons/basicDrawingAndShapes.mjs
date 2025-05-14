@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the next set of examples are up on our chopping block! chop \'em!'
+		const text = 'TODAYS NEWS @7: up next on chopped:...and today\'s secret ingredient is...pussy bitch boys...what will our contenstants put up on THE CHOPPING BLOCK?!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
