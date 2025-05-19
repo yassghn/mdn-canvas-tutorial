@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: up next on chopped:...oh, no. contestant candice\'s pussy bitch boys have BARRICADED themselves inside of the microwave oven.'
+		const text = 'TODAYS NEWS @7: tonight on RATS ASUNDER...after stealing 400 million of someone\'s honest salary, the rats squirm & scurry hurridly.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
