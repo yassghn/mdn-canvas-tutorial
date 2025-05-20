@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: tonight on RATS ASUNDER...after stealing 400 million of someone\'s honest salary and one Party document from 2006, the rats squirm & scurry hurridly.'
+		const text = 'TODAYS NEWS @7: piggy backs & pivots.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
