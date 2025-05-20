@@ -10,6 +10,8 @@ import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import palleteHewer from './palleteHewer.mjs'
 import ui from './ui.mjs'
+import lessonsCanvas from './lessonsCanvas.mjs'
+import pointer from './pointer.mjs'
 
 const _palleteArgs = {
 	previousTimestamp: 0
@@ -157,15 +159,23 @@ function renderPallete(cvs, callback, timestamp) {
 	cvs.ctx.restore()
 }
 
-export function initPallete(timestamp) {
+function _colorPickerClickHandler(cvs) {
+	// get pointer
+	const pointerState = pointer()
+	// get image data
+	const pixel = cvs.ctx.getImageData(pointerState.coords.x, pointerState.coords.y, 1, 1)
+	const data = pixel.data
+	// set color rgba string
+	const color = `rgb(${data[0]} ${data[1]} ${data[2]} / ${data[3] / 255})`
+	// update complex pallete vars
+	_complexPalletes.colorPickerPallete.vars.selectedColor = color
+}
+
+export function initPallete(cvs, timestamp) {
 	// set prev and current timestamp is the same on init
 	_palleteArgs.previousTimestamp = timestamp
-	// add color picker function
-	function colorPickerClickHandler() {
-		console.log('color picker click handler')
-	}
 	// add color picker click handler to ui functions
-	ui.addFunction(colorPickerClickHandler)
+	ui.addFunction(_colorPickerClickHandler, cvs)
 }
 
 function _pallete(cvs, timestamp) {
