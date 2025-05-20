@@ -67,7 +67,7 @@ function _processKeyboardInput(event) {
 	}
 }
 
-function _processPointerInput(coords) {
+function _processPointerMove(coords) {
 	state.pointerPosX = coords.x
 	state.pointerPosY = coords.y
 }
@@ -87,7 +87,7 @@ function _addPointerMoveListener() {
 		// incorrectly records move coordinates again
 		if (pointer().inWindow) {
 			const coords = { x: event.clientX, y: event.clientY }
-			_processPointerInput(coords)
+			_processPointerMove(coords)
 		}
 	})
 }
@@ -96,7 +96,7 @@ function _addPointerLeaveListener() {
 	document.body.addEventListener('pointerleave', (event) => {
 		settings.renderPointerTrack = 'false'
 		// pointer left viewable document window, set coordinates out of bounds
-		_processPointerInput({ x: -1, y: -1 })
+		_processPointerMove({ x: -1, y: -1 })
 	})
 }
 
@@ -107,7 +107,7 @@ function _addPointerEnterListener() {
 		}
 		// update pointer coords
 		const coords = { x: event.clientX, y: event.clientY }
-		_processPointerInput(coords)
+		_processPointerMove(coords)
 	})
 }
 
