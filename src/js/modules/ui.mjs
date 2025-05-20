@@ -131,11 +131,10 @@ function _addFunction(lambda, ...params) {
 }
 
 function _colorPickerClick() {
-	console.log('colorpickerclick')
-	if (_state.functions.colorPickerClickHandler) {
-		const params = _state.functions.colorPickerClickHandler.params
-		const fn = _state.functions.colorPickerClickHandler.fn
-		fn(params)
+	if (_state.functions._colorPickerClickHandler) {
+		const params = _state.functions._colorPickerClickHandler.params
+		const fn = _state.functions._colorPickerClickHandler.fn
+		fn(...params)
 	}
 }
 
