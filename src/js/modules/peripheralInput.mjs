@@ -4,7 +4,7 @@
 
 import settings from './settings.mjs'
 import state from './state.mjs'
-import { enableAll } from './ui.mjs'
+import ui, { enableAll } from './ui.mjs'
 import pointer from './pointer.mjs'
 
 const _keyBindings = {
@@ -72,12 +72,25 @@ function _processPointerMove(coords) {
 	state.pointerPosY = coords.y
 }
 
+function _processPointerClick(event) {
+	// ignore non-ui level click events
+	if (event.target.tagName == 'canvas'.toUpperCase()) {
+		ui.colorPickerClick()
+	}
+}
+
 function _addKeyboardListener() {
 	document.addEventListener('keydown', (event) => {
 		// check if key combo is valid
 		if (_isTargetKey(event)) {
 			_processKeyboardInput(event)
 		}
+	})
+}
+
+function _addPointerClickListener() {
+	document.addEventListener('click', (event) => {
+		_processPointerClick(event)
 	})
 }
 
@@ -115,6 +128,7 @@ function _addPointerEvents() {
 	_addPointerMoveListener()
 	_addPointerLeaveListener()
 	_addPointerEnterListener()
+	_addPointerClickListener()
 }
 
 function _init() {

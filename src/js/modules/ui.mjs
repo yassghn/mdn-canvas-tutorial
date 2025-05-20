@@ -116,6 +116,10 @@ function _renderOver(cvs) {
 	}
 }
 
+function _colorPickerClick() {
+	console.log('colorpickerclick')
+}
+
 const ui = {
 	render: function (cvs) {
 		_render(cvs)
@@ -123,6 +127,10 @@ const ui = {
 
 	renderOver: function (cvs) {
 		_renderOver(cvs)
+	},
+
+	colorPickerClick: function() {
+		_colorPickerClick()
 	}
 }
 
