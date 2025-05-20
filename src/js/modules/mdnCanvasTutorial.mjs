@@ -42,7 +42,7 @@ function _mdnCanvasTutorial() {
 		// get timestamp
 		const timestamp = document.timeline.currentTime
 		// init pallete
-		initPallete(timestamp)
+		initPallete(lessonsCanvas.get(), timestamp)
 		// start rendering
 		requestAnimationFrame(_render)
 	} else {
