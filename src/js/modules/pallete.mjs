@@ -10,7 +10,6 @@ import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import palleteHewer from './palleteHewer.mjs'
 import ui from './ui.mjs'
-import lessonsCanvas from './lessonsCanvas.mjs'
 import pointer from './pointer.mjs'
 
 const _palleteArgs = {
