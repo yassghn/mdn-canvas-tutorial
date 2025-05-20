@@ -9,6 +9,7 @@ import imagesAndTransformations from '../lessons/imagesAndTransformations.mjs'
 import clippingAndAnimations from '../lessons/clippingAndAnimations.mjs'
 import imageDataAndOptimization from '../lessons/imageDataAndOptimization.mjs'
 import palleteHewer from './palleteHewer.mjs'
+import ui from './ui.mjs'
 
 const _palleteArgs = {
 	previousTimestamp: 0
@@ -159,6 +160,12 @@ function renderPallete(cvs, callback, timestamp) {
 export function initPallete(timestamp) {
 	// set prev and current timestamp is the same on init
 	_palleteArgs.previousTimestamp = timestamp
+	// add color picker function
+	function colorPickerClickHandler() {
+		console.log('color picker click handler')
+	}
+	// add color picker click handler to ui functions
+	ui.addFunction(colorPickerClickHandler)
 }
 
 function _pallete(cvs, timestamp) {

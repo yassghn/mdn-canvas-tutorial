@@ -14,6 +14,10 @@ const _pointerTrack = {
 	height: 0
 }
 
+const _state = {
+	functions: {}
+}
+
 function _updateLabels(coords) {
 	_pointerTrack.labelx.innerText = `xpos: ${coords.x}`
 	_pointerTrack.labely.innerText = `ypos: ${coords.y}`
@@ -101,7 +105,7 @@ function _render(cvs) {
 }
 
 function _renderOver(cvs) {
-	const coords =  _getPointerCoords()
+	const coords = _getPointerCoords()
 	// render grid lines and pointer track
 	if (settings.renderGridLines == true.toString()) {
 		if (settings.renderPointerTrack == true.toString()) {
@@ -116,8 +120,23 @@ function _renderOver(cvs) {
 	}
 }
 
+function _addFunction(lambda, ...params) {
+	// store params and lambda
+	const func = {
+		params: [...params],
+		fn: lambda
+	}
+	// add func object to functions
+	_state.functions = { [func.fn.name]: func }
+}
+
 function _colorPickerClick() {
 	console.log('colorpickerclick')
+	if (_state.functions.colorPickerClickHandler) {
+		const params = _state.functions.colorPickerClickHandler.params
+		const fn = _state.functions.colorPickerClickHandler.fn
+		fn(params)
+	}
 }
 
 const ui = {
@@ -129,8 +148,12 @@ const ui = {
 		_renderOver(cvs)
 	},
 
-	colorPickerClick: function() {
+	colorPickerClick: function () {
 		_colorPickerClick()
+	},
+
+	addFunction: function (lambda, ...params) {
+		_addFunction(lambda, ...params)
 	}
 }
 
