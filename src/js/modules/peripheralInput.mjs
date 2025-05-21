@@ -71,8 +71,10 @@ function _processKeyboardInput(event) {
 			break
 		case _keyBindings.keys.s.key:
 			if (event.ctrlKey) {
+				// prevent save dialog from comming up
 				event.preventDefault()
-				console.log('ctrl+s')
+				// save image
+				ui.saveLessonsCanvas()
 			}
 			break
 	}

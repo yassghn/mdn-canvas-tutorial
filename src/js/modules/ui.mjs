@@ -5,6 +5,7 @@
 import settings from './settings.mjs'
 import state from './state.mjs'
 import { renderGridLines, trackGridLines } from './render.mjs'
+import lessonsCanvas from './lessonsCanvas.mjs'
 
 const _pointerTrack = {
 	elem: undefined,
@@ -138,6 +139,19 @@ function _colorPickerClick() {
 	}
 }
 
+function _saveLessonsCanvas() {
+	// get lessons canvas
+	const cvs = lessonsCanvas.get()
+	// create data url (png)
+	const data = cvs.ctx.canvas.toDataURL('image/png')
+	// create and click download link
+	const link = document.createElement('a')
+	const fileName = 'lessons-canvas.png'
+	link.href = data
+	link.download = fileName
+	link.click()
+}
+
 const ui = {
 	render: function (cvs) {
 		_render(cvs)
@@ -153,6 +167,10 @@ const ui = {
 
 	addFunction: function (lambda, ...params) {
 		_addFunction(lambda, ...params)
+	},
+
+	saveLessonsCanvas: function () {
+		_saveLessonsCanvas()
 	}
 }
 
