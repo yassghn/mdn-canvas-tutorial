@@ -29,7 +29,7 @@ function _isTargetKey(event) {
 	// check for enter key
 	for (const keyName in _keyBindings.keys) {
 		const key = _keyBindings.keys[keyName]
-		if (key.code == event.code && key.code == event.code) {
+		if (key.code == event.code && key.key == event.key) {
 			return true
 		}
 	}
