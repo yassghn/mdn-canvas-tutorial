@@ -51,7 +51,7 @@ function _processKeyboardInput(event) {
 				settings.renderPointerTrack = newValue
 				settings.noClipDebug = newValue
 			}
-			break;
+			break
 		case _keyBindings.keys.space.key:
 			// check if modifier was used
 			if (event.ctrlKey) {
