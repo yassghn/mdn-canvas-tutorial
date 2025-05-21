@@ -21,6 +21,11 @@ const _keyBindings = {
 		space: {
 			code: 'Space',
 			key: ' '
+		},
+
+		s: {
+			code: 'KeyS',
+			key: 's'
 		}
 	}
 }
@@ -63,7 +68,13 @@ function _processKeyboardInput(event) {
 				event.preventDefault()
 				settings.pauseAnimation = settings.pauseAnimation == true.toString() ? 'false' : 'true'
 			}
-			break;
+			break
+		case _keyBindings.keys.s.key:
+			if (event.ctrlKey) {
+				event.preventDefault()
+				console.log('ctrl+s')
+			}
+			break
 	}
 }
 
