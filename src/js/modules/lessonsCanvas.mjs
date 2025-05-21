@@ -42,11 +42,17 @@ function _setDimensions() {
 	_cvs.width = _cvs.ctx.canvas.width = window.innerWidth
 	_cvs.height = _cvs.ctx.canvas.height = window.innerHeight
 
+	_cvs.ctx.canvas.style.width = `${_cvs.width}px`
+	_cvs.ctx.canvas.style.height = `${_cvs.height}px`
+
 	// scale to device pixel ratio
 	const dpr = window.devicePixelRatio
 	const rect = _cvs.ctx.canvas.getBoundingClientRect()
 
 	_cvs.ctx.scale(dpr, dpr)
+
+	console.log(rect)
+	console.log(`${_cvs.width}x${_cvs.height}`)
 
 	_cvs.ctx.canvas.style.width = `${rect.width}px`
 	_cvs.ctx.canvas.style.height = `${rect.height}px`
