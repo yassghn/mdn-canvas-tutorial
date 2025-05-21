@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: piggy backs & pivots.'
+		const text = 'TODAYS NEWS @7: why fuck with trap master when you could\'ve just stayed home and shut your goddamned mouth? fucking brain dead rat.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
