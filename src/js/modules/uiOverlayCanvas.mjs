@@ -14,9 +14,18 @@ const _cvs = {
 }
 
 function _setDimensions() {
-	// set widths to window
-	_cvs.width = (_cvs.ctx.canvas.width = window.innerWidth)
-	_cvs.height = (_cvs.ctx.canvas.height = window.innerHeight)
+	// set base width/height using window inner vals
+	_cvs.width = _cvs.ctx.canvas.width = window.innerWidth
+	_cvs.height = _cvs.ctx.canvas.height = window.innerHeight
+
+	// scale to device pixel ratio
+	const dpr = window.devicePixelRatio
+	const rect = _cvs.ctx.canvas.getBoundingClientRect()
+
+	_cvs.ctx.scale(dpr, dpr)
+
+	_cvs.ctx.canvas.style.width = `${rect.width}px`
+	_cvs.ctx.canvas.style.height = `${rect.height}px`
 }
 
 function _clear() {
