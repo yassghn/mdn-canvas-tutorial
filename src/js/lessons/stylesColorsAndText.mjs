@@ -266,8 +266,7 @@ const stylesColorsAndText = {
 		 * lineDashOffset
 		 * 	- this property determines where to begin the pattern
 		 */
-
-		if (timestamp == previousTimestamp || timestamp - vars.lineStylesLastRender >= vars.delay) {
+		if (timestamp - previousTimestamp >= vars.delay || timestamp - vars.lineStylesLastRender >= vars.delay) {
 			// create "marching ants" effect
 			//cvs.ctx.clearRect(750, 15, 100, 100)
 			cvs.ctx.setLineDash([4, 2])
@@ -447,7 +446,7 @@ const stylesColorsAndText = {
 		textEffect.textColor = textColor
 		textEffect.font = font
 		
- 		if (timestamp == previousTimestamp || timestamp - vars.shadowsLastRender >= vars.shadowDelay) {
+ 		if (timestamp - previousTimestamp >= vars.shadowDelay || timestamp - vars.shadowsLastRender >= vars.shadowDelay) {
 			textEffect.setProps()
 			vars.shadowsLastRender = timestamp
 		}
