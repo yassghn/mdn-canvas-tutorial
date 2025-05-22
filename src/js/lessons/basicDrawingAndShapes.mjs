@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: you came to believe all the lies you told about me. no one will miss the little teency hitlerites with less then 0 accomplishments.'
+		const text = 'TODAYS NEWS @7: to BIG O, and you, and I! O uuu iii! OUI are good, OUI are great! ALL GLORY TO OUI! and thank you GOD! and ALL PRAISE BE TO HIM.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
