@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the brain dead rats are sending more street level goons out. do w.e. you want with them. stay prepared for direct encounters.'
+		const text = 'TODAYS NEWS @7: we have taken up the revolutionary position: remain a bellicose constructivist.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
