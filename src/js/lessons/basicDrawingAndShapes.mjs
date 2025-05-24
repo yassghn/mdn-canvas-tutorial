@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: publish sunset documents.'
+		const text = 'TODAYS NEWS @7: the local police department, SPD, and anyone else harboring vanguards of child molesters, has been declared a terrorist organization. wipe them all out. never let them rebuild.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
