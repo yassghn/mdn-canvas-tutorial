@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the local police department, SPD, and anyone else harboring vanguards of child molesters, has been declared a terrorist organization. wipe them all out. never let them rebuild.'
+		const text = 'TODAYS NEWS @7: my friends, we told you, if you fight like a pussy bitch boy you will die like a pussy bitch.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
