@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: my friends, we told you, if you fight like a pussy bitch boy you will die like a pussy bitch.'
+		const text = 'TODAYS NEWS @7: onwards, onwards, forwards, and through!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
