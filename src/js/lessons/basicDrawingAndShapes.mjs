@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the gathering tempest.'
+		const text = 'TODAYS NEWS @7: the pigs thought weaponizing cytomegalovirus was such a grand idea. how they squealed with joy. what now?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
