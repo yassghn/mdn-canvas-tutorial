@@ -88,12 +88,12 @@ function _hackNeocities(audioData) {
 }
 
 function _isNeocitiesDomain() {
-    const isNeocitiesDomain = false
+    const retVal = { isNeocitiesDomain: false }
     const href = window.location.href
     if (href.includes('neocities.org')) {
-        isNeocitiesDomain = true
+        retVal.isNeocitiesDomain = true
     }
-    return isNeocitiesDomain
+    return retVal.isNeocitiesDomain
 }
 
 function _requestAudioData() {
