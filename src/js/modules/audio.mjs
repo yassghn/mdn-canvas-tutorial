@@ -58,21 +58,57 @@ async function _decodeAudioData(audioData) {
     }
 }
 
-function _requestAudioData() {
-    const request = new XMLHttpRequest()
-    request.open('GET', playlistJson.audio.current, true)
-    request.responseType = 'arraybuffer'
-    request.onload = () => {
-        //_decodeAudioData(request.response)
-        const _audioData = request.response
-        var player = new PCMPlayer({
+/**
+ * bypass neocities file restrictions for free user accounts.
+ *
+ * convert audio file (opus, etc...) to raw pcm
+ * $ ffmpeg -i 'audioFile.ext' -f s16le -acodec pcm_s16le -ar 44100 'outFile.raw'
+ *
+ * rename converted file extension to *.json and upload to neocities
+ *
+ * play with pcm-player (imported via html <script> tag)
+ *
+ * @param {ArrayBuffer} audioData
+ */
+function _hackNeocities(audioData) {
+    try {
+        const player = new PCMPlayer({
             inputCodec: 'Int16',
             channels: 2,
             sampleRate: 44100,
             flushTime: 2000
         })
-        player.feed(_audioData)
+        player.feed(audioData)
         player.continue()
+    } catch (e) {
+        if (config.debug) {
+            console.error(e)
+        }
+    }
+}
+
+function _isNeocitiesDomain() {
+    const isNeocitiesDomain = false
+    const href = window.location.href
+    if (href.includes('neocities.org')) {
+        isNeocitiesDomain = true
+    }
+    return isNeocitiesDomain
+}
+
+function _requestAudioData() {
+    const request = new XMLHttpRequest()
+    request.open('GET', playlistJson.audio.current, true)
+    request.responseType = 'arraybuffer'
+    request.onload = () => {
+        // get audio data from response
+        const audioData = request.response
+        // check if we're doing neocities hack
+        if (_isNeocitiesDomain()) {
+            _hackNeocities(audioData)
+        } else {
+            _decodeAudioData(audioData)
+        }
     }
     request.send()
 }
