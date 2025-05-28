@@ -28,6 +28,7 @@ function _startAudio(audioData) {
     audioSrc.buffer = audioData
     audioSrc.start(0)
     audioSrc.loop = true
+    // set audio state
     _audioState.isPlaying = true
 }
 
