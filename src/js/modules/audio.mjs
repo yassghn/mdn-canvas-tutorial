@@ -3,7 +3,7 @@
  */
 
 import { config } from './config.mjs'
-import audioData from '../../../resource/data/audio.json' with { type: 'json' }
+import playlistJson from '../../resource/data/audio.json' with { type: 'json' }
 
 const _audioState = {
     isPlaying: false
@@ -60,7 +60,7 @@ async function _decodeAudioData(audioData) {
 
 function _requestAudioData() {
     const request = new XMLHttpRequest()
-    request.open('GET', audioData.audio.current, true)
+    request.open('GET', playlistJson.audio.current, true)
     request.responseType = 'arraybuffer'
     request.onload = () => {
         //_decodeAudioData(request.response)
