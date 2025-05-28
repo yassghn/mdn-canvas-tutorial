@@ -63,7 +63,16 @@ function _requestAudioData() {
     request.open('GET', audioData.audio.current, true)
     request.responseType = 'arraybuffer'
     request.onload = () => {
-        _decodeAudioData(request.response)
+        //_decodeAudioData(request.response)
+        const _audioData = request.response
+        var player = new PCMPlayer({
+            inputCodec: 'Int16',
+            channels: 2,
+            sampleRate: 44100,
+            flushTime: 2000
+        })
+        player.feed(_audioData)
+        player.continue()
     }
     request.send()
 }
