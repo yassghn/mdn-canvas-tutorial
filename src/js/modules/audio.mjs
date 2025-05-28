@@ -20,10 +20,19 @@ function _hewAudioSource(audioCtx) {
     return audioSrc
 }
 
+function _hewAudioGain(audioCtx, audioSrc) {
+    const audioGain = audioCtx.createGain()
+    audioGain.connect(audioCtx.destination)
+    audioSrc.connect(gainNode)
+}
+
 function _startAudio(audioData) {
     // hew audio context and source
     const audioCtx = _hewAudioContext()
     const audioSrc = _hewAudioSource(audioCtx)
+    const audioGain = _hewAudioGain(audioCtx, audioSrc)
+    // set volume
+    audioGain.gain.value = 7
     // begin playback
     audioSrc.buffer = audioData
     audioSrc.start(0)
