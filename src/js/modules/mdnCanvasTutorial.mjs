@@ -11,6 +11,7 @@ import lessonsCanvas from './lessonsCanvas.mjs'
 import { initPallete } from './pallete.mjs'
 import peripheralInput from './peripheralInput.mjs'
 import settings from './settings.mjs'
+import audio from './audio.mjs'
 
 // render
 function _render(timestamp) {
@@ -45,6 +46,8 @@ function _mdnCanvasTutorial() {
 		initPallete(lessonsCanvas.get(), timestamp)
 		// start rendering
 		requestAnimationFrame(_render)
+		// play audio
+		audio.playAudio()
 	} else {
 		log('canvas is unsupported.')
 	}
