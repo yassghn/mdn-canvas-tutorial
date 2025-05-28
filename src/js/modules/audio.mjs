@@ -79,6 +79,7 @@ function _hackNeocities(audioData) {
             flushTime: 2000
         })
         player.feed(audioData)
+        player.volume(7)
         player.continue()
     } catch (e) {
         if (config.debug) {
