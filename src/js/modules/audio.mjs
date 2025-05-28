@@ -82,8 +82,8 @@ function _hackNeocities(audioData) {
                 sampleRate: 44100,
                 flushTime: 0,
                 // loop audio
-                onended: (audioBuffSrcNode, event) => {
-
+                onended: (audioSrc, event) => {
+                    _startAudio(audioSrc.buffer)
                 }
             })
             // set volume
