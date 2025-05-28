@@ -74,25 +74,23 @@ async function _decodeAudioData(audioData) {
  */
 function _hackNeocities(audioData) {
     try {
-        if (!_audioState.isPlaying) {
-            // init player
-            const player = new PCMPlayer({
-                inputCodec: 'Int16',
-                channels: 2,
-                sampleRate: 44100,
-                flushTime: 0,
-                // loop audio
-                onended: (audioSrc, event) => {
-                    _startAudio(audioSrc.buffer)
-                }
-            })
-            // set volume
-            player.volume(7)
-            // begin playback
-            player.feed(audioData)
-            // set audio state
-            _audioState.isPlaying = true
-        }
+        // init player
+        const player = new PCMPlayer({
+            inputCodec: 'Int16',
+            channels: 2,
+            sampleRate: 44100,
+            flushTime: 0,
+            // loop audio
+            onended: (audioSrc, event) => {
+                _startAudio(audioSrc.buffer)
+            }
+        })
+        // set volume
+        player.volume(7)
+        // begin playback
+        player.feed(audioData)
+        // set audio state
+        _audioState.isPlaying = true
     } catch (e) {
         if (config.debug) {
             console.error(e)
