@@ -80,7 +80,6 @@ function _hackNeocities(audioData) {
         })
         player.feed(audioData)
         player.volume(7)
-        player.continue()
     } catch (e) {
         if (config.debug) {
             console.error(e)
