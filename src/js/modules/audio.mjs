@@ -23,7 +23,7 @@ function _hewAudioSource(audioCtx) {
 function _hewAudioGain(audioCtx, audioSrc) {
     const audioGain = audioCtx.createGain()
     audioGain.connect(audioCtx.destination)
-    audioSrc.connect(gainNode)
+    audioSrc.connect(audioGain)
 }
 
 function _startAudio(audioData) {
