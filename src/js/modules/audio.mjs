@@ -78,7 +78,11 @@ function _hackNeocities(audioData) {
                 inputCodec: 'Int16',
                 channels: 2,
                 sampleRate: 44100,
-                flushTime: 2000
+                flushTime: 0,
+                // loop audio
+                onended: (audioBuffSrcNode, event) => {
+
+                }
             })
             // set volume
             player.volume(7)
