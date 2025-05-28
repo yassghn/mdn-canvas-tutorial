@@ -20,7 +20,11 @@ function _hewAudioSource(audioCtx) {
     return audioSrc
 }
 
-function _startAudio(audioSrc, audioData) {
+function _startAudio(audioData) {
+    // hew audio context and source
+    const audioCtx = _hewAudioContext()
+    const audioSrc = _hewAudioSource(audioCtx)
+    // begin playback
     audioSrc.buffer = audioData
     audioSrc.start(0)
     audioSrc.loop = true
@@ -34,9 +38,6 @@ function _audioDataDecodeError(error) {
 }
 
 async function _decodeAudioData(audioData) {
-    // audio audio context and source
-    const audioCtx = _hewAudioContext()
-    const audioSrc = _hewAudioSource(audioCtx)
     // decode audio data
     try {
         await audioCtx.decodeAudioData(
@@ -44,7 +45,7 @@ async function _decodeAudioData(audioData) {
             audioData,
             // success callback
             (audioData) => {
-                _startAudio(audioSrc, audioData)
+                _startAudio(audioData)
             },
             // error callback
             (error) => {
