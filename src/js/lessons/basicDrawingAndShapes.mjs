@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: yassghn: death, rattle, and roll! death, rattle, and roll! death, rattle, and roll! '
+		const text = 'TODAYS NEWS @7: we went to war against child porn in 2002. the national security state went to war against us to literally protect child porn. and here we are.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
