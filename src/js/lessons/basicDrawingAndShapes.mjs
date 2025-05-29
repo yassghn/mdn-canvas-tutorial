@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: yassghn: the fastest thing since sliced bread!?!? yes.'
+		const text = 'TODAYS NEWS @7: yassghn: death, rattle, and roll! death, rattle, and roll! death, rattle, and roll! '
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
