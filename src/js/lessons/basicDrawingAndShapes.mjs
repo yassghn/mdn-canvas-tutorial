@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: we gave you your warning. we gave you an exit strategy. you got pranked into a fascist mobilization on behalf of the bourgeois capitalists, the imperialists, the colonialists (the liberal world order), just as the nazis did. you pressed the attack on their behalf. you don\'t get to dictate yourself an exit stategy now.'
+		const text = 'TODAYS NEWS @7: remember to smile. remember to remain grateful. remember you will return to nothing without us.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
