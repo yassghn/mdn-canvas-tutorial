@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: remember to smile. remember to remain grateful. remember you will return to nothing without us.'
+		const text = 'TODAYS NEWS @7: SPD terrorists restocked their supplies of fresh pussy bitch boys. the clowns will come. it will be another goddamned bloody mess.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
