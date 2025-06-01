@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: SPD terrorists restocked their supplies of fresh pussy bitch boys. the clowns will come. it will be another goddamned bloody mess.'
+		const text = 'TODAYS NEWS @7: and to the pussy bitch boys who think their rat brain will help them stay safe behind a screen after engaging in cyberterrorism. we will now engage you in real combat. welcome to the USA civil war you fucking brain dead rat.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
