@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: and to the pussy bitch boys who think their rat brain will help them stay safe behind a screen after engaging in cyberterrorism. we will now engage you in real combat. welcome to the USA civil war you fucking brain dead rat.'
+		const text = 'TODAYS NEWS @7: to the rest of you: if you let the goddamned filthy fucking pigs prank you into the war we will crush you. it is a war. clear the rats out of your brains, you will live longer.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
