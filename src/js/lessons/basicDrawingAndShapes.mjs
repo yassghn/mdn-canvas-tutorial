@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: where you at homies?! my guys. so big & brave inside your little suv. nah. you a rat stuck in a cage.'
+		const text = 'TODAYS NEWS @7: where you at homies?! my guys. so big & brave inside your little suv, or behind a little screen. nah. you a rat stuck in a cage.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
