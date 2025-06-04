@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: where you at homies?! my guys. so big & brave inside your little suv, or behind a little screen. nah. you a rat stuck in a cage.'
+		const text = 'TODAYS NEWS @7: sun-SET, and kill them wherever you overtake them, and expel them from wherever they have expelled you, for persecution is worse than killing. do not fight them in the holy land until they fight you there, but if they fight you, then kill them. Such is the just reward for any of those who did not heed our warning.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
