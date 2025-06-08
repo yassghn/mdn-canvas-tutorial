@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: bring the kings of filth & rats to their knees. return their abominations to dust; annihilate them. overthrow them. let them see with their own eyes what happened in sodom, gomorrah, admah, zeboiim, and bela. such is the cost of their treason.'
+		const text = 'TODAYS NEWS @7: welcome, my friends, we\'re only just getting started.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
