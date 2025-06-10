@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: welcome, my friends, we\'re only just getting started.'
+		const text = 'TODAYS NEWS @7: the king and his men stole the queen from her bed, and bound her in her bones. the seas be ours, and by the powers, where we will we\'ll roam. yo ho, all hands, hoist the colors high. heave, ho, thieves, and beggars, never shall we die.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
