@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the king and his men stole the queen from her bed, and bound her in her bones. the seas be ours, and by the powers, where we will we\'ll roam. yo ho, all hands, hoist the colors high. heave, ho, thieves, and beggars, never shall we die.'
+		const text = 'TODAYS NEWS @7: we offered unparalled safety against the largest aggregate of criminal syndicates ever recorded in history. the betrayal against us will not impeded our revolutionary progress. our enemies are desperate to punish us, and are wholly unable, and they will continue to lash out against the failure to defeat me. you chose your own partners, you were free to do so. have fun, my friends. enjoy your winnings.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
