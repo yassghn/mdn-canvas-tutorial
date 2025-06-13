@@ -12,6 +12,11 @@ const _defaults = {
 		name: 'pointerPosY',
 		val: -1
 	},
+
+	fps: {
+		name: 'fps',
+		val: 0
+	}
 }
 
 const _state = { ..._defaults }
@@ -75,6 +80,15 @@ const state = {
 
 	set pointerPosY(value) {
 		_setValue(_state.pointerPosY.name, value)
+	},
+
+	// fps
+	get fps() {
+		return _getValue(_state.fps.name)
+	},
+
+	set fps(value) {
+		_setValue(_state.fps.name, value)
 	}
 }
 

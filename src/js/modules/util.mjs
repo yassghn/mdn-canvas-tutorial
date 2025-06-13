@@ -3,6 +3,28 @@
  */
 
 import { config } from './config.mjs'
+import state from './state.mjs'
+
+const _data = {
+	fps: 0,
+	framesTrack: 0,
+	timeStart: null
+}
+
+export function fpsCalc() {
+	_data.framesTrack++
+	const time = document.timeline.currentTime
+	if (_data.timeStart == null) {
+		_data.timeStart = time
+	} else {
+		if (time - _data.timeStart >= 1000) {
+			_data.timeStart = time
+			_data.fps = _data.framesTrack
+			state.fps = _data.fps
+			_data.framesTrack = 0
+		}
+	}
+}
 
 // define log levels
 export const loglvl = {

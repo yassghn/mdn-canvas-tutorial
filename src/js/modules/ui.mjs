@@ -6,6 +6,8 @@ import settings from './settings.mjs'
 import state from './state.mjs'
 import { renderGridLines, trackGridLines } from './render.mjs'
 import lessonsCanvas from './lessonsCanvas.mjs'
+import ContextProperties from './ContextProperties.mjs'
+import ContextState from './ContextState.mjs'
 
 const _pointerTrack = {
 	elem: undefined,
@@ -105,10 +107,31 @@ function _render(cvs) {
 	}
 }
 
+function _renderFps(cvs) {
+	const props = new ContextProperties()
+	props.fillStyle = 'rgb(208, 180, 180)'
+	props.font = '36px trebuchet ms'
+	const ctxState = new ContextState(cvs.ctx, props)
+	ctxState.apply((ctx) => {
+		const x = 5
+		const y = 5
+		const length = 125
+		const height = 50
+		const fps = state.fps
+		const text = `fps: ${fps}`
+		ctx.translate(x, y)
+		ctx.fillRect(0, 0, length, height)
+		ctx.fillStyle = 'rgb(0, 0, 0)'
+		ctx.translate(5, Math.floor(height/2)+5)
+		ctx.fillText(text, 0, 0)
+	})
+}
+
 function _renderOver(cvs) {
 	const coords = _getPointerCoords()
 	// render grid lines and pointer track
 	if (settings.renderGridLines == true.toString()) {
+		_renderFps(cvs)
 		if (settings.renderPointerTrack == true.toString()) {
 			trackGridLines(cvs, coords)
 			_renderpointerTrack(coords)

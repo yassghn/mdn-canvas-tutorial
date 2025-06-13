@@ -2,7 +2,7 @@
  * mdnCanvasTutorial.mjs
  */
 
-import { log, loglvl } from './util.mjs'
+import { fpsCalc, log, loglvl } from './util.mjs'
 import { config } from './config.mjs'
 import initLessons from './lessonsInit.mjs'
 import uiCanvas from './uiCanvas.mjs'
@@ -16,6 +16,7 @@ import audio from './audio.mjs'
 // render
 function _render(timestamp) {
 	requestAnimationFrame((t) => _render(t))
+	fpsCalc()
 	try {
 		uiCanvas.render()
 		if (settings.pauseAnimation == false.toString()) {
