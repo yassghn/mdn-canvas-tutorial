@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: we offered unparalled safety against the largest aggregate of criminal syndicates ever recorded in history. the betrayal against us will not impeded our revolutionary progress. our enemies are desperate to punish us, and are wholly unable, and they will continue to lash out against the failure to defeat me. you chose your own partners, you were free to do so. have fun, my friends. enjoy your winnings.'
+		const text = 'TODAYS NEWS @7: i told y\'all already, i need 0 followers. we are building the whole future. if you find yourself choosing child molesters to follow out of pathetic bratty spite you\'re going to have even bigger problems soon.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
