@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: i told y\'all already, i need 0 followers. we are building the whole future. if you find yourself choosing child molesters to follow out of pathetic bratty spite you\'re going to have even bigger problems soon.'
+		const text = 'TODAYS NEWS @7: my enemies have been stealing from me for decades. a wealth, fountain, of ideas, theory, praxis. we have already been leading all of modern development in the west. these cowardly jealous rats will fade away.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
