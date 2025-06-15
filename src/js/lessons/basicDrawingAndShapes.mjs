@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: welcome, home! our home.'
+		const text = 'TODAYS NEWS @7: new music... https://youtu.be/SY2-2oD_dHM'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
