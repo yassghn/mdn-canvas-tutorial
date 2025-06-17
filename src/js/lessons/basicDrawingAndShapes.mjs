@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the lying pigs are out on a vote of no confidence by their own leadership. they will all be executed and sent to hell.'
+		const text = 'TODAYS NEWS @7: the lying pigs lied too much. the rest of the lot stole too much. now it\'s time to slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and...'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
