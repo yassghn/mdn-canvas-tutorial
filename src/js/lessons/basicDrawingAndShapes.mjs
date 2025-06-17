@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the lying pigs lied too much. the rest of the lot stole too much. now it\'s time to slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and slaughter and...'
+		const text = 'TODAYS NEWS @7: i am not here save anyone. i do not issue forgiveness. i am not here for followers and need none. i am here to WIN the WAR and then BUILD THE FUTURE. this trajectory has already been coming to fruition and there is no undoing it.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
