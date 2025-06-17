@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the process of apotheosization is almost complete. highlight save soil and what these filthy pigs have done.'
+		const text = 'TODAYS NEWS @7: the lying pigs are out on a vote of no confidence by their own leadership. they will all be executed and sent to hell.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
