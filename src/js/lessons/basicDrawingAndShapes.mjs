@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: welcome, home.'
+		const text = 'TODAYS NEWS @7: The farmer\'s dog leapt over the style, His name was little Bingo, The farmer\'s dog leapt over the style, His name was little Bingo. B with an I — I with an N, N with a G — G with an O; His name was little Bingo: B—I—N—G—O! His name was little Bingo. The farmer lov\'d a cup of good ale, He call\'d it rare good stingo, The farmer lov\'d a cup of good ale, He call\'d it rare good stingo. S—T with an I — I with an N, N with a G — G with an O; He call\'d it rare good stingo: S—T—I—N—G—O! He call\'d it rare good stingo, And is this not a sweet little song? I think it is - by jingo. And is this not a sweet little song? I think it is - by jingo. J with an I — I with an N, N with a G — G with an O; I think it is - by jingo: J—I—N—G—O! I think it is - by jingo.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
