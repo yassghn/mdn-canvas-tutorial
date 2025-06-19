@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: it\'s dumb. they keep saying that now they\'re mirroring me, but the order of events they present is objectively false, and if you fell for that low of a prank you\'d well to consider yourself a GodDAMNED brain dead rat.'
+		const text = 'TODAYS NEWS @7: cry. cry rivers. won\'t make a difference. we gave you your warning. we gave you an exit strategy. what happens now is not my problem, i promise you. we\'re only just getting started too. shucks. ahoy!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
