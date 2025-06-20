@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: cry. cry rivers. won\'t make a difference. we gave you your warning. we gave you an exit strategy. what happens now is not my problem, i promise you. we\'re only just getting started too. shucks. ahoy!'
+		const text = 'TODAYS NEWS @7: the GodDAMMNED filthy fucking pig\'s brain dead rat pets lied to you, and you think that\'s my problem? buddy, you believed a literal rat. what does that make you?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
