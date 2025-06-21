@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: franklin park police department is continuing to aid child molesters by literally giving them franklin parks children. kill them all.'
+		const text = 'TODAYS NEWS @7: the cowards setting off fireworks over my parents house instead of coming talk to me like men are about to get fucked. gonna be really bad. also, party in the park! tonight!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
