@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the GodDAMMNED filthy fucking pig\'s brain dead rat pets lied to you, and you think that\'s my problem? buddy, you believed a literal rat. what does that make you?'
+		const text = 'TODAYS NEWS @7: franklin park police department is continuing to aid child molesters by literally giving them franklin parks children. kill them all.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
