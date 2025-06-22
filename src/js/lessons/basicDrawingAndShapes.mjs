@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: how much american music focuses on running away and or stealing?'
+		const text = 'TODAYS NEWS @7: (CHOP)...(screams)...dawaj łapy...dawaj, albo odetnę Ci głowę...dawaj łapy!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
