@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the suburbs of schiller park, franklin park, rosemoent, bensenville, ohare, river grove, had over half a decade to help us address security concerns surrounding the on-going murder and rape of children within their own borders. instead they made these problems worse. do whatever you want with their leadership. they have lost the right to their land, and will hand them over without cost or we will go to war for it.'
+		const text = 'TODAYS NEWS @7: how much american music focuses on running away and or stealing?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
