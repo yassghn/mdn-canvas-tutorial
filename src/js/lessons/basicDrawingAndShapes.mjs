@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: what should i say now? you let a literal parrot and a literal rat lie to you. it\'s really not my problem.'
+		const text = 'TODAYS NEWS @7: they\'re all too scared to get out of their cars and fight me. meanwhile literally their whole bloodline is being removed from earth.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
