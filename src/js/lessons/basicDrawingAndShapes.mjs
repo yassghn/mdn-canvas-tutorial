@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: i am amidst winning this war, and you thought you could make your pesky, petty, squeaky, little problems my own?! what are you?'
+		const text = 'TODAYS NEWS @7: sun-SET!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
