@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: they\'re all too scared to get out of their cars and fight me. meanwhile literally their whole bloodline is being removed from earth.'
+		const text = 'TODAYS NEWS @7: i do not issue forgiveness. never come to me with excuses or apologies. as the CENTURY OF JUSTICE is just beginning, you let a little squeaky rat lie to you. this is not my problem, my friends. the consequences of your treason & betrayal will be stiff beyond that capabalities of your feeble, brain dead, imagination. '
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
