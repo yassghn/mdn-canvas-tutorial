@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: my friend. you are telling me that WINNING THE WAR against the WHOLE, the TOTALITY, of LIBERALISM ITSELF, the largest aggregate of criminal syndicates ever known in human history, via education, and by education OUI mean theoricatal & educational programs, is INCORRECT?! why you sayiing that?'
+		const text = 'TODAYS NEWS @7: i am amidst winning this war, and you thought you could make your pesky, petty, squeaky, little problems my own?! what are you?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
