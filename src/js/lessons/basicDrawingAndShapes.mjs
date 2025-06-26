@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: i am not asking you any questions. give me the municipalities.'
+		const text = 'TODAYS NEWS @7: hinduism was never intended to be a polytheic religion. the families that began these lineages wanted to study the various "faces" of God.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
