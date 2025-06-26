@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: you work for child molesters. the child molesters stopped paying you. is that my problem?! nope. did i provide you with a wealth of solutions. yes. go get a real fucking job.'
+		const text = 'TODAYS NEWS @7: you let the liberals prank you into their losing war. the very enemies of mine that fear me because i am, even standing alone, much larger, much more capable, than they could ever dream. do you realize now why i call you a GodDAMMNED brain dead rat?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
