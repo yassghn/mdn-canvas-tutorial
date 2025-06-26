@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: as we prepare to lay the ground work for the new capital, we must issue a stiff warning to the remaining surrounding localities. any funny business at all against us will lead to arrests, life sentences, for all responsible parties involved, police, land developers, capitalists, politicians, mercenaries, etc. etc. etc. we expect some trouble, but they should stay focused on a long and prosperous realtionship.'
+		const text = 'TODAYS NEWS @7: give me the municipalities.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
