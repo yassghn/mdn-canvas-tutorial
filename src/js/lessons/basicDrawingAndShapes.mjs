@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: SPD (schiller park police department), and the police departments of rosemont, bensenville, fanklin park, ohare, river grove, were declared terrorist organizations. these people drive around with pentagon weapons, psyonic devices, and internationally banned chemical weapons. they are type of coward most despicable. we will continue to slaughter them along with their political leadership which refuses to stop child molestation and creating more child porn.'
+		const text = 'TODAYS NEWS @7: along with the cancerous chemicals, various poisons, various kinetic, biological/viral/parasitic weapons you have attacked me with over the decades you have also weaponized the atom and the psyon against me. you have no idea the power you have given me here on earth.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
