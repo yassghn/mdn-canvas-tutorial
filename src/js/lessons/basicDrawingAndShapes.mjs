@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: along with the cancerous chemicals, various poisons, various kinetic, biological/viral/parasitic weapons you have attacked me with over the decades you have also weaponized the atom, electron, radeon, photon, and the psyon against me. you have no idea the power you have given me here on earth.'
+		const text = 'TODAYS NEWS @7: sending these people driving infront of my parents house, gaslighting me, is just another example of the cowardly behavior of brain dead rats, losers. they will lose their whole bloodline and worse. much worse.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
