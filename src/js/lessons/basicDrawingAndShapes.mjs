@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: you let the liberals prank you into their losing war. the very enemies of mine that fear me because i am, even standing alone, much larger, much more capable, than they could ever dream. do you realize now why i call you a GodDAMMNED brain dead rat?'
+		const text = 'TODAYS NEWS @7: your little tiny rat brain then thought what? you were finally going to win and defeat me for the empire? GodDAMMNED brain dead rat.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
