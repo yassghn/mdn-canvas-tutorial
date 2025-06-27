@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: your little tiny rat brain then thought what? you were finally going to win and defeat me for the empire? with what?! more lies, garbage, and toys?! these things you think are wunderwaffen?! typical american. GodDAMMNED brain dead rat.'
+		const text = 'TODAYS NEWS @7: for that little stunt you pulled at jewel, all the oppers will have their entire bloodline ended. gonna be the same for the spy at north park. that sutpid fucking whore you put up is going to be raped and lynched. good luck, my friends!'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
