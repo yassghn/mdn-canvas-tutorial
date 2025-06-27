@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: for that little stunt you pulled at jewel, all the oppers will have their entire bloodline ended. gonna be the same for the spy at north park. that sutpid fucking whore you put up is going to be raped and lynched. and these stupid fucking faggots, literal homosexual men, you keep sending around are going to lose their whole bloodline, and everyone they know will lose their whole bloodline. you were told to fuck off, now you will all be plucked from the tree of life, and rightfully so. good luck, my friends! enjoy your winnings. remember to smile, remember to remain grateful, or it will get worse.'
+		const text = 'TODAYS NEWS @7: SPD (schiller park police department), and the police departments of rosemont, bensenville, fanklin park, ohare, river grove, were declared terrorist organizations. these people drive around with pentagon weapons, psyonic devices, and internationally banned chemical weapons. they are type of coward most despicable. we will continue to slaughter them.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
