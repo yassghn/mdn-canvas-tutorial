@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the battle for the capital city is pretty funny. our forces have ohare surrounded. the airport itself has become an imperial base. they\'re flying in all kinds of people and weapons. they haven\'t figured out yet that they are completely surrounded. everyone they bring in will continue to be slaughtered.'
+		const text = 'TODAYS NEWS @7: wider usa context, the americans are still preparing to genocide themselves. extremely rat brained strategy. they\'re going to call it my genocide. it won\'t defeat me, and they\'re still going to do it lol. GodDAMMNED brain dead rats. do you see yet? how stupid you are? do you see why i call you that?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
