@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: kroger is delivering poisoned food to jewel in franklin park. the weaponization of their products means their leadership has forefeit the civilian status of every single kroger employee. there is no reason to differentiate. slaughter them. also, the pussy bitch boys are driving around town trying to be intimidating but they will all lose their whole bloodline in a matter of a few days.'
+		const text = 'TODAYS NEWS @7: kroger is delivering poisoned food to jewel in franklin park. the weaponization of their products means their leadership has forefeit the civilian status of every single kroger employee. there is no reason to differentiate. slaughter them. also, the pussy bitch boys are driving around town trying to be intimidating but they will all lose their whole bloodline in a matter of a few days. this is why the new countries, new capital grounds, needs to be its own country. until then these major security concerns will be impossible to begin to address.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
