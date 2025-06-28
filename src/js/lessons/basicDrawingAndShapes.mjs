@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: kroger is delivering poisoned food to jewel in franklin park. the weaponization of their products means their leadership has forefeit the civilian status of every single kroger employee. there is no reason to differentiate. slaughter them. also, the pussy bitch boys are driving around town trying to be intimidating but they will all lose their whole bloodline in a matter of a few days. this is why the new countries, new capital grounds, needs to be its own country. until then these major security concerns will be impossible to begin to address.'
+		const text = 'TODAYS NEWS @7: the empire and their zionist goons are going to continue pitting everyone & everything they can between me and them. whatever they promised you won\'t be worth it. whatever they threatened you with we will do worse. these massive security failures will put you on the rat map. once you are on the rat map there is no off until your death or otherwise removal from earth. these GodDAMMNED brain dead rats are devolving. this will get more and more boring, but they are also destabalizing and becoming more reckless. also, the usa civil war is set to close in about 1.5-2 months, right on time.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
