@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: my friends (speaking to the usa oligarchy, most of which has fled the usa, that have been stealing from me for a long time), we provided you with an educational program which you mistook for an EDUCATIONAL PROGRAM. you thought you could weaponize this against us. why? psyons were the greatest wunderwaffen you could think of. why? because i gave it to you. why?'
+		const text = 'TODAYS NEWS @7: the battle for the new capital city takes on a separate characteristic from the larger usa civil war (pretty close to closing), and still separate from the larger fight against liberalism (althought not completely). we will expel 0 people from their homes. stick around or don\'t, your call. i recommend sticking around. ohare will be moved. we have some very cool plans including a state of the art medical district provided to the population at 0 cost. the liberals are very scared of because they know everything i build LASTS and PROVES their incorrectness. fuck em, kill them all.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
