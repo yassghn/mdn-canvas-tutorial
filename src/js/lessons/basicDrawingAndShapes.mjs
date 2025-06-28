@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: what do we name the new capital? mmm. blackton? blackland? blackguard? santa black? black keep? black city? blackward? blackfort? blackmour? lake black?'
+		const text = 'TODAYS NEWS @7: my friends (speaking to the usa oligarchy, most of which has fled the usa, that have been stealing from me for a long time), we provided you with an educational program which you mistook for an EDUCATIONAL PROGRAM. you thought you could weaponize this against us. why? psyons were the greatest wunderwaffen you could think of. why? because i gave it to you. why?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
