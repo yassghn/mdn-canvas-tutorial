@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: wider usa context, the americans are still preparing to genocide themselves. extremely rat brained strategy. they\'re going to call it my genocide. it won\'t defeat me, and they\'re still going to do it lol. GodDAMMNED brain dead rats. do you see yet? how stupid you are? do you see why i call you that?'
+		const text = 'TODAYS NEWS @7: kroger is delivering poisoned food to jewel in franklin park. the weaponization of their products means their leadership has forefeit the civilian status of every single kroger employee. there is no reason to differentiate. slaughter them. also, the pussy bitch boys are driving around town trying to be intimidating but they will all lose their whole bloodline in a matter of a few days.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
