@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: after you hand me the municipalities we will continue the cleansing of child molesters from our neighborhoods. all of your forces and political leadership are responsible for hundreds of childrends rape and death in the area. not to mention all the child porn they made of it. run, or don\'t, we\'re gonna getch ya, getch ya, getch ya, one way or another...'
+		const text = 'TODAYS NEWS @7: what do we name the new capital? mmm. blackton? blackland? blackguard? santa black? black keep? black city? blackward? blackfort? blackmour? lake black?'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
