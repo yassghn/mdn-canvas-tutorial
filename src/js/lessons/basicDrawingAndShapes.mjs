@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the battle for the new capital city takes on a separate characteristic from the larger usa civil war (pretty close to closing), and still separate from the larger fight against liberalism (althought not completely). we will expel 0 people from their homes. stick around or don\'t, your call. i recommend sticking around. ohare will be moved. we have some very cool plans including a state of the art medical district provided to the population at 0 cost. the liberals are very scared of because they know everything i build LASTS and PROVES their incorrectness. fuck em, kill them all.'
+		const text = 'TODAYS NEWS @7: the battle for the capital city is pretty funny. our forces have ohare surrounded. the airport itself has become an imperial base. they\'re flying in all kinds of people and weapons. they haven\'t figured out yet that they are completely surrounded. everyone they bring in will continue to be slaughtered.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
