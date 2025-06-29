@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: everyone who stole, and got bribed with, my decades of untouched salary is going to lose their whole bloodline and worse. you let a squeaky little rat with a briefcase of cash prank you. that\'s the whole reason we let the reactionaries have it. that\'s gonna be a few thousand dead greeks just within the area lol'
+		const text = 'TODAYS NEWS @7: the revolutionary state treasury numbers in the tens of trillions (current usd valuation [but usd is crumbling]). we won\'t say how many tens. more real money than chase bank and a few others combined.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
