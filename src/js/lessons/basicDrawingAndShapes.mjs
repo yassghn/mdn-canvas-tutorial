@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: watching these losers try to boast about their new status as murderers, liars, petty thieves, while they waste their stolen wealth on garbage is hilarious. these people are fucking losers.'
+		const text = 'TODAYS NEWS @7: watching these losers try to boast about their new status as murderers, liars, petty thieves, while they waste their stolen wealth on garbage is hilarious. these people are fucking losers. the revolution, communism in its many many forms, has nothing to do with giving people garbage and money for free. these fucking morons got pranked into the weed out'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
