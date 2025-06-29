@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: you do not hear me, and not even close to hearing yourselves either. i do not bother anybody here. i walk around unarmed in sandles. look at your own behavior. you try to kill me multiple times per day. you parade around in cars mocking me. then say stupid shit like, "money always wins," this is not a fight between money and not money you fucking moron. greed is your folly. people like you is a small part of the reason why i hate money.'
+		const text = 'TODAYS NEWS @7: you do not hear me, and not even close to hearing yourselves either. i do not bother anybody here. i walk around unarmed in sandles. look at your own behavior. you steal from me. you try to kill me multiple times per day. you parade around in cars mocking me. then say stupid shit like, "money always wins," this is not a fight between money and not money you fucking moron. greed is your folly. people like you is a small part of the reason why i hate money.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
