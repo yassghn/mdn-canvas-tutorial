@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: watching these losers try to boast about their new status as murderers, liars, petty thieves, while they waste their stolen wealth on garbage is hilarious. these people are fucking losers. the revolution, communism in its many many forms, has nothing to do with giving people garbage and money for free. these fucking morons got pranked into the weed out'
+		const text = 'TODAYS NEWS @7: you do not hear me, and not even close to hearing yourselves either. i do not bother anybody here. i walk around unarmed in sandles. look at your own behavior. you try to kill me multiple times per day. you parade around in cars mocking me. then say stupid shit like, "money always wins," this is not a fight between money and not money you fucking moron. greed is your folly. people like you is a small part of the reason why i hate money.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
