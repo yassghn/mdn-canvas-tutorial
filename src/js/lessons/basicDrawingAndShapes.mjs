@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the revolutionary state treasury numbers in the tens of trillions (current usd valuation [but usd is crumbling]). we won\'t say how many tens. more real money than chase bank and a few others combined.'
+		const text = 'TODAYS NEWS @7: the greek traitors should have studied revolutionary theory, the history of the rise and fall of empires. petite bourgeois communities being manipulated into their demise by the liberals is a very common story. these GodDAMMNED filthy fucking pigs are driving around in luxury cars, having luxurious parties, just having a grand old time. not realizing they got reduced to petty thieves, lying scum, and the next vanguards of child molesters. they will be wiped out just like the fbi, cia, and the lot. my friends, never come to me seeking forgiveness. never come to me with apologies or excuses. enjoy your winnings. remember to smile, remember to reamain grateful. you\'ll know once it starts to get bad.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
