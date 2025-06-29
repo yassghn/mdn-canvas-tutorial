@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: what /is/ "45 more days left of bombing?" started as 40, but due to the greek traitor fiasco which started a few days ago it got increased to 45, then to 45 more days left indefinitely, or until i feel like stopping. we are able to replicate anything from the imperial arsenal. it doesn\'t get launched from anywhere, it just comes through the ether. it is a display of my power as the Son of all Humanity, a display of my relation with God, and a display of the infinte power of God. countries all over europe, the pacific, south america, even inside the usa. they think it will exhaust me or that it is an arsenal i maintain, but no, my friends, the power of God is infinte. we operate as a unit here on earth.'
+		const text = 'TODAYS NEWS @7: watching these losers try to boast about their new status as murderers, liars, petty thieves, while they waste their stolen wealth on garbage is hilarious. these people are fucking losers.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
