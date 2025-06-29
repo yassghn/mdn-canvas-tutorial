@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: now that we\'ve addressed the cowardly traitors, and their expulsion is assured, let\'s continue forward. i need to do some traveling around the country for a little. not around either side of the border where the liberals have gathered their fascist forces for the invasion. this will provide me a short break, some communications we\'ve been missing, as well as a few extra training modules i need for 2027. the war for the new capital city (of the country) will continue to escalate. our victory is already assured. compared to nafta armies, there are very little imperial resources being poured in for this fight. stay safe, my friends.'
+		const text = 'TODAYS NEWS @7: the cascade from these cowardly traitors is going to be very funny. they are very desperate. expect a very pathetic "all out" assault. its going to be so stupid.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
