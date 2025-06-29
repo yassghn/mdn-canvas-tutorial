@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the empire and their zionist goons are going to continue pitting everyone & everything they can between me and them. whatever they promised you won\'t be worth it. whatever they threatened you with we will do worse. these massive security failures will put you on the rat map. once you are on the rat map there is no off until your death or otherwise removal from earth. these GodDAMMNED brain dead rats are devolving. this will get more and more boring, but they are also destabalizing and becoming more reckless. also, the usa civil war is set to close in about 1.5-2 months, right on time.'
+		const text = 'TODAYS NEWS @7: every single kroger facility in greece is being bombed. if greece decides to threaten me we will add to the 45 more days left of bombing list. if you fail to address our security concerns i will address them my way. make wise choices, my friends.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
