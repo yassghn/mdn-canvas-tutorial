@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the hell you\'ll be sent to here on earth for what you\'ve done to me will not be enough, you will get worse, for all of eternity.'
+		const text = 'TODAYS NEWS @7: you brain dead rats WEAPONIZED your households DURING A CIVIL WAR that i am about to WIN. literally at the end of the war. some of you turned your own CHILDREN into INSTRUMENTS OF WARFARE. why?! i still have no idea why any of you attacked me here. you got pranked by a squeaky little rat with a brief case full of cash. y\'all dumb as rocks, and you get what you get, my friends. the missing people, the suicides, from yesterday, that is only the start of you LOSING MY PROTECTION. GodDAMMNED FILTHY FUCKING PIGS.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
