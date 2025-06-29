@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: you brain dead rats WEAPONIZED your households DURING A CIVIL WAR that i am about to WIN. literally at the end of the war. some of you turned your own CHILDREN into INSTRUMENTS OF WARFARE. why?! i still have no idea why any of you attacked me here. you got pranked by a squeaky little rat with a brief case full of cash. y\'all dumb as rocks, and you get what you get, my friends. the missing people, the suicides, from yesterday, that is only the start of you LOSING MY PROTECTION. GodDAMMNED FILTHY FUCKING PIGS.'
+		const text = 'TODAYS NEWS @7: now that we\'ve addressed the cowardly traitors, and their expulsion is assured, let\'s continue forward. i need to do some traveling around the country for a little. not around either side of the border where the liberals have gathered their fascist forces for the invasion. this will provide me a short break, some communications we\'ve been missing, as well as a few extra training modules i need for 2027. the war for the new capital city (of the country) will continue to escalate. our victory is already assured. compared to nafta armies, there are very little imperial resources being poured in for this fight. stay safe, my friends.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
