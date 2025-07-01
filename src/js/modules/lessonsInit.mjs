@@ -87,8 +87,8 @@ async function _initLessons(cvs) {
 	}
 }
 
-function initLessons(cvs) {
-	_initLessons(cvs)
+async function initLessons(cvs) {
+	await _initLessons(cvs)
 }
 
 export default initLessons
