@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the cascade from these cowardly traitors is going to be very funny. they are very desperate. expect a very pathetic "all out" assault. its going to be so stupid.'
+		const text = 'TODAYS NEWS @7: now the we\'ve stirred up the hornets nest of crime family syndicates of crook county, especially the ohare area, (mobsters/gangsters), including their cooperation with local police, and legal infrastructure (including my judge Mandeltort, Ellen Beth, now(?) a criminal co-consipirator) and locally cooperating with zionist infiltrators (providing psyonic, electron, radeon, chemical, weapons to these local crime circles), all traitors of God, the illinois petite bourgeois have got their panties in a bunch. these people are terrified of me. they\'re also making too many mistakes. this is the true nature of liberalism and american imperialism. the whole thing a cheap plastic lie to cover up for child molestation on a massive scale.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
