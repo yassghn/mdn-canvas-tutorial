@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: day leading up to arrest event: typical zionist infiltrator gang stalking. they were too scared to get out of their cars, but felt very big and brave inside them lol (they\'re all the same type of coward). arrest event: typical day, go sit at the bench by the baseball field at washington park. i notice stereotypical cowardly harassment. so this guy parks his vehicle directly across from me and tries to intimidate me. so, ok, i get up and walk over to him, maybe its all a big joke, or friendly neighborhood prank, i dont know. i get up to his window pour my drink on him, which he gets mad at a little shmignush dingush, meanwhile i go check his plates then start walking away. he calls me "a stupid fucking jew," which obviously pisses me off (im not even jewish), and i confront him verbally, "you\'re a stupid fucking nazi," i might have said fascist, whatever, so he gets out of his car attacks me, all out assault, hits me, pushes me back, and mind you i am holding the remainder of my beverage, with my glasses on, in slippers. now i am engaged, i take a couple swings while moving back, and trip over the crub and fall, to which he tackles me, tries to break both my thumbs, and tells his buddy to call the police on me. i look like i got into a fight with a cat. he then lies (no surprise, greek american) on his police report.'
+		const text = 'TODAYS NEWS @7: now i\'m on electronic monitoring, ankle bracelet. we\'re going to slaughter everyone who made these things so fucking uncomfortable.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
