@@ -112,6 +112,9 @@ function imagesAndTransformationsPallete(cvs) {
 	if (imagesAndTransformations.transform) {
 		imagesAndTransformations.renderTransform(cvs)
 	}
+	if (imagesAndTransformations.custom) {
+		imagesAndTransformations.renderCustom(cvs)
+	}
 }
 
 function clippingAndAnimationsPallete(cvs, timestamp) {

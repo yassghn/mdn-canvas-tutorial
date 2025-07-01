@@ -3,7 +3,7 @@
  */
 
 import imagesAndTransformations from './imagesAndTransformations.mjs'
-import { loadArtGalleryImages, loadBackdropImage, loadScalingImage, loadSlicingImage } from '../modules/loadWebResource.mjs'
+import { loadAnotherCrookCountyJailAdventure, loadArtGalleryImages, loadBackdropImage, loadScalingImage, loadSlicingImage } from '../modules/loadWebResource.mjs'
 
 async function addMenuItem(itemId, itemText, checkboxId, callback, menu) {
 	await menu.addMenuItem(itemId, itemText, checkboxId, callback)
@@ -97,6 +97,11 @@ const imagesAndTransformationsSetup = {
 	// transform
 	transformInit: async function (menu) {
 		await addMenuItem('transform', 'transform', 'transform-check', transformCallback, menu)
+	},
+
+	// custom
+	customInit: async function () {
+		await loadAnotherCrookCountyJailAdventure()
 	}
 }
 

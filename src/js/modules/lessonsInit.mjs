@@ -54,6 +54,7 @@ async function initImagesAndTransformations(menu) {
 	await imagesAndTransformationsSetup.rotatingInit(menu)
 	await imagesAndTransformationsSetup.scalingInit(menu)
 	await imagesAndTransformationsSetup.transformInit(menu)
+	await imagesAndTransformationsSetup.customInit()
 }
 
 async function initClippingAndAnimations(menu) {

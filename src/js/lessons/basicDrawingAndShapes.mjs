@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: now the we\'ve stirred up the hornets nest of crime family syndicates of crook county, especially the ohare area, (mobsters/gangsters), including their cooperation with local police, and legal infrastructure (including my judge Mandeltort, Ellen Beth, now(?) a criminal co-consipirator) and locally cooperating with zionist infiltrators (providing psyonic, electron, radeon, chemical, weapons to these local crime circles), all traitors of God, the illinois petite bourgeois have got their panties in a bunch. these people are terrified of me. they\'re also making too many mistakes. this is the true nature of liberalism and american imperialism. the whole thing a cheap plastic lie to cover up for child molestation on a massive scale.'
+		const text = 'TODAYS NEWS @7: funny fact, EVERY single person i encoutered inside a vehicle, holding cell, or prisoner transport, was a PLANT. meaning the whole experience was STAGED right into and out of the courtroom. most curious was a philipino man pretending to be hawaiian. i wonder how much these people got paid.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1

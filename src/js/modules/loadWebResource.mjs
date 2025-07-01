@@ -51,3 +51,7 @@ export async function loadSolarSystemImages() {
 export async function loadLoopingPanoramaImage() {
 	await _loadImage('resource/capitan_meadows_yosemite_national_park.jpg', 'looping-panorama-image')
 }
+
+export async function loadAnotherCrookCountyJailAdventure() {
+	await _loadImage('resource/another-crook-county-jail-adventure.png', 'another-crook-county-jail-adventure-image')
+}
