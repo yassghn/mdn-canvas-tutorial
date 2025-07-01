@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: these GodDAMMNED brain dead rats do not believe me when i say i am very sick, like incredibly sick, the liberals infected me with MANY viral, chemical, biological, weapons which were meant to infect my forces. when these cops arrested me i was pouring with sweat, weapons, and blood. including cytalomegalvirus which they all got sick with. including the attacker. you really think they are going to survive this? they have no idea how i have survived this for so long and i explained it to them. God. God will not save them. they have been infecting all their family and friends. i should also mention that NO ONE offered me any medical treatment or showers to clean blood and sweat during the whole arrest->proceeding process. when i say these people are dumb it is an understatement of the century.'
+		const text = 'TODAYS NEWS @7: deht naht moht toht daht! dota, dota, dota! deht naht moht toht daht.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
