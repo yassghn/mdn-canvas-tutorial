@@ -15,53 +15,54 @@ import audio from './audio.mjs'
 
 // render
 function _render(timestamp) {
-	requestAnimationFrame((t) => _render(t))
-	fpsCalc()
-	try {
-		uiCanvas.render()
-		if (settings.pauseAnimation == false.toString()) {
-			lessonsCanvas.render(timestamp)
-		}
-		uiOverlayCanvas.render()
-	} catch (e) {
-		log(e, loglvl.ERROR)
-		// bring up debugger on error
-		if (config.debug) {
-			debugger
-		}
-	}
+    requestAnimationFrame((t) => _render(t))
+    fpsCalc()
+    try {
+        uiCanvas.render()
+        if (settings.pauseAnimation == false.toString()) {
+            lessonsCanvas.render(timestamp)
+        }
+        uiOverlayCanvas.render()
+    } catch (e) {
+        log(e, loglvl.ERROR)
+        // bring up debugger on error
+        if (config.debug) {
+            debugger
+        }
+    }
 }
 
 // main
 function _mdnCanvasTutorial() {
-	// check browser support for canvas
-	if (lessonsCanvas.isSupported()) {
-		log('canvas is supported!')
-		// init peripheral input
-		peripheralInput.init()
-		// start the lessons
-		initLessons(lessonsCanvas)
-		// get timestamp
-		const timestamp = document.timeline.currentTime
-		// init pallete
-		initPallete(lessonsCanvas.get(), timestamp)
-		// start rendering
-		requestAnimationFrame(_render)
-		// play audio
-		audio.playAudio()
-	} else {
-		log('canvas is unsupported.')
-	}
+    // check browser support for canvas
+    if (lessonsCanvas.isSupported()) {
+        log('canvas is supported!')
+        // init peripheral input
+        peripheralInput.init()
+        // start the lessons
+        initLessons(lessonsCanvas).then(_=> {
+            // get timestamp
+            const timestamp = document.timeline.currentTime
+            // init pallete
+            initPallete(lessonsCanvas.get(), timestamp)
+            // start rendering
+            requestAnimationFrame(_render)
+            // play audio
+            audio.playAudio()
+        })
+    } else {
+        log('canvas is unsupported.')
+    }
 }
 
 const mdnCanvasTutorial = () => {
-	_mdnCanvasTutorial()
+    _mdnCanvasTutorial()
 }
 
 export function resizeCanvasObjects() {
-	lessonsCanvas.resize()
-	uiCanvas.resize()
-	uiOverlayCanvas.resize()
+    lessonsCanvas.resize()
+    uiCanvas.resize()
+    uiOverlayCanvas.resize()
 }
 
 export default mdnCanvasTutorial
