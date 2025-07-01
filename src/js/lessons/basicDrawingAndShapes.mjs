@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: funny fact, EVERY single person i encoutered inside a vehicle, holding cell, or prisoner transport, was a PLANT. meaning the whole experience was STAGED right into and out of the courtroom. most curious was a philipino man pretending to be hawaiian. i wonder how much these people got paid.'
+		const text = 'TODAYS NEWS @7: very cool to note: my guerilla communications and signals theory worked very well from a few days before arrest event, during arrest, during every transport, during every holding, even during court procedings, and all the way through to my parents giving me a ride home from rolling meadows court hosue. no one noticed, but i could tell their suspicion was HIGH and ALERT. they knew something was going on. GodDAMNNED brain dead rats. very cool. the precendence of which is understated here.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
