@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: i am a scientist, researcher, developer, cartographer, philosopher, bellicose constructivist, prophet, right wing communist, black communist, cleric, as a specialist of modern guerilla warfare. you could have stayed home, used your hands for prayer, instead of bothering the trap master. do you feel like a GodDAMMNED brain dead rat yet? if not you will soon.'
+		const text = 'TODAYS NEWS @7: just so that we\'re clear, the official declaration of my so-called judge is a terrorist grunt. not just a petty criminal co-conspirator.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
