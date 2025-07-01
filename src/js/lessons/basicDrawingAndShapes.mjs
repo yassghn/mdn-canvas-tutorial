@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the GodDAMNNED FILTHY FUCKING PIGS who pranked you into betraying me knew damn well how much power i have and what i can do with it. time after time, they even exposed their own lies to you, stringing you along. i was very upfront, simple, and honest. you GodDAMMNED brain dead rats would still choose liars? go ahead, see what it gets you.'
+		const text = 'TODAYS NEWS @7: yes, the credits are still rolling. i told you they would finish sometime in august. also, the partisan series has been FUCKING AMAZING so far. holy shit. we were expecting big things from them, but, we got BIG THINGS.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
