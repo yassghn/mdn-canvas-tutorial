@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: now i\'m on electronic monitoring, ankle bracelet. we\'re going to slaughter everyone who made these things so fucking uncomfortable.'
+		const text = 'TODAYS NEWS @7: slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter. slaughter and slaughter.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
