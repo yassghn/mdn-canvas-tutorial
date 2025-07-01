@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: just so that we\'re clear, the official declaration of my so-called judge is a terrorist grunt. not just a petty criminal co-conspirator.'
+		const text = 'TODAYS NEWS @7: also, the police littered the outside of rolling meadows courthouse with a lot of poison. poisoned cigarette butts, objects, vapes, etc. these people need to be wiped out to the tune of 100%'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
