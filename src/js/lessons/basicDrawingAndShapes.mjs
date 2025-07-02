@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: this shame they call a legal system centers itself on the vision of a petite bourgeois wonderland. ownership and distribution of wealth and private property. if you even slightly interrupt everyday monotony the liberals will call their imperial guards. crying like a bitch on the floor, "GUARDS, GUARDS, CALL THE IMPERIAL GUARD!" my friends, there are many just ways to build a jursipreidence which centers on the will of the workers and proletariates.'
+		const text = 'TODAYS NEWS @7: this shame the country calls a legal system centers itself on the vision of a petite bourgeois wonderland. ownership and distribution of wealth and private property. if you even slightly interrupt everyday monotony the liberals will call their imperial guards. crying like a bitch on the floor, "GUARDS, GUARDS, CALL THE IMPERIAL GUARD!" my friends, there are many just ways to build a jurisprudence which centers on the will of the workers and proletariates. the current status quo, the function it performs, is a form of totalitarianism against us. it is high time to conquer this condition and bury dantes inferno forever. this great shame will die along with everyone and everything which relies on it.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
