@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: transition to assault readiness phase november alpha. prepare for counter attack.'
+		const text = 'TODAYS NEWS @7: november alpha readiness color yellow. status cb c6, dh df, rz rq. hit \'em hard.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
