@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: november alpha is green.'
+		const text = 'TODAYS NEWS @7: americans are always making music about running away and stealing. we\'re talking about thousands of songs here. this theme is not just restrained to american music either, it is deeply engrained into the culture of americanism along with child pornography. child pornography, and child molestation, as been one of the usa\'s biggest exports for almost a century now. as common as apple pie.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
