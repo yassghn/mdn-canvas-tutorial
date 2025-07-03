@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: currently illinois, and the larger liberal structure of the usa, is deeply underestimating involving THE WHOLE COUNTRIES civil courts in military affairs. we wiped out the fbi, cia, most of the navy seals, every sniper & assasin you sent to attack. it will now be the same for every single civil court in the country.'
+		const text = 'TODAYS NEWS @7: currently illinois, and the larger liberal structure of the usa, is deeply underestimating involving THE WHOLE COUNTRIES civil courts, all of their enforcers/representatives/managers etc. etc. etc., in military affairs. we wiped out the fbi, cia, most of the navy seals, every sniper & assasin you sent to attack. it will now be the same for every single civil structure in the country. might i add over half this country already begged you GodDAMMNED brain dead rats not to go through with this. now you will find out the hard way, my friends.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
