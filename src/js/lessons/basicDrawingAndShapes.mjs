@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: currently illinois, and the larger liberal structure of the usa, is deeply underestimating involving THE WHOLE COUNTRIES civil courts, all of their enforcers/representatives/managers etc. etc. etc. (meaning anyone and anything even remotely tied to civil structures), in military affairs. we wiped out the fbi, cia, most of the navy seals, every sniper & assasin you sent to attack. it will now be the same for every single civil structure in the country. might i add over half this country already begged you GodDAMMNED brain dead rats not to go through with this. now you will find out the hard way, my friends.'
+		const text = 'TODAYS NEWS @7: so what happens next? the pussy bitch boys have recieved their statement of war. they have less than 5 days to fulfill a set of conditions otherwise everything they added to this war gets listed as an armed force. meaning the whole of civil structure, and anyone or anything even remotely related, in this country, will be declared an armed force. very rat brained move. the courts know very well what is happening. civil structure officials from all over the country have been issuing their resignations. this is gonna be really big, and really bad. still not my problem. a pussy bitch gets what a pussy bitch wants. the "roman imperials" will now be crucified in return. watch.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
