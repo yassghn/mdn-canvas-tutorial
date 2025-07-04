@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: they ARE GOING TO wish they\'d had FALLEN DOWN on their hands and knees, and BEGGED for their LIFE, the first time they laid eyes on me.'
+		const text = 'TODAYS NEWS @7: ish naht mohg mohg daht, ish naht mohoh mohoh dahn.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
