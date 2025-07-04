@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: so what happens next? the pussy bitch boys have recieved their statement of war. they have less than 5 days to fulfill a set of conditions otherwise everything they added to this war gets listed as an armed force. meaning the whole of civil structure, and anyone or anything even remotely related, in this country, will be declared an armed force. very rat brained move. the courts know very well what is happening. civil structure officials from all over the country have been issuing their resignations. this is gonna be really big, and really bad. still not my problem. a pussy bitch gets what a pussy bitch wants. the "roman imperials" will now be crucified in return. watch.'
+		const text = 'TODAYS NEWS @7: they ARE GOING TO wish they\'d had FALLEN DOWN on their hands and knees, and BEGGED for their LIFE, the first time they laid eyes on me.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
