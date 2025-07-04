@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: ish naht mohg mohg daht, ish naht mohoh mohoh dahn.'
+		const text = 'TODAYS NEWS @7: why would the latest liberal weapon deserve my empathy, or even sympathy? it does not. the weaponization of civil structure was predictable, and profoundly irresponsible. i am not here to distinguish between liberal weapons being aimed at me. i am here to win the war, remove the liberals from power, and then ensure they are unable to return to power. anything or anyone they put between me and the empire will be annihilated. there are no more warnings, we have been at war for over one year.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
