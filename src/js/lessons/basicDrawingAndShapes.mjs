@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: transition thetas pi/4 pi*3/4 to assault readiness. move theta pi*7/4 to remainders. transition theta pi*5/4 to prepare for counter attack. assault stand by orange. t-3.15 hours. await green.'
+		const text = 'TODAYS NEWS @7: foxtrot sierra is green.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
