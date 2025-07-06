@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: some people are wondering, what is the whole of civil structure, and anything or anyone, even remotely related? the party published this document a decade ago. civil structure refers to political and legal structures and their enforcers. anything related goes as far as universities, other feeder programs, private firms, tax pipelines, literally anything or anyone that feeds civil structure.'
+		const text = 'TODAYS NEWS @7: what did these people call me? for years and years. and no, not any of the slurs. A VALID MILITARY TARGET. derp derp derp.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
