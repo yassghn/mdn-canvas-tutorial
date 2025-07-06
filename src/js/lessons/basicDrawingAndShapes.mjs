@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: google and many private, imperial, national security state, enterprises, are pretending to be my friend again. they are mistaken. we will continue slaughtering them as well.'
+		const text = 'TODAYS NEWS @7: google and many private, imperial, national security state, enterprises, are pretending to be my friend again. they are mistaken. we will continue slaughtering them as well. they keep thinking that every single latest progression somehow undoes everything that has come before it rather than ADDS TO IT. very stupid.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
