@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: what did these people call me? for years and years. and no, not any of the slurs. A VALID MILITARY TARGET. derp derp derp.'
+		const text = 'TODAYS NEWS @7: google and many private, imperial, national security state, enterprises, are pretending to be my friend again. they are mistaken. we will continue slaughtering them as well.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
