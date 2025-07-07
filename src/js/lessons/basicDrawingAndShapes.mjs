@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: we\'ve been warning you guys (speaking to civil structure employ) about the weaponizing of civil structure. was that for my own sake? nope. it was for millions of GodDAMNNED brain dead rats, which i am about to slaughter, because they are about to be deemed an armed force.'
+		const text = 'TODAYS NEWS @7: many people are also wondering, what does enforcer of civil structure mean? again the party published this document many years ago. the enforcers of civil structure police and national guard.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
