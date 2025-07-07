@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: google and many private, imperial, national security state, enterprises, are pretending to be my friend again. they are mistaken. we will continue slaughtering them as well. they keep thinking that every single latest progression somehow undoes everything that has come before it rather than ADDS TO IT. very stupid. there is no circumstance where any LIBERAL enterprise survives and becomes a part of THE STATE. you had your chance. the game is over. this means you get FUCKED. fuck you, FOREVER.'
+		const text = 'TODAYS NEWS @7: we\'ve been warning you guys (speaking to civil structure employ) about the weaponizing of civil structure. was that for my own sake? nope. it was for millions of GodDAMNNED brain dead rats, which i am about to slaughter, because they are about to be deemed an armed force.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
