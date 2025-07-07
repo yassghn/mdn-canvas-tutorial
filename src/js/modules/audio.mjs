@@ -3,7 +3,6 @@
  */
 
 import { config } from './config.mjs'
-import playlistJson from '../../resource/data/audio.json' with { type: 'json' }
 
 const _audioState = {
     isPlaying: false
@@ -38,8 +37,6 @@ function _startAudio(audioData) {
     audioSrc.buffer = audioData
     audioSrc.start(0)
     audioSrc.loop = true
-    // set audio state
-    _audioState.isPlaying = true
 }
 
 function _audioDataDecodeError(error) {
@@ -117,7 +114,8 @@ function _isNeocitiesDomain() {
     return retVal.isNeocitiesDomain
 }
 
-function _requestAudioData() {
+async function _requestAudioData() {
+    const playlistJson = await (await fetch('../../resource/data/audio.json')).json()
     const request = new XMLHttpRequest()
     request.open('GET', playlistJson.audio.current, true)
     request.responseType = 'arraybuffer'
@@ -134,15 +132,12 @@ function _requestAudioData() {
     request.send()
 }
 
-function _validateRequestAudio() {
-    // check if we're already playing audio
-    if (!_audioState.isPlaying) {
-        try {
-            // init audio
-            _requestAudioData()
-        } catch (e) {
-            console.error(e)
-        }
+async function _validateRequestAudio() {
+    try {
+        // init audio
+        _requestAudioData()
+    } catch (e) {
+        console.error(e)
     }
 }
 
@@ -150,7 +145,12 @@ function _processClick(event) {
     event.preventDefault()
     // check for mouse click
     if (event.buttons != undefined) {
-        _validateRequestAudio()
+        // check if we're already playing audio
+        if (!_audioState.isPlaying) {
+            // set audio state
+            _audioState.isPlaying = true
+            _validateRequestAudio()
+        }
     }
 }
 
