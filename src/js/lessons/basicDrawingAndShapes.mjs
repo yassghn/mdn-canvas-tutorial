@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: many people are also wondering, what does enforcer of civil structure mean? again the party published this document many years ago. the enforcers of civil structure police and national guard.'
+		const text = 'TODAYS NEWS @7: y\'all wanted to play stupid games. should have gone to play with your kids. y\'all should know by now; i don\'t play. i win. y\'all ain\'t ready for this.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
