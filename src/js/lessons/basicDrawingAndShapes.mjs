@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: y\'all wanted to play stupid games. should have gone to play with your kids. y\'all should know by now; i don\'t play. i win. y\'all ain\'t ready for this.'
+		const text = 'TODAYS NEWS @7: not surprised the GodDAMNNED brain dead rats were dumb enough to continue allowing the weaponizing of civil structure. we are less than 12 hours away from declaring the whole of civil structure an armed force. also, one of the plants in the cold crook county dungeons came ready with sweat pants and a sweatshirt. he was looking super comfy lol. well, hope everyone\'s ready to update their history books because we\'re making it.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
