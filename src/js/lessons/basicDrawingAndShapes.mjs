@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: not surprised the GodDAMNNED brain dead rats were dumb enough to continue allowing the weaponizing of civil structure. we are less than 12 hours away from declaring the whole of civil structure an armed force. also, one of the plants in the cold crook county dungeons came ready with sweat pants and a sweatshirt. he was looking super comfy lol. well, hope everyone\'s ready to update their history books because we\'re making it.'
+		const text = 'TODAYS NEWS @7: the failure to meet the conditions to exit the whole of civil structure from the civil war means that civil structure, country wide, has been declared an armed force. in illinois, civil structure employ has been charged with 75 degrees of treason on top of that. the slaughter will begin immediately and will continue until the job is 100% done.'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
