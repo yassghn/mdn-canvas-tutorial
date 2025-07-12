@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: the failure to meet the conditions to exit the whole of civil structure from the civil war means that civil structure, country wide, has been declared an armed force. in illinois, civil structure employ has been charged with 75 degrees of treason on top of that. the slaughter will begin immediately and will continue until the job is 100% done.'
+		const text = 'TODAYS NEWS @7: https://yassghn.neocities.org/noshboard is live! get today\'s news @7'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
