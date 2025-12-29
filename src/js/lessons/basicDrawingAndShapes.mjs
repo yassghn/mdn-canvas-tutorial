@@ -202,7 +202,7 @@ const basicDrawingAndShapes = {
 		// animate quote bubble text
 		const dx = .99
 		const bubbleWidth = 100
-		const text = 'TODAYS NEWS @7: https://yassghn.neocities.org/noshboard is live! get today\'s news @7'
+		const text = 'TODAYS NEWS @7: GENERAL MOBILIZATION IS GO https://yassghn.neocities.org/noshboard'
 		const props = new ContextProperties()
 		props.font = '36px tahoma'
 		props.lineWidth = 1
